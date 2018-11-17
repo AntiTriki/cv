@@ -19,6 +19,7 @@ class CreateRolesTable extends Migration
             $table->softDeletes();
             $table->integer('enterprise_id')->unsigned();
             $table->foreign('enterprise_id')->references('id')->on('enterprises')->onDelete('cascade');
+            $table->string('descripcion');
         });
     }
 
