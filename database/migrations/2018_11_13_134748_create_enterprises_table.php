@@ -18,12 +18,10 @@ class CreateEnterprisesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('nombre empresa');
-            $table->string('nombre jefe')->nullable();
-            $table->string('mail_jefe')->nullable();
+            $table->string('nombre jefe');
+            $table->string('mail_jefe');
             $table->string('cargo');
-            $table->integer('cel_jefe')->nullable();
-            $table->date('fecha_inicio')->nullable();
-            $table->date('fecha_fin')->nullable();
+            $table->integer('cel_jefe');
         });
     }
 

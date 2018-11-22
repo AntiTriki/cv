@@ -12,11 +12,9 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-
-
     }
 
     /**

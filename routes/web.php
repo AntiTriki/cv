@@ -14,9 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'hpmedical'], function () {
-    Route::get('/', 'FormController@index');
-    Route::match(['get', 'post'], 'create', 'FormController@create');
-    Route::match(['get', 'put'], 'update/{id}', 'FormController@update');
-    Route::delete('delete/{id}', 'FormController@delete');
-});

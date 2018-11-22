@@ -17,14 +17,6 @@ class CreateTitlesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->string('titulo');
-            $table->string('institucion');
-            $table->integer('year');
-            $table->integer('form_id')->unsigned();
-            $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
-            $table->integer('grade_id')->unsigned();
-            $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
-
         });
     }
 
