@@ -20,11 +20,15 @@ class CreatePeopleTable extends Migration
             $table->string('nombre');
             $table->string('apellido_p');
             $table->string('apellido_m');
-            $table->integer('ci');
+            $table->string('ci');
             $table->integer('sexo');
             $table->integer('telefono')->nullable();
-            $table->integer('celular1')->nullable();
+            $table->integer('celular')->nullable();
             $table->date('birthday');
+            $table->integer('children')->default(0);
+            $table->string('drivecard')->nullable();
+            $table->string('mail')->nullable();
+            $table->integer('civil');
 
 
 

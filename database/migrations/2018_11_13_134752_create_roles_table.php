@@ -17,8 +17,9 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('enterprise_id')->unsigned();
+            $table->integer('enterprise_id')->nullable()->unsigned();
             $table->foreign('enterprise_id')->references('id')->on('enterprises')->onDelete('cascade');
+            $table->string('descripcion');
         });
     }
 

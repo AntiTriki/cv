@@ -17,6 +17,7 @@ class CreateGradesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
+            $table->string('grado');
         });
     }
 

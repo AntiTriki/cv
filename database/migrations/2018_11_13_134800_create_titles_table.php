@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLevelsTable extends Migration
+class CreateTitlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
+        Schema::create('titles', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->string('name');
-            $table->integer('form_id')->unsigned();
+            $table->string('titulo');
+            $table->string('institucion');
+            $table->integer('year');
+            $table->integer('form_id')->nullable()->unsigned();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
-            $table->integer('skill_id')->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
+            $table->integer('grade_id')->nullable()->unsigned();
+            $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
+
         });
     }
 
@@ -32,6 +35,6 @@ class CreateLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('titles');
     }
 }

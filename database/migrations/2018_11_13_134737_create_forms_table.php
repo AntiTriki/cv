@@ -17,15 +17,13 @@ class CreateFormsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('person_id')->unsigned();
+            $table->integer('person_id')->nullable()->unsigned();
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
-            $table->integer('children')->default(0);
-            $table->string('drivecard')->nullable();
-            $table->integer('civil');
+
             $table->integer('available_job');
             $table->integer('travel');
             $table->integer('salary')->default(0);
-            $table->string('reason');
+            $table->string('reason')->nullable();
 
         });
     }
