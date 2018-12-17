@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+
 
 
 
@@ -17,3 +17,7 @@
     Route::match(['get', 'post'], 'create', 'FormController@create');
     Route::match(['get', 'put'], 'update/{id}', 'FormController@update');
     Route::delete('delete/{id}', 'FormController@delete');
+*/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

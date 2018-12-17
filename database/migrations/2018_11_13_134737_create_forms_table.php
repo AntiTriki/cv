@@ -17,13 +17,15 @@ class CreateFormsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('person_id')->nullable()->unsigned();
-            $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
+            //$table->integer('person_id')->nullable()->unsigned();
+            //$table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
 
-            $table->integer('available_job');
-            $table->integer('travel');
+            $table->boolean('available_job');
+            $table->boolean('travel');
             $table->integer('salary')->default(0);
             $table->string('reason')->nullable();
+            $table->string('general')->nullable();
+            $table->text('description')->nullable();
 
         });
     }
