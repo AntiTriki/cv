@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'HP Medical Postulate') }}</title>
 
     <!-- Scripts -->
- e
+
 
 
     <!-- Fonts -->

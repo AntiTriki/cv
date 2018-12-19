@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('apellido_p');
             $table->string('apellido_m');
             $table->string('ci');
-            $table->boolean('sexo');
+            $table->boolean('sexo')->nullable();
             $table->integer('telefono')->nullable();
             $table->integer('celular')->nullable();
             $table->date('birthday')->nullable();
