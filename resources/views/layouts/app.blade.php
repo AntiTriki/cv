@@ -13,7 +13,28 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/material-kit.min.css?v=2.0.5') }}" rel="stylesheet">
     <link href="{{ asset('css/demo.css') }}" rel="stylesheet">
+    <style>
+        .contenido {
+            width:100%;
 
+
+
+            display: inline-block;
+            overflow:hidden;
+            white-space:nowrap;
+            text-overflow: ellipsis;
+        }
+        table{
+            table-layout: fixed;
+            width: 200px;
+        }
+
+        th, td {
+
+            width: 100px;
+            word-wrap: break-word;
+        }
+    </style>
 
 
 
@@ -51,7 +72,7 @@
                 </li>
                 @else
                     <li class="nav-item">
-                        <a id="navba" class="nav-link " href="#" role="button"  a >
+                        <a id="navba" class="nav-link " href="{{ url('/home') }}" role="button"  a >
                             {{ Auth::user()->name }}
                         </a>
 

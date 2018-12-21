@@ -1,94 +1,194 @@
 @extends('layouts.app')
-
+@section('body-class','profile-page')
 @section('content')
-    <div class="page-header header-filter" data-parallax="true" ></div>
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url({{url('img/city-profile.jpg')}});"></div>
     <div class="main main-raised">
         <div class="profile-content">
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
+
                             <div class="avatar">
-                                <img src="../assets/img/faces/christian.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                <img src="{{Auth::user()->image? Auth::user()->image : url('img/faces/christian.jpg')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
+
                             <div class="name">
-                                <h3 class="title">Christian Louboutin</h3>
+                                <h3 class="title">{{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
+                                    <a href="edit/profile" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
+                                        <i class="material-icons">edit</i>
+                                    </a></h3>
                                 <h6>Designer</h6>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="description text-center">
-                    <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                    <table class="table">
+
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Carnet de Identidad</td>
+                            <td style="color: #000000">{{ Auth::user()->ci }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <td>Correo</td>
+                            <td style="color: #000000">{{ Auth::user()->email }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <td>Sexo</td>
+                            <td style="color: #000000">{{ Auth::user()->sexo ? 'Hombre' : 'Mujer' }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <td>Telefono</td>
+                            <td style="color: #000000">{{ Auth::user()->telefono ? Auth::user()->telefono : 'No definido' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Celular</td>
+                            <td style="color: #000000">{{ Auth::user()->celular ? Auth::user()->celular : 'No definido' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de Nacimiento</td>
+                            <td style="color: #000000">{{ Auth::user()->birthday ? Auth::user()->birthday  : 'No definido' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Estado Civil</td>
+                            <td style="color: #000000">{{ Auth::user()->civil ? Auth::user()->civil : 'No definido' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tiene Hijos</td>
+                            <td style="color: #000000">{{ Auth::user()->children ? Auth::user()->children : 'No tiene' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Licencia de conducir</td>
+                            <td style="color: #000000">{{ Auth::user()->drivecard ? 'Hombre' : 'No tiene' }}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto">
-                        <div class="profile-tabs">
-                            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                                        <i class="material-icons">camera</i> Studio
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                        <i class="material-icons">palette</i> Work
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                        <i class="material-icons">favorite</i> Favorite
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="row text-center">
+                    <h4>Mis Curriculum</h4>
+                    <div class="float-sm-right">
+                    <a href=""  rel="tooltip" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
+                        <i class="material-icons">add</i>
+                    </a>
                     </div>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+
+                            <th style="width: 20%" >CV</th>
+
+                            <th class="text-right">Última edición</th>
+                            <th class="text-right">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+
+                            <td  class="contenido">weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
+
+                            <td class="text-right">21/12/2018</td>
+                            <td class="td-actions text-right">
+                                <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">person</i>
+                                </button>
+                                <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="tab-content tab-space">
-                    <div class="tab-pane active text-center gallery" id="studio">
-                        <div class="row">
-                            <div class="col-md-3 ml-auto">
-                                <img src="../assets/img/examples/studio-1.jpg" class="rounded">
-                                <img src="../assets/img/examples/studio-2.jpg" class="rounded">
-                            </div>
-                            <div class="col-md-3 mr-auto">
-                                <img src="../assets/img/examples/studio-5.jpg" class="rounded">
-                                <img src="../assets/img/examples/studio-4.jpg" class="rounded">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane text-center gallery" id="works">
-                        <div class="row">
-                            <div class="col-md-3 ml-auto">
-                                <img src="../assets/img/examples/olu-eletu.jpg" class="rounded">
-                                <img src="../assets/img/examples/clem-onojeghuo.jpg" class="rounded">
-                                <img src="../assets/img/examples/cynthia-del-rio.jpg" class="rounded">
-                            </div>
-                            <div class="col-md-3 mr-auto">
-                                <img src="../assets/img/examples/mariya-georgieva.jpg" class="rounded">
-                                <img src="../assets/img/examples/clem-onojegaw.jpg" class="rounded">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane text-center gallery" id="favorite">
-                        <div class="row">
-                            <div class="col-md-3 ml-auto">
-                                <img src="../assets/img/examples/mariya-georgieva.jpg" class="rounded">
-                                <img src="../assets/img/examples/studio-3.jpg" class="rounded">
-                            </div>
-                            <div class="col-md-3 mr-auto">
-                                <img src="../assets/img/examples/clem-onojeghuo.jpg" class="rounded">
-                                <img src="../assets/img/examples/olu-eletu.jpg" class="rounded">
-                                <img src="../assets/img/examples/studio-1.jpg" class="rounded">
-                            </div>
-                        </div>
-                    </div>
+                <div class="row text-center ">
+                    <h4>Mis Postulaciones</h4>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+
+                            <th style="width: 20%" >CV</th>
+
+                            <th class="text-right">Última edición</th>
+                            <th class="text-right">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+
+                            <td  class="contenido">weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
+
+                            <td class="text-right">21/12/2018</td>
+                            <td class="td-actions text-right">
+                                <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">person</i>
+                                </button>
+                                <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
         </div>
     </div>
+    <footer class="footer footer-default">
+        <div class="container">
+            <nav class="float-left">
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://creative-tim.com/presentation">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/license">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright float-right">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>, made with <i class="material-icons">favorite</i> by
+                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+            </div>
+        </div>
+    </footer>
 
 @endsection
