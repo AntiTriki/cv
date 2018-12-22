@@ -81,7 +81,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            <i class="material-icons">cloud_download</i> {{ __('Logout') }}
+                            <i class="material-icons">exit_to_app</i> {{ __('SALIR') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

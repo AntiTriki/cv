@@ -19,7 +19,7 @@
                                     <a href="edit/profile" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">edit</i>
                                     </a></h3>
-                                <h6>Designer</h6>
+                                <h6>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</h6>
 
                             </div>
                         </div>
@@ -32,6 +32,7 @@
 
                         </thead>
                         <tbody>
+
                         <tr>
                             <td>Carnet de Identidad</td>
                             <td style="color: #000000">{{ Auth::user()->ci }}</td>
@@ -79,11 +80,14 @@
                     </table>
                 </div>
                 <div class="row text-center">
+                    <div class="container">
                     <h4>Mis Curriculum</h4>
-                    <div class="float-sm-right">
-                    <a href=""  rel="tooltip" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
-                        <i class="material-icons">add</i>
+
+                    <a href=""  rel="tooltip" class=" btn btn-primary  btn-round">
+                        <i class="material-icons">add</i> Agregar
                     </a>
+
+
                     </div>
                     <table class="table table-sm">
                         <thead>
@@ -96,10 +100,10 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                        @foreach ($forms as $form)
                         <tr>
 
-                            <td  class="contenido">weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
+                            <td  class="contenido">{{$form->description}}}</td>
 
                             <td class="text-right">21/12/2018</td>
                             <td class="td-actions text-right">
@@ -114,23 +118,32 @@
                                 </button>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
-                <div class="row text-center ">
+                <div class="row text-center">
+                    <div class="container">
                     <h4>Mis Postulaciones</h4>
+
+                    <a href=""  rel="tooltip" class=" btn btn-primary  btn-round">
+                        <i class="material-icons">add</i> Agregar
+                    </a>
+
+
+                    </div>
                     <table class="table table-sm">
                         <thead>
                         <tr>
 
-                            <th style="width: 20%" >CV</th>
+                            <th style="width: 20%" >Oferta</th>
 
                             <th class="text-right">Última edición</th>
                             <th class="text-right">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
-
+                        @foreach ($forms as $form)
                         <tr>
 
                             <td  class="contenido">weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
@@ -148,45 +161,25 @@
                                 </button>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
 
-            </div>
+        </div>
         </div>
     </div>
     <footer class="footer footer-default">
         <div class="container">
             <nav class="float-left">
-                <ul>
-                    <li>
-                        <a href="https://www.creative-tim.com">
-                            Creative Tim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://creative-tim.com/presentation">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://blog.creative-tim.com">
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.creative-tim.com/license">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
+
             </nav>
             <div class="copyright float-right">
                 &copy;
                 <script>
                     document.write(new Date().getFullYear())
-                </script>, made with <i class="material-icons">favorite</i> by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                </script>, made with <i class="material-icons">favorite</i> by HP
+
             </div>
         </div>
     </footer>

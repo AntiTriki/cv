@@ -19,7 +19,8 @@ class CreateFormsTable extends Migration
             $table->softDeletes();
             //$table->integer('person_id')->nullable()->unsigned();
             //$table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
-
+            $table->integer('user_id')->nullable()->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('available_job');
             $table->boolean('travel');
             $table->integer('salary')->default(0);

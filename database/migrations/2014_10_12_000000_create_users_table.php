@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('apellido_p');
-            $table->string('apellido_m');
-            $table->string('ci');
+            $table->string('apellido_p')->nullable();
+            $table->string('apellido_m')->nullable();
+            $table->string('ci')->nullable();
             $table->boolean('sexo')->default(true);
             $table->integer('telefono')->nullable();
             $table->integer('celular')->nullable();
@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->boolean('drivecard')->nullable();
             $table->integer('civil')->nullable();
             $table->string('image')->nullable();
+            $table->integer('permiso')->default(0);;
         });
     }
 
