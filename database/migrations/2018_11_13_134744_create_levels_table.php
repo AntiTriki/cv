@@ -17,11 +17,11 @@ class CreateLevelsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->string('skill')->nullable();
             $table->integer('form_id')->nullable()->unsigned();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
-            $table->integer('skill_id')->nullable()->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
+
         });
     }
 

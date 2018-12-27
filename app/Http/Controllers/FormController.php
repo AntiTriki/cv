@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -37,6 +38,15 @@ class FormController extends Controller
     public function store(Request $request)
     {
         //
+        $form = new Form();
+        $form -> salary = $request -> salary;
+        $form -> available_job = $request -> available_job;
+        $form -> general = $request -> general;
+        $form -> description = $request -> description;
+        $form -> user_id = Auth::user()->id;
+        $form -> save();
+        return Redirect::route('form.skills');
+
     }
 
     /**
@@ -83,4 +93,5 @@ class FormController extends Controller
     {
         //
     }
+
 }
