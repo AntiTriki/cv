@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        ::-webkit-input-placeholder {
+            text-align: center;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+            text-align: center;
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+            text-align: center;
+        }
+
+        :-ms-input-placeholder {
+            text-align: center;
+        }
+    </style>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
         <div class="container" >
             <div class="row justify-content-center">
@@ -40,7 +57,8 @@
                                             <label class="form-check-label">
 
                                                 Disponibilidad inmediata
-                                                <input class="form-check-input" type="checkbox" name="available_job" id="available_job" >
+                                                <input class="form-check-input" value="0" type="hidden" name="available_job" id="available_job" >
+                                                <input class="form-check-input" value="1" type="checkbox" name="available_job" id="available_job" >
                                                 <span class="form-check-sign">
               <span class="check"></span>
           </span>
@@ -53,7 +71,8 @@
                                             <label class="form-check-label">
 
                                                 Disponibilidad de viaje
-                                                <input class="form-check-input" type="checkbox" name="travel" id="travel">
+                                                <input class="form-check-input" value="0" type="hidden" name="travel" id="travel">
+                                                <input class="form-check-input" value="1" type="checkbox" name="travel" id="travel">
                                                 <span class="form-check-sign">
               <span class="check"></span>
           </span>
@@ -83,6 +102,9 @@
 
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
+                                        <a href="{{route('home')}}"  class="btn btn-primary">
+                                            {{ __('Atrás') }}
+                                        </a>
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Siguiente') }}
                                         </button>
@@ -95,4 +117,8 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+    </script>
 @endsection

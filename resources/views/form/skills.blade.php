@@ -24,73 +24,48 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header">{{ __('Curriculum') }}</div>
+                        <div class="card-header">{{ __('Curriculum') }} {{$form->general}}</div>
 
                         <div class="card-body">
-                            <form class="form-horizontal py-4" method="POST" action="{{ route('register_cv') }}">
+                            <form class="form-horizontal py-4" method="POST" action="{{ route('register_skills') }}">
                                 @csrf
 
 
-                                <div class="form-row py-4">
-
-
-                                    <div class="col-md-12">
-
-                                    <textarea class="form-control" placeholder="Descripción de ti" name="description" id="description" rows=2></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-row ">
-                                    <div class="col-md-4 ">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-
-                                                Disponibilidad inmediata
-                                                <input class="form-check-input" type="checkbox" name="available_job" id="available_job" value="">
-                                                <span class="form-check-sign">
-              <span class="check"></span>
-          </span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 py-4">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-
-                                                Disponibilidad de viaje
-                                                <input class="form-check-input" type="checkbox" name="travel" id="travel" value="">
-                                                <span class="form-check-sign">
-              <span class="check"></span>
-          </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 py-4">
-                                        <input id="salary" type="number" class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}" name="salary" value="{{ old('salary') }}" placeholder="Pretensión Salarial" required autofocus>
-
-                                        @if ($errors->has('salary'))
-                                            <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('salary') }}</strong>
-                                                    </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-
-                                
-
 
 
 
                                 <div class="form-row py-4">
 
                                     <div class="col-md-12">
-                                        <table class="table table-bordered" id="dynamic_field">
+                                        <table class="table table-sm">
+                                            <thead>
                                             <tr>
-                                                <td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td>
-                                                <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+
+                                                <th style="width: 20%" >Conocimientos y habilidades</th>
+
+                                                <th class="text-right">Nivel</th>
+                                                <th class="text-right">Acciones</th>
                                             </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach ($form->skills as $skills)
+                                                <tr>
+
+                                                    <td  class="contenido">{{$skills->name}}</td>
+
+                                                    <td class="text-right">{{$skills->level}}</td>
+                                                    <td class="td-actions text-right">
+
+                                                        <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
 

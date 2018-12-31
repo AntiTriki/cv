@@ -29,4 +29,6 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/curriculum', 'FormController@index');
+Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('register_cv', 'FormController@store')->name('register_cv');
+Route::post('register_skills', 'LevelController@store')->name('register_skills');

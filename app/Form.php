@@ -12,4 +12,8 @@ class Form extends Model
         return $this -> belongsTo(User::class);
 
     }
+    public function skills(){
+        return $this -> hasMany(Level::class);
+
+    }
 }

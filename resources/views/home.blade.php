@@ -103,9 +103,9 @@
                         @foreach ($forms as $form)
                         <tr>
 
-                            <td  class="contenido">{{$form->description}}}</td>
+                            <td  class="contenido">{{$form->general}}</td>
 
-                            <td class="text-right">21/12/2018</td>
+                            <td class="text-right">{{$form->updated_at->format('d/m/Y')}}</td>
                             <td class="td-actions text-right">
                                 <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-fab-mini btn-round">
                                     <i class="material-icons">person</i>
@@ -146,7 +146,7 @@
                         @foreach ($forms as $form)
                         <tr>
 
-                            <td  class="contenido">weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
+                            <td  class="contenido"></td>
 
                             <td class="text-right">21/12/2018</td>
                             <td class="td-actions text-right">

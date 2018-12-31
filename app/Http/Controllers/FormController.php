@@ -18,6 +18,14 @@ class FormController extends Controller
         //
         return view('form.index');
     }
+  public function skills($id)
+    {
+        //
+
+        $form = Form::findOrFail($id);
+        return view('form.skills', compact('form'));
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -41,11 +49,12 @@ class FormController extends Controller
         $form = new Form();
         $form -> salary = $request -> salary;
         $form -> available_job = $request -> available_job;
+        $form -> travel = $request -> travel;
         $form -> general = $request -> general;
         $form -> description = $request -> description;
         $form -> user_id = Auth::user()->id;
         $form -> save();
-        return Redirect::route('form.skills');
+        return redirect('home/skills/'.$form->id);
 
     }
 

@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Level extends Model
 {
     //
+    public function form(){
+        return $this -> belongsTo(Form::class);
+
+    }
+
 }
