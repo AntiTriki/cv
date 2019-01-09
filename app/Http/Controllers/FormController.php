@@ -55,16 +55,7 @@ class FormController extends Controller
         $form -> description = $request -> description;
         $form -> user_id = Auth::user()->id;
         $form -> save();
-        $level = new Level();
-        $level -> skill = 'Ingles';
-        $level -> form_id = $form -> $id;
-        $form -> save();
-        $level = new Level();
-        $form -> save();
-        $level -> skill = 'Word';
-        $level = new Level();
-        $level -> skill = 'Excel';
-        $form -> save();
+
 
 
 

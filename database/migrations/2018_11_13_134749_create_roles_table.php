@@ -1,10 +1,10 @@
-<?php
++<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLevelsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->string('name')->nullable();
+            $table->integer('enterprise_id')->nullable()->unsigned();
+            $table->foreign('enterprise_id')->references('id')->on('enterprises')->onDelete('cascade');
             $table->integer('form_id')->unsigned();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
-            $table->integer('skill_id')->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
-
+            $table->string('descripcion');
         });
     }
 
@@ -33,6 +32,6 @@ class CreateLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('roles');
     }
 }
