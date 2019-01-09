@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+use App\Level;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -54,6 +55,20 @@ class FormController extends Controller
         $form -> description = $request -> description;
         $form -> user_id = Auth::user()->id;
         $form -> save();
+        $level = new Level();
+        $level -> skill = 'Ingles';
+        $level -> form_id = $form -> $id;
+        $form -> save();
+        $level = new Level();
+        $form -> save();
+        $level -> skill = 'Word';
+        $level = new Level();
+        $level -> skill = 'Excel';
+        $form -> save();
+
+
+
+
         return redirect('home/skills/'.$form->id);
 
     }

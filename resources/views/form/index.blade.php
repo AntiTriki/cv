@@ -91,15 +91,6 @@
                                 </div>
 
 
-                                
-
-
-
-
-
-
-
-
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
                                         <a href="{{route('home')}}"  class="btn btn-primary">

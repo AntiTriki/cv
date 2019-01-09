@@ -107,9 +107,9 @@
 
                             <td class="text-right">{{$form->updated_at->format('d/m/Y')}}</td>
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">person</i>
-                                </button>
+                                <a href=""  class="btn btn-info btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">visibility</i>
+                                </a>
                                 <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
                                     <i class="material-icons">edit</i>
                                 </button>
