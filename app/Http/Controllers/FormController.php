@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+<<<<<<< HEAD
 use App\Level;
 use Illuminate\Support\Facades\Auth;
+=======
+>>>>>>> parent of 6a2393a... we quitando cosas falta form
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -47,6 +50,7 @@ class FormController extends Controller
     public function store(Request $request)
     {
         //
+<<<<<<< HEAD
         $form = new Form();
         $form -> salary = $request -> salary;
         $form -> available_job = $request -> available_job;
@@ -62,6 +66,8 @@ class FormController extends Controller
 
         return redirect('home/skills/'.$form->id);
 
+=======
+>>>>>>> parent of 6a2393a... we quitando cosas falta form
     }
 
     /**
@@ -108,5 +114,4 @@ class FormController extends Controller
     {
         //
     }
-
 }

@@ -28,7 +28,11 @@ Auth::routes();
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
 Route::get('/home/curriculum', 'FormController@index');
 Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('register_cv', 'FormController@store')->name('register_cv');
 Route::post('register_skills', 'LevelController@store')->name('register_skills');
+=======
+
+>>>>>>> parent of 6a2393a... we quitando cosas falta form

@@ -83,7 +83,7 @@
                     <div class="container">
                     <h4>Mis Curriculum</h4>
 
-                    <a href="{{url('/home/curriculum')}}"  rel="tooltip" class=" btn btn-primary  btn-round">
+                    <a href=""  rel="tooltip" class=" btn btn-primary  btn-round">
                         <i class="material-icons">add</i> Agregar
                     </a>
 
