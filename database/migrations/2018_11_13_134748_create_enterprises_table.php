@@ -19,6 +19,7 @@ class CreateEnterprisesTable extends Migration
             $table->softDeletes();
             $table->string('nombre empresa');
             $table->string('nombre jefe')->nullable();
+            $table->string('role')->nullable();
             $table->string('mail_jefe')->nullable();
             $table->string('cargo');
             $table->integer('cel_jefe')->nullable();
@@ -34,6 +35,7 @@ class CreateEnterprisesTable extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('enterprises');
     }
 }

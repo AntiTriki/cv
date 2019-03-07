@@ -28,7 +28,10 @@ Auth::routes();
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of df2fbc0... sdsd
 Route::get('/home/curriculum', 'FormController@index');
 Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('register_cv', 'FormController@store')->name('register_cv');

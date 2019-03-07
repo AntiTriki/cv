@@ -17,20 +17,12 @@ class CreateLevelsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-<<<<<<< HEAD
             $table->string('name')->nullable();
             $table->integer('form_id')->unsigned();
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->integer('skill_id')->unsigned();
             $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
 
-=======
-            $table->string('name');
-            $table->integer('form_id')->nullable()->unsigned();
-            $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
-            $table->integer('skill_id')->nullable()->unsigned();
-            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
->>>>>>> parent of 6a2393a... we quitando cosas falta form
         });
     }
 

@@ -74,7 +74,7 @@ return [
             'driver' => 'sqlsrv',
             'host' => env('DB_HOST', '192.168.0.2\SQLEXPRESS'),
             'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'curriculum'),
+            'database' => env('DB_DATABASE', 'printer'),
             'username' => env('DB_USERNAME', 'sistema'),
             'password' => env('DB_PASSWORD', 'sistema'),
             'charset' => 'utf8',
