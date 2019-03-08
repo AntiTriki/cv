@@ -7,21 +7,17 @@ use Illuminate\Http\Request;
 
 class LevelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+//        $id=Auth::user()->id;
+//        $forms = Form::where('user_id',$id)->get();
+//        $basicos = DB::table('skills')->get();
+//        return view('skills',['basicos' => $basicos],compact('forms'));
+//
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
