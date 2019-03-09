@@ -65,6 +65,14 @@
                                 <td style="color: #000000">{{ Auth::user()->civil ? Auth::user()->civil : 'No definido' }}</td>
                             </tr>
                             <tr>
+                                <td>Nacionalidad</td>
+                                <td style="color: #000000">{{ Auth::user()->nacionalidad }}</td>
+                            </tr>
+                            <tr>
+                                <td>Ciudad de residencia</td>
+                                <td style="color: #000000">{{ Auth::user()->residencia }}</td>
+                            </tr>
+                            <tr>
                                 <td>Tiene Hijos</td>
                                 <td style="color: #000000">{{ Auth::user()->children ? Auth::user()->children : 'No tiene' }}</td>
                             </tr>
@@ -76,95 +84,129 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="row text-center">
-                    <div class="container">
-                    <h4>Mis Curriculum</h4>
 
-                    <a href="{{url('/home/curriculum')}}"  rel="tooltip" class=" btn btn-primary  btn-round">
+                <div class="col-sm-8 text-center">
+                    <div class="container">
+                        <br>
+                    <h4>Mi Curriculum</h4>
+                        <a href="{{url('/home/curriculum')}}"  rel="tooltip" class=" btn btn-primary  btn-round">
                         <i class="material-icons">add</i> Agregar
                     </a>
+                    </div>
+                    <table class="table  table-sm">
+                        <tbody>
+                        @forelse($cv as $cvv)
+                        <tr>
+                            <td>Titulo</td>
+                            <td style="color: #000000">{{ $cvv->general }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <td>Descripcion</td>
+                            <td style="color: #000000">{{ $cvv->description }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <td>Disponibilidad</td>
+                            <td style="color: #000000">{{ $cvv->available_job }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <td>Viaje</td>
+                            <td style="color: #000000">{{ $cvv->travel }}</td>
+                        </tr>
+                        <tr>
+                            <td>Salario</td>
+                            <td style="color: #000000">{{$cvv->salary }}</td>
+                        </tr>
+                        @empty
+                            <div class="alert alert-danger" role="alert">No registro datos</div>
+                        @endforelse
+                        </tbody>
+                    </table>
+                    {{--<table class="table table-sm">--}}
+                        {{--<thead>--}}
+                        {{--<tr>--}}
+
+                            {{--<th style="width: 20%" >CV</th>--}}
+
+                            {{--<th class="text-right">Última edición</th>--}}
+                            {{--<th class="text-right">Acciones</th>--}}
+                        {{--</tr>--}}
+                        {{--</thead>--}}
+                        {{--<tbody>--}}
+                        {{--@foreach ($forms as $form)--}}
+                        {{--<tr>--}}
+
+                            {{--<td  class="contenido">{{$form->general}}</td>--}}
+
+                            {{--<td class="text-right">{{$form->updated_at->format('d/m/Y')}}</td>--}}
+                            {{--<td class="td-actions text-right">--}}
+                                {{--<a href=""  class="btn btn-info btn-fab btn-fab-mini btn-round">--}}
+                                    {{--<i class="material-icons">visibility</i>--}}
+                                {{--</a>--}}
+                                {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
+                                    {{--<i class="material-icons">edit</i>--}}
+                                {{--</button>--}}
+                                {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
+                                    {{--<i class="material-icons">close</i>--}}
+                                {{--</button>--}}
+                            {{--</td>--}}
+                        {{--</tr>--}}
+                        {{--@endforeach--}}
+                        {{--</tbody>--}}
+                    {{--</table>--}}
+
+                    <br>
+                    <br>
+                    <div class="container">
+                        <h4>Mis Postulaciones</h4>
+
+                        <a href=""  rel="tooltip" class=" btn btn-primary  btn-round">
+                            <i class="material-icons">add</i> Agregar
+                        </a>
 
 
                     </div>
-                    <table class="table table-sm">
-                        <thead>
-                        <tr>
+                    {{--<table class="table table-sm">--}}
+                        {{--<thead>--}}
+                        {{--<tr>--}}
 
-                            <th style="width: 20%" >CV</th>
+                            {{--<th style="width: 20%" >Oferta</th>--}}
 
-                            <th class="text-right">Última edición</th>
-                            <th class="text-right">Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($forms as $form)
-                        <tr>
+                            {{--<th class="text-right">Última edición</th>--}}
+                            {{--<th class="text-right">Acciones</th>--}}
+                        {{--</tr>--}}
+                        {{--</thead>--}}
+                        {{--<tbody>--}}
+                        {{--@foreach ($forms as $form)--}}
+                            {{--<tr>--}}
 
-                            <td  class="contenido">{{$form->general}}</td>
+                                {{--<td  class="contenido"></td>--}}
 
-                            <td class="text-right">{{$form->updated_at->format('d/m/Y')}}</td>
-                            <td class="td-actions text-right">
-                                <a href=""  class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">visibility</i>
-                                </a>
-                                <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                {{--<td class="text-right">21/12/2018</td>--}}
+                                {{--<td class="td-actions text-right">--}}
+                                    {{--<button type="button" rel="tooltip" class="btn btn-info btn-fab btn-fab-mini btn-round">--}}
+                                        {{--<i class="material-icons">person</i>--}}
+                                    {{--</button>--}}
+                                    {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
+                                        {{--<i class="material-icons">edit</i>--}}
+                                    {{--</button>--}}
+                                    {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
+                                        {{--<i class="material-icons">close</i>--}}
+                                    {{--</button>--}}
+                                {{--</td>--}}
+                            {{--</tr>--}}
+                        {{--@endforeach--}}
+                        {{--</tbody>--}}
+                    {{--</table>--}}
+
                 </div>
-                <div class="row text-center">
-                    <div class="container">
-                    <h4>Mis Postulaciones</h4>
-
-                    <a href=""  rel="tooltip" class=" btn btn-primary  btn-round">
-                        <i class="material-icons">add</i> Agregar
-                    </a>
-
-
-                    </div>
-                    <table class="table table-sm">
-                        <thead>
-                        <tr>
-
-                            <th style="width: 20%" >Oferta</th>
-
-                            <th class="text-right">Última edición</th>
-                            <th class="text-right">Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($forms as $form)
-                        <tr>
-
-                            <td  class="contenido"></td>
-
-                            <td class="text-right">21/12/2018</td>
-                            <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">person</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
         </div>
+            </div>
         </div>
     </div>
     <footer class="footer footer-default">

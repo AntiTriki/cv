@@ -15,8 +15,9 @@ class FormController extends Controller
 
     public function index()
     {
-
-        return view('form.index');
+        $id = Session('usu-id');
+        $cv = Form::where('user_id',$id)->get();
+        return view('form.index',compact('cv'));
     }
   public function skills($id)
     {

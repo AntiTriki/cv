@@ -54,15 +54,18 @@
                                 <div class="form-row">
                                     <div class="col-md-4 py-4">
                                         <div class="form-check">
-                                            <label class="form-check-label">
-
-                                                Disponibilidad inmediata
-                                                <input class="form-check-input" value="0" type="hidden" name="available_job" id="available_job" >
-                                                <input class="form-check-input" value="1" type="checkbox" name="available_job" id="available_job" >
+                                            <label>Disponibilidad inmediata</label>
+                                            <input class="form-check-input" value="0" type="checkbox" name="available_job" id="available_job" >
+                                            <span class="form-check-sign">
+                                                  <span class="check"></span>
+                                              </span>
+                                            <br>
+                                            <br>
+                                                <label>2 a 3 semanas</label><input class="form-check-input" value="1" type="checkbox" name="available_job" id="available_job" >
                                                 <span class="form-check-sign">
-              <span class="check"></span>
-          </span>
-                                            </label>
+                                                  <span class="check"></span>
+                                              </span>
+
                                         </div>
                                     </div>
 
