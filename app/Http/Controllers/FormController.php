@@ -6,17 +6,16 @@ use App\Form;
 use App\Level;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+
 
 class FormController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+
         return view('form.index');
     }
   public function skills($id)

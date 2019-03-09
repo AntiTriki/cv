@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function redirect (Request $request){
+        $usu = $request->input('id');
+        session()->put('usu-id', $usu);
+
+        return redirect('index');
+    }
+
     public function index()
     {
         //

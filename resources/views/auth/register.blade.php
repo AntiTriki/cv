@@ -10,8 +10,8 @@
 
                 <div class="card-body">
                     <form class="form-horizontal py-4" method="POST" action="{{ route('register') }}">
+                        {{ csrf_field() }}
                         @csrf
-
 
                         <div class="form-row py-4">
                             <div class="col-md-4">
@@ -46,9 +46,7 @@
 
 
                         <div class="form-row py-4">
-
-
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <input id="ci" type="text" class="form-control{{ $errors->has('ci') ? ' is-invalid' : '' }}" name="ci" value="{{ old('ci') }}" placeholder="CI" required autofocus>
 
                                 @if ($errors->has('ci'))
@@ -57,11 +55,25 @@
                                                     </span>
                                 @endif
                             </div>
+                            <div class="col-md-4">
+                                <input id="nacionalidad" type="text" class="form-control{{ $errors->has('nacionalidad') ? ' is-invalid' : '' }}" name="nacionalidad" value="{{ old('nacionalidad') }}" placeholder="Nacionalidad" required autofocus>
+
+                                @if ($errors->has('nacionalidad'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('nacionalidad') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-md-4">
+                                <input id="residencia" type="text" class="form-control{{ $errors->has('residencia') ? ' is-invalid' : '' }}" name="residencia" value="{{ old('residencia') }}" placeholder="Ciudad de Residencia" required autofocus>
+
+                                @if ($errors->has('residencia'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('residencia') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-
-
-
-
                         <div class="form-row py-4">
 
                             <div class="col-md-4">

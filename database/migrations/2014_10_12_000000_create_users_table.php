@@ -32,6 +32,8 @@ class CreateUsersTable extends Migration
             $table->integer('children')->default(0);
             $table->boolean('drivecard')->nullable();
             $table->integer('civil')->nullable();
+            $table->string('nacionalidad')->nullable();
+            $table->string('residencia')->nullable();
             $table->string('image')->nullable();
             $table->integer('permiso')->default(0);;
         });

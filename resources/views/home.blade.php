@@ -5,9 +5,9 @@
     <div class="main main-raised">
         <div class="profile-content">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto">
+            <div class="container-fluid">
+                <div class="row content">
+                    <div class="col-sm-4 sidenav">
                         <div class="profile">
 
                             <div class="avatar">
@@ -23,61 +23,59 @@
 
                             </div>
                         </div>
+                        <table class="table">
+
+                            <thead>
+
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td>Carnet de Identidad</td>
+                                <td style="color: #000000">{{ Auth::user()->ci }}</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>Correo</td>
+                                <td style="color: #000000">{{ Auth::user()->email }}</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>Sexo</td>
+                                <td style="color: #000000">{{ Auth::user()->sexo ? 'Hombre' : 'Mujer' }}</td>
+
+
+                            </tr>
+                            <tr>
+                                <td>Telefono</td>
+                                <td style="color: #000000">{{ Auth::user()->telefono ? Auth::user()->telefono : 'No definido' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Celular</td>
+                                <td style="color: #000000">{{ Auth::user()->celular ? Auth::user()->celular : 'No definido' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Fecha de Nacimiento</td>
+                                <td style="color: #000000">{{ Auth::user()->birthday ? Auth::user()->birthday  : 'No definido' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Estado Civil</td>
+                                <td style="color: #000000">{{ Auth::user()->civil ? Auth::user()->civil : 'No definido' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tiene Hijos</td>
+                                <td style="color: #000000">{{ Auth::user()->children ? Auth::user()->children : 'No tiene' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Licencia de conducir</td>
+                                <td style="color: #000000">{{ Auth::user()->drivecard ? 'Hombre' : 'No tiene' }}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="description text-center">
-                    <table class="table">
-
-                        <thead>
-
-                        </thead>
-                        <tbody>
-
-                        <tr>
-                            <td>Carnet de Identidad</td>
-                            <td style="color: #000000">{{ Auth::user()->ci }}</td>
-
-
-                        </tr>
-                        <tr>
-                            <td>Correo</td>
-                            <td style="color: #000000">{{ Auth::user()->email }}</td>
-
-
-                        </tr>
-                        <tr>
-                            <td>Sexo</td>
-                            <td style="color: #000000">{{ Auth::user()->sexo ? 'Hombre' : 'Mujer' }}</td>
-
-
-                        </tr>
-                        <tr>
-                            <td>Telefono</td>
-                            <td style="color: #000000">{{ Auth::user()->telefono ? Auth::user()->telefono : 'No definido' }}</td>
-                        </tr>
-                        <tr>
-                            <td>Celular</td>
-                            <td style="color: #000000">{{ Auth::user()->celular ? Auth::user()->celular : 'No definido' }}</td>
-                        </tr>
-                        <tr>
-                            <td>Fecha de Nacimiento</td>
-                            <td style="color: #000000">{{ Auth::user()->birthday ? Auth::user()->birthday  : 'No definido' }}</td>
-                        </tr>
-                        <tr>
-                            <td>Estado Civil</td>
-                            <td style="color: #000000">{{ Auth::user()->civil ? Auth::user()->civil : 'No definido' }}</td>
-                        </tr>
-                        <tr>
-                            <td>Tiene Hijos</td>
-                            <td style="color: #000000">{{ Auth::user()->children ? Auth::user()->children : 'No tiene' }}</td>
-                        </tr>
-                        <tr>
-                            <td>Licencia de conducir</td>
-                            <td style="color: #000000">{{ Auth::user()->drivecard ? 'Hombre' : 'No tiene' }}</td>
-                        </tr>
-
-                        </tbody>
-                    </table>
                 </div>
                 <div class="row text-center">
                     <div class="container">
