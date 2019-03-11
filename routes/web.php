@@ -32,5 +32,6 @@ Route::get('/home/curriculum', 'FormController@index');
 Route::get('/home/skills/{id}', 'FormController@skills');
 //Redireccion
 Route::get('/redireccion','FormController@redir');
+
 Route::post('register_cv', 'FormController@store')->name('register_cv');
 Route::post('register_skills', 'LevelController@store')->name('register_skills');

@@ -18,7 +18,11 @@
                                 <h3 class="title">{{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
                                     <a href="edit/profile" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">edit</i>
-                                    </a></h3>
+                                    </a>
+                                    <a href="{{url('/home/curriculum')}}"  rel="tooltip" class=" btn btn-primary  btn-round">
+                                        <i class="material-icons">add</i> Agregar
+                                    </a>
+                                </h3>
                                 <h6>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</h6>
 
                             </div>
@@ -89,9 +93,6 @@
                     <div class="container">
                         <br>
                     <h4>Mi Curriculum</h4>
-                        <a href="{{url('/home/curriculum')}}"  rel="tooltip" class=" btn btn-primary  btn-round">
-                        <i class="material-icons">add</i> Agregar
-                    </a>
                     </div>
                     <table class="table  table-sm">
                         <tbody>
@@ -164,12 +165,9 @@
                     <br>
                     <div class="container">
                         <h4>Mis Postulaciones</h4>
-
                         <a href=""  rel="tooltip" class=" btn btn-primary  btn-round">
                             <i class="material-icons">add</i> Agregar
                         </a>
-
-
                     </div>
                     {{--<table class="table table-sm">--}}
                         {{--<thead>--}}
