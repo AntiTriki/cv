@@ -29,20 +29,16 @@
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="POST" action="{{ route('register_skills') }}">
                                 @csrf
-
-
-
-
-
                                 <div class="form-row py-4">
 
                                     <div class="col-md-12">
                                         <table class="table table-sm">
                                             <thead>
+                                            <button type="button" class="btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">
+                                                <i class="material-icons">add</i>
+                                            </button>
                                             <tr>
-
                                                 <th style="width: 20%" >Conocimientos y habilidades</th>
-
                                                 <th class="text-right">Nivel</th>
                                                 <th class="text-right">Acciones</th>
                                             </tr>
@@ -51,9 +47,9 @@
                                             @foreach ($form->skills as $skills)
                                                 <tr>
 
-                                                    <td  class="contenido">{{$skills->name}}</td>
+                                                    <td class="contenido">{{$form->level->name}}</td>
 
-                                                    <td class="text-right">{{$skills->level}}</td>
+                                                    <td class="text-right">{{$skills->name}}</td>
                                                     <td class="td-actions text-right">
 
                                                         <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
@@ -93,6 +89,50 @@
             </div>
         </div>
     </div>
+
+    <!-- Gestion new -->
+    <div class="modal fade" id="new-skill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de Conocimientos y habilidades</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form" method="post" action="{{url('skills/guardar')}}" class="form-horizontal form-material">
+                        {!! csrf_field() !!}
+
+                        <div class="panel-body">
+                            <input type="hidden" name="form_id" id="form_id" value="{{Session('for_id')}}">
+
+                            <div class="form-group col-md-12" {{ $errors->has('name') ? ' has-error' : '' }}>
+                                <label for="name" class="control-label">Nombre</label>
+                                <input type="text" class="form-control" id="name" name="name" maxlength="50" value="{{ old('name') }}">
+                                @if ($errors->has('name'))
+                                    <span id="alerta3" class="help-block">
+                                        <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                                <div class="col-md-12 text-center ">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        {{--{{ __('Siguiente') }}--}}
+                                        Guardar
+                                    </button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script type="text/javascript">
         $(document).ready(function(){
             var postURL = "<?php echo url('addmore'); ?>";

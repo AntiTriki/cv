@@ -30,6 +30,9 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/curriculum', 'FormController@index');
 Route::get('/home/skills/{id}', 'FormController@skills');
+Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
+
+Route::get('/home/edit/profile', 'UsuarioController@index');
 //Redireccion
 Route::get('/redireccion','FormController@redir');
 

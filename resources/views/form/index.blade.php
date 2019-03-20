@@ -29,8 +29,6 @@
                             <form class="form-horizontal py-4" method="POST" action="{{ route('register_cv') }}">
                                 @csrf
                                 <div class="form-row py-4">
-
-
                                     <div class="col-md-12">
                                         <input id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" name="general" value="{{ old('general') }}" placeholder="Titulo" required autofocus>
 
@@ -53,34 +51,13 @@
 
                                 <div class="form-row">
                                     <div class="col-md-4 py-4">
-                                        <div class="form-check">
-                                            <label>Disponibilidad inmediata</label>
-                                            <input class="form-check-input" value="0" type="checkbox" name="available_job" id="available_job" >
-                                            <span class="form-check-sign">
-                                                  <span class="check"></span>
-                                              </span>
-                                            <br>
-                                            <br>
-                                                <label>2 a 3 semanas</label><input class="form-check-input" value="1" type="checkbox" name="available_job" id="available_job" >
-                                                <span class="form-check-sign">
-                                                  <span class="check"></span>
-                                              </span>
+                                        <input id="available_job" type="text" class="form-control{{ $errors->has('available_job') ? ' is-invalid' : '' }}" name="available_job" value="{{ old('available_job') }}" placeholder="Disponibilidad inmediata" required autofocus>
 
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 py-4">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-
-                                                Disponibilidad de viaje
-                                                <input class="form-check-input" value="0" type="hidden" name="travel" id="travel">
-                                                <input class="form-check-input" value="1" type="checkbox" name="travel" id="travel">
-                                                <span class="form-check-sign">
-              <span class="check"></span>
-          </span>
-                                            </label>
-                                        </div>
+                                        @if ($errors->has('available_job'))
+                                            <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('available_job') }}</strong>
+                                                    </span>
+                                        @endif
                                     </div>
                                     <div class="col-md-4 py-4">
                                         <input id="salary" type="number" class="form-control{{ $errors->has('salary') ? ' is-invalid' : '' }}" name="salary" value="{{ old('salary') }}" placeholder="Pretensión Salarial" required autofocus>
@@ -90,6 +67,20 @@
                                                         <strong>{{ $errors->first('salary') }}</strong>
                                                     </span>
                                         @endif
+                                    </div>
+                                    <div class="col-md-4 py-4">
+                                        <div class="form-check">
+
+                                            <label class="form-check-label">
+
+                                                Disponibilidad de viaje
+                                                <input class="form-check-input" value="0" type="hidden" name="travel" id="travel">
+                                                <input class="form-check-input" value="1" type="checkbox" name="travel" id="travel">
+                                                <span class="form-check-sign">
+                                                      <span class="check"></span>
+                                                  </span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -112,7 +103,4 @@
         </div>
     </div>
 
-    <script>
-
-    </script>
 @endsection

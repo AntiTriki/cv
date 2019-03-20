@@ -16,15 +16,25 @@ class FormController extends Controller
     public function index()
     {
         $id = Session('usu-id');
-        $cv = Form::where('user_id',$id)->get();
-        return view('form.index',compact('cv'));
+        $form = Session('for_id');
+        $levels = DB::table('levels')->where('form_id','=', $form)->get();
+        $usuario = DB::table('forms')->where('user_id','=',$id)->get();
+        return view('form.index',['usuario' => $usuario],['levels' => $levels]);
+
+
+//        $id = Session('usu-id');
+//        $cv = Form::where('user_id',$id)->get();
+        //return view('form.index',compact('cv'));
     }
   public function skills($id)
     {
-        //
-
         $form = Form::findOrFail($id);
-        return view('form.skills', compact('form'));
+      return view('form.skills', compact('form'));
+
+
+//        $form = Session('for_id');
+//        $levels = DB::table('levels')->where('form_id','=', $form)->get();
+//      return view('form.skills', ['levels' => $levels]);
 
     }
 
@@ -33,17 +43,28 @@ class FormController extends Controller
         return redirect('/index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        //
+        DB::table('skills')->insert([
+            'name' => $request->input('name')
+        ]);
+
+        $valor = $request->input('name');
+
+        $forms = Session('for_id');
+
+
+        $idskill = DB::table('skills')->where('name', '=', $valor)-> value('id');
+
+        DB::table('levels')->insert([
+            'skill_id'=> $idskill,
+            'name'=> 'Basico',
+            'form_id' => $forms
+
+        ]);
+        return back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -55,9 +76,6 @@ class FormController extends Controller
         $form -> description = $request -> description;
         $form -> user_id = Auth::user()->id;
         $form -> save();
-
-
-
 
 
         return redirect('home/skills/'.$form->id);

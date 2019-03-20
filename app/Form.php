@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Form extends Model
 {
-    //
+    public function level(){
+        return $this -> hasMany(Level::class);
+
+    }
 
     public function user(){
         return $this -> belongsTo(User::class);

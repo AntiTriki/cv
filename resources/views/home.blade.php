@@ -13,11 +13,16 @@
                             <div class="avatar">
                                 <img src="{{Auth::user()->image? Auth::user()->image : url('img/faces/christian.jpg')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
-
                             <div class="name">
-                                <h3 class="title">{{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
-                                    <a href="edit/profile" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
+                                <h3 class="title">
+                                    {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
+                                    <br>
+
+                                    <a href="{{url('/home/edit/profile')}}" class=" btn btn-primary btn-fab btn-fab-mini btn-round" id="edit-item">
                                         <i class="material-icons">edit</i>
+                                    </a>
+                                    <a href=" " class=" btn btn-primary btn-fab btn-fab-mini btn-round">
+                                        <i class="material-icons">camera_alt</i>
                                     </a>
                                     <a href="{{url('/home/curriculum')}}"  rel="tooltip" class=" btn btn-primary  btn-round">
                                         <i class="material-icons">add</i> Agregar
@@ -26,31 +31,23 @@
                                 <h6>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</h6>
 
                             </div>
+
                         </div>
                         <table class="table">
-
                             <thead>
-
                             </thead>
                             <tbody>
-
                             <tr>
                                 <td>Carnet de Identidad</td>
                                 <td style="color: #000000">{{ Auth::user()->ci }}</td>
-
-
                             </tr>
                             <tr>
                                 <td>Correo</td>
                                 <td style="color: #000000">{{ Auth::user()->email }}</td>
-
-
                             </tr>
                             <tr>
                                 <td>Sexo</td>
                                 <td style="color: #000000">{{ Auth::user()->sexo ? 'Hombre' : 'Mujer' }}</td>
-
-
                             </tr>
                             <tr>
                                 <td>Telefono</td>
@@ -70,14 +67,14 @@
                             </tr>
                             <tr>
                                 <td>Nacionalidad</td>
-                                <td style="color: #000000">{{ Auth::user()->nacionalidad }}</td>
+                                <td style="color: #000000">{{ Auth::user()->nacionalidad ? Auth::user()->nacionalidad : 'No definido' }}</td>
                             </tr>
                             <tr>
                                 <td>Ciudad de residencia</td>
-                                <td style="color: #000000">{{ Auth::user()->residencia }}</td>
+                                <td style="color: #000000">{{ Auth::user()->residencia ? Auth::user()->residencia : 'No definido' }}</td>
                             </tr>
                             <tr>
-                                <td>Tiene Hijos</td>
+                                <td>Hijos</td>
                                 <td style="color: #000000">{{ Auth::user()->children ? Auth::user()->children : 'No tiene' }}</td>
                             </tr>
                             <tr>
@@ -99,25 +96,25 @@
                         @forelse($cv as $cvv)
                         <tr>
                             <td>Titulo</td>
-                            <td style="color: #000000">{{ $cvv->general }}</td>
+                            <td style="color: #000000">{{ $cvv->general}}</td>
 
 
                         </tr>
                         <tr>
                             <td>Descripcion</td>
-                            <td style="color: #000000">{{ $cvv->description }}</td>
+                            <td style="color: #000000">{{ $cvv->description}}</td>
 
 
                         </tr>
                         <tr>
                             <td>Disponibilidad</td>
-                            <td style="color: #000000">{{ $cvv->available_job }}</td>
+                            <td style="color: #000000">{{ $cvv->available_job}}</td>
 
 
                         </tr>
                         <tr>
                             <td>Viaje</td>
-                            <td style="color: #000000">{{ $cvv->travel }}</td>
+                            <td style="color: #000000">{{ $cvv->travel}}</td>
                         </tr>
                         <tr>
                             <td>Salario</td>

@@ -21,4 +21,12 @@ class HomeController extends Controller
         return view('home',compact('cv'));
     }
 
+    public function redirect (Request $request){
+        $id = $request->input('id');
+
+        session()->put('user-id', $id);
+
+        return redirect('index');
+    }
+
 }
