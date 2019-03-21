@@ -43,28 +43,6 @@ class FormController extends Controller
         return redirect('/index');
     }
 
-    public function create(Request $request)
-    {
-        DB::table('skills')->insert([
-            'name' => $request->input('name')
-        ]);
-
-        $valor = $request->input('name');
-
-        $forms = Session('for_id');
-
-
-        $idskill = DB::table('skills')->where('name', '=', $valor)-> value('id');
-
-        DB::table('levels')->insert([
-            'skill_id'=> $idskill,
-            'name'=> 'Basico',
-            'form_id' => $forms
-
-        ]);
-        return back();
-    }
-
     public function store(Request $request)
     {
         //
@@ -81,47 +59,43 @@ class FormController extends Controller
         return redirect('home/skills/'.$form->id);
 
     }
+    public function create(Request $request)
+    {
+        DB::table('skills')->insert([
+            'name' => $request->input('name')
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Form  $form
-     * @return \Illuminate\Http\Response
-     */
+        $valor = $request->input('name');
+        $idskill = DB::table('skills')->where('name', '=', $valor)-> value('id');
+
+//        $id_form = Session('forms-id');
+//        $form = Form::where('id',$id_form)->get();
+
+        DB::table('levels')->insert([
+            'skill_id'=> $idskill,
+            'name'=> 'Basico',
+            'form_id'=> $request->input('form_id')
+        ]);
+        return back();
+    }
+
     public function show(Form $form)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Form  $form
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Form $form)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Form  $form
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Form $form)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Form  $form
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Form $form)
     {
         //

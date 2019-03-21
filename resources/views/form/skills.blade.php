@@ -24,7 +24,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header">{{ __('Curriculum') }} {{$form->general}}</div>
+                        <div class="card-header">{{ __('Curriculum') }} {{$form->general}} {{$form->id}}</div>
 
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="POST" action="{{ route('register_skills') }}">
@@ -44,14 +44,12 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach ($form->skills as $skills)
+                                            @foreach ($form as $skills)
                                                 <tr>
+                                                    {{--<td class="contenido">{{$form->name}}</td>--}}
+                                                    <td class="text-right">{{$skills->form->name}}</td>
 
-                                                    <td class="contenido">{{$form->level->name}}</td>
-
-                                                    <td class="text-right">{{$skills->name}}</td>
                                                     <td class="td-actions text-right">
-
                                                         <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
                                                             <i class="material-icons">edit</i>
                                                         </button>
@@ -90,7 +88,7 @@
         </div>
     </div>
 
-    <!-- Gestion new -->
+    <!-- Skills new -->
     <div class="modal fade" id="new-skill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -103,7 +101,7 @@
                         {!! csrf_field() !!}
 
                         <div class="panel-body">
-                            <input type="hidden" name="form_id" id="form_id" value="{{Session('for_id')}}">
+                            <input type="text" name="form_id" id="form_id" value="{{$form->id}}">
 
                             <div class="form-group col-md-12" {{ $errors->has('name') ? ' has-error' : '' }}>
                                 <label for="name" class="control-label">Nombre</label>

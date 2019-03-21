@@ -16,7 +16,7 @@ class Form extends Model
 
     }
     public function skills(){
-        return $this -> hasMany(Level::class);
+        return $this -> hasMany(Skill::class);
 
     }
 }
