@@ -22,6 +22,8 @@ class CreateLevelsTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->integer('skill_id')->unsigned();
             $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade');
+            $table->integer('nombre_id')->unsigned();
+            $table->foreign('nombre_id')->references('id')->on('names')->onDelete('cascade');
 
         });
     }

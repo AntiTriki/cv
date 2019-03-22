@@ -72,7 +72,6 @@
                                         <div class="form-check">
 
                                             <label class="form-check-label">
-
                                                 Disponibilidad de viaje
                                                 <input class="form-check-input" value="0" type="hidden" name="travel" id="travel">
                                                 <input class="form-check-input" value="1" type="checkbox" name="travel" id="travel">

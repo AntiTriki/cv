@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Form;
 use App\Level;
+use App\Skill;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,11 @@ class FormController extends Controller
   public function skills($id)
     {
         $form = Form::findOrFail($id);
-      return view('form.skills', compact('form'));
+        $skill = Skill::findOrFail([1,2,3,4,5]);
+
+        $Nivel = DB::table('names')->get();
+
+      return view('form.skills', compact('form','skill'),['Nivel' => $Nivel]);
 
 
 //        $form = Session('for_id');
@@ -66,15 +71,13 @@ class FormController extends Controller
         ]);
 
         $valor = $request->input('name');
-        $idskill = DB::table('skills')->where('name', '=', $valor)-> value('id');
+        $idskill = DB::table('skills')->where('name', '=', $valor)-> value('skills.id');
 
-//        $id_form = Session('forms-id');
-//        $form = Form::where('id',$id_form)->get();
 
         DB::table('levels')->insert([
             'skill_id'=> $idskill,
-            'name'=> 'Basico',
-            'form_id'=> $request->input('form_id')
+            'form_id'=> $request->input('form_id'),
+            'nombre_id' => $request->input('nivel')
         ]);
         return back();
     }

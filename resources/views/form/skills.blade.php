@@ -24,7 +24,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header">{{ __('Curriculum') }} {{$form->general}} {{$form->id}}</div>
+                        <div class="card-header">{{ __('Curriculum') }} {{$form->general}}</div>
 
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="POST" action="{{ route('register_skills') }}">
@@ -40,23 +40,29 @@
                                             <tr>
                                                 <th style="width: 20%" >Conocimientos y habilidades</th>
                                                 <th class="text-right">Nivel</th>
-                                                <th class="text-right">Acciones</th>
+                                                {{--<th class="text-right">Acciones</th>--}}
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach ($form as $skills)
+                                            @foreach ($skill as $skills)
                                                 <tr>
-                                                    {{--<td class="contenido">{{$form->name}}</td>--}}
-                                                    <td class="text-right">{{$skills->form->name}}</td>
+                                                    <td class="contenido">{{$skills->name}}</td>
+                                                    <td class="text-right"><select name="nivel" class="form-control" id="nivel">
+                                                            <option>--Seleccione Nivel--</option>
+                                                            <option value="nulo">Nulo</option>
+                                                            <option value="basico" >Basico</option>
+                                                            <option value="intermedio">Intermedio</option>
+                                                            <option value="avanzado" >Avanzado</option>
+                                                        </select></td>
 
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                                            <i class="material-icons">edit</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">
-                                                            <i class="material-icons">close</i>
-                                                        </button>
-                                                    </td>
+                                                    {{--<td class="td-actions text-right">--}}
+                                                        {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
+                                                            {{--<i class="material-icons">edit</i>--}}
+                                                        {{--</button>--}}
+                                                        {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
+                                                            {{--<i class="material-icons">close</i>--}}
+                                                        {{--</button>--}}
+                                                    {{--</td>--}}
                                                 </tr>
                                             @endforeach
                                             </tbody>
@@ -101,7 +107,7 @@
                         {!! csrf_field() !!}
 
                         <div class="panel-body">
-                            <input type="text" name="form_id" id="form_id" value="{{$form->id}}">
+                            <input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">
 
                             <div class="form-group col-md-12" {{ $errors->has('name') ? ' has-error' : '' }}>
                                 <label for="name" class="control-label">Nombre</label>
@@ -112,7 +118,20 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="form-group col-md-12" {{ $errors->has('name') ? ' has-error' : '' }}>
+                                <label for="name" class="control-label">Nombre</label>
+                                <select name="nivel" class="form-control" id="nivel">
+                                    <option value="0">--Seleccione Nivel--</option>
+                                    @foreach($Nivel as $Nivels)
+                                        <option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>
+                                    @endforeach
 
+                                    {{--<option value="1">Nulo</option>--}}
+                                    {{--<option value="2">Basico</option>--}}
+                                    {{--<option value="3">Intermedio</option>--}}
+                                    {{--<option value="4">Avanzado</option>--}}
+                                </select>
+                            </div>
                         </div>
                         <div class="modal-footer">
                                 <div class="col-md-12 text-center ">

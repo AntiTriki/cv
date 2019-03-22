@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SkillTableSeeder extends Seeder
+class NameTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,21 +11,18 @@ class SkillTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Skill::insert([
+        \App\Name::insert([
             [
-                'name' => 'Excel'
+                'nombre' => 'Nulo'
             ],
             [
-                'name' => 'Word'
+                'nombre' => 'Basico'
             ],
             [
-                'name' => 'PowerPoint'
+                'nombre' => 'Intermedio'
             ],
             [
-                'name' => 'Ingles'
-            ],
-            [
-                'name' => 'Internet'
+                'nombre' => 'Avanzado'
             ]
         ]);
     }
