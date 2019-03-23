@@ -31,7 +31,7 @@
                                 @csrf
                                 <div class="form-row py-4">
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" style="overflow: scroll">
                                         <table class="table table-sm">
                                             <thead>
                                             <button type="button" class="btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">
@@ -40,7 +40,6 @@
                                             <tr>
                                                 <th style="width: 20%" >Conocimientos y habilidades</th>
                                                 <th class="text-right">Nivel</th>
-                                                {{--<th class="text-right">Acciones</th>--}}
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -49,10 +48,9 @@
                                                     <td class="contenido">{{$skills->name}}</td>
                                                     <td class="text-right"><select name="nivel" class="form-control" id="nivel">
                                                             <option>--Seleccione Nivel--</option>
-                                                            <option value="nulo">Nulo</option>
-                                                            <option value="basico" >Basico</option>
-                                                            <option value="intermedio">Intermedio</option>
-                                                            <option value="avanzado" >Avanzado</option>
+                                                            @foreach($Nivel as $Nivels)
+                                                                <option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>
+                                                            @endforeach
                                                         </select></td>
 
                                                     {{--<td class="td-actions text-right">--}}
@@ -71,8 +69,6 @@
 
 
                                 </div>
-
-
 
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
@@ -125,11 +121,6 @@
                                     @foreach($Nivel as $Nivels)
                                         <option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>
                                     @endforeach
-
-                                    {{--<option value="1">Nulo</option>--}}
-                                    {{--<option value="2">Basico</option>--}}
-                                    {{--<option value="3">Intermedio</option>--}}
-                                    {{--<option value="4">Avanzado</option>--}}
                                 </select>
                             </div>
                         </div>
