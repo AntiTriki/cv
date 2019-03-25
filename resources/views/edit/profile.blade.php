@@ -13,7 +13,7 @@
                     <form class="form-horizontal py-4" method="POST" action="{{ route('register') }}">
                         @csrf
 
-
+                        <input type="text" id="pk-usuario" name="pk-usuario" value="{{ old('pk-usuario') }}">
                         <div class="form-row py-4">
                             <div class="col-md-3">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="razon_social" name="name" value="{{ old('name') }}" placeholder="Nombre" required autofocus>
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <input id="hijos" type="text" class="form-control{{ $errors->has('hijos') ? ' is-invalid' : '' }}" name="hijos" value="{{ old('hijos') }}" placeholder="Tiene hijos" required autofocus>
+                                <input id="hijos" type="text" class="form-control{{ $errors->has('hijos') ? ' is-invalid' : '' }}" name="hijos" value="{{ old('hijos') }}" placeholder="Tiene hijos y cuantos" required autofocus>
 
                                 @if ($errors->has('hijos'))
                                     <span class="invalid-feedback" role="alert">

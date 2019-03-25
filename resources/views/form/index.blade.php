@@ -30,7 +30,7 @@
                                 @csrf
                                 <div class="form-row py-4">
                                     <div class="col-md-12">
-                                        <input id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" name="general" value="{{ old('general') }}" placeholder="Titulo" required autofocus>
+                                        <input id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" name="general" value="{{ old('general') }}" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>
 
                                         @if ($errors->has('general'))
                                             <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
 
                                 <div class="form-row">
                                     <div class="col-md-4 py-4">
-                                        <input id="available_job" type="text" class="form-control{{ $errors->has('available_job') ? ' is-invalid' : '' }}" name="available_job" value="{{ old('available_job') }}" placeholder="Disponibilidad inmediata" required autofocus>
+                                        <input id="available_job" type="text" class="form-control{{ $errors->has('available_job') ? ' is-invalid' : '' }}" name="available_job" value="{{ old('available_job') }}" placeholder="Disponibilidad inmediata Ej: 1 semana" required autofocus>
 
                                         @if ($errors->has('available_job'))
                                             <span class="invalid-feedback" role="alert">

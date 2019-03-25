@@ -17,6 +17,14 @@
         :-ms-input-placeholder {
             text-align: center;
         }
+        .my-custom-scrollbar {
+            position: relative;
+            height: 300px;
+            overflow: auto;
+        }
+        .table-wrapper-scroll-y {
+            display: block;
+        }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
@@ -31,7 +39,7 @@
                                 @csrf
                                 <div class="form-row py-4">
 
-                                    <div class="col-md-12" style="overflow: scroll">
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar" >
                                         <table class="table table-sm">
                                             <thead>
                                             <button type="button" class="btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">
@@ -115,9 +123,9 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-12" {{ $errors->has('name') ? ' has-error' : '' }}>
-                                <label for="name" class="control-label">Nombre</label>
+                                <label for="name" class="control-label">Nivel</label>
                                 <select name="nivel" class="form-control" id="nivel">
-                                    <option value="0">--Seleccione Nivel--</option>
+                                    <option value="1">--Seleccione Nivel--</option>
                                     @foreach($Nivel as $Nivels)
                                         <option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>
                                     @endforeach
@@ -140,6 +148,9 @@
         </div>
     </div>
 
+    <script>
+
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function(){

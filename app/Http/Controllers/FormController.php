@@ -31,21 +31,19 @@ class FormController extends Controller
     {
         $form = Form::findOrFail($id);
         $skill = Skill::findOrFail([1,2,3,4,5]);
-
         $Nivel = DB::table('names')->get();
 
+
       return view('form.skills', compact('form','skill'),['Nivel' => $Nivel]);
-
-
-//        $form = Session('for_id');
-//        $levels = DB::table('levels')->where('form_id','=', $form)->get();
-//      return view('form.skills', ['levels' => $levels]);
-
     }
 
-    public function redir()
+    public function redir(Request $request) //falta agregar mas
     {
-        return redirect('/index');
+        $skillId = $request->id;
+        $skillName   =   Skill::updateOrCreate(['id' => $skillId],
+            ['name' => $request->name]);
+
+       return Response::json($skillName);
     }
 
     public function store(Request $request)
