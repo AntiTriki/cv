@@ -22,29 +22,25 @@ class FormController extends Controller
         $usuario = DB::table('forms')->where('user_id','=',$id)->get();
         return view('form.index',['usuario' => $usuario],['levels' => $levels]);
 
-
-//        $id = Session('usu-id');
-//        $cv = Form::where('user_id',$id)->get();
-        //return view('form.index',compact('cv'));
     }
-  public function skills($id)
+    public function skills($id)
     {
-        $form = Form::findOrFail($id);
-        $skill = Skill::findOrFail([1,2,3,4,5]);
-        $Nivel = DB::table('names')->get();
+            $form = Form::findOrFail($id);
+            $skill = Skill::findOrFail([1,2,3,4,5]);
+            $Nivel = DB::table('names')->get();
 
 
-      return view('form.skills', compact('form','skill'),['Nivel' => $Nivel]);
+          return view('form.skills', compact('form','skill'),['Nivel' => $Nivel]);
     }
 
-    public function redir(Request $request) //falta agregar mas
-    {
-        $skillId = $request->id;
-        $skillName   =   Skill::updateOrCreate(['id' => $skillId],
-            ['name' => $request->name]);
-
-       return Response::json($skillName);
-    }
+//    public function redir(Request $request) //falta agregar mas
+//    {
+//        $skillId = $request->id;
+//        $skillName   =   Skill::updateOrCreate(['id' => $skillId],
+//            ['name' => $request->name]);
+//
+//       return Response::json($skillName);
+//    }
 
     public function store(Request $request)
     {

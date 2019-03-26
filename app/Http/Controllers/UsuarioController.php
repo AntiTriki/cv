@@ -13,11 +13,18 @@ use App\User;
 class UsuarioController extends Controller
 {
 
-    public function index()
+//    public function index()
+//    {
+//        $id = Session('usu-id');
+//        $usuario = DB::table('users')->where('id','=',$id)->get();
+//        return view('edit/profile',['usuario' => $usuario]);
+//    }
+
+    public function edit($id)
     {
-        $id = Session('usu-id');
-        $usuario = DB::table('users')->where('id','=',$id)->get();
-        return view('edit/profile',['usuario' => $usuario]);
+
+        $user = User::find($id);
+        return view('home.edit.profile.usuario',compact('user'));
     }
 
 
@@ -34,27 +41,46 @@ class UsuarioController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
-        $id = $request->input('pk-usuario');
-        DB::table('users')->where('id', $id)->update([
-                'name' => $request->input('name'),
-                'apellido_p' => $request->input('apellido_p'),
-                'apellido_m' => $request->input('apellido_m'),
-                'ci' => $request->input('ci'),
-                'birthday' => $request->input('fnacimiento'),
-                'nacionalidad' => $request->input('nacionalidad'),
-                'residencia' => $request->input('residencia'),
-                'celular' => $request->input('celular'),
-                'telefono' => $request->input('telefono'),
-                'email' => $request->input('mail'),
-                'sexo' => $request->input('sexo'),
-                'children' => $request->input('hijos'),
-                'civil' => $request->input('civil'),
-                'drivecard' => $request->input('licencia')
-            ]
-        );
-        return back();
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->apellido_p = $request->input('apellido_p');
+        $user->apellido_m = $request->input('apellido_m');
+        $user->ci = $request->input('ci');
+        $user->birthday = $request->input('fnacimiento');
+        $user->nacionalidad = $request->input('nacionalidad');
+        $user->residencia = $request->input('residencia');
+        $user->celular = $request->input('celular');
+        $user->telefono = $request->input('telefono');
+        $user->email = $request->input('mail');
+        $user->sexo = $request->input('sexo');
+        $user->children = $request->input('hijos');
+        $user->civil = $request->input('civil');
+        $user->drivecard = $request->input('licencia');
+        $user->save();
+
+        return redirect('/home');
+
+//        $id = $request->input('pk-usuario');
+//        DB::table('users')->where('id', $id)->update([
+//                'name' => $request->input('name'),
+//                'apellido_p' => $request->input('apellido_p'),
+//                'apellido_m' => $request->input('apellido_m'),
+//                'ci' => $request->input('ci'),
+//                'birthday' => $request->input('fnacimiento'),
+//                'nacionalidad' => $request->input('nacionalidad'),
+//                'residencia' => $request->input('residencia'),
+//                'celular' => $request->input('celular'),
+//                'telefono' => $request->input('telefono'),
+//                'email' => $request->input('mail'),
+//                'sexo' => $request->input('sexo'),
+//                'children' => $request->input('hijos'),
+//                'civil' => $request->input('civil'),
+//                'drivecard' => $request->input('licencia')
+//            ]
+//        );
+//        return back();
     }
 
 

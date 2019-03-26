@@ -17,8 +17,7 @@
                                 <h3 class="title">
                                     {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
                                     <br>
-
-                                    <a href="{{url('/home/edit/profile')}}" class=" btn btn-primary btn-fab btn-fab-mini btn-round" id="edit-item">
+                                    <a href="{{url('/home/edit/profile/'.$user->id.'/usuario')}}" rel="tooltip" title="Editar" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">edit</i>
                                     </a>
                                     <a href=" " class=" btn btn-primary btn-fab btn-fab-mini btn-round">
@@ -218,5 +217,45 @@
             </div>
         </div>
     </footer>
+    {{--<script>--}}
+        {{--$(document).ready(function() {--}}
 
+            {{--$(document).on('click', "#edit-item", function() {--}}
+                {{--$(this).addClass('edit-item-trigger-clicked'); //useful for identifying which trigger was clicked and consequently grab data from the correct row and not the wrong one.--}}
+
+                {{--var options = {--}}
+                    {{--'backdrop': 'static'--}}
+                {{--};--}}
+                {{--$('#edit-usuario').modal(options)--}}
+            {{--})--}}
+
+            {{--// on modal show--}}
+            {{--$('#edit-usuario').on('show.bs.modal', function() {--}}
+                {{--var el = $(".edit-item-trigger-clicked"); // See how its usefull right here?--}}
+                {{--var row = el.closest(".data-row");--}}
+
+                {{--// get the data--}}
+                {{--var id = el.data('id');--}}
+                {{--var nombre = row.children(".nombre").text();--}}
+                {{--var inicio = el.data('inicio');--}}
+                {{--var fin = el.data('fin');--}}
+                {{--// var inicio = row.children(".inicio").text();--}}
+                {{--// var fin = row.children(".fin").text();--}}
+
+                {{--// fill the data in the input fields--}}
+                {{--//$("#razon_social").val(id);--}}
+                {{--$("#pk-periodo").val(id);--}}
+                {{--$("#nombres").val(nombre);--}}
+                {{--$("#FechaInicios").val(inicio);--}}
+                {{--$("#FechaFins").val(fin);--}}
+
+            {{--})--}}
+
+            {{--// on modal hide--}}
+            {{--$('#edit-periodo').on('hide.bs.modal', function() {--}}
+                {{--$('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')--}}
+                {{--$("#edit-form").trigger("reset");--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection

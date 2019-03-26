@@ -2,115 +2,52 @@
 
 @section('content')
 
-    <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
+    <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
 <div class="container" >
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" >
         <div class="col-md-12" style="height: 545px;">
             <div class="card">
                 <div class="card-header"><h5>{{ __('Editar Usuario') }}</h5></div>
 
                 <div class="card-body">
-                    <form class="form-horizontal py-4" method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <input type="text" id="pk-usuario" name="pk-usuario" value="{{ old('pk-usuario') }}">
+                    <form class="form-horizontal py-4" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'/usuario') }}">
+                        {{ csrf_field() }}
                         <div class="form-row py-4">
                             <div class="col-md-3">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="razon_social" name="name" value="{{ old('name') }}" placeholder="Nombre" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Nombre" required autofocus>
                             </div>
 
                             <div class="col-md-3">
-                                <input id="apellido_p" type="text" class="form-control{{ $errors->has('apellido_p') ? ' is-invalid' : '' }}" name="apellido_p" value="{{ old('apellido_p') }}" placeholder="Apellido Paterno" required autofocus>
-
-                                @if ($errors->has('apellido_p'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('apellido_p') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="apellido_p" type="text" class="form-control" name="apellido_p" value="{{ $user->apellido_p }}" placeholder="Apellido Paterno" required autofocus>
                             </div>
                             <div class="col-md-2">
-                                <input id="apellido_m" type="text" class="form-control{{ $errors->has('apellido_m') ? ' is-invalid' : '' }}" name="apellido_m" value="{{ old('apellido_m') }}" placeholder="Apellido Materno" required autofocus>
-
-                                @if ($errors->has('apellido_m'))
-                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('apellido_m') }}</strong>
-                                                    </span>
-                                @endif
+                                <input id="apellido_m" type="text" class="form-control" name="apellido_m" value="{{ $user->apellido_m }}" placeholder="Apellido Materno" required autofocus>
                             </div>
                             <div class="col-md-2">
-                                <input id="ci" type="text" class="form-control{{ $errors->has('ci') ? ' is-invalid' : '' }}" name="ci" value="{{ old('ci') }}" placeholder="CI" required autofocus>
-
-                                @if ($errors->has('ci'))
-                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('ci') }}</strong>
-                                                    </span>
-                                @endif
+                                <input id="ci" type="text" class="form-control" name="ci" value="{{ $user->ci }}" placeholder="Carnet de identidad" required autofocus>
                             </div>
                             <div class="col-md-2">
-                                <input id="fnacimiento" type="date" class="form-control datetimepicker{{ $errors->has('fnacimiento') ? ' is-invalid' : '' }}" name="fnacimiento" value="{{ old('fnacimiento') }}" required autofocus>
-
-                                @if ($errors->has('fnacimiento'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('fnacimiento') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="fnacimiento" type="date" class="form-control datetimepicker" name="fnacimiento" value="{{$user->birthday }}" required autofocus>
                             </div>
                         </div>
 
 
                         <div class="form-row py-4">
-
                             <div class="col-md-3">
-                                <input id="nacionalidad" type="text" class="form-control{{ $errors->has('nacionalidad') ? ' is-invalid' : '' }}" name="nacionalidad" value="{{ old('nacionalidad') }}" placeholder="Nacionalidad" required autofocus>
-
-                                @if ($errors->has('nacionalidad'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('nacionalidad') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="nacionalidad" type="text" class="form-control" name="nacionalidad" value="{{ $user->nacionalidad }}" placeholder="Nacionalidad" required autofocus>
                             </div>
                             <div class="col-md-3">
-                                <input id="residencia" type="text" class="form-control{{ $errors->has('residencia') ? ' is-invalid' : '' }}" name="residencia" value="{{ old('residencia') }}" placeholder="Ciudad de Residencia" required autofocus>
-
-                                @if ($errors->has('residencia'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('residencia') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="residencia" type="text" class="form-control" name="residencia" value="{{ $user->residencia }}" placeholder="Ciudad de Residencia" required autofocus>
                             </div>
 
                             <div class="col-md-2">
-                                <input id="celular" type="number" class="form-control{{ $errors->has('celular') ? ' is-invalid' : '' }}" name="celular" value="{{ old('celular') }}" placeholder="Celular" required autofocus>
-
-                                @if ($errors->has('celular'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('celular') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="celular" type="number" class="form-control" name="celular" value="{{ $user->celular }}" placeholder="Celular" required autofocus>
                             </div>
                             <div class="col-md-2">
-                                <input id="telefono" type="number" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}" placeholder="Telefono fijo" required autofocus>
-
-                                @if ($errors->has('telefono'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('telefono') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="telefono" type="number" class="form-control" name="telefono" value="{{ $user->telefono }}" placeholder="Telefono fijo" required autofocus>
                             </div>
                             <div class="col-md-2">
-                                <input id="mail" type="text" class="form-control{{ $errors->has('mail') ? ' is-invalid' : '' }}" name="mail" value="{{ old('mail') }}" placeholder="mail" required autofocus>
-
-                                @if ($errors->has('mail'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('mail') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="mail" type="text" class="form-control" name="mail" value="{{ $user->email }}" placeholder="mail" required autofocus>
                             </div>
                         </div>
 
@@ -136,13 +73,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <input id="hijos" type="text" class="form-control{{ $errors->has('hijos') ? ' is-invalid' : '' }}" name="hijos" value="{{ old('hijos') }}" placeholder="Tiene hijos y cuantos" required autofocus>
-
-                                @if ($errors->has('hijos'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('hijos') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="hijos" type="text" class="form-control" name="hijos" value="{{$user->children }}" placeholder="Tiene hijos y cuantos" required autofocus>
                             </div>
                             <div class="col-md-3">
                                 <label>Estado Civil</label>
@@ -187,10 +118,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
 
                         <div class="form-group row mb-0 py-4">
                             <div class="col-md-12 text-center ">
