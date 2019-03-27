@@ -17,7 +17,7 @@
                                 <h3 class="title">
                                     {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
                                     <br>
-                                    <a href="{{url('/home/edit/profile/'.$user->id.'/usuario')}}" rel="tooltip" title="Editar" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
+                                    <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Editar" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">edit</i>
                                     </a>
                                     <a href=" " class=" btn btn-primary btn-fab btn-fab-mini btn-round">
@@ -78,7 +78,7 @@
                             </tr>
                             <tr>
                                 <td>Licencia de conducir</td>
-                                <td style="color: #000000">{{ Auth::user()->drivecard ? 'Hombre' : 'No tiene' }}</td>
+                                <td style="color: #000000">{{ Auth::user()->drivecard ? Auth::user()->drivecard : 'No tiene' }}</td>
                             </tr>
 
                             </tbody>

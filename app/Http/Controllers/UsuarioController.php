@@ -24,7 +24,7 @@ class UsuarioController extends Controller
     {
 
         $user = User::find($id);
-        return view('home.edit.profile.usuario',compact('user'));
+        return view('edit.profile',compact('user'));
     }
 
 

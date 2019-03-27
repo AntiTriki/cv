@@ -10,7 +10,7 @@
                 <div class="card-header"><h5>{{ __('Editar Usuario') }}</h5></div>
 
                 <div class="card-body">
-                    <form class="form-horizontal py-4" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'/usuario') }}">
+                    <form class="form-horizontal py-4" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'') }}">
                         {{ csrf_field() }}
                         <div class="form-row py-4">
                             <div class="col-md-3">
@@ -76,25 +76,13 @@
                                 <input id="hijos" type="text" class="form-control" name="hijos" value="{{$user->children }}" placeholder="Tiene hijos y cuantos" required autofocus>
                             </div>
                             <div class="col-md-3">
-                                <label>Estado Civil</label>
-                                <br>
-                                <div class="form-check form-check-radio form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="civil" id="civil" value="option1"> Soltero
-                                        <span class="circle">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-radio form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="civil" id="civil" value="option2"> Casado
-                                        <span class="circle">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
+                                <select name="civil" class="form-control" id="civil">
+                                    <option>--Estado Civil--</option>
+                                    <option value="1">Soltero</option>
+                                    <option value="2">Casado</option>
+                                    <option value="3">Viudo</option>
+                                    <option value="4">Divorciado</option>
+                                </select>
                             </div>
                             <div class="col-md-2">
                                 <label>Licencia de conducir</label>

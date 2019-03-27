@@ -32,8 +32,8 @@ Route::get('/home/curriculum', 'FormController@index');
 Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
 
-Route::get('/home/edit/profile/{id}/usuario', 'UsuarioController@edit');
-Route::post('/home/edit/profile/{id}/usuario', 'UsuarioController@update');
+Route::get('/home/edit/profile/{id}', 'UsuarioController@edit');
+Route::post('/home/edit/profile/{id}', 'UsuarioController@update');
 //Redireccion
 Route::get('/redireccion','FormController@redir');
 
