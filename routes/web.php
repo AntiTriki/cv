@@ -9,10 +9,6 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-
-
-
-
     Route::get('/', 'FormController@index');
     Route::match(['get', 'post'], 'create', 'FormController@create');
     Route::match(['get', 'put'], 'update/{id}', 'FormController@update');
@@ -28,12 +24,14 @@ Auth::routes();
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/curriculum/{id}', 'FormController@index');
-Route::get('/home/skills/{id}', 'FormController@skills');
-Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
-
+//perfil de usuario
 Route::get('/home/edit/profile/{id}', 'UsuarioController@edit');
 Route::post('/home/edit/profile/{id}', 'UsuarioController@update');
-
-Route::post('register_cv', 'FormController@store')->name('register_cv');
+//Curriculum
+Route::get('/home/form/index/{id}', 'FormController@index');
+Route::post('/home/form/index/{id}', 'FormController@store');
+//habilidades skills
+Route::get('/home/skills/{id}', 'FormController@skills');
+Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
+//niveles
 Route::post('register_skills', 'LevelController@store')->name('register_skills');

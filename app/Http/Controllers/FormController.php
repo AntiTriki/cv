@@ -14,14 +14,15 @@ use Illuminate\Support\Facades\DB;
 class FormController extends Controller
 {
 
-    public function index()
+    public function index($id)
     {
-//        $id = Session('usu-id');
-        $form = Session('for_id');
-        $levels = DB::table('levels')->where('form_id','=', $form)->get();
+        //        $id = Session('usu-id');
+        $form = Form::find($id);
+        $formi = Session('for_id');
+        $levels = DB::table('levels')->where('form_id','=', $formi)->get();
 //        $usuario = DB::table('forms')->where('user_id','=',$id)->get();
 //        return view('form.index',['usuario' => $usuario],['levels' => $levels]);
-        return view('form.index',['levels' => $levels]);
+        return view('form.index',compact('form'),['levels' => $levels]);
     }
     public function skills($id)
     {
@@ -41,14 +42,14 @@ class FormController extends Controller
 //       return Response::json($skillName);
 //    }
 
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $form = new Form();
-        $form -> salary = $request -> salary;
-        $form -> available_job = $request -> available_job;
-        $form -> travel = $request -> travel;
-        $form -> general = $request -> general;
-        $form -> description = $request -> description;
+        $form = Form::find($id);
+        $form -> salary = $request ->input('salary');
+        $form -> available_job = $request ->input('available_job');
+        $form -> travel = $request ->input('travel');
+        $form -> general = $request ->input('general') ;
+        $form -> description = $request ->input('description');
         $form -> user_id = Auth::user()->id;
         $form -> save();
 
@@ -56,6 +57,23 @@ class FormController extends Controller
         return redirect('home/skills/'.$form->id);
 
     }
+
+//    public function store(Request $request)
+//    {
+//        $form = new Form();
+//        $form -> salary = $request -> salary;
+//        $form -> available_job = $request -> available_job;
+//        $form -> travel = $request -> travel;
+//        $form -> general = $request -> general;
+//        $form -> description = $request -> description;
+//        $form -> user_id = Auth::user()->id;
+//        $form -> save();
+//
+//
+//        return redirect('home/skills/'.$form->id);
+//
+//    }
+
     public function create(Request $request)
     {
         DB::table('skills')->insert([

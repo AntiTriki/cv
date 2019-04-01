@@ -62,7 +62,7 @@ class UsuarioController extends Controller
         $user->drivecard = $request->input('licencia');
         $user->save();
 
-        return redirect('/home/curriculum/'.$user->id);
+        return redirect('/home/form/index/'.$user->id);
     }
 
 
