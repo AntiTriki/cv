@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use App\Name;
 
 class UsuarioController extends Controller
 {
@@ -24,7 +25,8 @@ class UsuarioController extends Controller
     {
 
         $user = User::find($id);
-        return view('edit.profile',compact('user'));
+        $civil = Name::findOrFail([9,10,11,12]);
+        return view('edit.profile',compact('user','civil'));
     }
 
 
@@ -60,27 +62,7 @@ class UsuarioController extends Controller
         $user->drivecard = $request->input('licencia');
         $user->save();
 
-        return redirect('/home');
-
-//        $id = $request->input('pk-usuario');
-//        DB::table('users')->where('id', $id)->update([
-//                'name' => $request->input('name'),
-//                'apellido_p' => $request->input('apellido_p'),
-//                'apellido_m' => $request->input('apellido_m'),
-//                'ci' => $request->input('ci'),
-//                'birthday' => $request->input('fnacimiento'),
-//                'nacionalidad' => $request->input('nacionalidad'),
-//                'residencia' => $request->input('residencia'),
-//                'celular' => $request->input('celular'),
-//                'telefono' => $request->input('telefono'),
-//                'email' => $request->input('mail'),
-//                'sexo' => $request->input('sexo'),
-//                'children' => $request->input('hijos'),
-//                'civil' => $request->input('civil'),
-//                'drivecard' => $request->input('licencia')
-//            ]
-//        );
-//        return back();
+        return redirect('/home/curriculum/'.$user->id);
     }
 
 

@@ -11,20 +11,17 @@
                         <div class="profile">
 
                             <div class="avatar">
-                                <img src="{{Auth::user()->image? Auth::user()->image : url('img/faces/christian.jpg')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                                <img src="{{Auth::user()->image? Auth::user()->image : url('img/faces/default_user.png')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
                                 <h3 class="title">
                                     {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
                                     <br>
-                                    <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Editar" class=" btn btn-primary btn-fab btn-fab-mini btn-round">
-                                        <i class="material-icons">edit</i>
+                                    <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar" class="btn btn-primary  btn-round">
+                                        <i class="material-icons">add</i> Agregar
                                     </a>
                                     <a href=" " class=" btn btn-primary btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">camera_alt</i>
-                                    </a>
-                                    <a href="{{url('/home/curriculum')}}"  rel="tooltip" class=" btn btn-primary  btn-round">
-                                        <i class="material-icons">add</i> Agregar
                                     </a>
                                 </h3>
                                 <h6>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</h6>
@@ -62,7 +59,7 @@
                             </tr>
                             <tr>
                                 <td>Estado Civil</td>
-                                <td style="color: #000000">{{ Auth::user()->civil ? Auth::user()->civil : 'No definido' }}</td>
+                                <td style="color: #000000">{{ Auth::user()->civil }}</td>
                             </tr>
                             <tr>
                                 <td>Nacionalidad</td>
@@ -78,7 +75,7 @@
                             </tr>
                             <tr>
                                 <td>Licencia de conducir</td>
-                                <td style="color: #000000">{{ Auth::user()->drivecard ? Auth::user()->drivecard : 'No tiene' }}</td>
+                                <td style="color: #000000">{{ Auth::user()->drivecard ? 'No tiene' : 'Tiene' }}</td>
                             </tr>
 
                             </tbody>
@@ -91,37 +88,36 @@
                     <h4>Mi Curriculum</h4>
                     </div>
                     <table class="table  table-sm">
-                        <tbody>
-                        @forelse($cv as $cvv)
+                        <tbody style="text-align: left;">
+
                         <tr>
                             <td>Titulo</td>
-                            <td style="color: #000000">{{ $cvv->general}}</td>
-
-
+                            <td style="color: #000000">{{ $cv->general}}</td>
                         </tr>
                         <tr>
                             <td>Descripcion</td>
-                            <td style="color: #000000">{{ $cvv->description}}</td>
-
-
+                            <td style="color: #000000">{{ $cv->description}}</td>
                         </tr>
                         <tr>
                             <td>Disponibilidad</td>
-                            <td style="color: #000000">{{ $cvv->available_job}}</td>
-
-
+                            <td style="color: #000000">{{ $cv->available_job}}</td>
                         </tr>
                         <tr>
                             <td>Viaje</td>
-                            <td style="color: #000000">{{ $cvv->travel}}</td>
+                            <td style="color: #000000">{{ $cv->travel ? 'No dispone' : 'Si dispone'}}</td>
                         </tr>
                         <tr>
                             <td>Salario</td>
-                            <td style="color: #000000">{{$cvv->salary }}</td>
+                            <td style="color: #000000">{{$cv->salary }}</td>
                         </tr>
-                        @empty
-                            <div class="alert alert-danger" role="alert">No registro datos</div>
-                        @endforelse
+
+
+
+
+
+                        {{--@empty--}}
+                            {{--<div class="alert alert-danger" role="alert">No registro datos</div>--}}
+                        {{--@endforelse--}}
                         </tbody>
                     </table>
                     {{--<table class="table table-sm">--}}
@@ -156,7 +152,6 @@
                         {{--@endforeach--}}
                         {{--</tbody>--}}
                     {{--</table>--}}
-
                     <br>
                     <br>
                     <div class="container">
@@ -217,45 +212,4 @@
             </div>
         </div>
     </footer>
-    {{--<script>--}}
-        {{--$(document).ready(function() {--}}
-
-            {{--$(document).on('click', "#edit-item", function() {--}}
-                {{--$(this).addClass('edit-item-trigger-clicked'); //useful for identifying which trigger was clicked and consequently grab data from the correct row and not the wrong one.--}}
-
-                {{--var options = {--}}
-                    {{--'backdrop': 'static'--}}
-                {{--};--}}
-                {{--$('#edit-usuario').modal(options)--}}
-            {{--})--}}
-
-            {{--// on modal show--}}
-            {{--$('#edit-usuario').on('show.bs.modal', function() {--}}
-                {{--var el = $(".edit-item-trigger-clicked"); // See how its usefull right here?--}}
-                {{--var row = el.closest(".data-row");--}}
-
-                {{--// get the data--}}
-                {{--var id = el.data('id');--}}
-                {{--var nombre = row.children(".nombre").text();--}}
-                {{--var inicio = el.data('inicio');--}}
-                {{--var fin = el.data('fin');--}}
-                {{--// var inicio = row.children(".inicio").text();--}}
-                {{--// var fin = row.children(".fin").text();--}}
-
-                {{--// fill the data in the input fields--}}
-                {{--//$("#razon_social").val(id);--}}
-                {{--$("#pk-periodo").val(id);--}}
-                {{--$("#nombres").val(nombre);--}}
-                {{--$("#FechaInicios").val(inicio);--}}
-                {{--$("#FechaFins").val(fin);--}}
-
-            {{--})--}}
-
-            {{--// on modal hide--}}
-            {{--$('#edit-periodo').on('hide.bs.modal', function() {--}}
-                {{--$('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')--}}
-                {{--$("#edit-form").trigger("reset");--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
 @endsection

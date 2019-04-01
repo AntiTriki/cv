@@ -14,11 +14,15 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index( )
     {
-        $id = Session('usu-id');
-        $cv = Form::where('user_id',$id)->get();
-        return view('home',compact('cv'));
+//        $id = Session('usu-id');
+        $id_user=Auth::user()->id;
+
+        $cv = Form::where('user_id', '=', $id_user)->first();
+
+//        $cv = Form::all();
+        return view('home', ['cv' => $cv]);
     }
 
     public function redirect (Request $request){

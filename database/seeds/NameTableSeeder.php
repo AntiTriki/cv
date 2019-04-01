@@ -23,6 +23,18 @@ class NameTableSeeder extends Seeder
             ],
             [
                 'nombre' => 'Avanzado'
+            ],
+            [
+                'nombre' => 'Soltero'
+            ],
+            [
+                'nombre' => 'Casado'
+            ],
+            [
+                'nombre' => 'Divorciado'
+            ],
+            [
+                'nombre' => 'Viudo'
             ]
         ]);
     }

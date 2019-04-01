@@ -16,19 +16,18 @@ class FormController extends Controller
 
     public function index()
     {
-        $id = Session('usu-id');
+//        $id = Session('usu-id');
         $form = Session('for_id');
         $levels = DB::table('levels')->where('form_id','=', $form)->get();
-        $usuario = DB::table('forms')->where('user_id','=',$id)->get();
-        return view('form.index',['usuario' => $usuario],['levels' => $levels]);
-
+//        $usuario = DB::table('forms')->where('user_id','=',$id)->get();
+//        return view('form.index',['usuario' => $usuario],['levels' => $levels]);
+        return view('form.index',['levels' => $levels]);
     }
     public function skills($id)
     {
             $form = Form::findOrFail($id);
             $skill = Skill::findOrFail([1,2,3,4,5]);
-            $Nivel = DB::table('names')->get();
-
+            $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get();
 
           return view('form.skills', compact('form','skill'),['Nivel' => $Nivel]);
     }
@@ -44,7 +43,6 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
-        //
         $form = new Form();
         $form -> salary = $request -> salary;
         $form -> available_job = $request -> available_job;

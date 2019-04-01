@@ -57,15 +57,15 @@
                                 <br>
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="option1"> Mujer
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="false"> Mujer
                                         <span class="circle">
-                                            <span class="check"></span>
+                                        <span class="check"></span>
                                         </span>
                                     </label>
                                 </div>
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="option2"> Hombre
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="true"> Hombre
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>
@@ -76,12 +76,11 @@
                                 <input id="hijos" type="text" class="form-control" name="hijos" value="{{$user->children }}" placeholder="Tiene hijos y cuantos" required autofocus>
                             </div>
                             <div class="col-md-3">
-                                <select name="civil" class="form-control" id="civil">
-                                    <option>--Estado Civil--</option>
-                                    <option value="1">Soltero</option>
-                                    <option value="2">Casado</option>
-                                    <option value="3">Viudo</option>
-                                    <option value="4">Divorciado</option>
+                                <select name="civil" class="form-control" id="civil" value="{{$user->civil }}">
+                                    <option value="0">-- Estado Civil --</option>
+                                    @foreach($civil as $civils)
+                                        <option value="{{ $civils->id}}">{{ $civils->nombre }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-2">
@@ -89,7 +88,7 @@
                                 <br>
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="option1"> Si
+                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="{{$user->drivecard }}"> Si
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>
@@ -98,7 +97,7 @@
 
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="option2"> No
+                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="{{$user->drivecard }}"> No
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>
@@ -110,7 +109,7 @@
                         <div class="form-group row mb-0 py-4">
                             <div class="col-md-12 text-center ">
                                 <a href="{{route('home')}}"  class="btn btn-primary">
-                                    {{ __('Atrás') }}
+                                    {{ __('Cancelar') }}
                                 </a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Registrar') }}

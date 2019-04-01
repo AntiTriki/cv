@@ -80,11 +80,9 @@
 
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
-                                        <form action="{{url('redireccion')}}">
-                                        <a   class="btn btn-primary">
-                                            {{ __('Atrás') }}
+                                        <a href="{{route('/home/curriculum/'.$id->id.'')}}"  class="btn btn-primary">
+                                            {{ __('Atras') }}
                                         </a>
-                                        </form>
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Registrar') }}
                                         </button>

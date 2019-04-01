@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
             $table->integer('civil')->nullable();
             $table->string('nacionalidad')->nullable();
             $table->string('residencia')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->default('default_user.png');
             $table->integer('permiso')->default(0);;
         });
     }

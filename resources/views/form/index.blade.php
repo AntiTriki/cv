@@ -30,7 +30,7 @@
                                 @csrf
                                 <div class="form-row py-4">
                                     <div class="col-md-12">
-                                        <input id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" name="general" value="{{ old('general') }}" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>
+                                        <input id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" name="general" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>
 
                                         @if ($errors->has('general'))
                                             <span class="invalid-feedback" role="alert">
@@ -86,8 +86,11 @@
 
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
-                                        <a href="{{route('home')}}"  class="btn btn-primary">
-                                            {{ __('Atrás') }}
+                                        {{--<a href="{{route('/home/edit/profile/'.$usua->id.'')}}"  class="btn btn-primary">--}}
+                                            {{--{{ __('Atrás') }}--}}
+                                        {{--</a>--}}
+                                        <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}"  class="btn btn-primary">
+                                            {{ __('Cancelar') }}
                                         </a>
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Siguiente') }}
