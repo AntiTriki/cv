@@ -14,7 +14,18 @@ use Illuminate\Support\Facades\DB;
 class FormController extends Controller
 {
 
-    public function index($id)
+    public function index()
+    {
+                $id = Session('usu-id');
+//        $form = Form::find($id);
+        $formi = Session('for_id');
+        $levels = DB::table('levels')->where('form_id','=', $formi)->get();
+        $usuario = DB::table('forms')->where('user_id','=',$id)->get();
+//        return view('form.index',['usuario' => $usuario],['levels' => $levels]);
+        return view('form.curriculum',['usuario' => $usuario],['levels' => $levels]);
+    }
+
+    public function index2($id)
     {
         //        $id = Session('usu-id');
         $form = Form::find($id);
@@ -24,6 +35,7 @@ class FormController extends Controller
 //        return view('form.index',['usuario' => $usuario],['levels' => $levels]);
         return view('form.index',compact('form'),['levels' => $levels]);
     }
+
     public function skills($id)
     {
             $form = Form::findOrFail($id);
@@ -32,15 +44,6 @@ class FormController extends Controller
 
           return view('form.skills', compact('form','skill'),['Nivel' => $Nivel]);
     }
-
-//    public function redir(Request $request) //falta agregar mas
-//    {
-//        $skillId = $request->id;
-//        $skillName   =   Skill::updateOrCreate(['id' => $skillId],
-//            ['name' => $request->name]);
-//
-//       return Response::json($skillName);
-//    }
 
     public function store(Request $request,$id)
     {
@@ -58,21 +61,19 @@ class FormController extends Controller
 
     }
 
-//    public function store(Request $request)
-//    {
-//        $form = new Form();
-//        $form -> salary = $request -> salary;
-//        $form -> available_job = $request -> available_job;
-//        $form -> travel = $request -> travel;
-//        $form -> general = $request -> general;
-//        $form -> description = $request -> description;
-//        $form -> user_id = Auth::user()->id;
-//        $form -> save();
-//
-//
-//        return redirect('home/skills/'.$form->id);
-//
-//    }
+    public function store2(Request $request)
+    {
+        $form = new Form();
+        $form -> salary = $request -> salary;
+        $form -> available_job = $request -> available_job;
+        $form -> travel = $request -> travel;
+        $form -> general = $request -> general;
+        $form -> description = $request -> description;
+        $form -> user_id = Auth::user()->id;
+        $form -> save();
+
+        return redirect('home/skills/'.$form->id);
+    }
 
     public function create(Request $request)
     {

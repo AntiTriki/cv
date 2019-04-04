@@ -13,6 +13,9 @@
                     <form class="form-horizontal py-4" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'') }}">
                         {{ csrf_field() }}
                         <div class="form-row py-4">
+                            {{--    revisar--}}
+                            <input type="hidden" id="inpr" name="inpr" value="{{Auth::user()->id}}">
+
                             <div class="col-md-3">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Nombre" required autofocus>
                             </div>
@@ -88,7 +91,7 @@
                                 <br>
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="{{$user->drivecard }}"> Si
+                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="false"> No
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>
@@ -97,7 +100,7 @@
 
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="{{$user->drivecard }}"> No
+                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="true"> Si
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>

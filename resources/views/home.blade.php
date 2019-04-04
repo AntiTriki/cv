@@ -20,12 +20,15 @@
                                     <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar" class="btn btn-primary  btn-round">
                                         <i class="material-icons">add</i> Agregar
                                     </a>
-                                    <a href=" " class=" btn btn-primary btn-fab btn-fab-mini btn-round">
+                                    <a class=" btn btn-primary btn-fab btn-fab-mini btn-round" style="color: white" data-toggle="modal" data-target="#new-image" data-whatever="@mdo">
                                         <i class="material-icons">camera_alt</i>
+                                    </a>
+
+                                    <a href="{{url('/profile')}}" rel="tooltip" title="Agregar" class="btn btn-primary  btn-round">
+                                        <i class="material-icons">add</i>
                                     </a>
                                 </h3>
                                 <h6>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</h6>
-
                             </div>
 
                         </div>
@@ -75,7 +78,7 @@
                             </tr>
                             <tr>
                                 <td>Licencia de conducir</td>
-                                <td style="color: #000000">{{ Auth::user()->drivecard ? 'No tiene' : 'Tiene' }}</td>
+                                <td style="color: #000000">{{ Auth::user()->drivecard ? 'Tiene' : 'No Tiene' }}</td>
                             </tr>
 
                             </tbody>
@@ -89,18 +92,18 @@
                     </div>
                     <table class="table  table-sm">
                         <tbody style="text-align: left;">
-
+                            @if (isset ($cv))
                         <tr>
                             <td>Titulo</td>
-                            <td style="color: #000000">{{ $cv->general}}</td>
+                            <td style="color: #000000">{{ $cv->general }}</td>
                         </tr>
                         <tr>
                             <td>Descripcion</td>
-                            <td style="color: #000000">{{ $cv->description}}</td>
+                            <td style="color: #000000">{{ $cv->description }}</td>
                         </tr>
                         <tr>
                             <td>Disponibilidad</td>
-                            <td style="color: #000000">{{ $cv->available_job}}</td>
+                            <td style="color: #000000">{{ $cv->available_job }}</td>
                         </tr>
                         <tr>
                             <td>Viaje</td>
@@ -110,14 +113,11 @@
                             <td>Salario</td>
                             <td style="color: #000000">{{$cv->salary }}</td>
                         </tr>
+                                @else
+                                <h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene curriculum creado</h4>
 
+                                @endif
 
-
-
-
-                        {{--@empty--}}
-                            {{--<div class="alert alert-danger" role="alert">No registro datos</div>--}}
-                        {{--@endforelse--}}
                         </tbody>
                     </table>
                     {{--<table class="table table-sm">--}}
@@ -198,6 +198,7 @@
             </div>
         </div>
     </div>
+
     <footer class="footer footer-default">
         <div class="container">
             <nav class="float-left">
@@ -212,4 +213,38 @@
             </div>
         </div>
     </footer>
+
+
+    <div class="modal fade" id="new-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Agregar foto de perfil</h5>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/profile" enctype="multipart/form-data" class="form-horizontal form-material">
+                        {!! csrf_field() !!}
+
+                        <div class="panel-body">
+                            <h3>usuario </h3>
+                            <input type="file" name="image">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="submit" class="btn btn-primary btn-round">
+                        </div>
+                        <div class="modal-footer">
+                            <div class="col-md-12 text-center ">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                {{--<button type="submit" class="btn btn-primary">--}}
+                                {{--{{ __('Siguiente') }}--}}
+                                {{--Guardar--}}
+                                {{--</button>--}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

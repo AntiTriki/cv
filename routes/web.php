@@ -28,10 +28,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/edit/profile/{id}', 'UsuarioController@edit');
 Route::post('/home/edit/profile/{id}', 'UsuarioController@update');
 //Curriculum
-Route::get('/home/form/index/{id}', 'FormController@index');
+Route::get('/home/form/curriculum', 'FormController@index')->name('home.form.curriculum');
 Route::post('/home/form/index/{id}', 'FormController@store');
+Route::get('/home/form/index/{id}', 'FormController@index2'); //ya tiene datos(editar)
+Route::post('/home/form/index/{id}', 'FormController@store2'); //ya tiene datos(editar)
 //habilidades skills
 Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
 //niveles
 Route::post('register_skills', 'LevelController@store')->name('register_skills');
+
+//imagen
+Route::get('profile', 'PerfilController@index'); //listado
+Route::post('profile', 'PerfilController@store'); //registrar
+Route::delete('/home/{id}/image', 'PerfilController@destroy'); //eliminar

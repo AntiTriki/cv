@@ -16,16 +16,16 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->softDeletes();
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('apellido_p')->nullable();
-            $table->string('apellido_m')->nullable();
-            $table->string('ci')->nullable();
-            $table->boolean('sexo')->default(true);
+            $table->string('apellido_p');
+            $table->string('apellido_m');
+            $table->string('ci');
+            $table->boolean('sexo')->nullable();
             $table->integer('telefono')->nullable();
             $table->integer('celular')->nullable();
             $table->date('birthday')->nullable();
@@ -34,8 +34,8 @@ class CreateUsersTable extends Migration
             $table->integer('civil')->nullable();
             $table->string('nacionalidad')->nullable();
             $table->string('residencia')->nullable();
-            $table->string('image')->default('default_user.png');
-            $table->integer('permiso')->default(0);;
+            $table->string('image')->nulleable();
+            $table->integer('permiso')->default(0);
         });
     }
 
