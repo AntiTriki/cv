@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use image;
+use Image;
 
 class PerfilController extends Controller
 {
@@ -24,6 +24,7 @@ class PerfilController extends Controller
             $user->image = $filename;
             $user->save();
         }
+            return view('imagen',array('user' => Auth::user()));
 
     }
     public function destroy()

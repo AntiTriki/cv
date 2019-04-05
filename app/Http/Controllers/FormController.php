@@ -53,7 +53,8 @@ class FormController extends Controller
         $form -> travel = $request ->input('travel');
         $form -> general = $request ->input('general') ;
         $form -> description = $request ->input('description');
-        $form -> user_id = Auth::user()->id;
+//        $form -> user_id = Auth::user()->id;
+        $form -> user_id = $request ->input('pk-usuario');
         $form -> save();
 
 

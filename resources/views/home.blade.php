@@ -11,7 +11,8 @@
                         <div class="profile">
 
                             <div class="avatar">
-                                <img src="{{Auth::user()->image? Auth::user()->image : url('img/faces/default_user.png')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+
+                                <img src="img/faces/{{Auth::user()->image ? Auth::user()->image : ('/default_user.png')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
                                 <h3 class="title">
@@ -20,12 +21,8 @@
                                     <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar" class="btn btn-primary  btn-round">
                                         <i class="material-icons">add</i> Agregar
                                     </a>
-                                    <a class=" btn btn-primary btn-fab btn-fab-mini btn-round" style="color: white" data-toggle="modal" data-target="#new-image" data-whatever="@mdo">
+                                    <a href="{{url('profile')}}" rel="tooltip" title="Agregar" class="btn btn-primary btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">camera_alt</i>
-                                    </a>
-
-                                    <a href="{{url('/profile')}}" rel="tooltip" title="Agregar" class="btn btn-primary  btn-round">
-                                        <i class="material-icons">add</i>
                                     </a>
                                 </h3>
                                 <h6>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</h6>

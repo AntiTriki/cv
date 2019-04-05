@@ -35,26 +35,24 @@
                         <div class="card-header">{{ __('foto de perfil') }} </div>
 
                         <div class="card-body">
-                            <form class="form-horizontal py-4" method="POST" action="/profile" enctype="multipart/form-data">
+
+                            <img src="img/faces/{{$user->image ? Auth::user()->image : ('/default_user.png')}}" style="width: 150px; height: 150px;float: left; border-radius: 50%;margin-right: 25px;">
+                            <h3>{{$user->name}} </h3>
+                            <form class="form-horizontal py-4" method="POST" action="{{URL::to('profile')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row py-4">
                                         {!! csrf_field() !!}
-
                                         <div class="panel-body">
-                                            <img src="img/faces/default_user.png" style="width: 150px; height: 150px;float: left; border-radius: 50%;margin-right: 25px;">
-                                            <h3>usuario </h3>
                                             <input type="file" name="image">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-primary btn-round">
+                                            <input type="submit" value="Guardar" class="btn btn-primary btn-round">
                                         </div>
                                 </div>
-
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
-
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Registrar') }}
-                                        </button>
+                                        <a href="{{url('/home')}}"  class="btn btn-primary">
+                                            {{ __('Atras') }}
+                                        </a>
                                     </div>
                                 </div>
                             </form>
