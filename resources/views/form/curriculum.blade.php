@@ -26,7 +26,8 @@
                         <div class="card-header">{{ __('Curriculum') }}</div>
 
                         <div class="card-body">
-                            <form class="form-horizontal py-4" method="POST" action="{{ route('home.form.curriculum') }}">
+                            <form class="form-horizontal py-4" method="POST" action="{{ url('/home/form/curriculum') }}">
+                            {{--<form class="form-horizontal py-4" method="POST" action="{{ route('home.form.curriculum')}}">--}}
                                 {{ csrf_field() }}
                                 <div class="form-row py-4">
                                     <input type="text" id="pk-usuario" name="pk-usuario" value="{{ Auth::user()->id }}">
@@ -46,14 +47,14 @@
                                         <input id="available_job" type="text" class="form-control" name="available_job"  placeholder="Disponibilidad inmediata Ej: 1 semana" required autofocus>
                                     </div>
                                     <div class="col-md-4 py-4">
-                                        <input id="salary" type="number" class="form-control" name="salary"  placeholder="Pretensión Salarial" required autofocus>
+                                        <input id="salary" type="number" class="form-control" name="salary"  placeholder="Pretensión Salarial *" required autofocus>
                                     </div>
                                     <div class="col-md-4 py-4">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                Disponibilidad de viaje
-                                                <input class="form-check-input"  type="hidden" name="travel" id="travel">
-                                                <input class="form-check-input"  type="checkbox" name="travel" id="travel">
+                                                Disponibilidad de viaje *
+                                                <input class="form-check-input"  type="hidden" name="travel" id="travel" value="0">
+                                                <input class="form-check-input"  type="checkbox" name="travel" id="travel" value="1">
                                                 <span class="form-check-sign">
                                                       <span class="check"></span>
                                                   </span>
@@ -67,9 +68,9 @@
                                         {{--<a href="{{route('/home/edit/profile/'.$usua->id.'')}}"  class="btn btn-primary">--}}
                                         {{--{{ __('Atrás') }}--}}
                                         {{--</a>--}}
-                                        {{--<a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}"  class="btn btn-primary">--}}
-                                            {{--{{ __('Cancelar') }}--}}
-                                        {{--</a>--}}
+                                        <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}"  class="btn btn-primary">
+                                            {{ __('Atras') }}
+                                        </a>
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Siguiente') }}
                                         </button>

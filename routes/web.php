@@ -28,11 +28,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/edit/profile/{id}', 'UsuarioController@edit');
 Route::post('/home/edit/profile/{id}', 'UsuarioController@update');
 //Curriculum
-Route::get('/home/form/curriculum', 'FormController@index')->name('home.form.curriculum');
-Route::post('/home/form/index/{id}', 'FormController@store');
+Route::get('/home/form/curriculum', 'FormController@index'); //nuevo
+Route::post('/home/form/curriculum', 'FormController@store'); //nuevo
+
+//Route::get('/home/form/curriculum', 'FormController@index')->name('home.form.curriculum'); //nuevo
+//Route::post('/home/form/curriculum/{id}', 'FormController@store'); //nuevo
+
 Route::get('/home/form/index/{id}', 'FormController@index2'); //ya tiene datos(editar)
 Route::post('/home/form/index/{id}', 'FormController@store2'); //ya tiene datos(editar)
+
 //habilidades skills
+Route::get('/home/skills2/{id}', 'FormController@skills2'); //nuevo
+Route::post('/home/skills2', 'FormController@create2');//nuevo
+//niveles
+Route::post('/home/skills2', 'LevelController@store');//nuevo
+
 Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
 //niveles
