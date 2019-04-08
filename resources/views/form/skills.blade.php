@@ -40,14 +40,14 @@
                                 <div class="form-row py-4">
 
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar" >
-                                        <table class="table table-sm">
+                                        <table class="table table-sm" id="tabla">
                                             <thead>
-                                            <button type="button" class="btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">
+                                            <button type="button" class=" create-modal btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">
                                                 <i class="material-icons">add</i>
                                             </button>
                                             <tr>
                                                 <th style="width: 20%" >Conocimientos y habilidades</th>
-                                                <th class="text-right">Nivel</th>
+                                                <th class="text-center">Nivel</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -134,7 +134,7 @@
                                 <div class="col-md-12 text-center ">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
-                                    <button type="submit" class="btn btn-primary">
+                                    <button id="add" type="submit" class="btn btn-primary">
                                         {{--{{ __('Siguiente') }}--}}
                                         Guardar
                                     </button>
@@ -147,66 +147,97 @@
     </div>
 
     <script>
-
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            var postURL = "<?php echo url('addmore'); ?>";
-            var i=1;
-
-
-            $('#add').click(function(){
-                i++;
-                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-            });
-
-
-            $(document).on('click', '.btn_remove', function(){
-                var button_id = $(this).attr("id");
-                $('#row'+button_id+'').remove();
-            });
-
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-
-            $('#submit').click(function(){
-                $.ajax({
-                    url:postURL,
-                    method:"POST",
-                    data:$('#add_name').serialize(),
-                    type:'json',
-                    success:function(data)
-                    {
-                        if(data.error){
-                            printErrorMsg(data.error);
-                        }else{
-                            i=1;
-                            $('.dynamic-added').remove();
-                            $('#add_name')[0].reset();
-                            $(".print-success-msg").find("ul").html('');
-                            $(".print-success-msg").css('display','block');
-                            $(".print-error-msg").css('display','none');
-                            $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-                        }
+        {{-- ajax Form Add Post--}}
+        $(document).on('click','.create-modal', function() {
+            $('#create').modal('show');
+            $('.form-horizontal').show();
+            $('.modal-title').text('Add Post');
+        });
+        $("#add").click(function() {
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('skills.guardar') }}",
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                    'name': $('input[name=name]').val(),
+                    'nivel': $('input[name=nivel]').val()
+                },
+                success: function(data){
+                    if ((data.errors)) {
+                        $('.error').removeClass('hidden');
+                        $('.error').text(data.errors.name);
+                        $('.error').text(data.errors.nivel);
+                    } else {
+                        $('.error').remove();
+                        $('#table').append("<tr>"+
+                            "<td>" + data.name + "</td>"+
+                            "<td>" + data.nivel + "</td>"+
+                            "</tr>");
                     }
-                });
+                },
             });
-
-
-            function printErrorMsg (msg) {
-                $(".print-error-msg").find("ul").html('');
-                $(".print-error-msg").css('display','block');
-                $(".print-success-msg").css('display','none');
-                $.each( msg, function( key, value ) {
-                    $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-                });
-            }
+            $('#name').val('');
+            $('#nivel').val('');
         });
     </script>
+
+    {{--<script type="text/javascript">--}}
+        {{--$(document).ready(function(){--}}
+            {{--var postURL = "<?php echo url('addmore'); ?>";--}}
+            {{--var i=1;--}}
+
+
+            {{--$('#add').click(function(){--}}
+                {{--i++;--}}
+                {{--$('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');--}}
+            {{--});--}}
+
+
+            {{--$(document).on('click', '.btn_remove', function(){--}}
+                {{--var button_id = $(this).attr("id");--}}
+                {{--$('#row'+button_id+'').remove();--}}
+            {{--});--}}
+
+
+            {{--$.ajaxSetup({--}}
+                {{--headers: {--}}
+                    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+                {{--}--}}
+            {{--});--}}
+
+
+            {{--$('#submit').click(function(){--}}
+                {{--$.ajax({--}}
+                    {{--url:postURL,--}}
+                    {{--method:"POST",--}}
+                    {{--data:$('#add_name').serialize(),--}}
+                    {{--type:'json',--}}
+                    {{--success:function(data)--}}
+                    {{--{--}}
+                        {{--if(data.error){--}}
+                            {{--printErrorMsg(data.error);--}}
+                        {{--}else{--}}
+                            {{--i=1;--}}
+                            {{--$('.dynamic-added').remove();--}}
+                            {{--$('#add_name')[0].reset();--}}
+                            {{--$(".print-success-msg").find("ul").html('');--}}
+                            {{--$(".print-success-msg").css('display','block');--}}
+                            {{--$(".print-error-msg").css('display','none');--}}
+                            {{--$(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');--}}
+                        {{--}--}}
+                    {{--}--}}
+                {{--});--}}
+            {{--});--}}
+
+
+            {{--function printErrorMsg (msg) {--}}
+                {{--$(".print-error-msg").find("ul").html('');--}}
+                {{--$(".print-error-msg").css('display','block');--}}
+                {{--$(".print-success-msg").css('display','none');--}}
+                {{--$.each( msg, function( key, value ) {--}}
+                    {{--$(".print-error-msg").find("ul").append('<li>'+value+'</li>');--}}
+                {{--});--}}
+            {{--}--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection
