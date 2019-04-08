@@ -80,7 +80,7 @@
 
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
-                                        <a href="{{route('/home/curriculum/'.$id->id.'')}}"  class="btn btn-primary">
+                                        <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-primary">
                                             {{ __('Atras') }}
                                         </a>
                                         <button type="submit" class="btn btn-primary">

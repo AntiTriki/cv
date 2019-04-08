@@ -69,7 +69,7 @@ class UsuarioController extends Controller
             return redirect('/home/form/curriculum');
         }
         else {
-            return redirect('/home/form/index/'.$user->id);
+            return redirect('/home/form/index/'.$form->id);
 
         }
 
