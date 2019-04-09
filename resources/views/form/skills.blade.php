@@ -27,6 +27,16 @@
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <!-- toastr notifications ------------------>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!-- toastr notifications -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <!-- Font Awesome -------------------------->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
         <div class="container" >
             <div class="row justify-content-center">
@@ -35,16 +45,19 @@
                         <div class="card-header">{{ __('Curriculum') }} {{$form->general}}</div>
 
                         <div class="card-body">
-                            <form class="form-horizontal py-4" method="POST" action="{{ route('register_skills') }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('register_skills') }}">
                                 @csrf
+                                <a  class="create-modal btn btn-success btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">add</i>
+                                </a>
                                 <div class="form-row py-4">
-
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar" >
                                         <table class="table table-sm" id="tabla">
                                             <thead>
-                                            <button type="button" class=" create-modal btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">
-                                                <i class="material-icons">add</i>
-                                            </button>
+
+                                                {{--<button type="button" class=" create-modal btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">--}}
+                                                {{--<i class="material-icons">add</i>--}}
+                                            {{--</button>--}}
                                             <tr>
                                                 <th style="width: 20%" >Conocimientos y habilidades</th>
                                                 <th class="text-center">Nivel</th>
@@ -97,7 +110,7 @@
     </div>
 
     <!-- Skills new -->
-    <div class="modal fade" id="new-skill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal fade" id="newskill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -105,7 +118,8 @@
                     <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de Conocimientos y habilidades</h5>
                 </div>
                 <div class="modal-body">
-                    <form role="form" method="post" action="{{url('skills/guardar')}}" class="form-horizontal form-material">
+                    {{--<form role="form" method="post" action="{{url('skills/guardar')}}" class="form-horizontal form-material">--}}
+                        <form role="form" method="post" class="form-horizontal form-material">
                         {!! csrf_field() !!}
 
                         <div class="panel-body">
@@ -114,11 +128,12 @@
                             <div class="form-group col-md-12" {{ $errors->has('name') ? ' has-error' : '' }}>
                                 <label for="name" class="control-label">Nombre</label>
                                 <input type="text" class="form-control" id="name" name="name" maxlength="50" value="{{ old('name') }}">
-                                @if ($errors->has('name'))
-                                    <span id="alerta3" class="help-block">
-                                        <strong class="text-danger">{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                                <p class="errorTitle text-center alert alert-danger hidden"></p>
+                                {{--@if ($errors->has('name'))--}}
+                                    {{--<span id="alerta3" class="help-block">--}}
+                                        {{--<strong class="text-danger">{{ $errors->first('name') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
                             </div>
                             <div class="form-group col-md-12" {{ $errors->has('name') ? ' has-error' : '' }}>
                                 <label for="name" class="control-label">Nivel</label>
@@ -134,7 +149,8 @@
                                 <div class="col-md-12 text-center ">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
-                                    <button id="add" type="submit" class="btn btn-primary">
+                                    {{--<button type="submit" class="btn btn-primary add">--}}
+                                    <button type="button" class="btn btn-primary add">
                                         {{--{{ __('Siguiente') }}--}}
                                         Guardar
                                     </button>
@@ -146,98 +162,48 @@
         </div>
     </div>
 
+    <!-- Delay table load until everything else is loaded -->
     <script>
-        {{-- ajax Form Add Post--}}
-        $(document).on('click','.create-modal', function() {
-            $('#create').modal('show');
-            $('.form-horizontal').show();
-            $('.modal-title').text('Add Post');
+        $(window).load(function(){
+            $('#tabla').removeAttr('style');
+        })
+    </script>
+
+    <!-- AJAX CRUD operations -->
+    <script type="text/javascript">
+        // add a new post
+        $(document).on('click', '.create-modal', function() {
+            $('#newskill').modal('show');
         });
-        $("#add").click(function() {
+
+        $('.modal-footer').on('click', '.add', function() {
             $.ajax({
                 type: 'POST',
-                url: "{{ route('skills.guardar') }}",
+                url: 'skills.guardar',
                 data: {
-                    '_token': $('input[name=_token]').val(),
-                    'name': $('input[name=name]').val(),
-                    'nivel': $('input[name=nivel]').val()
+                    'name': $('#name').val(),
+                    'nivel': $('#nivel').val()
                 },
-                success: function(data){
+                success: function(data) {
+                    $('.errorTitle').addClass('hidden');
+
                     if ((data.errors)) {
-                        $('.error').removeClass('hidden');
-                        $('.error').text(data.errors.name);
-                        $('.error').text(data.errors.nivel);
+                        setTimeout(function () {
+                            $('#newskill').modal('show');
+                            toastr.error('Validation error!', 'Error Alert', {timeOut: 5000});
+                        }, 500);
+
+                        if (data.errors.title) {
+                            $('.errorTitle').removeClass('hidden');
+                            $('.errorTitle').text(data.errors.title);
+                        }
                     } else {
-                        $('.error').remove();
-                        $('#table').append("<tr>"+
-                            "<td>" + data.name + "</td>"+
-                            "<td>" + data.nivel + "</td>"+
-                            "</tr>");
+                        toastr.success('Successfully added Post!', 'Success Alert', {timeOut: 5000});
+                        $('#tabla').append("<tr><td>" + data.name + "</td><td>" + data.nivel + "</td></tr>");
                     }
                 },
             });
-            $('#name').val('');
-            $('#nivel').val('');
         });
     </script>
 
-    {{--<script type="text/javascript">--}}
-        {{--$(document).ready(function(){--}}
-            {{--var postURL = "<?php echo url('addmore'); ?>";--}}
-            {{--var i=1;--}}
-
-
-            {{--$('#add').click(function(){--}}
-                {{--i++;--}}
-                {{--$('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');--}}
-            {{--});--}}
-
-
-            {{--$(document).on('click', '.btn_remove', function(){--}}
-                {{--var button_id = $(this).attr("id");--}}
-                {{--$('#row'+button_id+'').remove();--}}
-            {{--});--}}
-
-
-            {{--$.ajaxSetup({--}}
-                {{--headers: {--}}
-                    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-                {{--}--}}
-            {{--});--}}
-
-
-            {{--$('#submit').click(function(){--}}
-                {{--$.ajax({--}}
-                    {{--url:postURL,--}}
-                    {{--method:"POST",--}}
-                    {{--data:$('#add_name').serialize(),--}}
-                    {{--type:'json',--}}
-                    {{--success:function(data)--}}
-                    {{--{--}}
-                        {{--if(data.error){--}}
-                            {{--printErrorMsg(data.error);--}}
-                        {{--}else{--}}
-                            {{--i=1;--}}
-                            {{--$('.dynamic-added').remove();--}}
-                            {{--$('#add_name')[0].reset();--}}
-                            {{--$(".print-success-msg").find("ul").html('');--}}
-                            {{--$(".print-success-msg").css('display','block');--}}
-                            {{--$(".print-error-msg").css('display','none');--}}
-                            {{--$(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');--}}
-                        {{--}--}}
-                    {{--}--}}
-                {{--});--}}
-            {{--});--}}
-
-
-            {{--function printErrorMsg (msg) {--}}
-                {{--$(".print-error-msg").find("ul").html('');--}}
-                {{--$(".print-error-msg").css('display','block');--}}
-                {{--$(".print-success-msg").css('display','none');--}}
-                {{--$.each( msg, function( key, value ) {--}}
-                    {{--$(".print-error-msg").find("ul").append('<li>'+value+'</li>');--}}
-                {{--});--}}
-            {{--}--}}
-        {{--});--}}
-    {{--</script>--}}
 @endsection

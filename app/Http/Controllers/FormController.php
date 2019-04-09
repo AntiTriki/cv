@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Input;
+use Validator;
+use Response;
+use View;
 
 
 class FormController extends Controller
@@ -55,6 +59,11 @@ class FormController extends Controller
 
         return view('form.skills2', compact('form','skill'),['Nivel' => $Nivel]);
     }
+
+    protected $rules =
+        [
+            'name' => 'required|min:2|max:70'
+        ];
 
     public function skills($id)
     {
@@ -117,20 +126,32 @@ class FormController extends Controller
 
     public function create(Request $request)
     {
-        DB::table('skills')->insert([
-            'name' => $request->input('name')
-        ]);
+        $validator = Validator::make(Input::all(), $this->rules);
+        if ($validator->fails()) {
+            return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
+        } else {
 
-        $valor = $request->input('name');
-        $idskill = DB::table('skills')->where('name', '=', $valor)-> value('skills.id');
+            DB::table('skills')->insert([
+                'name' => $request->input('name')
+            ]);
+            $valor = $request->input('name');
+            $idskill = DB::table('skills')->where('name', '=', $valor)->value('skills.id');
 
+//            DB::table('levels')->insert([
+//                'skill_id' => $idskill,
+//                'form_id' => $request->input('form_id'),
+//                'nombre_id' => $request->input('nivel')
+//            ]);
 
-        DB::table('levels')->insert([
-            'skill_id'=> $idskill,
-            'form_id'=> $request->input('form_id'),
-            'nombre_id' => $request->input('nivel')
-        ]);
-        return back();
+            $post = new Level();
+            $post->skill_id =$idskill;
+            $post->form_id = $request->input('form_id');
+            $post->nombre_id = $request->input('nivel');
+            $post->save();
+            return response()->json($post);
+
+//            return back();
+        }
     }
 
 

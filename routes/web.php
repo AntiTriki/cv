@@ -45,7 +45,9 @@ Route::post('/home/skills2', 'LevelController@store');//nuevo
 
 Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
-//niveles
+
+
+//niveles falta
 Route::post('register_skills', 'LevelController@store')->name('register_skills');
 
 //imagen
