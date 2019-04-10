@@ -69,9 +69,10 @@ class FormController extends Controller
     {
             $form = Form::findOrFail($id);
             $skill = Skill::findOrFail([1,2,3,4,5]);
+            $level = Level::where('form_id',$id)->get();
             $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get();
 
-          return view('form.skills', compact('form','skill'),['Nivel' => $Nivel]);
+          return view('form.skills', compact('form','skill','level'),['Nivel' => $Nivel]);
     }
 
     public function store(Request $request)
