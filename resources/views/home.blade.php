@@ -55,7 +55,7 @@
                             </tr>
                             <tr>
                                 <td>Fecha de Nacimiento</td>
-                                <td style="color: #000000">{{ Auth::user()->birthday ? Auth::user()->birthday  : 'No definido' }}</td>
+                                <td style="color: #000000">{{ date('d-m-Y', strtotime(Auth::user()->birthday ? Auth::user()->birthday  : 'No definido')) }}</td>
                             </tr>
                             <tr>
                                 <td>Estado Civil</td>
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td>Viaje</td>
-                            <td style="color: #000000">{{ $cv->travel ? 'No dispone' : 'Si dispone'}}</td>
+                            <td style="color: #000000">{{ $cv->travel ? 'Si dispone' : 'No dispone'}}</td>
                         </tr>
                         <tr>
                             <td>Salario</td>

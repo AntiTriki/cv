@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <style>
         ::-webkit-input-placeholder {
@@ -54,61 +53,46 @@
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar" >
                                         <table class="table table-sm" id="tabla">
                                             <thead>
-
-                                                {{--<button type="button" class=" create-modal btn btn-success btn-fab btn-fab btn-round" data-toggle="modal" data-target="#new-skill" data-whatever="@mdo">--}}
-                                                {{--<i class="material-icons">add</i>--}}
-                                            {{--</button>--}}
                                             <tr>
                                                 <th style="width: 20%">Conocimientos y habilidades</th>
                                                 <th class="text-center">Nivel</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @forelse ($level as $levels)
+                                            {{--@forelse ($level as $levels)--}}
                                                 <tr>
-                                                    <td class="contenido">{{$levels->id}}</td>
-                                                    @foreach ($skill as $skills)
-                                                        @if($levels->skill_id == $skills->id)
-                                                    <td class="contenido">{{$skills->name}}</td>
-                                                        @endif
+
+                                                        @foreach($level as $levels)
+                                                        <td class="contenido"> {{$levels->skill_id}} </td>
+                                                        @endforeach
+
+
+                                                    @foreach($skill as $skills)
+                                                                <td class="contenido"> {{$skills->name}} </td>
                                                     @endforeach
-                                                    <td class="text-right"><select name="nivel" class="form-control" id="nivel">
-                                                            <option>-- Seleccione Nivel --</option>
-                                                            @foreach($Nivel as $Nivels)
-                                                                <option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>
-                                                            @endforeach
-                                                        </select></td>
 
-                                                    {{--<td class="td-actions text-right">--}}
-                                                    {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
-                                                    {{--<i class="material-icons">edit</i>--}}
-                                                    {{--</button>--}}
-                                                    {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
-                                                    {{--<i class="material-icons">close</i>--}}
-                                                    {{--</button>--}}
-                                                    {{--</td>--}}
-                                                </tr>
-                                            @endforelse
-                                            {{--@foreach ($skill as $skills)--}}
-                                                {{--<tr>--}}
-                                                    {{--<td class="contenido">{{$skills->name}}</td>--}}
-                                                    {{--<td class="text-right"><select name="nivel" class="form-control" id="nivel">--}}
-                                                            {{--<option>-- Seleccione Nivel --</option>--}}
-                                                            {{--@foreach($Nivel as $Nivels)--}}
-                                                                {{--<option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>--}}
-                                                            {{--@endforeach--}}
-                                                        {{--</select></td>--}}
 
-                                                    {{--<td class="td-actions text-right">--}}
+
+
+                                                        {{--<td class="text-right"><select name="nivel" class="form-control" id="nivel" value="{{$levels->nombre_id}}">--}}
+                                                                {{--<option>-- Seleccione Nivel --</option>--}}
+                                                                {{--@foreach($Nivel as $Nivels)--}}
+                                                                    {{--<option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>--}}
+                                                                {{--@endforeach--}}
+                                                            {{--</select></td>--}}
+
+                                                        {{--<td class="td-actions text-right">--}}
                                                         {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
-                                                            {{--<i class="material-icons">edit</i>--}}
+                                                        {{--<i class="material-icons">edit</i>--}}
                                                         {{--</button>--}}
                                                         {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
-                                                            {{--<i class="material-icons">close</i>--}}
+                                                        {{--<i class="material-icons">close</i>--}}
                                                         {{--</button>--}}
-                                                    {{--</td>--}}
-                                                {{--</tr>--}}
-                                            {{--@endforeach--}}
+                                                        {{--</td>--}}
+                                                </tr>
+                                                    {{--@empty--}}
+                                                        {{--<div class="alert alert-danger" role="alert">No existen Notas</div>--}}
+                                            {{--@endforelse--}}
                                             </tbody>
                                         </table>
                                     </div>

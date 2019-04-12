@@ -67,10 +67,10 @@ class FormController extends Controller
 
     public function skills($id)
     {
-            $form = Form::findOrFail($id);
-            $skill = Skill::findOrFail([1,2,3,4,5]);
-            $level = Level::where('form_id',$id)->get();
-            $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get();
+            $form = Form::findOrFail($id); //busca el formulario correspondiente
+            $skill = Skill::findOrFail([1,2,3,4,5]); //muestra por defecto esos skill (estaticos)
+            $level = Level::where('form_id',$id)->get(); //muestra los datos perteneciente al formulario (el primero)
+            $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get(); //muestra los niveles (estaticos)--hacer despues
 
           return view('form.skills', compact('form','skill','level'),['Nivel' => $Nivel]);
     }
@@ -131,7 +131,6 @@ class FormController extends Controller
         if ($validator->fails()) {
             return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
         } else {
-
             DB::table('skills')->insert([
                 'name' => $request->input('name')
             ]);

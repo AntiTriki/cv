@@ -60,7 +60,7 @@
                                 <br>
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="false"> Mujer
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="0" {{ $user->sexo == '0' ? 'checked' : '' }}> Mujer
                                         <span class="circle">
                                         <span class="check"></span>
                                         </span>
@@ -68,21 +68,27 @@
                                 </div>
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="true"> Hombre
+                                        <input class="form-check-input" type="radio" name="sexo" id="sexo" value="1" {{ $user->sexo == '1' ? 'checked' : '' }}> Hombre
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>
                                     </label>
                                 </div>
                             </div>
+
+                            {{--<div class="col-md-3">--}}
+                            {{--<input type="radio" name="meterial"  value="Aluminum"--}}
+                                    {{--{{ $product_attribute->meterial == 'Aluminum' ? 'checked' : '' }} >--}}
+                            {{--</div>--}}
+
                             <div class="col-md-3">
                                 <input id="hijos" type="text" class="form-control" name="hijos" value="{{$user->children }}" placeholder="Tiene hijos y cuantos" required autofocus>
                             </div>
                             <div class="col-md-3">
-                                <select name="civil" class="form-control" id="civil" value="{{$user->civil }}">
-                                    <option value="0">-- Estado Civil --</option>
+                                <select name="civil" class="form-control" id="civil">
+                                    <option value=" ">-- Estado Civil --</option>
                                     @foreach($civil as $civils)
-                                        <option value="{{ $civils->id}}">{{ $civils->nombre }}</option>
+                                        <option value="{{ $civils->id}}" {{$civils->id==$user->civil ? 'selected':'' }}>{{ $civils->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -91,7 +97,7 @@
                                 <br>
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="false"> No
+                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="0" {{ $user->drivecard == '0' ? 'checked' : '' }}> No
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>
@@ -100,7 +106,7 @@
 
                                 <div class="form-check form-check-radio form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="true"> Si
+                                        <input class="form-check-input" type="radio" name="licencia" id="licencia" value="1" {{ $user->drivecard == '1' ? 'checked' : '' }}> Si
                                         <span class="circle">
                                             <span class="check"></span>
                                         </span>

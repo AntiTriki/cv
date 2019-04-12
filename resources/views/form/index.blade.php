@@ -36,7 +36,7 @@
 
                                 <div class="form-row py-4">
                                     <div class="col-md-12">
-                                    <textarea class="form-control" placeholder="Descripción de ti" value="{{ $form->description }}" name="description" id="description" rows=2></textarea>
+                                    <textarea class="form-control" placeholder="Descripción de ti" name="description" id="description" rows=2>{{ $form->description }}</textarea>
                                     </div>
                                 </div>
 
@@ -45,14 +45,14 @@
                                         <input id="available_job" type="text" class="form-control" name="available_job" value="{{ $form->available_job }}" placeholder="Disponibilidad inmediata Ej: 1 semana" required autofocus>
                                     </div>
                                     <div class="col-md-4 py-4">
-                                        <input id="salary" type="number" class="form-control" name="salary" value="{{ $form->salary }}" placeholder="Pretensión Salarial" required autofocus>
+                                        <input id="salary" type="number" class="form-control" name="salary" value="{{ $form->salary }}" placeholder="Pretensión Salarial *" required autofocus>
                                     </div>
                                     <div class="col-md-4 py-4">
                                         <div class="form-check">
                                             <label class="form-check-label">
                                                 Disponibilidad de viaje
-                                                <input class="form-check-input" value="{{ $form->travel }}" type="hidden" name="travel" id="travel">
                                                 <input class="form-check-input" value="{{ $form->travel }}" type="checkbox" name="travel" id="travel">
+                                                <input class="form-check-input" value="{{ $form->travel }}" type="checkbox" name="travel" id="travel" @if ($form->travel == true) checked @endif>
                                                 <span class="form-check-sign">
                                                       <span class="check"></span>
                                                   </span>
