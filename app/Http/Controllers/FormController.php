@@ -60,11 +60,6 @@ class FormController extends Controller
         return view('form.skills2', compact('form','skill'),['Nivel' => $Nivel]);
     }
 
-    protected $rules =
-        [
-            'name' => 'required|min:2|max:70'
-        ];
-
     public function skills($id)
     {
             $form = Form::findOrFail($id); //busca el formulario correspondiente
@@ -128,10 +123,6 @@ class FormController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make(Input::all(), $this->rules);
-        if ($validator->fails()) {
-            return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
-        } else {
             DB::table('skills')->insert([
                 'name' => $request->input('name')
             ]);
@@ -149,11 +140,10 @@ class FormController extends Controller
             $post->form_id = $request->input('form_id');
             $post->nombre_id = $request->input('nivel');
             $post->save();
-            return response()->json($post);
+            return Response::json($post);
 
 //            return back();
         }
-    }
 
 
     public function update(Request $request, Form $form)
