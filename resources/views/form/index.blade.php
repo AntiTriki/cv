@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="POST" action="{{ url('/home/form/index/'.$form->id.'') }}">
                                 {{ csrf_field() }}
-                                <div class="form-row py-4">
+                                <div class="form-row py-2">
                                     <div class="col-md-12">
                                         <input id="general" type="text" value="{{ $form->general }}" class="form-control" name="general" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>
                                     </div>
@@ -41,27 +41,35 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="col-md-4 py-4">
+                                    <div class="col-md-4 py-2">
                                         <input id="available_job" type="text" class="form-control" name="available_job" value="{{ $form->available_job }}" placeholder="Disponibilidad inmediata Ej: 1 semana" required autofocus>
                                     </div>
-                                    <div class="col-md-4 py-4">
+                                    <div class="col-md-4 py-2">
                                         <input id="salary" type="number" class="form-control" name="salary" value="{{ $form->salary }}" placeholder="Pretensión Salarial *" required autofocus>
                                     </div>
-                                    <div class="col-md-4 py-4">
-                                        <div class="form-check">
+                                    <div class="col-md-4 py-1">
+                                        <label>Disponibilidad de viaje</label><br>
+                                        <div class="form-check form-check-radio form-check-inline">
                                             <label class="form-check-label">
-                                                Disponibilidad de viaje
-                                                <input class="form-check-input" value="{{ $form->travel }}" type="checkbox" name="travel" id="travel">
-                                                <input class="form-check-input" value="{{ $form->travel }}" type="checkbox" name="travel" id="travel" @if ($form->travel == true) checked @endif>
-                                                <span class="form-check-sign">
-                                                      <span class="check"></span>
-                                                  </span>
+                                                <input class="form-check-input" type="radio" name="travel" id="travel" value="0" {{ $form->travel == '0' ? 'checked' : '' }}> No
+                                                <span class="circle">
+                                            <span class="check"></span>
+                                        </span>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="travel" id="travel" value="1" {{ $form->travel == '1' ? 'checked' : '' }}> Si
+                                                <span class="circle">
+                                            <span class="check"></span>
+                                        </span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group row mb-0 py-4">
+                                <div class="form-group row mb-0 py-2">
                                     <div class="col-md-12 text-center ">
                                         {{--<a href="{{route('/home/edit/profile/'.$usua->id.'')}}"  class="btn btn-primary">--}}
                                             {{--{{ __('Atrás') }}--}}

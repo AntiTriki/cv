@@ -18,10 +18,10 @@
                                 <h3 class="title">
                                     {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
                                     <br>
-                                    <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar" class="btn btn-primary  btn-round">
+                                    <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar CV" class="btn btn-primary  btn-round">
                                         <i class="material-icons">add</i> Agregar
                                     </a>
-                                    <a href="{{url('profile')}}" rel="tooltip" title="Agregar" class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                                    <a href="{{url('profile')}}" rel="tooltip" title="Agregar Foto" class="btn btn-primary btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">camera_alt</i>
                                     </a>
                                 </h3>

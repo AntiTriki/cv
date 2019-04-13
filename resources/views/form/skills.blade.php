@@ -67,9 +67,9 @@
                                                         @endforeach
 
 
-                                                    @foreach($skill as $skills)
-                                                                <td class="contenido"> {{$skills->name}} </td>
-                                                    @endforeach
+                                                    {{--@foreach($skill as $skills)--}}
+                                                                {{--<td class="contenido"> {{$skills->name}} </td>--}}
+                                                    {{--@endforeach--}}
 
 
 

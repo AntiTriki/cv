@@ -68,11 +68,11 @@ class FormController extends Controller
     public function skills($id)
     {
             $form = Form::findOrFail($id); //busca el formulario correspondiente
-            $skill = Skill::findOrFail([1,2,3,4,5]); //muestra por defecto esos skill (estaticos)
+//            $skill = Skill::findOrFail([1,2,3,4,5]); //muestra por defecto esos skill (estaticos)
             $level = Level::where('form_id',$id)->get(); //muestra los datos perteneciente al formulario (el primero)
             $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get(); //muestra los niveles (estaticos)--hacer despues
 
-          return view('form.skills', compact('form','skill','level'),['Nivel' => $Nivel]);
+          return view('form.skills', compact('form','level'),['Nivel' => $Nivel]);
     }
 
     public function store(Request $request)
@@ -101,6 +101,7 @@ class FormController extends Controller
         $form -> user_id = Auth::user()->id;
 //        $form -> user_id = $request ->input('pk-usuario');
         $form -> save();
+
 
 
         return redirect('home/skills/'.$form->id);
