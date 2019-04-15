@@ -9,11 +9,11 @@
                 <div class="card-header">{{ __('Registro de Usuario') }}</div>
 
                 <div class="card-body">
-                    <form class="form-horizontal py-4" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal py-1" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
                         @csrf
 
-                        <div class="form-row py-4">
+                        <div class="form-row py-3">
                             <div class="col-md-4">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="Nombre" required autofocus>
 
@@ -45,7 +45,7 @@
                         </div>
 
 
-                        <div class="form-row py-4">
+                        <div class="form-row py-3">
                             <div class="col-md-4">
                                 <input id="ci" type="text" class="form-control{{ $errors->has('ci') ? ' is-invalid' : '' }}" name="ci" value="{{ old('ci') }}" placeholder="CI" required autofocus>
 
@@ -74,7 +74,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-row py-4">
+                        <div class="form-row py-3">
 
                             <div class="col-md-4">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Mail" required>
@@ -100,9 +100,7 @@
 
                         </div>
 
-
-
-                        <div class="form-group row mb-0 py-4">
+                        <div class="form-group row mb-0 py-3">
                             <div class="col-md-12 text-center ">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Registrar') }}

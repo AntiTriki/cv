@@ -24,7 +24,6 @@ class UsuarioController extends Controller
 
     public function edit($id)
     {
-
         $user = User::find($id);
         $civil = Name::findOrFail([5,6,7,8]);
         return view('edit.profile',compact('user','civil'));

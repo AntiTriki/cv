@@ -35,7 +35,6 @@ class RegisterController extends Controller
         ]);
     }
 
-
     protected function create(array $data)
     {
         return User::create([
@@ -46,7 +45,7 @@ class RegisterController extends Controller
             'nacionalidad' => $data['nacionalidad'],
             'residencia' => $data['residencia'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' =>bcrypt($data['password']),
         ]);
     }
 }

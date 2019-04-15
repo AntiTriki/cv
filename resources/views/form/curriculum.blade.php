@@ -30,7 +30,7 @@
                             {{--<form class="form-horizontal py-4" method="POST" action="{{ route('home.form.curriculum')}}">--}}
                                 {{ csrf_field() }}
                                 <div class="form-row py-4">
-                                    <input type="text" id="pk-usuario" name="pk-usuario" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" id="pk-usuario" name="pk-usuario" value="{{ Auth::user()->id }}">
                                     <div class="col-md-12">
                                         <input id="general" type="text"  class="form-control" name="general" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>
                                     </div>

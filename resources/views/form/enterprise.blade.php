@@ -47,25 +47,25 @@
                                                 <th class="text-right">Acciones</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            @foreach ($form->skills as $skills)
-                                                <tr>
+                                            {{--<tbody>--}}
+                                            {{--@foreach ($form->skills as $skills)--}}
+                                                {{--<tr>--}}
 
-                                                    <td  class="contenido">{{$skills->name}}</td>
+                                                    {{--<td  class="contenido">{{$skills->name}}</td>--}}
 
-                                                    <td class="text-right">{{$skills->level}}</td>
-                                                    <td class="td-actions text-right">
+                                                    {{--<td class="text-right">{{$skills->level}}</td>--}}
+                                                    {{--<td class="td-actions text-right">--}}
 
-                                                        <button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">
-                                                            <i class="material-icons">edit</i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">
-                                                            <i class="material-icons">close</i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
+                                                        {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
+                                                            {{--<i class="material-icons">edit</i>--}}
+                                                        {{--</button>--}}
+                                                        {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
+                                                            {{--<i class="material-icons">close</i>--}}
+                                                        {{--</button>--}}
+                                                    {{--</td>--}}
+                                                {{--</tr>--}}
+                                            {{--@endforeach--}}
+                                            {{--</tbody>--}}
                                         </table>
                                     </div>
 
