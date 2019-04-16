@@ -132,9 +132,7 @@
                                 <div class="col-md-12 text-center ">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
-                                    {{--<button type="submit" class="btn btn-primary save-products">--}}
                                     <button type="submit" class="btn btn-primary add">
-                                        {{--{{ __('Siguiente') }}--}}
                                         Guardar
                                     </button>
                                 </div>

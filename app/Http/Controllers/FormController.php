@@ -99,6 +99,7 @@ class FormController extends Controller
 
         return redirect('home/skills/'.$form->id);
     }
+
     public function store2(Request $request,$id)
     {
         $form = Form::find($id);

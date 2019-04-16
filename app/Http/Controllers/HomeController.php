@@ -16,12 +16,8 @@ class HomeController extends Controller
 
     public function index( )
     {
-//        $id = Session('usu-id');
         $id_user=Auth::user()->id;
-
         $cv = Form::where('user_id', '=', $id_user)->first();
-
-//        $cv = Form::all();
         return view('home', ['cv' => $cv]);
     }
 

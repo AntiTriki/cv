@@ -24,29 +24,30 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header">{{ __('Curriculum') }} {{$form->general}}</div>
+                        <div class="card-header">{{ __('Curriculum') }}</div>
 
                         <div class="card-body">
-                            <form class="form-horizontal py-4" method="POST" action="{{ route('register_skills') }}">
-                                @csrf
+                            <h3>prueba enterprise</h3>
+                            {{--<form class="form-horizontal py-4" method="POST" action="{{ route('register_skills') }}">--}}
+                                {{--@csrf--}}
 
 
 
 
 
-                                <div class="form-row py-4">
+                                {{--<div class="form-row py-4">--}}
 
-                                    <div class="col-md-12">
-                                        <table class="table table-sm">
-                                            <thead>
-                                            <tr>
+                                    {{--<div class="col-md-12">--}}
+                                        {{--<table class="table table-sm">--}}
+                                            {{--<thead>--}}
+                                            {{--<tr>--}}
 
-                                                <th style="width: 20%" >Empresas de Referencia</th>
+                                                {{--<th style="width: 20%" >Empresas de Referencia</th>--}}
 
-                                                <th class="text-right">Nivel</th>
-                                                <th class="text-right">Acciones</th>
-                                            </tr>
-                                            </thead>
+                                                {{--<th class="text-right">Nivel</th>--}}
+                                                {{--<th class="text-right">Acciones</th>--}}
+                                            {{--</tr>--}}
+                                            {{--</thead>--}}
                                             {{--<tbody>--}}
                                             {{--@foreach ($form->skills as $skills)--}}
                                                 {{--<tr>--}}
@@ -66,22 +67,22 @@
                                                 {{--</tr>--}}
                                             {{--@endforeach--}}
                                             {{--</tbody>--}}
-                                        </table>
-                                    </div>
+                                        {{--</table>--}}
+                                    {{--</div>--}}
 
 
-                                </div>
+                                {{--</div>--}}
 
 
 
-                                <div class="form-group row mb-0 py-4">
-                                    <div class="col-md-12 text-center ">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Registrar') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                                {{--<div class="form-group row mb-0 py-4">--}}
+                                    {{--<div class="col-md-12 text-center ">--}}
+                                        {{--<button type="submit" class="btn btn-primary">--}}
+                                            {{--{{ __('Registrar') }}--}}
+                                        {{--</button>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</form>--}}
                         </div>
                     </div>
                 </div>
