@@ -62,7 +62,6 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
-
         $form = new Form();
         $form -> salary = $request -> salary;
         $form -> available_job = $request -> available_job;
@@ -71,9 +70,6 @@ class FormController extends Controller
         $form -> description = $request -> description;
         $form -> user_id = $request ->input('pk-usuario');
         $form -> save();
-
-        $lev = DB::table('levels')->where('form_id','=', $form->id)->get();
-        if ($lev != null) {  //revisar------------------------------
 
             DB::table('levels')->insert([
                 'skill_id' => '1',
@@ -100,10 +96,8 @@ class FormController extends Controller
                 'form_id' => $form->id,
                 'nombre_id' => '1'
             ]);
-            return redirect('home/skills/'.$form->id);
-        }else{
+
         return redirect('home/skills/'.$form->id);
-        }
     }
     public function store2(Request $request,$id)
     {
@@ -117,34 +111,43 @@ class FormController extends Controller
 //        $form -> user_id = $request ->input('pk-usuario');
         $form -> save();
 
+        $lev = DB::table('levels')->where('form_id','=', $form->id)->value('form_id');
 
-        DB::table('levels')->insert([
-            'skill_id'=> '1',
-            'form_id'=> $id,
-            'nombre_id' => '1'
-        ]);
-        DB::table('levels')->insert([
-            'skill_id'=> '2',
-            'form_id'=> $id,
-            'nombre_id' => '1'
-        ]);
-        DB::table('levels')->insert([
-            'skill_id'=> '3',
-            'form_id'=> $id,
-            'nombre_id' => '1'
-        ]);
-        DB::table('levels')->insert([
-            'skill_id'=> '4',
-            'form_id'=> $id,
-            'nombre_id' => '1'
-        ]);
-        DB::table('levels')->insert([
-            'skill_id'=> '5',
-            'form_id'=> $id,
-            'nombre_id' => '1'
-        ]);
+        $valor =  $request->input('form_id');
+//revisar------------------------------
+        if($valor == $lev ) {
 
-        return redirect('home/skills/'.$form->id);
+            DB::table('levels')->insert([
+                'skill_id' => '1',
+                'form_id' => $id,
+                'nombre_id' => '1'
+            ]);
+            DB::table('levels')->insert([
+                'skill_id' => '2',
+                'form_id' => $id,
+                'nombre_id' => '1'
+            ]);
+            DB::table('levels')->insert([
+                'skill_id' => '3',
+                'form_id' => $id,
+                'nombre_id' => '1'
+            ]);
+            DB::table('levels')->insert([
+                'skill_id' => '4',
+                'form_id' => $id,
+                'nombre_id' => '1'
+            ]);
+            DB::table('levels')->insert([
+                'skill_id' => '5',
+                'form_id' => $id,
+                'nombre_id' => '1'
+            ]);
+
+            return redirect('home/skills/' . $form->id);
+        }
+        else {
+            return redirect('home/skills/' . $form->id);
+        }
 
     }
 
@@ -162,6 +165,8 @@ class FormController extends Controller
             $post->nombre_id = $request->input('nivel');
             $post->save();
             return back();
+
+
     }
 
 

@@ -41,6 +41,7 @@ Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
 
 //enterprise
+Route::get('enterprise', 'LevelController@index');
 Route::post('register_skills', 'LevelController@store')->name('register_skills');
 
 //imagen

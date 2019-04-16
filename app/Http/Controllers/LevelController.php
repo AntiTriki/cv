@@ -10,6 +10,7 @@ class LevelController extends Controller
 
     public function index()
     {
+        return view('enterprise');
 //        $id=Auth::user()->id;
 //        $forms = Form::where('user_id',$id)->get();
 //        $basicos = DB::table('skills')->get();

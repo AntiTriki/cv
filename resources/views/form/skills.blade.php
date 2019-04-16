@@ -67,7 +67,7 @@
                                                         @endif
                                                     @endforeach
                                                     <td class="text-right"><select name="nivel" class="form-control" id="nivel" >
-                                                            <option value=" ">-- Seleccione Nivel --</option>
+                                                            {{--<option value=" ">-- Seleccione Nivel --</option>--}}
                                                             @foreach($Nivel as $Nivels)
                                                                 <option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>
                                                             @endforeach
@@ -86,7 +86,7 @@
                                             {{ __('Atras') }}
                                         </a>
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Siguiente') }}
+                                        {{ __('Siguiente') }}
                                         </button>
                                     </div>
                                 </div>
