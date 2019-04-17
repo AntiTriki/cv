@@ -10,9 +10,9 @@
                 <div class="card-header"><h5>{{ __('Editar Usuario') }}</h5></div>
 
                 <div class="card-body">
-                    <form class="form-horizontal py-4" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'') }}">
+                    <form class="form-horizontal py-3" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'') }}">
                         {{ csrf_field() }}
-                        <div class="form-row py-4">
+                        <div class="form-row py-3">
                             {{--    revisar--}}
                             <input type="hidden" id="inpr" name="inpr" value="{{Auth::user()->id}}">
 
@@ -35,7 +35,7 @@
                         </div>
 
 
-                        <div class="form-row py-4">
+                        <div class="form-row py-3">
                             <div class="col-md-3">
                                 <input id="nacionalidad" type="text" class="form-control" name="nacionalidad" value="{{ $user->nacionalidad }}" placeholder="Nacionalidad" required autofocus>
                             </div>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="form-row py-4">
+                        <div class="form-row py-3">
                             <div class="col-md-3">
                                 <label>Sexo</label>
                                 <br>
@@ -115,7 +115,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0 py-4">
+                        <div class="form-group row mb-0 py-3">
                             <div class="col-md-12 text-center ">
                                 <a href="{{route('home')}}"  class="btn btn-primary">
                                     {{ __('Cancelar') }}

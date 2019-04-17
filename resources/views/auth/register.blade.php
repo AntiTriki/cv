@@ -77,7 +77,7 @@
                         <div class="form-row py-3">
 
                             <div class="col-md-4">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Mail" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"  placeholder="Mail" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -94,6 +94,7 @@
                                     </span>
                                 @endif
                             </div>
+
                             <div class="col-md-4">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña" required>
                             </div>

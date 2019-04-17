@@ -50,14 +50,22 @@
                                         <input id="salary" type="number" class="form-control" name="salary"  placeholder="Pretensión Salarial *" required autofocus>
                                     </div>
                                     <div class="col-md-4 py-4">
-                                        <div class="form-check">
+                                        <label>Disponibilidad de viaje</label><br>
+                                        <div class="form-check form-check-radio form-check-inline">
                                             <label class="form-check-label">
-                                                Disponibilidad de viaje *
-                                                <input class="form-check-input"  type="hidden" name="travel" id="travel" value="0">
-                                                <input class="form-check-input"  type="checkbox" name="travel" id="travel" value="1">
-                                                <span class="form-check-sign">
-                                                      <span class="check"></span>
-                                                  </span>
+                                                <input class="form-check-input" type="radio" name="travel" id="travel" value="0"> No
+                                                <span class="circle">
+                                            <span class="check"></span>
+                                        </span>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-radio form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="travel" id="travel" value="1"> Si
+                                                <span class="circle">
+                                            <span class="check"></span>
+                                        </span>
                                             </label>
                                         </div>
                                     </div>
