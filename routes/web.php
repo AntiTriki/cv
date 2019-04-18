@@ -38,11 +38,13 @@ Route::post('/home/form/index/{id}', 'FormController@store2'); //ya tiene datos(
 
 //habilidades skills
 Route::get('/home/skills/{id}', 'FormController@skills');
-Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
-Route::post('register_skills', 'LevelController@store')->name('register_skills'); //concatenar ojo
+//Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
+Route::post('/home/skills/{id}', 'FormController@create');
+
+//Route::post('register_skills', 'LevelController@store')->name('register_skills'); //concatenar ojo
 
 //enterprise no funciona-------
-//Route::get('/home/enterprise', 'LevelController@index');
+Route::get('/home/form/enterprise/{id}', 'LevelController@index');
 
 
 //imagen de perfil

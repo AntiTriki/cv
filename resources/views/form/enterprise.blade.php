@@ -46,13 +46,23 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {{--@forelse ($title as $titles)--}}
-                                                {{--<tr>--}}
-
-                                                {{--</tr>--}}
-                                            {{--@empty--}}
-                                                {{--<div class="alert alert-danger" role="alert">No tiene datos agregados</div>--}}
-                                            {{--@endforelse--}}
+                                            @forelse ($title as $titles)
+                                                <tr>
+                                                    <td class="contenido"> {{$titles->institucion}} </td>
+                                                    <td class="contenido"> {{$titles->titulo}} </td>
+                                                    <td class="contenido"> {{$titles->year}} </td>
+                                                    <td class="contenido"> {{$titles->grade_id}} </td>
+                                                </tr>
+                                            @empty
+                                                <div class="alert alert-danger">
+                                                    <div class="container">
+                                                        <div class="alert-icon">
+                                                            <i class="material-icons">error_outline</i>
+                                                        </div>
+                                                        <b>No tiene datos agregados</b>
+                                                    </div>
+                                                </div>
+                                            @endforelse
                                             </tbody>
                                         </table>
                                     </div>

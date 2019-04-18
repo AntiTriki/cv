@@ -76,8 +76,6 @@
                         <a id="navba" class="nav-link " href="{{ url('/home') }}" role="button"  a >
                             {{ Auth::user()->name }}
                         </a>
-
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();

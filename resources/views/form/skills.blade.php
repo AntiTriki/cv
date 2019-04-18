@@ -49,7 +49,7 @@
                         <div class="card-header"><h5>{{ __('Curriculum') }} {{$form->general}}</h5></div>
 
                         <div class="card-body">
-                            <form class="form-horizontal" method="POST" action="{{ route('register_skills') }}">
+                            <form class="form-horizontal" method="POST" action="{{ url('/home/skills/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
                                 <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal">
@@ -91,30 +91,37 @@
                                         <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-primary">
                                             {{ __('Atras') }}
                                         </a>
-                                        <button type="submit" class="btn btn-primary">
-                                        {{ __('Siguiente') }}
-                                        </button>
+
+                                        <a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">
+                                            proximo!!!!!!
+                                        </a>
+                                        {{--<button type="submit" class="btn btn-primary">--}}
+                                        {{--{{ __('Siguiente') }}--}}
+                                        {{--</button>--}}
+                                        {{--<button type="button" href="{{url('enterprise/')}}" class="btn btn-primary">--}}
+                                            {{--{{ __('Siguiente') }}--}}
+                                            {{--</button>--}}
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Skills new -->
-    <div class="modal fade" id="newskill">
-        <div class="modal-dialog" >
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de Conocimientos y habilidades</h5>
-                </div>
-                <div class="modal-body">
-                    <form role="form" method="post" action="{{url('skills/guardar')}}" class="form-horizontal form-material">
-                        {{--<form id="userForm" name="userForm" class="form-horizontal">--}}
+        <!-- Skills new -->
+        <div class="modal fade" id="newskill">
+            <div class="modal-dialog" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de Conocimientos y habilidades</h5>
+                    </div>
+                    <div class="modal-body">
+                        {{--<form role="form" method="post" action="{{url('skills/guardar')}}" class="form-horizontal form-material">--}}
+                    <form role="form" method="post" action="{{ url('/home/skills/'.$form->id.'') }}" class="form-horizontal form-material">
                         {!! csrf_field() !!}
                         <div class="panel-body">
                             <input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">
@@ -157,7 +164,8 @@
             $('.modal-footer').on('click', '.add', function() {
                 $.ajax({
                     type: 'POST',
-                    url: 'skills.guardar',
+                    {{--url: "{{url('/home/skills')}}"+'/'+id,--}}
+                    // url: 'skills.guardar',
                     data: {
                         'name': $('#name').val(),
                         'nivel': $('#nivel').val()
@@ -184,51 +192,4 @@
                 });
             });
     </script>
-
-    {{--<script type="text/javascript">--}}
-        {{--$(document).ready(function () {--}}
-
-            {{--/*  When user click add user button */--}}
-            {{--$('#new').click(function () {--}}
-                {{--$('#btn-save').val("create-user");--}}
-                {{--$('#userForm').trigger("reset");--}}
-                {{--$('#ajax-crud-modal').modal('show');--}}
-            {{--});--}}
-        {{--});--}}
-
-        {{--if ($("#userForm").length > 0) {--}}
-            {{--$("#userForm").validate({--}}
-
-                {{--submitHandler: function(form) {--}}
-
-                    {{--var actionType = $('#btn-save').val();--}}
-                    {{--$('#btn-save').html('Sending..');--}}
-
-                    {{--$.ajax({--}}
-                        {{--data: $('#userForm').serialize(),--}}
-                        {{--url: "skills.guardar",--}}
-                        {{--type: "POST",--}}
-                        {{--dataType: 'json',--}}
-                        {{--success: function (data) {--}}
-                            {{--var user = '<tr><td>' + data.name + '</td><td>' + data.nivel + '</td></tr>';--}}
-
-
-                            {{--if (actionType === "create-user") {--}}
-                                {{--$('#users-crud').prepend(user);--}}
-                            {{--}--}}
-
-                            {{--$('#userForm').trigger("reset");--}}
-                            {{--$('#ajax-crud-modal').modal('hide');--}}
-                            {{--$('#btn-save').html('Save Changes');--}}
-
-                        {{--},--}}
-                        {{--error: function (data) {--}}
-                            {{--console.log('Error:', data);--}}
-                            {{--$('#btn-save').html('Save Changes');--}}
-                        {{--}--}}
-                    {{--});--}}
-                {{--}--}}
-            {{--})--}}
-        {{--}--}}
-    {{--</script>--}}
 @endsection

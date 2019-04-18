@@ -51,6 +51,7 @@ class FormController extends Controller
 
     public function skills($id)
     {
+//        $lev = Level::findOrFail($id);
             $form = Form::findOrFail($id); //busca el formulario correspondiente
             $sk = DB::table ('skills')->get();
             $level = Level::where('form_id',$id)->get(); //muestra los datos perteneciente al formulario (el primero)
@@ -165,5 +166,7 @@ class FormController extends Controller
             $post->nombre_id = $request->input('nivel');
             $post->save();
             return back();
+
+//        return redirect('enterprise');
     }
 }
