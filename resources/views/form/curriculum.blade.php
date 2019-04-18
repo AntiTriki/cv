@@ -29,7 +29,7 @@
                             <form class="form-horizontal py-4" method="POST" action="{{ url('/home/form/curriculum') }}">
                             {{--<form class="form-horizontal py-4" method="POST" action="{{ route('home.form.curriculum')}}">--}}
                                 {{ csrf_field() }}
-                                <div class="form-row py-4">
+                                <div class="form-row py-2">
                                     <input type="hidden" id="pk-usuario" name="pk-usuario" value="{{ Auth::user()->id }}">
                                     <div class="col-md-12">
                                         <input id="general" type="text"  class="form-control" name="general" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>
@@ -38,18 +38,18 @@
 
                                 <div class="form-row py-4">
                                     <div class="col-md-12">
-                                        <textarea class="form-control" placeholder="Descripción de ti"  name="description" id="description" rows=2></textarea>
+                                        <textarea class="form-control" placeholder="Descripción/Presentacion de ti"  name="description" id="description" rows=2></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="col-md-4 py-4">
+                                    <div class="col-md-4 py-2">
                                         <input id="available_job" type="text" class="form-control" name="available_job"  placeholder="Disponibilidad inmediata Ej: 1 semana" required autofocus>
                                     </div>
-                                    <div class="col-md-4 py-4">
+                                    <div class="col-md-4 py-2">
                                         <input id="salary" type="number" class="form-control" name="salary"  placeholder="Pretensión Salarial *" required autofocus>
                                     </div>
-                                    <div class="col-md-4 py-4">
+                                    <div class="col-md-4 py-1">
                                         <label>Disponibilidad de viaje</label><br>
                                         <div class="form-check form-check-radio form-check-inline">
                                             <label class="form-check-label">
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row mb-0 py-4">
+                                <div class="form-group row mb-0 py-2">
                                     <div class="col-md-12 text-center ">
                                         {{--<a href="{{route('/home/edit/profile/'.$usua->id.'')}}"  class="btn btn-primary">--}}
                                         {{--{{ __('Atrás') }}--}}

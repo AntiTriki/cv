@@ -7,7 +7,7 @@
     <div class="row justify-content-center" >
         <div class="col-md-12" style="height: 545px;">
             <div class="card">
-                <div class="card-header"><h5>{{ __('Editar Usuario') }}</h5></div>
+                <div class="card-header" style="margin-top: -10px;"><h5>{{ __('Editar Usuario') }}</h5></div>
 
                 <div class="card-body">
                     <form class="form-horizontal py-3" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'') }}">

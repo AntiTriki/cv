@@ -23,7 +23,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header">{{ __('Curriculum') }}</div>
+                        <div class="card-header"><h5>{{ __('Curriculum') }}</h5></div>
 
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="POST" action="{{ url('/home/form/index/'.$form->id.'') }}">
@@ -36,7 +36,7 @@
 
                                 <div class="form-row py-4">
                                     <div class="col-md-12">
-                                    <textarea class="form-control" placeholder="Descripción de ti" name="description" id="description" rows=2>{{ $form->description }}</textarea>
+                                    <textarea class="form-control" placeholder="Descripción/Presentacion de ti" name="description" id="description" rows=2>{{ $form->description }}</textarea>
                                     </div>
                                 </div>
 

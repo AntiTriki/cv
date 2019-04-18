@@ -34,13 +34,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
 
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header">{{ __('Curriculum') }} {{$form->general}}</div>
+                        <div class="card-header"><h5>{{ __('Curriculum') }} {{$form->general}}</h5></div>
 
                         <div class="card-body">
                             <form class="form-horizontal" method="POST" action="{{ route('register_skills') }}">
@@ -152,7 +158,6 @@
                 $.ajax({
                     type: 'POST',
                     url: 'skills.guardar',
-                    {{--url: "{{ route('skills.guardar') }}",--}}
                     data: {
                         'name': $('#name').val(),
                         'nivel': $('#nivel').val()

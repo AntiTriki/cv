@@ -41,11 +41,11 @@ Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
 Route::post('register_skills', 'LevelController@store')->name('register_skills'); //concatenar ojo
 
-//enterprise
-Route::get('/home/enterprise', 'LevelController@index');
+//enterprise no funciona-------
+//Route::get('/home/enterprise', 'LevelController@index');
 
 
-//imagen
+//imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado
 Route::post('profile', 'PerfilController@store'); //registrar
 Route::delete('/home/{id}/image', 'PerfilController@destroy'); //eliminar

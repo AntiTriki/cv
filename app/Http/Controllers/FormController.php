@@ -52,8 +52,7 @@ class FormController extends Controller
     public function skills($id)
     {
             $form = Form::findOrFail($id); //busca el formulario correspondiente
-//            $skill = Skill::findOrFail([1,2,3,4,5]); //muestra por defecto esos skill (estaticos)
-        $sk = DB::table ('skills')->get();
+            $sk = DB::table ('skills')->get();
             $level = Level::where('form_id',$id)->get(); //muestra los datos perteneciente al formulario (el primero)
             $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get(); //muestra los niveles (estaticos)--hacer despues
 
@@ -166,20 +165,5 @@ class FormController extends Controller
             $post->nombre_id = $request->input('nivel');
             $post->save();
             return back();
-
-
     }
-
-
-    public function update(Request $request, Form $form)
-    {
-        //
-    }
-
-
-    public function destroy(Form $form)
-    {
-        //
-    }
-
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Form;
 use App\Level;
+use App\Title;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -10,9 +12,11 @@ use Illuminate\Support\Facades\DB;
 class LevelController extends Controller
 {
 
-    public function index()
+    public function index($id)
     {
-        return view('form.enterprise');
+        $form = Form::findOrFail($id);
+        $title = Title::where('form_id',$id)->get();
+        return view('form.enterprise',compact('title','form'));
     }
 
 
@@ -23,7 +27,7 @@ class LevelController extends Controller
 
     public function store(Request $request)
     {
-//        aqui agregar condicion de actualizar skills
+
         return view('form.enterprise');
     }
 
