@@ -52,7 +52,7 @@
                             <form class="form-horizontal" method="POST" action="{{ url('/home/skills/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
-                                <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal">
+                                <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
                                 <div class="form-row py-1">
@@ -93,7 +93,7 @@
                                         </a>
 
                                         <a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">
-                                            proximo!!!!!!
+                                            Siguiente
                                         </a>
                                         {{--<button type="submit" class="btn btn-primary">--}}
                                         {{--{{ __('Siguiente') }}--}}

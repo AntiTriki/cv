@@ -24,6 +24,7 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'apellido_p' => ['required', 'string', 'max:255'],
@@ -38,7 +39,15 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-//        $this->validator($data->all())->validate();
+        $validator = Validator::make($data,[
+            'password' =>'required|min:6',
+        ],[
+            'password.required' => 'el campo contraseña debe tener mas de 6 caracteres'
+        ]);
+        if($validator->fails()){
+
+            return Redirect::back()->withErrors($validator)->withInput();
+        }else{
 
             return User::create([
                 'name' => $data['name'],
@@ -50,5 +59,7 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
             ]);
+
+        }
     }
 }

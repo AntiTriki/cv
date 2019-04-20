@@ -28,10 +28,10 @@
                         <div class="card-header"><h5>{{ __('Edudacion') }}</h5></div>
 
                         <div class="card-body">
-                            <form class="form-horizontal" method="POST" action=" ">
+                            <form class="form-horizontal" method="POST" action="{{ url('/home/form/enterprise/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
-                                <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal">
+                                <a class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
                                 <div class="form-row py-1">
@@ -41,17 +41,21 @@
                                             <tr>
                                                 <th style="width: 20%">Institucion/Universidad</th>
                                                 <th class="text-center">Titulo</th>
-                                                <th class="text-right">Año</th>
+                                                <th class="text-right">Año de Titulacion</th>
                                                 <th class="text-right">Grado</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @forelse ($title as $titles)
                                                 <tr>
-                                                    <td class="contenido"> {{$titles->institucion}} </td>
-                                                    <td class="contenido"> {{$titles->titulo}} </td>
-                                                    <td class="contenido"> {{$titles->year}} </td>
-                                                    <td class="contenido"> {{$titles->grade_id}} </td>
+                                                    <td class="width: 20%">{{$titles->institucion}}</td>
+                                                    <td class="text-center">{{$titles->titulo}}</td>
+                                                    <td class="text-right">{{$titles->year}}</td>
+                                                    @foreach($gra as $gr)
+                                                        @if($titles->grade_id == $gr->id)
+                                                    <td class="text-right">{{$gr->grado}}</td>
+                                                        @endif
+                                                    @endforeach
                                                 </tr>
                                             @empty
                                                 <div class="alert alert-danger">
@@ -69,9 +73,9 @@
                                 </div>
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
-                                        {{--<a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-primary">--}}
-                                            {{--{{ __('Atras') }}--}}
-                                        {{--</a>--}}
+                                        <a href="{{url('/home/skills/'.$form->id.'')}}"  class="btn btn-primary">
+                                            {{ __('Atras') }}
+                                        </a>
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Siguiente') }}
                                         </button>
@@ -84,4 +88,95 @@
             </div>
         </div>
     </div>
+
+    <!-- Skills new -->
+    <div class="modal fade" id="newtitle">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de educacion</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form" method="post" action="{{ url('/home/form/enterprise/'.$form->id.'') }}" class="form-horizontal form-material">
+                        {!! csrf_field() !!}
+                        <div class="panel-body">
+                            <input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">
+
+                            <div class="form-group col-md-12">
+                                <label for="institucion" class="control-label">Institucion/Universidad</label>
+                                <input type="text" class="form-control" id="institucion" name="institucion" maxlength="100" value="" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="titulo" class="control-label">Titulo</label>
+                                <input type="text" class="form-control" id="titulo" name="titulo" maxlength="50" value="" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="year" class="control-label">Año que obtuvo el titulo</label>
+                                <input type="number" class="form-control" id="year" name="year" value="" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="grade_id" class="control-label">Grado</label>
+                                <select name="grade_id" class="form-control" id="grade_id">
+                                    <option value="1">--Seleccione grado de estudio--</option>
+                                    @foreach($gra as $gr)
+                                        <option value="{{$gr->id}}">{{$gr->grado}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        {{--</form>--}}
+                        <div class="modal-footer" style="padding-bottom: 0px;padding-top: 0px;">
+                            <div class="col-md-12 text-center ">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                <button type="submit" class="btn btn-primary add">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // add a new post
+        $(document).on('click', '.create-modal', function() {
+            $('#newtitle').modal('show');
+        });
+        $('.modal-footer').on('click', '.add', function() {
+            $.ajax({
+                type: 'POST',
+                {{--url: "{{url('/home/skills')}}"+'/'+id,--}}
+                // url: 'skills.guardar',
+                data: {
+                    'institucion': $('#institucion').val(),
+                    'titulo': $('#titulo').val(),
+                    'year': $('#year').val(),
+                    'grade_id': $('#grade_id').val()
+                },
+                success: function(data) {
+                    $('.errorTitle').addClass('hidden');
+
+                    if ((data.errors)) {
+                        setTimeout(function () {
+                            $('#newtitle').modal('show');
+                            toastr.error('Validation error!', 'Error Alert', {timeOut: 5000});
+                        }, 500);
+
+                        if (data.errors.name) {
+                            $('.errorTitle').removeClass('hidden');
+                            $('.errorTitle').text(data.errors.name);
+
+                        }
+                    }else {
+                        toastr.success('Successfully added Post!', 'Success Alert', {timeOut: 5000});
+                        $('#tabla').append("<tr><td>" + data.name + "</td><td>" + data.nivel + "</td></tr>");
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

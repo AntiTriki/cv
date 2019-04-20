@@ -1,6 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
+    <script>
+        setTimeout(function () {
+            $("#alert1").fadeOut();
+        },3000);
+    </script>
+
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
 <div class="container" >
     <div class="row justify-content-center">
@@ -85,15 +90,24 @@
                                     </span>
                                 @endif
                             </div>
+
                             <div class="col-md-4">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Contraseña" required>
-
                                 @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                    <span id="alert1" class="help-block">
+                                        <strong class="text-danger">{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
+
+                            {{--<div class="col-md-4">--}}
+                                {{--<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Contraseña" required>--}}
+                                {{--@if ($errors->has('password'))--}}
+                                    {{--<span class="invalid-feedback" role="alert">--}}
+                                        {{--<strong>{{ $errors->first('password') }}</strong>--}}
+                                    {{--</span>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
 
                             <div class="col-md-4">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña" required>
