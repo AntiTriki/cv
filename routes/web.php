@@ -43,9 +43,9 @@ Route::post('/home/skills/{id}', 'FormController@create');
 
 //Route::post('register_skills', 'LevelController@store')->name('register_skills'); //concatenar ojo
 
-//enterprise no funciona-------
+//enterprise
 Route::get('/home/form/enterprise/{id}', 'LevelController@index');
-
+Route::post('/home/form/enterprise/{id}', 'LevelController@create');
 
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado

@@ -27,8 +27,11 @@ class LevelController extends Controller
             'titulo' =>$request->input('titulo'),
             'institucion' => $request->input('institucion'),
             'year' => $request->input('year'),
-            'grade_id' => $request->input('grade_id')
+            'grade_id' => $request->input('grade_id'),
+            'form_id' => $request->input('form_id')
         ]);
+
+        return back();
     }
 
     public function store(Request $request)

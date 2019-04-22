@@ -12,7 +12,6 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">{{ __('Registro de Usuario') }}</div>
-
                 <div class="card-body">
                     <form class="form-horizontal py-1" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
@@ -98,6 +97,7 @@
                                         <strong class="text-danger">{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
+
                             </div>
 
                             {{--<div class="col-md-4">--}}
@@ -111,8 +111,9 @@
 
                             <div class="col-md-4">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña" required>
-                            </div>
 
+                                    <i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="la contraseña debe tener mas de 6 caracteres">help_outline</i>
+                            </div>
                         </div>
 
                         <div class="form-group row mb-0 py-3">
