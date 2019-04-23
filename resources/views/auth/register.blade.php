@@ -81,7 +81,7 @@
                         <div class="form-row py-3">
 
                             <div class="col-md-4">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"  placeholder="Mail" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"  placeholder="Correo electronico" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">

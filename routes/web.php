@@ -38,10 +38,11 @@ Route::post('/home/form/index/{id}', 'FormController@store2'); //ya tiene datos(
 
 //habilidades skills
 Route::get('/home/skills/{id}', 'FormController@skills');
-//Route::post('/skills/guardar', 'FormController@create')->name('skills.guardar');
 Route::post('/home/skills/{id}', 'FormController@create');
 
-//Route::post('register_skills', 'LevelController@store')->name('register_skills'); //concatenar ojo
+//EDITAR
+Route::get('/home/skills/{id}/edit', 'FormController@edit');
+Route::post('/home/skills/{id}/edit', 'FormController@update');
 
 //enterprise
 Route::get('/home/form/enterprise/{id}', 'LevelController@index');

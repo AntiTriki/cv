@@ -24,7 +24,7 @@
                                     </div>
 
 
-                                    <input id="email" type="email" class=" form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email..." name="email"  required >
+                                    <input id="email" type="email" class=" form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Correo electronico" name="email"  required >
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
                                               <i class="material-icons">lock_outline</i>
                                             </span>
                                         </div>
-                                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password..." name="password" required>
+                                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Contraseña" name="password" required>
 
                                         @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">

@@ -52,15 +52,15 @@
                             <form class="form-horizontal" method="POST" action="{{ url('/home/skills/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
-                                <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
+                                <a  class="btn btn-primary btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
-                                <div class="form-row py-1">
+                                <div class="form-row">
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar" >
                                         <table class="table table-sm" id="tabla">
                                             <thead>
                                             <tr>
-                                                <th style="width: 20%">Conocimientos y habilidades</th>
+                                                <th style="width: 50%;" class="text-left">Conocimientos y habilidades</th>
                                                 <th class="text-center">Nivel</th>
                                             </tr>
                                             </thead>
@@ -72,12 +72,18 @@
                                                             <td class="contenido"> {{$sks->name}} </td>
                                                         @endif
                                                     @endforeach
-                                                    <td class="text-right"><select name="nivel" class="form-control" id="nivel" >
-                                                            {{--<option value=" ">-- Seleccione Nivel --</option>--}}
-                                                            @foreach($Nivel as $Nivels)
-                                                                <option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>
-                                                            @endforeach
-                                                        </select></td>
+
+                                                        @foreach($Nivel as $Nivels)
+                                                            @if($levels->nombre_id == $Nivels->id)
+                                                            <td class="text-center">{{$Nivels->nombre}} </td>
+                                                            @endif
+                                                        @endforeach
+
+                                                    <td class="td-actions text-right">
+                                                    <button type="button" rel="tooltip" id="edit-item" class="btn btn-primary btn-sm" data-id="{{$levels->id}}" data-name="{{$levels->skill_id}}" data-nombre="{{$levels->nombre_id}}">
+                                                    {{--<i class="material-icons">edit</i>--}} {{ __('Editar') }}
+                                                    </button>
+                                                    </td>
                                                 </tr>
                                                     @empty
                                                         <div class="alert alert-danger" role="alert">No existen Datos</div>
@@ -86,7 +92,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="form-group row mb-0 py-4">
+                                <div class="form-group row mb-0 py-1">
                                     <div class="col-md-12 text-center ">
                                         <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-primary">
                                             {{ __('Atras') }}
@@ -110,6 +116,85 @@
                 </div>
             </div>
         </div>
+
+    <!-- *************Edit******************************** -->
+    <script>
+        $(document).ready(function() {
+
+            $(document).on('click', "#edit-item", function() {
+                $(this).addClass('edit-item-trigger-clicked');
+
+                var options = {
+                    'backdrop': 'static'
+                };
+                $('#editskill').modal(options)
+            });
+
+            // on modal show
+            $('#editskill').on('show.bs.modal', function() {
+                var el = $(".edit-item-trigger-clicked"); // See how its usefull right here?
+                var row = el.closest(".data-row");
+
+                // get the data
+                var id = el.data('id');
+                var skill_id = el.data('nivel');
+                var nombre_id = row.children(".name").text();
+
+                $("#form_id").val(id);
+                $("#Nivel").val(skill_id);
+                $("#Name").val(nombre_id);
+
+            });
+
+            // on modal hide
+            $('#editskill').on('hide.bs.modal', function() {
+                $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
+                $("#edit-form").trigger("reset");
+            });
+        });
+    </script>
+    <!-- *************FIN Edit**************************** -->
+
+    <!-- Skills edit -->
+    <div class="modal fade" id="editskill">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Editar Registro de Conocimientos y habilidades</h5>
+                </div>
+                <div class="modal-body">
+                    <form role="form" method="post" action="{{ url('/home/skills/'.$form->id.'') }}" class="form-horizontal form-material">
+                        {!! csrf_field() !!}
+                        <div class="panel-body">
+                            <input type="text" name="form_id" id="form_id" value="{{$form->id}}">
+
+                            <div class="form-group col-md-12">
+                                <label for="name" class="control-label">Nombre</label>
+                                <input type="text" class="form-control" id="Name" name="Name" maxlength="50" value="{{$levels->skill_id}}" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="name" class="control-label">Nivel</label>
+                                <select name="Nivel" class="form-control" id="Nivel" value="{{$levels->nombre_id}}">
+                                    {{--<option value="1">--Seleccione Nivel--</option>--}}
+                                    @foreach($Nivel as $Nivels)
+                                        <option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        {{--</form>--}}
+                        <div class="modal-footer">
+                            <div class="col-md-12 text-center ">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary editt">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
         <!-- Skills new -->
         <div class="modal fade" id="newskill">
@@ -144,10 +229,7 @@
                         <div class="modal-footer">
                                 <div class="col-md-12 text-center ">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-
-                                    <button type="submit" class="btn btn-primary add">
-                                        Guardar
-                                    </button>
+                                    <button type="submit" class="btn btn-primary add">Guardar</button>
                                 </div>
                         </div>
                     </form>

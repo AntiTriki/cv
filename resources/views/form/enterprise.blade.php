@@ -31,7 +31,7 @@
                             <form class="form-horizontal" method="POST" action="{{ url('/home/form/enterprise/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
-                                <a class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
+                                <a class="btn btn-primary btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
                                 <div class="form-row py-1">
