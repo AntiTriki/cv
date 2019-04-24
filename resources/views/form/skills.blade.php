@@ -81,29 +81,28 @@
 
                                                     <td class="td-actions text-right">
                                                     {{--<button type="button" rel="tooltip" id="edit-item" class="btn btn-primary btn-sm" data-id="{{$levels->id}}" data-name="{{$levels->skill_id}}" data-nombre="{{$levels->nombre_id}}">--}}
-                                                    {{--<i class="material-icons">edit</i>--}}{{-- {{ __('Editar') }}--}}
+                                                    {{--<i class="material-icons">edit</i> {{ __('Editar') }}--}}
                                                     {{--</button>--}}
+                                                        <a href="{{ url('/home/skillsEdit/'.$levels->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
+                                        </td>
+                                    </tr>
+                                        @empty
+                                            <div class="alert alert-danger" role="alert">No existen Datos</div>
+                                @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-0 py-1">
+                        <div class="col-md-12 text-center ">
+                            <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-primary">
+                                {{ __('Atras') }}
+                            </a>
 
-                                                        <a class="btn btn-primary btn-sm" id="edit-item" data-id="{{$levels->id}}" data-name="{{$levels->skill_id}}" data-nombre="{{$Nivels->nombre}}" style="color:rgb(255,255,255)">editar</a>
-                                                    </td>
-                                                </tr>
-                                                    @empty
-                                                        <div class="alert alert-danger" role="alert">No existen Datos</div>
-                                            @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-0 py-1">
-                                    <div class="col-md-12 text-center ">
-                                        <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-primary">
-                                            {{ __('Atras') }}
-                                        </a>
-
-                                        <a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">
-                                            Siguiente
-                                        </a>
-                                        {{--<button type="submit" class="btn btn-primary">--}}
+                            <a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">
+                                Siguiente
+                            </a>
+                            {{--<button type="submit" class="btn btn-primary">--}}
                                         {{--{{ __('Siguiente') }}--}}
                                         {{--</button>--}}
                                         {{--<button type="button" href="{{url('enterprise/')}}" class="btn btn-primary">--}}
@@ -120,45 +119,45 @@
         </div>
 
     <!-- *************Edit******************************** -->
-    <script>
-        $(document).ready(function() {
+    {{--<script>--}}
+        {{--$(document).ready(function() {--}}
 
-            $(document).on('click', "#edit-item", function() {
-                $(this).addClass('edit-item-trigger-clicked');
+            {{--$(document).on('click', "#edit-item", function() {--}}
+                {{--$(this).addClass('edit-item-trigger-clicked');--}}
 
-                var options = {
-                    'backdrop': 'static'
-                };
-                $('#editskill').modal(options)
-            });
+                {{--var options = {--}}
+                    {{--'backdrop': 'static'--}}
+                {{--};--}}
+                {{--$('#editskill').modal(options)--}}
+            {{--});--}}
 
-            // on modal show
-            $('#editskill').on('show.bs.modal', function() {
-                var el = $(".edit-item-trigger-clicked");
-                var row = el.closest(".data-row");
+            {{--// on modal show--}}
+            {{--$('#editskill').on('show.bs.modal', function() {--}}
+                {{--var el = $(".edit-item-trigger-clicked");--}}
+                {{--var row = el.closest(".data-row");--}}
 
-                // get the data
-                var id = el.data('id');
-                var Name = row.children(".name").text();
-                var Nombre = el.data('nivel');
+                {{--// get the data--}}
+                {{--var id = el.data('id');--}}
+                {{--var Name = row.children(".name").text();--}}
+                {{--var Nombre = el.data('nivel');--}}
 
-                $("#form_id").val(id);
-                $("#Name").val(Name);
-                $("#Nivel").val(Nombre);
+                {{--$("#form_id").val(id);--}}
+                {{--$("#Name").val(Name);--}}
+                {{--$("#Nivel").val(Nombre);--}}
 
-            });
+            {{--});--}}
 
-            // on modal hide
-            $('#editskill').on('hide.bs.modal', function() {
-                $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
-                $("#edit-form").trigger("reset");
-            });
-        });
-    </script>
+            {{--// on modal hide--}}
+            {{--$('#editskill').on('hide.bs.modal', function() {--}}
+                {{--$('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')--}}
+                {{--$("#edit-form").trigger("reset");--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
     <!-- *************FIN Edit**************************** -->
 
     <!-- Skills edit -->
-    <div class="modal fade" id="editskill">
+    <div class="modal fade" id="linkEditorModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -166,18 +165,18 @@
                     <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Editar Registro de Conocimientos y habilidades</h5>
                 </div>
                 <div class="modal-body">
-                    <form role="form" method="post" action="{{ url('/home/skills/'.$form->id.'') }}" class="form-horizontal form-material">
+                    <form id="modalFormData" name="modalFormData" class="form-horizontal form-material">
                         {!! csrf_field() !!}
                         <div class="panel-body">
                             <input type="text" name="form_id" id="form_id" >
 
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label">Nombre</label>
-                                <input type="text" class="form-control" id="Name" name="Name" maxlength="50" value="{{old('Name')}}" required>
+                                <input type="text" class="form-control" id="Name" name="Name" maxlength="50" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label">Nivel</label>
-                                <select name="Nivel" class="form-control" id="Nivel" value="{{old('Nivel')}}">
+                                <select name="Nivel" class="form-control" id="Nivel">
                                     {{--<option value="1">--Seleccione Nivel--</option>--}}
                                     @foreach($Nivel as $Nivels)
                                         <option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>
@@ -189,7 +188,7 @@
                         <div class="modal-footer">
                             <div class="col-md-12 text-center ">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary editt">Guardar</button>
+                                <button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>
                             </div>
                         </div>
                     </form>

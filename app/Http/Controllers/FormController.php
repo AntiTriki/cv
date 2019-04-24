@@ -62,32 +62,30 @@ class FormController extends Controller
 
     public function edit($id)  //falta revisar si logran funcionar
     {
-//        $lev = Level::findOrFail($id);
-        $form = Form::findOrFail($id); //busca el formulario correspondiente
-        $sk = DB::table ('skills')->get();
-        $level = Level::where('form_id',$id)->get(); //muestra los datos perteneciente al formulario (el primero)
-        $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get(); //muestra los niveles (estaticos)--hacer despues
+//        $form = Form::findOrFail($id); //busca el formulario correspondiente
+//        $sk = DB::table ('skills')->get();
+//        $level = Level::where('form_id',$id)->get(); //muestra los datos perteneciente al formulario (el primero)
+//        $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get(); //muestra los niveles (estaticos)--hacer despues
+//
+//        return view('form.skillsEdit', compact('form','level','sk'),['Nivel' => $Nivel]);
 
-        return view('form.skills', compact('form','level','sk'),['Nivel' => $Nivel]);
+        $sk = DB::table ('skills')->get();
+        $level = Level::findOrFail($id);
+        $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get();
+        return view('form.skillsEdit', compact('level','sk','Nivel'));
     }
 
     public function update(Request $request)
     {
-        DB::table('skills')->update([
-            'name' => $request->input('name')
-        ]);
+        $id = $request->input('form_id');
+
         $valor = $request->input('name');
         $idskill = DB::table('skills')->where('name', '=', $valor)->value('skills.id');
-
-//        $post = new Level();
-//        $post->skill_id =$idskill;
-//        $post->form_id = $request->input('form_id');
-//        $post->nombre_id = $request->input('nivel');
-//        $post->save();
-
-        DB::table('levels')->update([
-           'skill_id' => $idskill,
-           'form_id' =>  $request->input('form_id'),
+        DB::table('skills')->where('id',$idskill)->update([
+            'name' => $request->input('name')
+        ]);
+        DB::table('levels')->where('id', $id)->update([
+            'skill_id' =>$request->input('name'),
             'nombre_id' => $request->input('nivel')
         ]);
 

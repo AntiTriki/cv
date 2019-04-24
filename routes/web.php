@@ -41,8 +41,8 @@ Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/home/skills/{id}', 'FormController@create');
 
 //EDITAR
-Route::get('/home/skills/{id}/edit', 'FormController@edit');
-Route::post('/home/skills/{id}/edit', 'FormController@update');
+Route::get('/home/skillsEdit/{id}', 'FormController@edit');
+Route::post('/home/skillsEdit/{id}', 'FormController@update');
 
 //enterprise
 Route::get('/home/form/enterprise/{id}', 'LevelController@index');
