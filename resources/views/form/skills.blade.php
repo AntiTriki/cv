@@ -80,9 +80,11 @@
                                                         @endforeach
 
                                                     <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" id="edit-item" class="btn btn-primary btn-sm" data-id="{{$levels->id}}" data-name="{{$levels->skill_id}}" data-nombre="{{$levels->nombre_id}}">
-                                                    {{--<i class="material-icons">edit</i>--}} {{ __('Editar') }}
-                                                    </button>
+                                                    {{--<button type="button" rel="tooltip" id="edit-item" class="btn btn-primary btn-sm" data-id="{{$levels->id}}" data-name="{{$levels->skill_id}}" data-nombre="{{$levels->nombre_id}}">--}}
+                                                    {{--<i class="material-icons">edit</i>--}}{{-- {{ __('Editar') }}--}}
+                                                    {{--</button>--}}
+
+                                                        <a class="btn btn-primary btn-sm" id="edit-item" data-id="{{$levels->id}}" data-name="{{$levels->skill_id}}" data-nombre="{{$Nivels->nombre}}" style="color:rgb(255,255,255)">editar</a>
                                                     </td>
                                                 </tr>
                                                     @empty
@@ -132,17 +134,17 @@
 
             // on modal show
             $('#editskill').on('show.bs.modal', function() {
-                var el = $(".edit-item-trigger-clicked"); // See how its usefull right here?
+                var el = $(".edit-item-trigger-clicked");
                 var row = el.closest(".data-row");
 
                 // get the data
                 var id = el.data('id');
-                var skill_id = el.data('nivel');
-                var nombre_id = row.children(".name").text();
+                var Name = row.children(".name").text();
+                var Nombre = el.data('nivel');
 
                 $("#form_id").val(id);
-                $("#Nivel").val(skill_id);
-                $("#Name").val(nombre_id);
+                $("#Name").val(Name);
+                $("#Nivel").val(Nombre);
 
             });
 
@@ -167,15 +169,15 @@
                     <form role="form" method="post" action="{{ url('/home/skills/'.$form->id.'') }}" class="form-horizontal form-material">
                         {!! csrf_field() !!}
                         <div class="panel-body">
-                            <input type="text" name="form_id" id="form_id" value="{{$form->id}}">
+                            <input type="text" name="form_id" id="form_id" >
 
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label">Nombre</label>
-                                <input type="text" class="form-control" id="Name" name="Name" maxlength="50" value="{{$levels->skill_id}}" required>
+                                <input type="text" class="form-control" id="Name" name="Name" maxlength="50" value="{{old('Name')}}" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label">Nivel</label>
-                                <select name="Nivel" class="form-control" id="Nivel" value="{{$levels->nombre_id}}">
+                                <select name="Nivel" class="form-control" id="Nivel" value="{{old('Nivel')}}">
                                     {{--<option value="1">--Seleccione Nivel--</option>--}}
                                     @foreach($Nivel as $Nivels)
                                         <option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>

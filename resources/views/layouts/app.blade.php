@@ -73,7 +73,7 @@
                 </li>
                 @else
                     <li class="nav-item">
-                        <a id="navba" class="nav-link " href="{{ url('/home') }}" role="button"  a >
+                        <a id="navba" class="nav-link " href="{{ url('/home') }}" role="button">
                             {{ Auth::user()->name }}
                         </a>
                     </li>
