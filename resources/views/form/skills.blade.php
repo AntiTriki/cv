@@ -157,45 +157,45 @@
     <!-- *************FIN Edit**************************** -->
 
     <!-- Skills edit -->
-    <div class="modal fade" id="linkEditorModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Editar Registro de Conocimientos y habilidades</h5>
-                </div>
-                <div class="modal-body">
-                    <form id="modalFormData" name="modalFormData" class="form-horizontal form-material">
-                        {!! csrf_field() !!}
-                        <div class="panel-body">
-                            <input type="text" name="form_id" id="form_id" >
+    {{--<div class="modal fade" id="linkEditorModal">--}}
+        {{--<div class="modal-dialog">--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="modal-header">--}}
+                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
+                    {{--<h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Editar Registro de Conocimientos y habilidades</h5>--}}
+                {{--</div>--}}
+                {{--<div class="modal-body">--}}
+                    {{--<form id="modalFormData" name="modalFormData" class="form-horizontal form-material">--}}
+                        {{--{!! csrf_field() !!}--}}
+                        {{--<div class="panel-body">--}}
+                            {{--<input type="text" name="form_id" id="form_id" >--}}
 
-                            <div class="form-group col-md-12">
-                                <label for="name" class="control-label">Nombre</label>
-                                <input type="text" class="form-control" id="Name" name="Name" maxlength="50" required>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="name" class="control-label">Nivel</label>
-                                <select name="Nivel" class="form-control" id="Nivel">
+                            {{--<div class="form-group col-md-12">--}}
+                                {{--<label for="name" class="control-label">Nombre</label>--}}
+                                {{--<input type="text" class="form-control" id="Name" name="Name" maxlength="50" required>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group col-md-12">--}}
+                                {{--<label for="name" class="control-label">Nivel</label>--}}
+                                {{--<select name="Nivel" class="form-control" id="Nivel">--}}
                                     {{--<option value="1">--Seleccione Nivel--</option>--}}
-                                    @foreach($Nivel as $Nivels)
-                                        <option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                                    {{--@foreach($Nivel as $Nivels)--}}
+                                        {{--<option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         {{--</form>--}}
-                        <div class="modal-footer">
-                            <div class="col-md-12 text-center ">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                        {{--<div class="modal-footer">--}}
+                            {{--<div class="col-md-12 text-center ">--}}
+                                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>--}}
+                                {{--<button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
         <!-- Skills new -->
         <div class="modal fade" id="newskill">

@@ -78,17 +78,17 @@ class FormController extends Controller
     public function update(Request $request)
     {
         $id = $request->input('form_id');
+        $valor = $request->input('idskill');
+        $idskill = DB::table('skills')->where('id', '=', $valor)->value('skills.id');
+//        dd($idskill);
 
-        $valor = $request->input('name');
-        $idskill = DB::table('skills')->where('name', '=', $valor)->value('skills.id');
         DB::table('skills')->where('id',$idskill)->update([
             'name' => $request->input('name')
         ]);
         DB::table('levels')->where('id', $id)->update([
-            'skill_id' =>$request->input('name'),
+            'skill_id' =>$idskill,
             'nombre_id' => $request->input('nivel')
         ]);
-
         return back();
     }
 

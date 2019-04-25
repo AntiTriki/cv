@@ -30,6 +30,8 @@
                                 {{ csrf_field() }}
                                 <div class="form-row py-2">
                                     <input type="text" name="form_id" id="form_id" value="{{$level->id}}">
+
+                                    <input type="text" name="idskill" id="idskill" value="{{$level->skill_id}}">
                                     <div class="form-group col-md-12">
                                         <label for="name" class="control-label">Nombre</label>
                                         @foreach($sk as $skk)
@@ -54,7 +56,7 @@
                                             {{ __('Cancelar') }}
                                         </a>
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Siguiente') }}
+                                            {{ __('Guardar') }}
                                         </button>
                                     </div>
                                 </div>
