@@ -23,20 +23,20 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header">{{ __('Editar') }}</div>
+                        <div class="card-header">{{ __('Editar Conocimientos y habilidades') }}</div>
 
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="post" action="{{url('/home/skillsEdit/'.$level->id.'')}}">
                                 {{ csrf_field() }}
                                 <div class="form-row py-2">
-                                    <input type="text" name="form_id" id="form_id" value="{{$level->id}}">
-
-                                    <input type="text" name="idskill" id="idskill" value="{{$level->skill_id}}">
+                                    <input type="hidden" name="form_id" id="form_id" value="{{$level->id}}">
+                                    <input type="hidden" name="idskill" id="idskill" value="{{$level->skill_id}}">
+                                    <input type="hidden" name="idform" id="idform" value="{{$level->form_id}}">
                                     <div class="form-group col-md-12">
                                         <label for="name" class="control-label">Nombre</label>
                                         @foreach($sk as $skk)
                                         @if($level->skill_id == $skk->id)
-                                        <input type="text" class="form-control" id="name" name="name" maxlength="50" value="{{$skk->name}}" required>
+                                        <input type="text" class="form-control" id="name" name="name" maxlength="50" value="{{$skk->name}}" {{$skk->id <= 5 ? 'disabled':''}} required>
                                             @endif
                                             @endforeach
                                     </div>
@@ -67,7 +67,6 @@
             </div>
         </div>
     </div>
-
     <!-- Skills edit -->
     {{--<div class="modal fade" id="linkEditorModal">--}}
         {{--<div class="modal-dialog">--}}

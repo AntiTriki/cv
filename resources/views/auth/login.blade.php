@@ -28,7 +28,7 @@
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong style="font-size: large;">{{ $errors->first('email') }}</strong>
                                     </span>
                                     @endif
 
@@ -58,8 +58,6 @@
                                         <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">
                                             {{ 'ENTRAR' }}
                                         </button>
-
-
                                     </div>
                                 </div>
                             </form>

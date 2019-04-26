@@ -80,16 +80,28 @@ class FormController extends Controller
         $id = $request->input('form_id');
         $valor = $request->input('idskill');
         $idskill = DB::table('skills')->where('id', '=', $valor)->value('skills.id');
-//        dd($idskill);
 
-        DB::table('skills')->where('id',$idskill)->update([
-            'name' => $request->input('name')
-        ]);
-        DB::table('levels')->where('id', $id)->update([
-            'skill_id' =>$idskill,
-            'nombre_id' => $request->input('nivel')
-        ]);
-        return back();
+        if ($idskill > 6) {
+            DB::table('skills')->where('id', $idskill)->update([
+                'name' => $request->input('name')
+            ]);
+            DB::table('levels')->where('id', $id)->update([
+                'skill_id' => $idskill,
+                'nombre_id' => $request->input('nivel')
+            ]);
+        }else {
+            DB::table('levels')->where('id', $id)->update([
+                'skill_id' => $idskill,
+                'nombre_id' => $request->input('nivel')
+            ]);
+        }
+
+        $valorform = $request->input('idform');
+//        dd($valorform);
+//        $level = DB::table ('levels')->where('form_id','=',$valorform)->value('levels.form_id');
+//        dd($level);
+//        return back();
+        return redirect('home/skills/'.$valorform); //al parecer funcionó XD
     }
 
     public function store(Request $request)
