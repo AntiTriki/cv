@@ -17,7 +17,7 @@ class LevelController extends Controller
         $form = Form::findOrFail($id);
         $title = Title::where('form_id',$id)->get();
         $gra = DB::table('grades')->get();
-        return view('form.enterprise', compact('form','title','gra'));
+        return view('form.title', compact('form','title','gra'));
     }
 
 

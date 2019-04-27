@@ -40,11 +40,15 @@ Route::post('/home/form/index/{id}', 'FormController@store2'); //ya tiene datos(
 Route::get('/home/skills/{id}', 'FormController@skills');
 Route::post('/home/skills/{id}', 'FormController@create');
 
-//EDITAR
+//EDITAR skills
 Route::get('/home/skillsEdit/{id}', 'FormController@edit');
 Route::post('/home/skillsEdit/{id}', 'FormController@update');
 
 //enterprise
+Route::get('/home/form/title/{id}', 'LevelController@index');
+Route::post('/home/form/title/{id}', 'LevelController@create');
+
+//enterprise EDITAR
 Route::get('/home/form/enterprise/{id}', 'LevelController@index');
 Route::post('/home/form/enterprise/{id}', 'LevelController@create');
 

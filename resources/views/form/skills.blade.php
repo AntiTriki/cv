@@ -80,9 +80,10 @@
                                                         @endforeach
 
                                                     <td class="td-actions text-right">
-                                                    {{--<button type="button" rel="tooltip" id="edit-item" class="btn btn-primary btn-sm" data-id="{{$levels->id}}" data-name="{{$levels->skill_id}}" data-nombre="{{$levels->nombre_id}}">--}}
-                                                    {{--<i class="material-icons">edit</i> {{ __('Editar') }}--}}
-                                                    {{--</button>--}}
+                                                        {{--<a  class="btn btn-primary btn-fab btn-fab-mini btn-round edit-modal" style="color: white">--}}
+                                                            {{--<i class="material-icons">ediiit</i>--}}
+                                                        {{--</a>--}}
+
                                                         <a href="{{ url('/home/skillsEdit/'.$levels->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
                                         </td>
                                     </tr>
@@ -99,7 +100,7 @@
                                 {{ __('Atras') }}
                             </a>
 
-                            <a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">
+                            <a href="{{url('/home/form/title/'.$form->id.'')}}" class="btn btn-primary">
                                 Siguiente
                             </a>
                             {{--<button type="submit" class="btn btn-primary">--}}
@@ -118,43 +119,6 @@
             </div>
         </div>
 
-    <!-- *************Edit******************************** -->
-    {{--<script>--}}
-        {{--$(document).ready(function() {--}}
-
-            {{--$(document).on('click', "#edit-item", function() {--}}
-                {{--$(this).addClass('edit-item-trigger-clicked');--}}
-
-                {{--var options = {--}}
-                    {{--'backdrop': 'static'--}}
-                {{--};--}}
-                {{--$('#editskill').modal(options)--}}
-            {{--});--}}
-
-            {{--// on modal show--}}
-            {{--$('#editskill').on('show.bs.modal', function() {--}}
-                {{--var el = $(".edit-item-trigger-clicked");--}}
-                {{--var row = el.closest(".data-row");--}}
-
-                {{--// get the data--}}
-                {{--var id = el.data('id');--}}
-                {{--var Name = row.children(".name").text();--}}
-                {{--var Nombre = el.data('nivel');--}}
-
-                {{--$("#form_id").val(id);--}}
-                {{--$("#Name").val(Name);--}}
-                {{--$("#Nivel").val(Nombre);--}}
-
-            {{--});--}}
-
-            {{--// on modal hide--}}
-            {{--$('#editskill').on('hide.bs.modal', function() {--}}
-                {{--$('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')--}}
-                {{--$("#edit-form").trigger("reset");--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
-    <!-- *************FIN Edit**************************** -->
 
     <!-- Skills edit -->
     {{--<div class="modal fade" id="linkEditorModal">--}}
@@ -275,4 +239,6 @@
                 });
             });
     </script>
+
+    {{--@include('form.skillsEdit')--}}
 @endsection

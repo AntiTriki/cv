@@ -1,3 +1,57 @@
+<!-- *************Edit******************************** -->
+
+{{--<!-- Skills edit -->--}}
+{{--<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">--}}
+    {{--<div class="modal-dialog">--}}
+        {{--<div class="modal-content">--}}
+            {{--<div class="modal-header">--}}
+                {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>--}}
+                {{--</button>--}}
+                {{--<h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Editar Registro de--}}
+                    {{--Conocimientos y habilidades</h5>--}}
+            {{--</div>--}}
+            {{--<form action="{{url('/home/skillsEdit/'.$level->id.'')}}" method="post" class="form-horizontal form-material">--}}
+            {{--<div class="modal-body">--}}
+
+                    {{--{!! csrf_field() !!}--}}
+                    {{--{{method_field('patch')}}--}}
+                    {{--<div class="panel-body">--}}
+                        {{--<input type="hidden" name="form_id" id="form_id" value="{{$level->id}}">--}}
+                        {{--<input type="hidden" name="idskill" id="idskill" value="{{$level->skill_id}}">--}}
+                        {{--<input type="hidden" name="idform" id="idform" value="{{$level->form_id}}">--}}
+                        {{--<div class="form-group col-md-12">--}}
+                            {{--<label for="name" class="control-label">Nombre</label>--}}
+                            {{--@foreach($sk as $skk)--}}
+                                {{--@if($level->skill_id == $skk->id)--}}
+                                    {{--<input type="text" class="form-control" id="name" name="name" maxlength="50"--}}
+                                           {{--value="{{$skk->name}}" {{$skk->id <= 5 ? 'disabled':''}} required>--}}
+                                {{--@endif--}}
+                            {{--@endforeach--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group col-md-12">--}}
+                            {{--<label for="name" class="control-label">Nivel</label>--}}
+                            {{--<select name="nivel" class="form-control" id="nivel">--}}
+                                {{--<option value="1">--Seleccione Nivel--</option>--}}
+                                {{--@foreach($Nivel as $Nivels)--}}
+                                    {{--<option value="{{$Nivels->id}}" {{$Nivels->id==$level->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>--}}
+                                {{--@endforeach--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--<div class="modal-footer">--}}
+                    {{--<div class="col-md-12 text-center ">--}}
+                        {{--<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>--}}
+                        {{--<button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--</form>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
+
+
+
 @extends('layouts.app')
 @section('content')
     <style>
@@ -43,7 +97,7 @@
                                     <div class="form-group col-md-12">
                                         <label for="name" class="control-label">Nivel</label>
                                         <select name="nivel" class="form-control" id="nivel">
-                                            {{--<option value="1">--Seleccione Nivel--</option>--}}
+                                            <option value="1">--Seleccione Nivel--</option>
                                             @foreach($Nivel as $Nivels)
                                                 <option value="{{$Nivels->id}}" {{$Nivels->id==$level->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>
                                             @endforeach
@@ -67,45 +121,4 @@
             </div>
         </div>
     </div>
-    <!-- Skills edit -->
-    {{--<div class="modal fade" id="linkEditorModal">--}}
-        {{--<div class="modal-dialog">--}}
-            {{--<div class="modal-content">--}}
-                {{--<div class="modal-header">--}}
-                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
-                    {{--<h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Editar Registro de Conocimientos y habilidades</h5>--}}
-                {{--</div>--}}
-                {{--<div class="modal-body">--}}
-                    {{--<form id="modalFormData" name="modalFormData" class="form-horizontal form-material">--}}
-                        {{--{!! csrf_field() !!}--}}
-                        {{--<div class="panel-body">--}}
-                            {{--<input type="text" name="form_id" id="form_id" >--}}
-
-                            {{--<div class="form-group col-md-12">--}}
-                                {{--<label for="name" class="control-label">Nombre</label>--}}
-                                {{--<input type="text" class="form-control" id="Name" name="Name" maxlength="50" required>--}}
-                            {{--</div>--}}
-                            {{--<div class="form-group col-md-12">--}}
-                                {{--<label for="name" class="control-label">Nivel</label>--}}
-                                {{--<select name="Nivel" class="form-control" id="Nivel">--}}
-                                    {{--<option value="1">--Seleccione Nivel--</option>--}}
-                                    {{--@foreach($Nivel as $Nivels)--}}
-                                        {{--<option value="{{$Nivels->id}}">{{$Nivels->nombre}}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</form>--}}
-                        {{--<div class="modal-footer">--}}
-                            {{--<div class="col-md-12 text-center ">--}}
-                                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>--}}
-                                {{--<button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</form>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
 @endsection

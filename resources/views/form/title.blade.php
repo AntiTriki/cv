@@ -28,7 +28,7 @@
                         <div class="card-header"><h5>{{ __('Edudacion') }}</h5></div>
 
                         <div class="card-body">
-                            <form class="form-horizontal" method="POST" action="{{ url('/home/form/enterprise/'.$form->id.'') }}">
+                            <form class="form-horizontal" method="POST" action="{{ url('/home/form/title/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
                                 <a class="btn btn-primary btn-fab btn-fab-mini btn-round create-modal" style="color: white">
@@ -98,7 +98,7 @@
                     <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de educacion</h5>
                 </div>
                 <div class="modal-body">
-                    <form role="form" method="post" action="{{ url('/home/form/enterprise/'.$form->id.'') }}" class="form-horizontal form-material">
+                    <form role="form" method="post" action="{{ url('/home/form/title/'.$form->id.'') }}" class="form-horizontal form-material">
                         {!! csrf_field() !!}
                         <div class="panel-body">
                             <input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">
