@@ -17,6 +17,14 @@
         :-ms-input-placeholder {
             text-align: center;
         }
+        .my-custom-scrollbar {
+            position: relative;
+            height: 300px;
+            overflow: auto;
+        }
+        .table-wrapper-scroll-y {
+            display: block;
+        }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -25,26 +33,26 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header"><h5>{{ __('Edudacion') }}</h5></div>
+                        <div class="card-header"><h5>{{ __('Experiencia Laboral') }}</h5></div>
                         <div class="card-body">
-                            {{--<form class="form-horizontal" method="POST" action="{{ url('/home/form/title/'.$form->id.'') }}">--}}
-                                {{--@csrf--}}
-                                {{--{{ csrf_field() }}--}}
-                                {{--<a class="btn btn-primary btn-fab btn-fab-mini btn-round create-modal" style="color: white">--}}
-                                    {{--<i class="material-icons">add</i>--}}
-                                {{--</a>--}}
-                                {{--<div class="form-row">--}}
-                                    {{--<div class="table-responsive " >--}}
-                                        {{--<table class="table table-sm w-auto" id="tabla">--}}
-                                            {{--<thead>--}}
-                                            {{--<tr>--}}
-                                                {{--<th style="width: 50%;" class="text-left">Institucion/Universidad</th>--}}
-                                                {{--<th class="text-center">Titulo</th>--}}
-                                                {{--<th class="text-center">Año de Titulacion</th>--}}
-                                                {{--<th class="text-center">Grado</th>--}}
-                                                {{--<th class="text-right"> </th>--}}
-                                            {{--</tr>--}}
-                                            {{--</thead>--}}
+                            <form class="form-horizontal" method="POST" action="{{ url('/home/form/enterprise/'.$form->id.'') }}">
+                                @csrf
+                                {{ csrf_field() }}
+                                <a class="btn btn-primary btn-fab btn-fab-mini btn-round create-modal" style="color: white">
+                                    <i class="material-icons">add</i>
+                                </a>
+                                <div class="form-row">
+                                    <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar" >
+                                        <table class="table table-sm w-auto" id="tabla">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-left">Empresa</th>
+                                                <th class="text-center">Cargo que desempeñaba</th>
+                                                <th class="text-center">Descripcion</th>
+                                                <th class="text-center">Fecha de ingreso</th>
+                                                <th class="text-center">Fecha de salida</th>
+                                            </tr>
+                                            </thead>
                                             {{--<tbody>--}}
                                             {{--@forelse ($title as $titles)--}}
                                                 {{--<tr>--}}
@@ -71,20 +79,20 @@
                                                 {{--</div>--}}
                                             {{--@endforelse--}}
                                             {{--</tbody>--}}
-                                        {{--</table>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group row mb-0 py-4">--}}
-                                    {{--<div class="col-md-12 text-center ">--}}
-                                        {{--<a href="{{url('/home/skills/'.$form->id.'')}}"  class="btn btn-primary">--}}
-                                            {{--{{ __('Atras') }}--}}
-                                        {{--</a>--}}
-                                        {{--<a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">--}}
-                                            {{--Siguiente--}}
-                                        {{--</a>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</form>--}}
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-0 py-1">
+                                    <div class="col-md-12 text-center ">
+                                        <a href="{{url('/home/skills/'.$form->id.'')}}"  class="btn btn-primary">
+                                            {{ __('Atras') }}
+                                        </a>
+                                        <a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">
+                                            Siguiente
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

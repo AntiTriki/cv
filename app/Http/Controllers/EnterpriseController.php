@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\DB;
 
 class EnterpriseController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('form.index');
+        $form = Form::findOrFail($id);
+        return view('form.enterprise',compact('form'));
     }
 
     public function create()

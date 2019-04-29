@@ -52,6 +52,10 @@ Route::post('/home/form/title/{id}', 'LevelController@create');
 Route::get('/home/titleEdit/{id}', 'LevelController@edit');
 Route::post('/home/titleEdit/{id}', 'LevelController@update');
 
+//Enterprise
+Route::get('/home/form/enterprise/{id}', 'EnterpriseController@index');
+Route::post('/home/form/enterprise/{id}', 'EnterpriseController@create');
+
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado
 Route::post('profile', 'PerfilController@store'); //registrar

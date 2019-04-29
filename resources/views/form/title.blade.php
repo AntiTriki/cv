@@ -17,6 +17,14 @@
         :-ms-input-placeholder {
             text-align: center;
         }
+        .my-custom-scrollbar {
+            position: relative;
+            height: 300px;
+            overflow: auto;
+        }
+        .table-wrapper-scroll-y {
+            display: block;
+        }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -34,7 +42,7 @@
                                     <i class="material-icons">add</i>
                                 </a>
                                 <div class="form-row">
-                                    <div class="table-responsive " >
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
                                         <table class="table table-sm w-auto" id="tabla">
                                             <thead>
                                             <tr>
@@ -74,7 +82,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="form-group row mb-0 py-4">
+                                <div class="form-group row mb-0 py-1">
                                     <div class="col-md-12 text-center ">
                                         <a href="{{url('/home/skills/'.$form->id.'')}}"  class="btn btn-primary">
                                             {{ __('Atras') }}
