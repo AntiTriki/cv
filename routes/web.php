@@ -44,13 +44,13 @@ Route::post('/home/skills/{id}', 'FormController@create');
 Route::get('/home/skillsEdit/{id}', 'FormController@edit');
 Route::post('/home/skillsEdit/{id}', 'FormController@update');
 
-//enterprise
+//title
 Route::get('/home/form/title/{id}', 'LevelController@index');
 Route::post('/home/form/title/{id}', 'LevelController@create');
 
-//enterprise EDITAR
-Route::get('/home/form/enterprise/{id}', 'LevelController@index');
-Route::post('/home/form/enterprise/{id}', 'LevelController@create');
+//title EDITAR
+Route::get('/home/titleEdit/{id}', 'LevelController@edit');
+Route::post('/home/titleEdit/{id}', 'LevelController@update');
 
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado

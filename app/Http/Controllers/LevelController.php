@@ -40,13 +40,24 @@ class LevelController extends Controller
         return view('form.enterprise');
     }
 
-    public function edit(Level $level)
+    public function edit($id)
     {
-        //
+        $title = Title::findOrFail($id);
+        $gra = DB::table('grades')->get();
+        return view('form.titleEdit', compact('title','gra'));
     }
 
-    public function update(Request $request, Level $level)
+    public function update(Request $request)
     {
-        //
+        $id = $request->input('idform');
+        $idtitle = $request->input('idtitle');
+        DB::table('titles')->where('id',$idtitle)->update([
+           'titulo' => $request->input('titulo'),
+           'institucion' => $request->input('institucion'),
+           'year' => $request->input('year'),
+           'grade_id' => $request->input('grade_id')
+        ]);
+
+        return redirect('home/form/title/'.$id);
     }
 }

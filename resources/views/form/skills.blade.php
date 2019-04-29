@@ -80,12 +80,8 @@
                                                         @endforeach
 
                                                     <td class="td-actions text-right">
-                                                        {{--<a  class="btn btn-primary btn-fab btn-fab-mini btn-round edit-modal" style="color: white">--}}
-                                                            {{--<i class="material-icons">ediiit</i>--}}
-                                                        {{--</a>--}}
-
                                                         <a href="{{ url('/home/skillsEdit/'.$levels->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
-                                        </td>
+                                                    </td>
                                     </tr>
                                         @empty
                                             <div class="alert alert-danger" role="alert">No existen Datos</div>

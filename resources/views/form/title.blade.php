@@ -26,7 +26,6 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header"><h5>{{ __('Edudacion') }}</h5></div>
-
                         <div class="card-body">
                             <form class="form-horizontal" method="POST" action="{{ url('/home/form/title/'.$form->id.'') }}">
                                 @csrf
@@ -34,28 +33,32 @@
                                 <a class="btn btn-primary btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
-                                <div class="form-row py-1">
-                                    <div class="table-wrapper-scroll-y my-custom-scrollbar" >
-                                        <table class="table table-sm" id="tabla">
+                                <div class="form-row">
+                                    <div class="table-responsive " >
+                                        <table class="table table-sm w-auto" id="tabla">
                                             <thead>
                                             <tr>
-                                                <th style="width: 20%">Institucion/Universidad</th>
+                                                <th style="width: 50%;" class="text-left">Institucion/Universidad</th>
                                                 <th class="text-center">Titulo</th>
-                                                <th class="text-right">Año de Titulacion</th>
-                                                <th class="text-right">Grado</th>
+                                                <th class="text-center">Año de Titulacion</th>
+                                                <th class="text-center">Grado</th>
+                                                {{--<th class="text-right"> </th>--}}
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @forelse ($title as $titles)
                                                 <tr>
-                                                    <td class="width: 20%">{{$titles->institucion}}</td>
+                                                    <td style="width: 50%;" class="text-left">{{$titles->institucion}}</td>
                                                     <td class="text-center">{{$titles->titulo}}</td>
-                                                    <td class="text-right">{{$titles->year}}</td>
+                                                    <td class="text-center">{{$titles->year}}</td>
                                                     @foreach($gra as $gr)
                                                         @if($titles->grade_id == $gr->id)
-                                                    <td class="text-right">{{$gr->grado}}</td>
+                                                    <td class="text-center">{{$gr->grado}}</td>
                                                         @endif
                                                     @endforeach
+                                                    <td class="td-actions text-right">
+                                                        <a href="{{ url('/home/titleEdit/'.$titles->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
+                                                    </td>
                                                 </tr>
                                             @empty
                                                 <div class="alert alert-danger">
@@ -76,9 +79,9 @@
                                         <a href="{{url('/home/skills/'.$form->id.'')}}"  class="btn btn-primary">
                                             {{ __('Atras') }}
                                         </a>
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Siguiente') }}
-                                        </button>
+                                        <a href="{{url('/home/form/enterprise/'.$form->id.'')}}" class="btn btn-primary">
+                                            Siguiente
+                                        </a>
                                     </div>
                                 </div>
                             </form>
