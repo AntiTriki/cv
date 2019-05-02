@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('body-class','profile-page')
 @section('content')
-    <div class="page-header header-filter" data-parallax="true" style="background-image: url({{url('img/city-profile.jpg')}});"></div>
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url({{url('img/HP_background.jpg')}});"></div>
     <div class="main main-raised">
         <div class="profile-content">
 

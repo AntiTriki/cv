@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'HP') }}</title>
+    {{--<title>{{ config('app.name', 'HP') }}</title>--}}
+    <title>HP Medical</title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
@@ -34,6 +35,13 @@
             width: 100px;
             word-wrap: break-word;
         }
+        .logo-image {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-top: -6px;
+        }
     </style>
 
 
@@ -50,6 +58,13 @@
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand">
+
+                {{------------------------imagen como logo----------------------}}
+                {{--<div class="logo-image">--}}
+                    {{--<img src="img/hp_logo.png" class="img-fluid">--}}
+                {{--</div>--}}
+                {{------------------------imagen como logo----------------------}}
+
                 <i class="material-icons">add_comment</i>
                 {{  'HP Medical' }}
             </a>

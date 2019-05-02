@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enterprise;
+use App\Role;
+use Illuminate\Database\Console\Migrations\RollbackCommand;
 use Illuminate\Http\Request;
 
 use App\Form;
@@ -16,7 +18,9 @@ class EnterpriseController extends Controller
     public function index($id)
     {
         $form = Form::findOrFail($id);
-        return view('form.enterprise',compact('form'));
+        $role = Role::where('form_id',$id)->get();
+        $enter = DB::table ('enterprises')->get();
+        return view('form.enterprise',compact('form','role','enter'));
     }
 
     public function create()

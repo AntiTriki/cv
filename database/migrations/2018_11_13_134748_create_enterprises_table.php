@@ -17,8 +17,8 @@ class CreateEnterprisesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
-            $table->string('nombre empresa');
-            $table->string('nombre jefe')->nullable();
+            $table->string('nombre_empresa');
+            $table->string('nombre_jefe')->nullable();
             $table->string('role')->nullable();
             $table->string('mail_jefe')->nullable();
             $table->string('cargo');
