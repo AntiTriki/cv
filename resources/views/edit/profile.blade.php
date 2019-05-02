@@ -13,7 +13,6 @@
                     <form class="form-horizontal py-3" method="POST" action="{{ url('/home/edit/profile/'.$user->id.'') }}">
                         {{ csrf_field() }}
                         <div class="form-row py-3">
-                            {{--    revisar--}}
                             <input type="hidden" id="inpr" name="inpr" value="{{Auth::user()->id}}">
 
                             <div class="col-md-3">

@@ -103,38 +103,49 @@
 
     <!-- Enterprise new -->
     <div class="modal fade" id="newenter">
-        <div class="modal-dialog" >
+        <div class="modal-dialog modal-lg" >
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de experiencia laboral</h5>
                 </div>
                 <div class="modal-body">
-                    <form role="form" method="post" action="{{ url('/home/form/title/'.$form->id.'') }}" class="form-horizontal form-material">
+                    <form role="form" method="post" action="{{ url('/home/form/enterprise/'.$form->id.'') }}" class="form-horizontal form-material">
                         {!! csrf_field() !!}
-                        <div class="panel-body">
+                        <div class="panel-body form-row py-3">
                             <input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">
 
-                            <div class="form-group col-md-12">
-                                <label for="institucion" class="control-label">Institucion/Universidad</label>
-                                <input type="text" class="form-control" id="institucion" name="institucion" maxlength="100" value="" required>
+                            <div class="form-group col-md-3">
+                                <label for="empresa" class="control-label">Empresa</label>
+                                <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" maxlength="100" value="" required>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="titulo" class="control-label">Titulo</label>
-                                <input type="text" class="form-control" id="titulo" name="titulo" maxlength="50" value="" required>
+                            <div class="form-group col-md-3">
+                                <label for="cargo" class="control-label">Cargo</label>
+                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="year" class="control-label">Año que obtuvo el titulo</label>
-                                <input type="number" class="form-control" id="year" name="year" value="" required>
+                            <div class="form-group col-md-3">
+                                <label for="fecha" class="control-label">Fecha de Inicio</label>
+                                <input type="date" class="form-control datetimepicker" id="fecha_inicio" name="fecha_inicio" required>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="grade_id" class="control-label">Grado</label>
-                                <select name="grade_id" class="form-control" id="grade_id">
-                                    <option value="1">--Seleccione grado de estudio--</option>
-                                    @foreach($gra as $gr)
-                                        <option value="{{$gr->id}}">{{$gr->grado}}</option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group col-md-3">
+                                <label for="fecha" class="control-label">Fecha de Salida</label>
+                                <input type="date" class="form-control datetimepicker" id="fecha_fin" name="fecha_fin" required>
+                            </div>
+                        </div>
+                        <hr style="border-color: #867f7f;">
+                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Datos del jefe</h5> <br>
+                        <div class="panel-body form-row py-3">
+                            <div class="form-group col-md-3">
+                                <label for="cargo" class="control-label">Nombre del jefe</label>
+                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="cargo" class="control-label">Rol del jefe</label>
+                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="cargo" class="control-label">Telf del jefe</label>
+                                <input type="number" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
                             </div>
                         </div>
                         </form>
@@ -156,7 +167,7 @@
     <script type="text/javascript">
         // add a new post
         $(document).on('click', '.create-modal', function() {
-            $('#newtitle').modal('show');
+            $('#newenter').modal('show');
         });
         $('.modal-footer').on('click', '.add', function() {
             $.ajax({
