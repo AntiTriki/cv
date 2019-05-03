@@ -26,27 +26,43 @@
                         <div class="card-header">{{ __('Editar Experiencia Laboral') }}</div>
 
                         <div class="card-body">
-                            <form class="form-horizontal py-4" method="post" action="{{url('/home/enterpriseEdit/'.$rol->id.'')}}">
+                            <form class="form-horizontal py-2" method="post" action="{{url('/home/form/enterpriseEdit/'.$rol->id.'')}}">
                                 {{ csrf_field() }}
                                 <div class="form-row py-2">
-                                    <input type="text" name="idform" id="idform" value="{{$rol->form_id}}">
-                                    <input type="text" name="idrol" id="idrol" value="{{$rol->id}}">
-                                    <input type="text" name="ident" id="ident" value="{{$rol->enterprise_id}}">
+                                    <input type="hidden" name="idform" id="idform" value="{{$rol->form_id}}">
+                                    <input type="hidden" name="idrol" id="idrol" value="{{$rol->id}}">
+                                    <input type="hidden" name="ident" id="ident" value="{{$rol->enterprise_id}}">
                                     <div class="form-group col-md-3">
                                         <label for="nombre_empresa" class="control-label">Empresa</label>
-                                        <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" maxlength="100" value="{{$ent->nombre_empresa}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                        <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" maxlength="100" value="{{$en->nombre_empresa}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="cargo" class="control-label">Cargo que desempeñaba</label>
-                                        <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="{{$ent->rol}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="{{$en->cargo}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="fecha_inicio" class="control-label">Fecha de Inicio</label>
-                                        <input type="date" class="form-control datetimepicker" id="fecha_inicio" name="fecha_inicio" value="{{$ent->fecha_inicio}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                                <input type="date" class="form-control datetimepicker" id="fecha_inicio" name="fecha_inicio" value="{{$en->fecha_inicio}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="fecha_fin" class="control-label">Fecha de Salida</label>
-                                        <input type="date" class="form-control datetimepicker" id="fecha_fin" name="fecha_fin" value="{{$ent->fecha_fin}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                                <input type="date" class="form-control datetimepicker" id="fecha_fin" name="fecha_fin" value="{{$en->fecha_fin}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="descripcion" class="control-label">Descripcion</label>
@@ -58,19 +74,35 @@
                                 <div class="panel-body form-row py-2">
                                     <div class="form-group col-md-4">
                                         <label for="nombre_jefe" class="control-label">Nombre completo</label>
-                                        <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" maxlength="80" value="{{$ent->nombre_jefe}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                                <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" maxlength="80" value="{{$en->nombre_jefe}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="role" class="control-label">Cargo</label>
-                                        <input type="text" class="form-control" id="role" name="role" maxlength="100" value="{{$ent->role}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                                <input type="text" class="form-control" id="role" name="role" maxlength="100" value="{{$en->role}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="cel_jefe" class="control-label">Telefono</label>
-                                        <input type="number" class="form-control" id="cel_jefe" name="cel_jefe" value="{{$ent->cel_jefe}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                                <input type="number" class="form-control" id="cel_jefe" name="cel_jefe" value="{{$en->cel_jefe}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="mail_jefe" class="control-label">Correo electronico</label>
-                                        <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="{{$ent->mail_jefe}}" required>
+                                        @foreach($ent as $en)
+                                            @if($rol->enterprise_id == $en->id)
+                                                <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="{{$en->mail_jefe}}" required>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 py-2">

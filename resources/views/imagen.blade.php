@@ -45,12 +45,12 @@
                                         <div class="panel-body">
                                             <input type="file" name="image">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" value="Guardar" class="btn btn-primary btn-round">
+                                            <input type="submit" value="Guardar" class="btn btn-info btn-round">
                                         </div>
                                 </div>
                                 <div class="form-group row mb-0 py-4">
                                     <div class="col-md-12 text-center ">
-                                        <a href="{{url('/home')}}"  class="btn btn-primary">
+                                        <a href="{{url('/home')}}"  class="btn btn-info">
                                             {{ __('Atras') }}
                                         </a>
                                     </div>

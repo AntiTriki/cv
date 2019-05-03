@@ -18,10 +18,10 @@
                                 <h3 class="title">
                                     {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
                                     <br>
-                                    <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar CV" class="btn btn-primary  btn-round">
+                                    <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar CV" class="btn btn-info  btn-round">
                                         <i class="material-icons">add</i> Agregar
                                     </a>
-                                    <a href="{{url('profile')}}" rel="tooltip" title="Agregar Foto" class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                                    <a href="{{url('profile')}}" rel="tooltip" title="Agregar Foto" class="btn btn-info btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">camera_alt</i>
                                     </a>
                                 </h3>
@@ -153,7 +153,7 @@
                     <br>
                     <div class="container">
                         <h4>Mis Postulaciones</h4>
-                        <a href=""  rel="tooltip" class=" btn btn-primary  btn-round">
+                        <a href=""  rel="tooltip" class=" btn btn-info  btn-round">
                             <i class="material-icons">add</i> Agregar
                         </a>
                     </div>
@@ -227,7 +227,7 @@
                             <h3>usuario </h3>
                             <input type="file" name="image">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="submit" class="btn btn-primary btn-round">
+                            <input type="submit" class="btn btn-info btn-round">
                         </div>
                         <div class="modal-footer">
                             <div class="col-md-12 text-center ">

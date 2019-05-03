@@ -66,7 +66,7 @@
                                                         @endif
                                                     @endforeach
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ url('/home/enterpriseEdit/'.$roles->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
+                                                        <a href="{{ url('/home/form/enterpriseEdit/'.$roles->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
                                                     </td>
                                                 </tr>
                                             @empty

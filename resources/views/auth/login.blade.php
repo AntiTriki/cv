@@ -2,12 +2,12 @@
 
 @section('body-class','signup-page')
 @section('content')
-    <div class="page-header header-filter" style="background-image: url({{asset('img/city.jpg')}}); background-size: cover; background-position: top center;">
+    <div class="page-header header-filter" style="background-image: url({{asset('img/WLogin.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header card-header-primary text-center">
+                        <div class="card-header card-header-info text-center">
                             <h4 class="card-title">Acceso</h4>
                         </div>
 
@@ -55,7 +55,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12 form-group text-center mb-0">
-                                        <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">
+                                        <button type="submit" class="btn btn-info btn-link btn-wd btn-lg">
                                             {{ 'ENTRAR' }}
                                         </button>
                                     </div>

@@ -57,8 +57,26 @@ class EnterpriseController extends Controller
         return view('form.enterpriseEdit',compact('rol','ent'));
     }
 
-    public function update(Request $request, Enterprise $enterprise)
+    public function update(Request $request)
     {
-        //
+//        $idform = $request->input('idform');
+        $idrol = $request->input('idrol');
+        $iden = $request->input('ident');
+
+        DB::table('roles')->where('id',$idrol)->update([
+            'descripcion' => $request->input('descripcion')
+        ]);
+        DB::table('enterprises')->where('id',$iden)->update([
+            'nombre_empresa' => $request-> input('nombre_empresa'),
+            'nombre_jefe' => $request->input('nombre_jefe'),
+            'role' => $request->input('role'),
+            'mail_jefe' => $request->input('mail_jefe'),
+            'cargo' => $request->input('cargo'),
+            'cel_jefe' => $request->input('cel_jefe'),
+            'fecha_inicio' => $request->input('fecha_inicio'),
+            'fecha_fin' => $request->input('fecha_fin')
+        ]);
+
+        return back();
     }
 }
