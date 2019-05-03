@@ -113,7 +113,7 @@
                     <form role="form" method="post" action="{{ url('/home/form/enterprise/'.$form->id.'') }}" class="form-horizontal form-material">
                         {!! csrf_field() !!}
                         <div class="panel-body form-row py-2">
-                            <input type="text" name="form_id" id="form_id" value="{{$form->id}}">
+                            <input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">
 
                             <div class="form-group col-md-3">
                                 <label for="nombre_empresa" class="control-label">Empresa</label>
@@ -156,14 +156,11 @@
                                 <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="" required>
                             </div>
                         </div>
-                        </form>
+                        {{--</form>--}}
                         <div class="modal-footer" style="padding-bottom: 0px;padding-top: 0px;">
                             <div class="col-md-12 text-center ">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-
-                                <button type="submit" class="btn btn-primary add">
-                                    Guardar
-                                </button>
+                                <button type="submit" class="btn btn-primary add">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -183,10 +180,16 @@
                 {{--url: "{{url('/home/skills')}}"+'/'+id,--}}
                 // url: 'skills.guardar',
                 data: {
-                    'institucion': $('#institucion').val(),
-                    'titulo': $('#titulo').val(),
-                    'year': $('#year').val(),
-                    'grade_id': $('#grade_id').val()
+                    'nombre_empresa': $('#nombre_empresa').val(),
+                    'nombre_jefe': $('#nombre_jefe').val(),
+                    'role': $('#role').val(),
+                    'mail_jefe': $('#mail_jefe').val(),
+                    'cargo': $('#cargo').val(),
+                    'cel_jefe': $('#cel_jefe').val(),
+                    'fecha_inicio': $('#fecha_inicio').val(),
+                    'fecha_fin': $('#fecha_fin').val(),
+                    'form_id': $('#form_id').val(),
+                    'descripcion': $('#descripcion').val()
                 },
                 success: function(data) {
                     $('.errorTitle').addClass('hidden');

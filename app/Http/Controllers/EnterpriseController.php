@@ -26,8 +26,25 @@ class EnterpriseController extends Controller
     public function create(Request $request)
     {
         DB::table('enterprises')->insert([
-           'nombre_empresa' => $request-> input('nombre_empresa')
+           'nombre_empresa' => $request-> input('nombre_empresa'),
+            'nombre_jefe' => $request->input('nombre_jefe'),
+            'role' => $request->input('role'),
+            'mail_jefe' => $request->input('mail_jefe'),
+            'cargo' => $request->input('cargo'),
+            'cel_jefe' => $request->input('cel_jefe'),
+            'fecha_inicio' => $request->input('fecha_inicio'),
+            'fecha_fin' => $request->input('fecha_fin')
         ]);
+        $idEnt = DB::table('enterprises')->select('id');
+//        return "id habrr $idEnt";
+
+        DB::table('roles')->insert([
+            'enterprise_id' => $idEnt,
+            'form_id' => $request->input('form_id'),
+            'descripcion' => $request->input('descripcion')
+        ]);
+
+        return back();
     }
 
     public function edit(Enterprise $enterprise)
