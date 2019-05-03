@@ -31,7 +31,7 @@
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
-                <div class="col-md-7">
+                <div class="col-md-8">
                     <div class="card">
                         <div class="card-header"><h5>{{ __('Experiencia Laboral') }}</h5></div>
                         <div class="card-body">
@@ -57,16 +57,16 @@
                                             @forelse ($role as $roles)
                                                 <tr>
                                                     @foreach($enter as $ent)
-                                                            <td class="text-left"> {{$ent->nombre_empresa}} </td>
-                                                            <td class="text-left"> {{$ent->cargo}} </td>
-                                                    @endforeach
-                                                        <td class="text-left">{{$roles->descripcion}}</td>
-                                                    @foreach($enter as $ent)
-                                                        <td class="text-center"> {{ date('d-m-Y', strtotime($ent->fecha_inicio))}} </td>
-                                                        <td class="text-center"> {{date('d-m-Y', strtotime($ent->fecha_fin))}} </td>
+                                                        @if($roles->enterprise_id == $ent->id)
+                                                            <td class="text-left" style="width: 20%"> {{$ent->nombre_empresa}}</td>
+                                                            <td class="text-left"> {{$ent->cargo}}</td>
+                                                            <td class="text-left" style="width: 20%">{{$roles->descripcion}}</td>
+                                                            <td class="text-center"> {{ date('d-m-Y', strtotime($ent->fecha_inicio))}} </td>
+                                                            <td class="text-center"> {{date('d-m-Y', strtotime($ent->fecha_fin))}} </td>
+                                                        @endif
                                                     @endforeach
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ url('/home/titleEdit/'.$roles->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
+                                                        <a href="{{ url('/home/enterpriseEdit/'.$roles->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
                                                     </td>
                                                 </tr>
                                             @empty

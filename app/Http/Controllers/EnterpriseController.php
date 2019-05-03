@@ -25,6 +25,8 @@ class EnterpriseController extends Controller
 
     public function create(Request $request)
     {
+        $idform = $request->input('form_id');
+
         DB::table('enterprises')->insert([
            'nombre_empresa' => $request-> input('nombre_empresa'),
             'nombre_jefe' => $request->input('nombre_jefe'),
@@ -35,21 +37,24 @@ class EnterpriseController extends Controller
             'fecha_inicio' => $request->input('fecha_inicio'),
             'fecha_fin' => $request->input('fecha_fin')
         ]);
-        $idEnt = DB::table('enterprises')->select('id');
+        $valor = $request -> input('nombre_empresa');
+        $idEnt = DB::table('enterprises')->where('nombre_empresa','=',$valor)->value('enterprises.id');
 //        return "id habrr $idEnt";
 
         DB::table('roles')->insert([
             'enterprise_id' => $idEnt,
-            'form_id' => $request->input('form_id'),
+            'form_id' => $idform,
             'descripcion' => $request->input('descripcion')
         ]);
 
         return back();
     }
 
-    public function edit(Enterprise $enterprise)
+    public function edit($id)
     {
-        //
+        $rol = Role::findOrFail($id);
+        $ent = DB::table('enterprises')->get();
+        return view('form.enterpriseEdit',compact('rol','ent'));
     }
 
     public function update(Request $request, Enterprise $enterprise)
