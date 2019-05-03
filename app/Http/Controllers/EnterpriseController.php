@@ -23,9 +23,11 @@ class EnterpriseController extends Controller
         return view('form.enterprise',compact('form','role','enter'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        //
+        DB::table('enterprises')->insert([
+           'nombre_empresa' => $request-> input('nombre_empresa')
+        ]);
     }
 
     public function edit(Enterprise $enterprise)

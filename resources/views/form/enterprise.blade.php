@@ -112,40 +112,48 @@
                 <div class="modal-body">
                     <form role="form" method="post" action="{{ url('/home/form/enterprise/'.$form->id.'') }}" class="form-horizontal form-material">
                         {!! csrf_field() !!}
-                        <div class="panel-body form-row py-3">
-                            <input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">
+                        <div class="panel-body form-row py-2">
+                            <input type="text" name="form_id" id="form_id" value="{{$form->id}}">
 
                             <div class="form-group col-md-3">
-                                <label for="empresa" class="control-label">Empresa</label>
+                                <label for="nombre_empresa" class="control-label">Empresa</label>
                                 <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" maxlength="100" value="" required>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="cargo" class="control-label">Cargo</label>
+                                <label for="cargo" class="control-label">Cargo que desempeñaba</label>
                                 <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="fecha" class="control-label">Fecha de Inicio</label>
+                                <label for="fecha_inicio" class="control-label">Fecha de Inicio</label>
                                 <input type="date" class="form-control datetimepicker" id="fecha_inicio" name="fecha_inicio" required>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="fecha" class="control-label">Fecha de Salida</label>
+                                <label for="fecha_fin" class="control-label">Fecha de Salida</label>
                                 <input type="date" class="form-control datetimepicker" id="fecha_fin" name="fecha_fin" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="descripcion" class="control-label">Descripcion</label>
+                                <textarea type="text" class="form-control" id="descripcion" name="descripcion" maxlength="190" value="" required></textarea>
                             </div>
                         </div>
                         <hr style="border-color: #867f7f;">
-                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Datos del jefe</h5> <br>
-                        <div class="panel-body form-row py-3">
+                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Datos del anterior jefe</h5> <br>
+                        <div class="panel-body form-row py-2">
+                            <div class="form-group col-md-4">
+                                <label for="nombre_jefe" class="control-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" maxlength="100" value="" required>
+                            </div>
                             <div class="form-group col-md-3">
-                                <label for="cargo" class="control-label">Nombre del jefe</label>
-                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
+                                <label for="role" class="control-label">Cargo</label>
+                                <input type="text" class="form-control" id="role" name="role" maxlength="100" value="" required>
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="cargo" class="control-label">Rol del jefe</label>
-                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
+                                <label for="cel_jefe" class="control-label">Telefono</label>
+                                <input type="number" class="form-control" id="cel_jefe" name="cel_jefe" value="" required>
                             </div>
-                            <div class="form-group col-md-2">
-                                <label for="cargo" class="control-label">Telf del jefe</label>
-                                <input type="number" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
+                            <div class="form-group col-md-3">
+                                <label for="mail_jefe" class="control-label">Correo electronico</label>
+                                <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="" required>
                             </div>
                         </div>
                         </form>
