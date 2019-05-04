@@ -16,6 +16,12 @@
         :-ms-input-placeholder {
             text-align: center;
         }
+        .btn.btn-info{
+            background-color: #166b91;
+        }
+        .card .card-header-info{
+            background: linear-gradient(60deg, #166b91, #0097a7);
+        }
     </style>
 
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
@@ -26,7 +32,7 @@
                         <div class="card-header">{{ __('Editar Educacion') }}</div>
 
                         <div class="card-body">
-                            <form class="form-horizontal py-4" method="post" action="{{url('/home/titleEdit/'.$title->id.'')}}">
+                            <form class="form-horizontal py-2" method="post" action="{{url('/home/titleEdit/'.$title->id.'')}}">
                                 {{ csrf_field() }}
                                 <div class="form-row py-2">
                                     <input type="hidden" name="idform" id="idform" value="{{$title->form_id}}">

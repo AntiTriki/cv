@@ -60,6 +60,9 @@ Route::post('/home/form/enterprise/{id}', 'EnterpriseController@create');
 Route::get('/home/form/enterpriseEdit/{id}', 'EnterpriseController@edit');
 Route::post('/home/form/enterpriseEdit/{id}', 'EnterpriseController@update');
 
+//Trabajos
+Route::get('/home/form/jobs', 'EnterpriseController@mientras');
+
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado
 Route::post('profile', 'PerfilController@store'); //registrar

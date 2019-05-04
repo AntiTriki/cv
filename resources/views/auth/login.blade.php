@@ -2,6 +2,14 @@
 
 @section('body-class','signup-page')
 @section('content')
+    <style>
+        .btn.btn-info{
+            background-color: #166b91;
+        }
+        .card .card-header-info{
+            background: linear-gradient(60deg, #166b91, #0097a7);
+        }
+    </style>
     <div class="page-header header-filter" style="background-image: url({{asset('img/mientra.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container">
             <div class="row justify-content-center">

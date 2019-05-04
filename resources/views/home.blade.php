@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('body-class','profile-page')
 @section('content')
+    <style>
+        .btn.btn-info{
+            background-color: #166b91;
+        }
+    </style>
+
     <div class="page-header header-filter" data-parallax="true" style="background-image: url({{url('img/HP_background.jpg')}});"></div>
     <div class="main main-raised">
         <div class="profile-content">
@@ -84,6 +90,12 @@
 
                 <div class="col-sm-8 text-center">
                     <div class="container">
+                        <h3 class="title"><strong>Oferta de Trabajos</strong> <a href="{{url('/home/form/jobs/')}}" class="btn btn-info btn-round">
+                                <i class="material-icons">search</i> Buscar
+                            </a></h3>
+                    </div>
+
+                    <div class="container">
                         <br>
                         <h3 class="title"><strong>Mi Curriculum</strong></h3>
                     </div>
@@ -150,12 +162,11 @@
                         {{--</tbody>--}}
                     {{--</table>--}}
                     <br>
-                    <br>
                     <div class="container">
                         <h3 class="title"><strong>Mis postulaciones</strong></h3>
-                        <a href=""  rel="tooltip" class=" btn btn-info  btn-round">
-                            <i class="material-icons">add</i> Agregar
-                        </a>
+                        {{--<a href=""  rel="tooltip" class=" btn btn-info  btn-round">--}}
+                            {{--<i class="material-icons">add</i> Agregar--}}
+                        {{--</a>--}}
                     </div>
                     {{--<table class="table table-sm">--}}
                         {{--<thead>--}}

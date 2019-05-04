@@ -25,6 +25,12 @@
         .table-wrapper-scroll-y {
             display: block;
         }
+         .btn.btn-info{
+             background-color: #166b91;
+         }
+        .card .card-header-info{
+            background: linear-gradient(60deg, #166b91, #0097a7);
+        }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >

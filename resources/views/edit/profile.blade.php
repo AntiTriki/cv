@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .btn.btn-info{
+            background-color: #166b91;
+        }
+        .card .card-header-info{
+            background: linear-gradient(60deg, #166b91, #0097a7);
+        }
+        .form-check .form-check-input:checked+.form-check-sign .check{
+            background: #0b2e13;
+        }
+    </style>
 
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
 <div class="container" >

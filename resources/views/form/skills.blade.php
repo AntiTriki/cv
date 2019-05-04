@@ -24,6 +24,12 @@
         .table-wrapper-scroll-y {
             display: block;
         }
+        .btn.btn-info{
+            background-color: #166b91;
+        }
+        .card .card-header-info{
+            background: linear-gradient(60deg, #166b91, #0097a7);
+        }
     </style>
 
     {{--prueba--------------------------}}
