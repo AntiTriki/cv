@@ -74,10 +74,10 @@
                                         {{--<a href="{{route('/home/edit/profile/'.$usua->id.'')}}"  class="btn btn-primary">--}}
                                             {{--{{ __('Atrás') }}--}}
                                         {{--</a>--}}
-                                        <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}"  class="btn btn-primary">
+                                        <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}"  class="btn btn-info">
                                             {{ __('Cancelar') }}
                                         </a>
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-info">
                                             {{ __('Siguiente') }}
                                         </button>
                                     </div>

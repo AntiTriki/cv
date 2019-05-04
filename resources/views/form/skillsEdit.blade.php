@@ -106,10 +106,10 @@
                                 </div>
                                 <div class="form-group row mb-0 py-2">
                                     <div class="col-md-12 text-center ">
-                                        <a href="{{url('/home/skills/'.$level->form_id.'')}}" class="btn btn-primary">
+                                        <a href="{{url('/home/skills/'.$level->form_id.'')}}" class="btn btn-info">
                                             {{ __('Cancelar') }}
                                         </a>
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-info">
                                             {{ __('Guardar') }}
                                         </button>
                                     </div>

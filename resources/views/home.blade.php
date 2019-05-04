@@ -25,7 +25,7 @@
                                         <i class="material-icons">camera_alt</i>
                                     </a>
                                 </h3>
-                                <h6>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</h6>
+                                <h4 class="title"><strong>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</strong></h4>
                             </div>
 
                         </div>
@@ -85,7 +85,7 @@
                 <div class="col-sm-8 text-center">
                     <div class="container">
                         <br>
-                    <h4>Mi Curriculum</h4>
+                        <h3 class="title"><strong>Mi Curriculum</strong></h3>
                     </div>
                     <table class="table  table-sm">
                         <tbody style="text-align: left;">
@@ -152,7 +152,7 @@
                     <br>
                     <br>
                     <div class="container">
-                        <h4>Mis Postulaciones</h4>
+                        <h3 class="title"><strong>Mis postulaciones</strong></h3>
                         <a href=""  rel="tooltip" class=" btn btn-info  btn-round">
                             <i class="material-icons">add</i> Agregar
                         </a>

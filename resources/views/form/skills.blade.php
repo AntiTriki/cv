@@ -41,7 +41,7 @@
 
 
 
-    <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
+    <div class="page-header header-filter" style="background-image: url({{asset('img/mientra.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-md-9">
@@ -52,7 +52,7 @@
                             <form class="form-horizontal" method="POST" action="{{ url('/home/skills/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
-                                <a  class="btn btn-primary btn-fab btn-fab-mini btn-round create-modal" style="color: white">
+                                <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
                                 <div class="form-row">
@@ -80,7 +80,7 @@
                                                         @endforeach
 
                                                     <td class="td-actions text-right">
-                                                        <a href="{{ url('/home/skillsEdit/'.$levels->id.'') }}" class="btn btn-primary btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
+                                                        <a href="{{ url('/home/skillsEdit/'.$levels->id.'') }}" class="btn btn-info btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
                                                     </td>
                                     </tr>
                                         @empty
@@ -92,11 +92,11 @@
                     </div>
                     <div class="form-group row mb-0 py-1">
                         <div class="col-md-12 text-center ">
-                            <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-primary">
+                            <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-info">
                                 {{ __('Atras') }}
                             </a>
 
-                            <a href="{{url('/home/form/title/'.$form->id.'')}}" class="btn btn-primary">
+                            <a href="{{url('/home/form/title/'.$form->id.'')}}" class="btn btn-info">
                                 Siguiente
                             </a>
                             {{--<button type="submit" class="btn btn-primary">--}}
@@ -190,7 +190,7 @@
                         <div class="modal-footer">
                                 <div class="col-md-12 text-center ">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary add">Guardar</button>
+                                    <button type="submit" class="btn btn-info add">Guardar</button>
                                 </div>
                         </div>
                     </form>
