@@ -80,7 +80,4 @@ class EnterpriseController extends Controller
         return back();
     }
 
-    public function mientras(){
-        return view('form.jobs');
-    }
 }

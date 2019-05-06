@@ -15,7 +15,6 @@
 
             <div class="container-fluid">
                 <div class="row content">
-
                     <div class="col-sm-12">
                         <div class="profile">
                             <div class="col-md-12 text-left ">
@@ -24,76 +23,42 @@
                             </a>
                             </div>
                             <br>
-                            <div class="row">
-                                <div class="col-md-6">
+                            @foreach($job as $jo)
+                            <div class="row justify-content-center">
+                                <div class="col-md-9">
                                         <div class="card">
                                             <div class="card-header card-header-text card-header-info">
                                                 <div class="card-text">
-                                                    <h4 class="card-title">Encargado de mantenimiento</h4>
+                                                    <h4 class="card-title">{{$jo-> occupation}} - {{$jo-> city}}</h4>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                Tecnico superior en mantenimientos de equipo medico
-                                                1 año de experiencia cargos similares
-                                                <a href=""  class="btn btn-success"> Postularse
+                                                {{$jo->description}}
+                                                <a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles
                                                 </a>
                                             </div>
                                         </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-header card-header-text card-header-info">
-                                            <div class="card-text">
-                                                <h4 class="card-title">Auxiliar Logistica</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            Tecnico superior en mantenimientos de equipo medico
-                                            1 año de experiencia cargos similares
-                                            <a href=""  class="btn btn-success"> Postularse
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{--<div class="col-md-6">--}}
+                                    {{--<div class="card">--}}
+                                        {{--<div class="card-header card-header-text card-header-info">--}}
+                                            {{--<div class="card-text">--}}
+                                                {{--<h4 class="card-title">{{$jo-> occupation}}</h4>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="card-body">--}}
+                                            {{--Tecnico superior en mantenimientos de equipo medico--}}
+                                            {{--1 año de experiencia cargos similares--}}
+                                            {{--<a href=""  class="btn btn-success"> Postularse--}}
+                                            {{--</a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-header card-header-text card-header-info">
-                                            <div class="card-text">
-                                                <h4 class="card-title">Cobrador de tiendas</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            Tecnico superior en mantenimientos de equipo medico
-                                            1 año de experiencia cargos similares
-                                            <a href=""  class="btn btn-success"> Postularse
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-header card-header-text card-header-info">
-                                            <div class="card-text">
-                                                <h4 class="card-title">Reponedor Almacen</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            Tecnico superior en mantenimientos de equipo medico
-                                            1 año de experiencia cargos similares
-                                            <a href=""  class="btn btn-success"> Postularse
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

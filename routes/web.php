@@ -60,8 +60,10 @@ Route::post('/home/form/enterprise/{id}', 'EnterpriseController@create');
 Route::get('/home/form/enterpriseEdit/{id}', 'EnterpriseController@edit');
 Route::post('/home/form/enterpriseEdit/{id}', 'EnterpriseController@update');
 
-//Trabajos
-Route::get('/home/form/jobs', 'EnterpriseController@mientras');
+//Trabajos Listas
+Route::get('/home/form/jobs', 'JobsController@index');
+//Mostrar Trabajo
+Route::get('/home/form/jobDetail/{id}', 'JobsController@show');
 
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado
