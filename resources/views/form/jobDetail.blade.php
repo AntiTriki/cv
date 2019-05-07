@@ -26,6 +26,10 @@
                                 </a>
                             </div>
                             <br>
+                            <form class="form-horizontal" method="POST" action="{{ url('/home/form/jobDetail/'.$job->id.'') }}">
+                                {{ csrf_field() }}
+                                <input type="text" name="idjob" id="idjob" value="{{$job->id}}">
+                                <input type="text" name="idus" id="idus" value="{{ Auth::user()->id }}">
                             <div class="col-sm-12 text-center">
                                 <div class="container ">
                             <table id="tablat" class="table table-responsive ">
@@ -70,6 +74,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

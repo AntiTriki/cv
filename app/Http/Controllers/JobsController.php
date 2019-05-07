@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class JobsController extends Controller
 {
@@ -16,7 +17,7 @@ class JobsController extends Controller
         return view('form.jobs',compact('job','cat'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -26,8 +27,9 @@ class JobsController extends Controller
         //
     }
 
-    public function show($id)
+    public function show($id,Request $request)
     {
+
         $job = Jobs::findOrFail($id);
         $re = DB::table('requirements')->get();
         $cat = DB::table('categories')->get();

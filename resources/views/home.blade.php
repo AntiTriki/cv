@@ -131,40 +131,41 @@
                     </table>
                     <br>
                     <div class="container">
-                        <h3 class="title"><strong>Mis postulaciones</strong></h3>
+                        <h3 class="title"><strong>Mi postulación</strong></h3>
                     </div>
                     <table class="table table-sm">
                         <tbody style="text-align: left;">
-                        @if (isset ($pos))
+                        @forelse($pos as $post)
                             <tr>
                                 <td>Cargo</td>
+                                {{--<td style="color: #000000">{{ $post->form_id }}</td>--}}
                                 @foreach($jo as $job)
-                                    @if($job->id == $pos->job_id)
+                                    @if($post->jobs_id == $job->id)
                                         <td style="color: #000000">{{ $job->occupation }}</td>
                                     @endif
                                 @endforeach
                             </tr>
                             <tr>
-                                <td>Descripcion</td>
-                                <td style="color: #000000">{{ $cv->description }}</td>
+                                <td>Tipo de contrato</td>
+                                {{--<td style="color: #000000">{{ $post->form_id }}</td>--}}
+                                @foreach($jo as $job)
+                                    @if($post->jobs_id == $job->id)
+                                        <td style="color: #000000">{{ $job->time_job }}</td>
+                                    @endif
+                                @endforeach
                             </tr>
                             <tr>
-                                <td>Disponibilidad</td>
-                                <td style="color: #000000">{{ $cv->available_job }}</td>
+                                <td>Ciudad</td>
+                                {{--<td style="color: #000000">{{ $post->form_id }}</td>--}}
+                                @foreach($jo as $job)
+                                    @if($post->jobs_id == $job->id)
+                                        <td style="color: #000000">{{ $job->city }}</td>
+                                    @endif
+                                @endforeach
                             </tr>
-                            <tr>
-                                <td>Viaje</td>
-                                <td style="color: #000000">{{ $cv->travel ? 'Si dispone' : 'No dispone'}}</td>
-                            </tr>
-                            <tr>
-                                <td>Salario</td>
-                                <td style="color: #000000">{{$cv->salary }}</td>
-                            </tr>
-                        @else
-                            <h5 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulaciones</h5>
-
-                        @endif
-
+                        @empty
+                            <h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulacion</h4>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>

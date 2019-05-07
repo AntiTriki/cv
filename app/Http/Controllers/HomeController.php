@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -18,9 +19,9 @@ class HomeController extends Controller
     {
         $id_user=Auth::user()->id;
         $cv = Form::where('user_id', '=', $id_user)->first();
-        $pos = DB::table('postulations')->where('form_id',$cv)->get();
+        $pos = DB::table('postulations')->where('form_id',$cv->id)->get();
         $jo = DB::table('jobs')->get();
-        return view('home', ['cv' => $cv],compact('pos','jo'));
+        return view('home', ['cv'=>$cv,'jo'=>$jo,'pos'=>$pos]);
     }
 
     public function redirect (Request $request){
