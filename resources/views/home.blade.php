@@ -129,78 +129,44 @@
 
                         </tbody>
                     </table>
-                    {{--<table class="table table-sm">--}}
-                        {{--<thead>--}}
-                        {{--<tr>--}}
-
-                            {{--<th style="width: 20%" >CV</th>--}}
-
-                            {{--<th class="text-right">Última edición</th>--}}
-                            {{--<th class="text-right">Acciones</th>--}}
-                        {{--</tr>--}}
-                        {{--</thead>--}}
-                        {{--<tbody>--}}
-                        {{--@foreach ($forms as $form)--}}
-                        {{--<tr>--}}
-
-                            {{--<td  class="contenido">{{$form->general}}</td>--}}
-
-                            {{--<td class="text-right">{{$form->updated_at->format('d/m/Y')}}</td>--}}
-                            {{--<td class="td-actions text-right">--}}
-                                {{--<a href=""  class="btn btn-info btn-fab btn-fab-mini btn-round">--}}
-                                    {{--<i class="material-icons">visibility</i>--}}
-                                {{--</a>--}}
-                                {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
-                                    {{--<i class="material-icons">edit</i>--}}
-                                {{--</button>--}}
-                                {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
-                                    {{--<i class="material-icons">close</i>--}}
-                                {{--</button>--}}
-                            {{--</td>--}}
-                        {{--</tr>--}}
-                        {{--@endforeach--}}
-                        {{--</tbody>--}}
-                    {{--</table>--}}
                     <br>
                     <div class="container">
                         <h3 class="title"><strong>Mis postulaciones</strong></h3>
-                        {{--<a href=""  rel="tooltip" class=" btn btn-info  btn-round">--}}
-                            {{--<i class="material-icons">add</i> Agregar--}}
-                        {{--</a>--}}
                     </div>
-                    {{--<table class="table table-sm">--}}
-                        {{--<thead>--}}
-                        {{--<tr>--}}
+                    <table class="table table-sm">
+                        <tbody style="text-align: left;">
+                        @if (isset ($pos))
+                            <tr>
+                                <td>Cargo</td>
+                                @foreach($jo as $job)
+                                    @if($job->id == $pos->job_id)
+                                        <td style="color: #000000">{{ $job->occupation }}</td>
+                                    @endif
+                                @endforeach
+                            </tr>
+                            <tr>
+                                <td>Descripcion</td>
+                                <td style="color: #000000">{{ $cv->description }}</td>
+                            </tr>
+                            <tr>
+                                <td>Disponibilidad</td>
+                                <td style="color: #000000">{{ $cv->available_job }}</td>
+                            </tr>
+                            <tr>
+                                <td>Viaje</td>
+                                <td style="color: #000000">{{ $cv->travel ? 'Si dispone' : 'No dispone'}}</td>
+                            </tr>
+                            <tr>
+                                <td>Salario</td>
+                                <td style="color: #000000">{{$cv->salary }}</td>
+                            </tr>
+                        @else
+                            <h5 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulaciones</h5>
 
-                            {{--<th style="width: 20%" >Oferta</th>--}}
+                        @endif
 
-                            {{--<th class="text-right">Última edición</th>--}}
-                            {{--<th class="text-right">Acciones</th>--}}
-                        {{--</tr>--}}
-                        {{--</thead>--}}
-                        {{--<tbody>--}}
-                        {{--@foreach ($forms as $form)--}}
-                            {{--<tr>--}}
-
-                                {{--<td  class="contenido"></td>--}}
-
-                                {{--<td class="text-right">21/12/2018</td>--}}
-                                {{--<td class="td-actions text-right">--}}
-                                    {{--<button type="button" rel="tooltip" class="btn btn-info btn-fab btn-fab-mini btn-round">--}}
-                                        {{--<i class="material-icons">person</i>--}}
-                                    {{--</button>--}}
-                                    {{--<button type="button" rel="tooltip" class="btn btn-success btn-fab btn-fab-mini btn-round">--}}
-                                        {{--<i class="material-icons">edit</i>--}}
-                                    {{--</button>--}}
-                                    {{--<button type="button" rel="tooltip" class="btn btn-danger btn-fab btn-fab-mini btn-round">--}}
-                                        {{--<i class="material-icons">close</i>--}}
-                                    {{--</button>--}}
-                                {{--</td>--}}
-                            {{--</tr>--}}
-                        {{--@endforeach--}}
-                        {{--</tbody>--}}
-                    {{--</table>--}}
-
+                        </tbody>
+                    </table>
                 </div>
         </div>
             </div>

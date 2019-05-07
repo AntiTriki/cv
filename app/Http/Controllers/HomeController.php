@@ -18,7 +18,9 @@ class HomeController extends Controller
     {
         $id_user=Auth::user()->id;
         $cv = Form::where('user_id', '=', $id_user)->first();
-        return view('home', ['cv' => $cv]);
+        $pos = DB::table('postulations')->where('form_id',$cv)->get();
+        $jo = DB::table('jobs')->get();
+        return view('home', ['cv' => $cv],compact('pos','jo'));
     }
 
     public function redirect (Request $request){

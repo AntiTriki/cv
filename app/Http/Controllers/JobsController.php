@@ -29,8 +29,9 @@ class JobsController extends Controller
     public function show($id)
     {
         $job = Jobs::findOrFail($id);
+        $re = DB::table('requirements')->get();
         $cat = DB::table('categories')->get();
-        return view('form.jobDetail',compact('job','cat'));
+        return view('form.jobDetail',compact('job','cat','re'));
     }
 
     public function edit(Jobs $jobs)

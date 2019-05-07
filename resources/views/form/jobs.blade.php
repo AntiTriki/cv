@@ -33,9 +33,8 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                {{$jo->description}}
-                                                <a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles
-                                                </a>
+                                                {{$jo->description}} <br>
+                                                <a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles</a>
                                             </div>
                                         </div>
                                 </div>

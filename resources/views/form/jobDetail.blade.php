@@ -8,6 +8,9 @@
         .card .card-header-info{
             background: linear-gradient(60deg, #166b91, #0097a7);
         }
+        .btn.btn-info{
+            background-color: #166b91;
+        }
     </style>
     <div class="page-header header-filter" data-parallax="true" style="background-image: url({{url('img/HP_background.jpg')}});"></div>
     <div class="main main-raised">
@@ -23,22 +26,50 @@
                                 </a>
                             </div>
                             <br>
-
-                            <table class="table table-responsive table-sm">
+                            <div class="col-sm-12 text-center">
+                                <div class="container ">
+                            <table id="tablat" class="table table-responsive ">
                                 <thead>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class="text-left" style="color: #000000; width: 30%;">Ciudad: {{ $job->city }} <br> Cargo: {{ $job->occupation }}</td>
-                                    {{--<td style="color: #000000; width: 50%;">Cargo: {{ $job->occupation }}</td>--}}
-                                    <td style="color: #000000;width: 40%;">Tipo de contrato: {{ $job->time_job }}</td>
+                                    <td class="text-left" style="color: #000000; width: 30%;"><h4 class="card-title"> Cargo: {{ $job->occupation }} <br>Ciudad: {{ $job->city }} </h4></td>
+                                    <td class="text-left" style="color: #000000;width: 40%;"><h4 class="card-title"> Tipo de contrato: {{ $job->time_job }}<br> Valido hasta: {{date('d-m-Y', strtotime($job->validity))}}</h4></td>
                                 </tr>
                                 <tr>
-                                    <td>Descripcion</td>
-                                    <td style="color: #000000">{{ $job->description }}</td>
+                                    <td class="text-left" style="color: #000000; width: 30%;"><h4> Descripción del puesto</h4></td>
+                                    <td class="text-left" style="color: #000000;width: 40%;"><h4>{{ $job->description }}</h4></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left" style="color: #000000; width: 30%;"><h4> Roles</h4></td>
+                                    <td class="text-left" style="color: #000000;width: 40%;"><h4>{{ $job->roles }}</h4></td>
                                 </tr>
                                 </tbody>
                             </table>
+                                    <hr>
+                                <div class="col-sm-12 text-center">
+                                    <h4 class="text-left" style="color: #000000; width: 30%;"> Requisitos</h4>
+
+                                    @foreach($re as $req)
+                                        @if($job->id == $req->job_id)
+                                            <ul class="text-left" style="color: #000000;width: 80%;">
+                                                <h5 style="padding-left: 55%">
+                                                    <li> {{ $req->name }}</li>
+                                                </h5>
+                                            </ul>
+                                        @endif
+                                    @endforeach
+                                    </div>
+
+                                </div>
+                                <div class="form-group row mb-0 py-1">
+                                    <div class="col-md-12 text-center ">
+                                        <a href=""  class="btn btn-info">
+                                            {{ __('Postularse') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
