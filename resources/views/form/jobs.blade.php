@@ -24,6 +24,8 @@
                             </div>
                             <br>
                             @foreach($job as $jo)
+                                <form class="form-horizontal" method="POST" action="{{ url('/home/form/jobs/jobDetail/'.$jo->id)}}">
+                                    {{ csrf_field() }}
                             <div class="row justify-content-center">
                                 <div class="col-md-9">
                                         <div class="card">
@@ -45,11 +47,13 @@
                                                         </ul>
                                                     @endif
                                                 @endforeach
-                                                <a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles</a>
+                                                {{--<a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles</a>--}}
+                                                <button type="submit" class="btn btn-success">{{ __('Detalles') }}</button>
                                             </div>
                                         </div>
                                 </div>
                             </div>
+                                </form>
                             @endforeach
                         </div>
                     </div>

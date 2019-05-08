@@ -33,7 +33,7 @@
 
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="POST" action="{{ url('/home/form/index/'.$form->id.'') }}">
-                                {{ csrf_field() }}
+                                    {{ csrf_field() }}
                                 <div class="form-row py-2">
                                     <div class="col-md-12">
                                         <input id="general" type="text" value="{{ $form->general }}" class="form-control" name="general" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>

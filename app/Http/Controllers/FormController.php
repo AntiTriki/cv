@@ -25,19 +25,6 @@ class FormController extends Controller
         return view('form.curriculum',['usuario' => $usuario]);
     }
 
-//    public function index() ------------antes crear nuevo
-//    {
-////        return("manda");
-//
-//        $id = Session('usu-id');
-////      $form = Form::find($id);
-//        $formi = Session('for_id');
-//        $levels = DB::table('levels')->where('form_id','=', $formi)->get();
-//        $usuario = DB::table('forms')->where('user_id','=',$id)->get();
-////        return view('form.index',['usuario' => $usuario],['levels' => $levels]);
-//        return view('form.curriculum',['usuario' => $usuario],['levels' => $levels]);
-//    }
-
     public function index2($id)
     {
         //$id = Session('usu-id');

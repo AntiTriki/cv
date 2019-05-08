@@ -90,7 +90,7 @@
 
                 <div class="col-sm-8 text-center">
                     <div class="container">
-                        <h3 class="title"><strong>Oferta de Trabajos</strong> <a href="{{url('/home/form/jobs/')}}" class="btn btn-info btn-round">
+                        <h3 class="title"><strong>Oferta de Trabajos</strong> <a href="{{url('/home/form/jobs')}}" class="btn btn-info btn-round">
                                 <i class="material-icons">search</i> Buscar
                             </a></h3>
                     </div>

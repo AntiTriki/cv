@@ -62,8 +62,10 @@ Route::post('/home/form/enterpriseEdit/{id}', 'EnterpriseController@update');
 
 //Trabajos Listas
 Route::get('/home/form/jobs', 'JobsController@index');
+Route::get('/home/form/jobDetail/{id}', 'JobsController@create');
 //Mostrar Trabajo
-Route::get('/home/form/jobDetail/{id}', 'JobsController@show');
+Route::get('/home/form/jobs/jobDetail/{id}', 'JobsController@edit');
+Route::post('/home/form/jobDetail/{id}', 'JobsController@update');
 
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado
