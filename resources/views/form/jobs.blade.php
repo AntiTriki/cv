@@ -33,27 +33,22 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                {{$jo->description}} <br>
+                                                <h5>Tipo de contrato:{{$jo->time_job}} &nbsp;&nbsp; Valido Hasta:{{date('d-m-Y', strtotime($jo->validity))}}<br>
+                                                Descripcion:{{$jo->description}} </h5><br>
+                                                <h5>Roles:{{ $jo->roles }}&nbsp;&nbsp;
+                                                    Requisitos:</h5>@foreach($re as $req)
+                                                    @if($jo->id == $req->job_id)
+                                                        <ul class="text-left" style="color: #000000;width: 80%;">
+                                                            <h5 style="padding-left: 55%">
+                                                                <li> {{ $req->name }}</li>
+                                                            </h5>
+                                                        </ul>
+                                                    @endif
+                                                @endforeach
                                                 <a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles</a>
                                             </div>
                                         </div>
                                 </div>
-
-                                {{--<div class="col-md-6">--}}
-                                    {{--<div class="card">--}}
-                                        {{--<div class="card-header card-header-text card-header-info">--}}
-                                            {{--<div class="card-text">--}}
-                                                {{--<h4 class="card-title">{{$jo-> occupation}}</h4>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="card-body">--}}
-                                            {{--Tecnico superior en mantenimientos de equipo medico--}}
-                                            {{--1 año de experiencia cargos similares--}}
-                                            {{--<a href=""  class="btn btn-success"> Postularse--}}
-                                            {{--</a>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                             </div>
                             @endforeach
                         </div>

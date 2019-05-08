@@ -209,9 +209,8 @@ class FormController extends Controller
             $post->form_id = $request->input('form_id');
             $post->nombre_id = $request->input('nivel');
             $post->save();
-            return back();
 
-//        return redirect('enterprise');
+            return back();
     }
 
 }

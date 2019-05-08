@@ -26,10 +26,11 @@
                                 </a>
                             </div>
                             <br>
-                            <form class="form-horizontal" method="POST" action="{{ url('/home/form/jobDetail/'.$job->id.'') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/home/form/jobDetail/'.$job->id.'') }}">
                                 {{ csrf_field() }}
                                 <input type="text" name="idjob" id="idjob" value="{{$job->id}}">
                                 <input type="text" name="idus" id="idus" value="{{ Auth::user()->id }}">
+                                {{--<input type="text" name="idform" id="idform" value="{{$form->id}}">--}}
                             <div class="col-sm-12 text-center">
                                 <div class="container ">
                             <table id="tablat" class="table table-responsive ">
@@ -64,11 +65,11 @@
                                         @endif
                                     @endforeach
                                     </div>
-
                                 </div>
-                                <div class="form-group row mb-0 py-1">
-                                    <div class="col-md-12 text-center ">
-                                        <a href=""  class="btn btn-info">
+                                <div class="modal-footer">
+                                    <div class="col-md-12 text-center">
+                                        {{--<button type="submit" class="btn btn-info">postularse</button>--}}
+                                        <a type="button" class="btn btn-info">
                                             {{ __('Postularse') }}
                                         </a>
                                     </div>
@@ -81,6 +82,36 @@
             </div>
         </div>
     </div>
+    {{--<script type="text/javascript">--}}
+        {{--$('.modal-footer').on('click', '.add', function() {--}}
+            {{--$.ajax({--}}
+                {{--type: 'POST',--}}
+                {{--data: {--}}
+                    {{--'idjob': $('#idjob').val(),--}}
+                    {{--'idus': $('#idus').val()--}}
+                {{--},--}}
+                {{--success: function(data) {--}}
+                    {{--$('.errorTitle').addClass('hidden');--}}
+
+                    {{--if ((data.errors)) {--}}
+                        {{--setTimeout(function () {--}}
+                            {{--$('#newskill').modal('show');--}}
+                            {{--toastr.error('Validation error!', 'Error Alert', {timeOut: 5000});--}}
+                        {{--}, 500);--}}
+
+                        {{--if (data.errors.name) {--}}
+                            {{--$('.errorTitle').removeClass('hidden');--}}
+                            {{--$('.errorTitle').text(data.errors.name);--}}
+
+                        {{--}--}}
+                    {{--}else {--}}
+                        {{--toastr.success('Successfully added Post!', 'Success Alert', {timeOut: 5000});--}}
+                        {{--$('#tabla').append("<tr><td>" + data.name + "</td><td>" + data.nivel + "</td></tr>");--}}
+                    {{--}--}}
+                {{--}--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
 
     <footer class="footer footer-default">
         <div class="container">

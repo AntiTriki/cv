@@ -105,14 +105,8 @@
                             <a href="{{url('/home/form/title/'.$form->id.'')}}" class="btn btn-info">
                                 Siguiente
                             </a>
-                            {{--<button type="submit" class="btn btn-primary">--}}
-                                        {{--{{ __('Siguiente') }}--}}
-                                        {{--</button>--}}
-                                        {{--<button type="button" href="{{url('enterprise/')}}" class="btn btn-primary">--}}
-                                            {{--{{ __('Siguiente') }}--}}
-                                            {{--</button>--}}
-                                        </div>
-                                    </div>
+                        </div>
+                    </div>
                                 </form>
                             </div>
                         </div>
@@ -120,48 +114,6 @@
                 </div>
             </div>
         </div>
-
-
-    <!-- Skills edit -->
-    {{--<div class="modal fade" id="linkEditorModal">--}}
-        {{--<div class="modal-dialog">--}}
-            {{--<div class="modal-content">--}}
-                {{--<div class="modal-header">--}}
-                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
-                    {{--<h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Editar Registro de Conocimientos y habilidades</h5>--}}
-                {{--</div>--}}
-                {{--<div class="modal-body">--}}
-                    {{--<form id="modalFormData" name="modalFormData" class="form-horizontal form-material">--}}
-                        {{--{!! csrf_field() !!}--}}
-                        {{--<div class="panel-body">--}}
-                            {{--<input type="text" name="form_id" id="form_id" >--}}
-
-                            {{--<div class="form-group col-md-12">--}}
-                                {{--<label for="name" class="control-label">Nombre</label>--}}
-                                {{--<input type="text" class="form-control" id="Name" name="Name" maxlength="50" required>--}}
-                            {{--</div>--}}
-                            {{--<div class="form-group col-md-12">--}}
-                                {{--<label for="name" class="control-label">Nivel</label>--}}
-                                {{--<select name="Nivel" class="form-control" id="Nivel">--}}
-                                    {{--<option value="1">--Seleccione Nivel--</option>--}}
-                                    {{--@foreach($Nivel as $Nivels)--}}
-                                        {{--<option value="{{$Nivels->id}}" {{$Nivels->id==$levels->nombre_id ? 'selected':'' }}>{{$Nivels->nombre}}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--</form>--}}
-                        {{--<div class="modal-footer">--}}
-                            {{--<div class="col-md-12 text-center ">--}}
-                                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>--}}
-                                {{--<button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</form>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
         <!-- Skills new -->
         <div class="modal fade" id="newskill">
@@ -172,7 +124,6 @@
                         <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de Conocimientos y habilidades</h5>
                     </div>
                     <div class="modal-body">
-                        {{--<form role="form" method="post" action="{{url('skills/guardar')}}" class="form-horizontal form-material">--}}
                     <form role="form" method="post" action="{{ url('/home/skills/'.$form->id.'') }}" class="form-horizontal form-material">
                         {!! csrf_field() !!}
                         <div class="panel-body">
@@ -194,7 +145,7 @@
                         </div>
                         {{--</form>--}}
                         <div class="modal-footer">
-                                <div class="col-md-12 text-center ">
+                                <div class="col-md-12 text-center">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn btn-info add">Guardar</button>
                                 </div>
@@ -241,6 +192,4 @@
                 });
             });
     </script>
-
-    {{--@include('form.skillsEdit')--}}
 @endsection
