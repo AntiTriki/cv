@@ -133,33 +133,24 @@
                     <div class="container">
                         <h3 class="title"><strong>Mi postulación</strong></h3>
                     </div>
-                    <table class="table table-sm">
+                    <table class="table table-light">
                         <tbody style="text-align: left;">
                         @forelse($pos as $post)
                             <tr>
-                                <td>Cargo</td>
-                                {{--<td style="color: #000000">{{ $post->form_id }}</td>--}}
+
                                 @foreach($jo as $job)
                                     @if($post->jobs_id == $job->id)
-                                        <td style="color: #000000">{{ $job->occupation }}</td>
+                                        <td style="color: #000000">Cargo: {{ $job->occupation }}</td>
                                     @endif
                                 @endforeach
-                            </tr>
-                            <tr>
-                                <td>Tipo de contrato</td>
-                                {{--<td style="color: #000000">{{ $post->form_id }}</td>--}}
                                 @foreach($jo as $job)
                                     @if($post->jobs_id == $job->id)
-                                        <td style="color: #000000">{{ $job->time_job }}</td>
+                                        <td style="color: #000000">Tipo de contrato: {{ $job->time_job }}</td>
                                     @endif
                                 @endforeach
-                            </tr>
-                            <tr>
-                                <td>Ciudad</td>
-                                {{--<td style="color: #000000">{{ $post->form_id }}</td>--}}
                                 @foreach($jo as $job)
                                     @if($post->jobs_id == $job->id)
-                                        <td style="color: #000000">{{ $job->city }}</td>
+                                        <td style="color: #000000">Ciudad: {{ $job->city }}</td>
                                     @endif
                                 @endforeach
                             </tr>

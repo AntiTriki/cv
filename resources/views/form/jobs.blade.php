@@ -35,20 +35,9 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5>Tipo de contrato:{{$jo->time_job}} &nbsp;&nbsp; Valido Hasta:{{date('d-m-Y', strtotime($jo->validity))}}<br>
-                                                Descripcion:{{$jo->description}} </h5><br>
-                                                <h5>Roles:{{ $jo->roles }}&nbsp;&nbsp;
-                                                    Requisitos:</h5>@foreach($re as $req)
-                                                    @if($jo->id == $req->job_id)
-                                                        <ul class="text-left" style="color: #000000;width: 80%;">
-                                                            <h5 style="padding-left: 55%">
-                                                                <li> {{ $req->name }}</li>
-                                                            </h5>
-                                                        </ul>
-                                                    @endif
-                                                @endforeach
-                                                {{--<a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles</a>--}}
-                                                <button type="submit" class="btn btn-success">{{ __('Detalles') }}</button>
+                                                <h5>Tipo de contrato: {{$jo->time_job}} &nbsp;&nbsp;&nbsp; Valido Hasta: {{date('d-m-Y', strtotime($jo->validity))}}<br>
+                                                Descripcion: {{$jo->description}} </h5><br>
+                                                <a href="{{url('/home/form/jobDetail/'.$jo->id.'')}}"  class="btn btn-success"> Detalles</a>
                                             </div>
                                         </div>
                                 </div>

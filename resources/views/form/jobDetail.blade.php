@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('body-class','profile-page')
 @section('content')
+    <script>
+        setTimeout(function() {
+            $("#alert1").fadeOut();
+        },3000);
+    </script>
+
     <style>
         .btn.btn-success{
             background-color: #3caf78;
@@ -26,11 +32,24 @@
                                 </a>
                             </div>
                             <br>
+                            {{-----------------------alerta---------------------}}
+                            @if ($message = Session::get('success'))
+                                <div id="alert1" class="alert alert-success alert-block" style="margin-right: 20%; margin-left: 20%;">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @endif
+                            @if ($message = Session::get('error'))
+                                <div id="alert1" class="alert alert-danger alert-block" style="margin-right: 20%; margin-left: 20%;">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @endif
+                            {{-----------------------alerta---------------------}}
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/home/form/jobDetail/'.$job->id.'') }}">
                                 {{ csrf_field() }}
-                                <input type="text" name="idjob" id="idjob" value="{{$job->id}}">
-                                <input type="text" name="idus" id="idus" value="{{ Auth::user()->id }}">
-                                {{--<input type="text" name="idform" id="idform" value="{{$form->id}}">--}}
+                                <input type="hidden" name="idjob" id="idjob" value="{{$job->id}}">
+                                <input type="hidden" name="idus" id="idus" value="{{ Auth::user()->id }}">
                             <div class="col-sm-12 text-center">
                                 <div class="container ">
                             <table id="tablat" class="table table-responsive ">
@@ -68,10 +87,10 @@
                                 </div>
                                 <div class="modal-footer">
                                     <div class="col-md-12 text-center">
-                                        {{--<button type="submit" class="btn btn-info">postularse</button>--}}
-                                        <a type="button" class="btn btn-info">
-                                            {{ __('Postularse') }}
-                                        </a>
+                                        <button type="submit" class="btn btn-info">postularse</button>
+                                        {{--<a type="button" class="btn btn-info">--}}
+                                            {{--{{ __('Postularse') }}--}}
+                                        {{--</a>--}}
                                     </div>
                                 </div>
                             </div>
