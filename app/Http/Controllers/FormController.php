@@ -47,15 +47,8 @@ class FormController extends Controller
           return view('form.skills', compact('form','level','sk'),['Nivel' => $Nivel]);
     }
 
-    public function edit($id)  //falta revisar si logran funcionar
+    public function edit($id)
     {
-//        $form = Form::findOrFail($id); //busca el formulario correspondiente
-//        $sk = DB::table ('skills')->get();
-//        $level = Level::where('form_id',$id)->get(); //muestra los datos perteneciente al formulario (el primero)
-//        $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get(); //muestra los niveles (estaticos)--hacer despues
-//
-//        return view('form.skillsEdit', compact('form','level','sk'),['Nivel' => $Nivel]);
-
         $sk = DB::table ('skills')->get();
         $level = Level::findOrFail($id);
         $Nivel = DB::table('names')->whereIn('id',[1,2,3,4])->get();
@@ -88,7 +81,12 @@ class FormController extends Controller
 //        $level = DB::table ('levels')->where('form_id','=',$valorform)->value('levels.form_id');
 //        dd($level);
 //        return back();
-        return redirect('home/skills/'.$valorform); //al parecer funcionó XD
+        $notification = array(
+            'message' => 'I am a successful message!',
+            'alert-type' => 'success'
+        );
+//        return redirect('home/skills/'.$valorform)->with('success','Actualizacion Correcta');
+        return redirect('home/skills/'.$valorform)->with($notification);
     }
 
     public function store(Request $request)

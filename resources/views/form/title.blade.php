@@ -35,6 +35,8 @@
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
@@ -49,6 +51,29 @@
                                 <a class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
+                                {{-----------------------alerta---------------------}}
+                                <script>
+                                            @if(Session::has('message'))
+                                    var type = "{{ Session::get('alert-type', 'info') }}";
+                                    switch(type){
+                                        case 'info':
+                                            toastr.info("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'warning':
+                                            toastr.warning("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'success':
+                                            toastr.success("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'error':
+                                            toastr.error("{{ Session::get('message') }}");
+                                            break;
+                                    }
+                                    @endif
+                                </script>
                                 <div class="form-row">
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
                                         <table class="table table-sm w-auto" id="tabla">

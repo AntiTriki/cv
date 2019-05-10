@@ -31,7 +31,11 @@ class LevelController extends Controller
             'form_id' => $request->input('form_id')
         ]);
 
-        return back();
+        $notification = array(
+            'message' => 'Agregado Correctamente',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
     }
 
     public function store(Request $request)
@@ -58,6 +62,11 @@ class LevelController extends Controller
            'grade_id' => $request->input('grade_id')
         ]);
 
-        return redirect('home/form/title/'.$id);
+        $notification = array(
+            'message' => 'Modificado Correctamente',
+            'alert-type' => 'success'
+        );
+
+        return redirect('home/form/title/'.$id)->with($notification);
     }
 }

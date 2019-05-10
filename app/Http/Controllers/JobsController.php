@@ -23,6 +23,10 @@ class JobsController extends Controller
         $cat = DB::table('categories')->get();
         return view('form.jobs',compact('job','cat','re'));
     }
+    public function list(){
+        $job = DB::table('jobs')->get();
+        return view('form.listJob',compact('job'));
+    }
 
 //    public function create()
 //    {
@@ -43,15 +47,14 @@ class JobsController extends Controller
 //        return back()->with(compact('job','cat','re','form'));
     }
 
-    public function update($id, Request $request)
+    public function update($id)
     {
         $job = Jobs::findOrFail($id);
         $form = Form::where('user_id','=',Auth::user()->id)->value('id');
         $post = DB::table('postulations')->where('form_id',$form)->value('jobs_id');
-//        $lala = DB::table('postulations')->where('jobs_id',$post)->value('jobs_id');
-//        return "ass $lala";
+//        return "ass $post";
         if ($post > 0){
-            return back()->with('error','Ya postuló a este empleo');
+            return back()->with('error','El usuario ya tiene postulación');
         }else{
             DB::table('postulations')->insert([
                 'form_id' => $form,
@@ -60,9 +63,9 @@ class JobsController extends Controller
             return back()->with('success','Postulación Correcta!');
         }
 
-        
+
 //        $validator = Validator::make($request->all(), [
-//            'jobs_id' => 'required|unique:jobs'
+//            'jobs_id' => 'required|unique:postulations'
 //        ]);
 //        if ($validator->fails()) {
 //            return back()->with('error','Ya postuló a este empleo')

@@ -26,6 +26,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('home', 'HomeController@index')->name('home');
+Route::get('homeAdm', 'HomeController@admin')->name('home');
 //perfil de usuario
 Route::get('/home/edit/profile/{id}', 'UsuarioController@edit');
 Route::post('/home/edit/profile/{id}', 'UsuarioController@update');
@@ -62,6 +63,7 @@ Route::post('/home/form/enterpriseEdit/{id}', 'EnterpriseController@update');
 
 //Trabajos Listas
 Route::get('/home/form/jobs', 'JobsController@index');
+Route::get('/home/form/listJob', 'JobsController@list');
 //Route::get('/home/form/jobDetail/{id}', 'JobsController@create');
 //Mostrar Trabajo
 Route::get('/home/form/jobDetail/{id}', 'JobsController@edit');

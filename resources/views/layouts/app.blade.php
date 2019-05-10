@@ -50,8 +50,6 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-
-
 </head>
 <body class="@yield('body-class')">
 <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
@@ -106,14 +104,12 @@
         </div>
     </div>
 </nav>
-
 <main class=" wrapper">
             @yield('content')
         </main>
 
 </body>
         <!-- Scripts -->
-
         <script src="{{ asset('js/core/jquery.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/bootstrap.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/core/popper.min.js') }}" type="text/javascript"></script>

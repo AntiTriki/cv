@@ -31,6 +31,13 @@
             background: linear-gradient(60deg, #166b91, #0097a7);
         }
     </style>
+    {{--<script>--}}
+        {{--setTimeout(function() {--}}
+            {{--$("#alert1").fadeOut();--}}
+        {{--},3000);--}}
+    {{--</script>--}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
     {{--prueba--------------------------}}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -42,12 +49,7 @@
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
-
-
-    <div class="page-header header-filter" style="background-image: url({{asset('img/mientra.jpg')}}); background-size: cover; background-position: top center;">
+    <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-md-9">
@@ -61,6 +63,29 @@
                                 <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
+                                {{-----------------------alerta---------------------}}
+                                <script>
+                                            @if(Session::has('message'))
+                                    var type = "{{ Session::get('alert-type', 'info') }}";
+                                    switch(type){
+                                        case 'info':
+                                            toastr.info("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'warning':
+                                            toastr.warning("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'success':
+                                            toastr.success("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'error':
+                                            toastr.error("{{ Session::get('message') }}");
+                                            break;
+                                    }
+                                    @endif
+                                </script>
                                 <div class="form-row">
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar" >
                                         <table class="table table-sm" id="tabla">

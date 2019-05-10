@@ -23,6 +23,14 @@ class HomeController extends Controller
         $jo = DB::table('jobs')->get();
         return view('home', ['cv'=>$cv,'jo'=>$jo,'pos'=>$pos]);
     }
+    public function admin( )
+    {
+//        $id_user=Auth::user()->id;
+//        $cv = Form::where('user_id', '=', $id_user)->first();
+        $pos = DB::table('postulations')->get();
+        $jo = DB::table('jobs')->get();
+        return view('homeAdm', ['jo'=>$jo,'pos'=>$pos]);
+    }
 
     public function redirect (Request $request){
         $id = $request->input('id');
