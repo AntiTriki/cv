@@ -25,15 +25,47 @@ class JobsController extends Controller
     }
     public function list(){
         $job = DB::table('jobs')->get();
-        return view('form.listJob',compact('job'));
+        $cat = DB::table('categories')->get();
+        return view('form.listJob',compact('job','cat'));
     }
 
-//    public function create()
-//    {
-//        $job = DB::table('jobs')->get();
-////        return "redi $job->id";
-//        return redirect('/home/form/jobs/jobDetail'.$job->id);
-//    }
+    public function create(Request $request)
+    {
+        DB::table('jobs')->insert([
+            'city' => $request->input('city'),
+            'occupation' => $request->input('occupation'),
+            'time_job' => $request->input('time_job'),
+            'published' => $request->input('published'),
+            'validity' => $request->input('validity'),
+            'description' => $request->input('description'),
+            'roles' => $request->input('roles'),
+            'category_id' => $request->input('category_id')
+        ]);
+        $notification = array(
+            'message' => 'Agregado Correctamente',
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
+    }
+
+    public function show($id){
+
+        $job = Jobs::findOrFail($id);
+        $re = DB::table('requirements')->get();
+        $cat = DB::table('categories')->get();
+        return view('form.jobEdit',compact('job','re','cat'));
+    }
+
+    public function updates(){
+
+    }
+
+    public function requirement( ){
+        $job = DB::table('jobs')->get();
+        $re = DB::table('requirements')->get();
+        return view('form.requirements',compact('job','re'));
+    }
 
     public function edit($id)
     {

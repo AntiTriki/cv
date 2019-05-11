@@ -18,7 +18,7 @@
                     <div class="col-sm-12">
                         <div class="profile">
                             <div class="col-md-12 text-left ">
-                            <a href="{{route('home')}}"  class="btn btn-success">
+                            <a href="{{url('/home')}}"  class="btn btn-success">
                                 <i class="material-icons">keyboard_backspace</i> Atras
                             </a>
                             </div>

@@ -32,8 +32,33 @@
             background: linear-gradient(60deg, #166b91, #0097a7);
         }
     </style>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    {{-----------------------alerta---------------------}}
+    <script>
+                @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        switch(type){
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
+
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+        @endif
+    </script>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
@@ -57,20 +82,25 @@
                                                 <th class="text-center">Ciudad</th>
                                                 <th class="text-center">Tipo Contrato</th>
                                                 <th class="text-center">Valido</th>
-                                                <th class="text-center"></th>
+                                                <th class="text-center" style="width: 20%"></th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @forelse ($job as $jo)
                                                 <tr>
                                                     <td class="text-left" style="width: 20%"> {{$jo->occupation}}</td>
-                                                    <td class="text-left"> {{$jo->category_id}}</td>
-                                                    <td class="text-left" style="width: 20%">{{$jo->city}}</td>
+                                                    @foreach($cat as $ca)
+                                                        @if($jo->category_id == $ca->id)
+                                                            <td class="text-center"> {{$ca->name}}</td>
+                                                        @endif
+                                                    @endforeach
+                                                    <td class="text-center" style="width: 20%">{{$jo->city}}</td>
                                                     <td class="text-center"> {{$jo->time_job}} </td>
                                                     <td class="text-center"> {{date('d-m-Y', strtotime($jo->validity))}} </td>
                                                     <td class="td-actions text-right">
-                                                        <a href="" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)"><i class="material-icons">edit</i></a>
-                                                        <a href="" class="btn btn-danger btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)"><i class="material-icons">delete_outline</i></a>
+                                                        <a href="{{url('/home/form/jobEdit/'.$jo->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Editar"><i class="material-icons">edit</i></a>
+                                                        <a href="{{url('/home/form/requirements/'.$jo->id.'')}}" class="btn btn-success btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Requisitos"><i class="material-icons">done</i></a>
+                                                        <a href="" class="btn btn-danger btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Eliminar"><i class="material-icons">delete_outline</i></a>
                                                     </td>
                                                 </tr>
                                             @empty
@@ -104,30 +134,58 @@
     </div>
     <!-- Skills new -->
     <div class="modal fade" id="newjob">
-        <div class="modal-dialog" >
+        <div class="modal-dialog modal-lg" >
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Registro de Conocimientos y habilidades</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" style="position: absolute;">Agregar oferta de trabajo</h5>
                 </div>
                 <div class="modal-body">
                     <form role="form" method="post" action="" class="form-horizontal form-material">
                         {!! csrf_field() !!}
-                        <div class="panel-body">
-                            <input type="hidden" name="form_id" id="form_id" value="">
+                        <div class="panel-body form-row py-2">
+                            {{--<input type="hidden" name="form_id" id="form_id" value="{{$form->id}}">--}}
 
-                            <div class="form-group col-md-12">
-                                <label for="name" class="control-label">Nombre</label>
-                                <input type="text" class="form-control" id="name" name="name" maxlength="50" value="" required>
+                            <div class="form-group col-md-4">
+                                <label for="occupation" class="control-label">Cargo</label>
+                                <input type="text" class="form-control" id="occupation" name="occupation" maxlength="100" value="" required>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="name" class="control-label">Nivel</label>
-
+                            <div class="form-group col-md-4">
+                                <label for="category" class="control-label">Categoria</label>
+                                <select name="category_id" class="form-control" id="category_id">
+                                    <option value="1">--Seleccione Categoria--</option>
+                                    @foreach($cat as $ca)
+                                        <option value="{{$ca->id}}">{{$ca->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="ciudad" class="control-label">Ciudad</label>
+                                <input type="text" class="form-control" id="city" name="city" maxlength="50" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="contrato" class="control-label">Tipo de contrato</label>
+                                <input type="text" class="form-control" id="time_job" name="time_job" maxlength="50" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="published" class="control-label">Publicado desde</label>
+                                <input type="date" class="form-control datetimepicker" id="published" name="published" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="valido" class="control-label">Valido hasta</label>
+                                <input type="date" class="form-control datetimepicker" id="validity" name="validity" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="roles" class="control-label">Funciones</label>
+                                <textarea type="text" class="form-control" id="roles" name="roles" maxlength="190" value="" required></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="descripcion" class="control-label">Descripcion</label>
+                                <textarea type="text" class="form-control" id="descripcion" name="description" maxlength="190" value="" required></textarea>
                             </div>
                         </div>
-                        {{--</form>--}}
-                        <div class="modal-footer">
-                            <div class="col-md-12 text-center">
+                        <div class="modal-footer" style="padding-bottom: 0px;padding-top: 0px;">
+                            <div class="col-md-12 text-center ">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-info add">Guardar</button>
                             </div>
@@ -149,16 +207,14 @@
                 {{--url: "{{url('/home/skills')}}"+'/'+id,--}}
                 // url: 'skills.guardar',
                 data: {
-                    'nombre_empresa': $('#nombre_empresa').val(),
-                    'nombre_jefe': $('#nombre_jefe').val(),
-                    'role': $('#role').val(),
-                    'mail_jefe': $('#mail_jefe').val(),
-                    'cargo': $('#cargo').val(),
-                    'cel_jefe': $('#cel_jefe').val(),
-                    'fecha_inicio': $('#fecha_inicio').val(),
-                    'fecha_fin': $('#fecha_fin').val(),
-                    'form_id': $('#form_id').val(),
-                    'descripcion': $('#descripcion').val()
+                    'occupation': $('#occupation').val(),
+                    'category_id': $('#category_id').val(),
+                    'city': $('#city').val(),
+                    'time_job': $('#time_job').val(),
+                    'published': $('#published').val(),
+                    'validity': $('#validity').val(),
+                    'roles': $('#roles').val(),
+                    'description': $('#description').val()
                 },
                 success: function(data) {
                     $('.errorTitle').addClass('hidden');

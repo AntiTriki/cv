@@ -36,7 +36,7 @@
             {{--$("#alert1").fadeOut();--}}
         {{--},3000);--}}
     {{--</script>--}}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
     {{--prueba--------------------------}}
@@ -56,8 +56,7 @@
                     <div class="card">
                         <div class="card-header"><h5>{{ __('Curriculum') }} {{$form->general}}</h5></div>
 
-                        <div class="card-body">
-                            <form class="form-horizontal" method="POST" action="{{ url('/home/skills/'.$form->id.'') }}">
+                        <div class="card-body"><form class="form-horizontal" method="POST" action="{{ url('/home/skills/'.$form->id.'') }}">
                                 @csrf
                                 {{ csrf_field() }}
                                 <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
@@ -104,35 +103,36 @@
                                                         @endif
                                                     @endforeach
 
-                                                        @foreach($Nivel as $Nivels)
-                                                            @if($levels->nombre_id == $Nivels->id)
+                                                    @foreach($Nivel as $Nivels)
+                                                        @if($levels->nombre_id == $Nivels->id)
                                                             <td class="text-center">{{$Nivels->nombre}} </td>
-                                                            @endif
-                                                        @endforeach
+                                                        @endif
+                                                    @endforeach
 
                                                     <td class="td-actions text-right">
                                                         <a href="{{ url('/home/skillsEdit/'.$levels->id.'') }}" class="btn btn-info btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>
                                                     </td>
-                                    </tr>
-                                        @empty
-                                            <div class="alert alert-danger" role="alert">No existen Datos</div>
-                                @endforelse
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-0 py-1">
-                        <div class="col-md-12 text-center ">
-                            <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-info">
-                                {{ __('Atras') }}
-                            </a>
+                                                </tr>
+                                            @empty
+                                                <div class="alert alert-danger" role="alert">No existen Datos</div>
+                                            @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-0 py-1">
+                                    <div class="col-md-12 text-center ">
+                                        <a href="{{url('/home/form/index/'.$form->id.'')}}"  class="btn btn-info">
+                                            {{ __('Atras') }}
+                                        </a>
 
-                            <a href="{{url('/home/form/title/'.$form->id.'')}}" class="btn btn-info">
-                                Siguiente
-                            </a>
-                        </div>
-                    </div>
-                                </form>
+                                        <a href="{{url('/home/form/title/'.$form->id.'')}}" class="btn btn-info">
+                                            Siguiente
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+
                             </div>
                         </div>
                     </div>

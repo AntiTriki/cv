@@ -63,8 +63,14 @@ Route::post('/home/form/enterpriseEdit/{id}', 'EnterpriseController@update');
 
 //Trabajos Listas
 Route::get('/home/form/jobs', 'JobsController@index');
+//listas para admin y creacion
 Route::get('/home/form/listJob', 'JobsController@list');
-//Route::get('/home/form/jobDetail/{id}', 'JobsController@create');
+Route::post('/home/form/listJob', 'JobsController@create');
+//Editar trabajos Admin
+Route::get('/home/form/jobEdit/{id}', 'JobsController@show');
+Route::post('/home/form/listJob/{id}', 'JobsController@updates');
+//Agregar requisitos a trabajos admin
+Route::get('/home/form/requirements/{id}', 'JobsController@requirement');
 //Mostrar Trabajo
 Route::get('/home/form/jobDetail/{id}', 'JobsController@edit');
 Route::post('/home/form/jobDetail/{id}', 'JobsController@update');
