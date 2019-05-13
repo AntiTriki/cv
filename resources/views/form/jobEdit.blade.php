@@ -80,7 +80,7 @@
                                             {{ __('Cancelar') }}
                                         </a>
                                         <button type="submit" class="btn btn-info">
-                                            {{ __('Guardar') }}
+                                            {{ __('Siguiente') }}
                                         </button>
                                     </div>
                                 </div>

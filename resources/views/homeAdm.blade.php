@@ -13,54 +13,20 @@
 
             <div class="container-fluid">
                 <div class="row content">
-                    <div class="col-sm-4 sidenav">
-                        <div class="profile">
+                    <div class="col-sm-6 sidenav">
 
-                            <div class="avatar">
-
-                                <img src="img/faces/{{Auth::user()->image ? Auth::user()->image : ('/default_user.png')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                        <div class="card">
+                            <div class="card-header card-header-text card-header-info">
+                                <div class="card-text">
+                                    <h4 class="card-title">Lista de trabajos</h4>
+                                </div>
                             </div>
-                            <div class="name">
-                                <h3 class="title">
-                                    {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
-
-                                    <a href="{{url('profile')}}" rel="tooltip" title="Agregar Foto" class="btn btn-info btn-fab btn-fab-mini btn-round">
-                                        <i class="material-icons">camera_alt</i>
-                                    </a>
-                                </h3>
-                                <h4 class="title"><strong>{{ Auth::user()->permiso ? 'Administrador' : 'Postulante' }}</strong></h4>
+                            <div class="card-body">
+                                ffffff
                             </div>
-
                         </div>
-                        <table class="table">
-                            <thead>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Carnet de Identidad</td>
-                                <td style="color: #000000">{{ Auth::user()->ci }}</td>
-                            </tr>
-                            <tr>
-                                <td>Correo</td>
-                                <td style="color: #000000">{{ Auth::user()->email }}</td>
-                            </tr>
-                            <tr>
-                                <td>Fecha de Nacimiento</td>
-                                <td style="color: #000000">{{ date('d-m-Y', strtotime(Auth::user()->birthday ? Auth::user()->birthday  : 'No definido')) }}</td>
-                            </tr>
-                            <tr>
-                                <td>Nacionalidad</td>
-                                <td style="color: #000000">{{ Auth::user()->nacionalidad ? Auth::user()->nacionalidad : 'No definido' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Ciudad de residencia</td>
-                                <td style="color: #000000">{{ Auth::user()->residencia ? Auth::user()->residencia : 'No definido' }}</td>
-                            </tr>
-
-                            </tbody>
-                        </table>
                     </div>
-                    <div class="col-sm-8 text-center">
+                    <div class="col-sm-6 text-center">
                         <div class="container">
                             <h3 class="title"><strong>Oferta de trabajos</strong> <a href="{{url('/home/form/listJob')}}" class="btn btn-info btn-fab btn-round">
                                     <i class="material-icons">add_box</i>

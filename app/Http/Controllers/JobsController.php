@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs;
 use App\Form;
 use App\Postulation;
+use App\Requirements;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,8 @@ class JobsController extends Controller
     public function list(){
         $job = DB::table('jobs')->get();
         $cat = DB::table('categories')->get();
-        return view('form.listJob',compact('job','cat'));
+        $re = DB::table('requirements')->get();
+        return view('form.listJob',compact('job','cat','re'));
     }
 
     public function create(Request $request)
@@ -57,14 +59,27 @@ class JobsController extends Controller
         return view('form.jobEdit',compact('job','re','cat'));
     }
 
-    public function updates(){
+    public function updates(Request $request){
+        $idjob = $request->input('idjob');
 
+        DB::table('jobs')->where('id',$idjob)->update([
+            'city' => $request->input('city'),
+            'occupation' => $request->input('occupation'),
+            'time_job' => $request->input('time_job'),
+            'published' => $request->input('published'),
+            'validity' => $request->input('validity'),
+            'description' => $request->input('description'),
+            'roles' => $request->input('roles'),
+            'category_id' => $request->input('category_id')
+        ]);
+
+        return redirect('home/form/requirements/'.$idjob);
     }
 
-    public function requirement( ){
-        $job = DB::table('jobs')->get();
-        $re = DB::table('requirements')->get();
-        return view('form.requirements',compact('job','re'));
+    public function requirement($id){
+        $job = Jobs::findOrFail($id);
+        $reqi = Requirements::where('job_id',$id)->get();
+        return view('form.requirements',compact('job','reqi'));
     }
 
     public function edit($id)

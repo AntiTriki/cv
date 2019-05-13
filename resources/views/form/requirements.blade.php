@@ -40,7 +40,6 @@
                                 <a  class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
-                                {{-----------------------alerta---------------------}}
                                 <script>
                                             @if(Session::has('message'))
                                     var type = "{{ Session::get('alert-type', 'info') }}";
@@ -68,28 +67,15 @@
                                         <table class="table table-sm" id="tabla">
                                             <thead>
                                             <tr>
-                                                <th class="text-left">Id</th>
+                                                <th class="text-left">Nro.</th>
                                                 <th class="text-center">Nombre</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @forelse ($re as $req)
+                                            @forelse ($reqi as $res)
                                                 <tr>
-                                                    @foreach($job as $jo)
-                                                        @if($jo->id == $req->job_id)
-                                                            <td class="text-left"> {{$req->id}} </td>
-                                                        @endif
-                                                    @endforeach
-
-                                                        @foreach($job as $jo)
-                                                            @if($req->job_id == $jo->id)
-                                                                <td class="text-center"> {{$req->name}} </td>
-                                                            @endif
-                                                        @endforeach
-
-                                                    {{--<td class="td-actions text-right">--}}
-                                                        {{--<a href="{{ url('/home/skillsEdit/'.$levels->id.'') }}" class="btn btn-info btn-sm" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)">editar</a>--}}
-                                                    {{--</td>--}}
+                                                    <td>{{$res->id}}</td>
+                                                    <td>{{$res->name}}</td>
                                                 </tr>
                                             @empty
                                                 <div class="alert alert-danger" role="alert">No agrego requisitos</div>
@@ -103,10 +89,6 @@
                                         <a href="{{url('/home/form/listJob')}}"  class="btn btn-info">
                                             {{ __('Atras') }}
                                         </a>
-
-                                        {{--<a href="{{url('/home/form/title/'.$form->id.'')}}" class="btn btn-info">--}}
-                                            {{--Siguiente--}}
-                                        {{--</a>--}}
                                     </div>
                                 </div>
                             </form>

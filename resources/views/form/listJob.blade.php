@@ -33,32 +33,9 @@
         }
     </style>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    {{-----------------------alerta---------------------}}
-    <script>
-                @if(Session::has('message'))
-        var type = "{{ Session::get('alert-type', 'info') }}";
-        switch(type){
-            case 'info':
-                toastr.info("{{ Session::get('message') }}");
-                break;
-
-            case 'warning':
-                toastr.warning("{{ Session::get('message') }}");
-                break;
-
-            case 'success':
-                toastr.success("{{ Session::get('message') }}");
-                break;
-
-            case 'error':
-                toastr.error("{{ Session::get('message') }}");
-                break;
-        }
-        @endif
-    </script>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
@@ -72,6 +49,29 @@
                                 <a class="btn btn-success btn-fab btn-fab-mini btn-round create-modal" style="color: white">
                                     <i class="material-icons">add</i>
                                 </a>
+                                {{-----------------------alerta---------------------}}
+                                <script>
+                                            @if(Session::has('message'))
+                                    var type = "{{ Session::get('alert-type', 'info') }}";
+                                    switch(type){
+                                        case 'info':
+                                            toastr.info("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'warning':
+                                            toastr.warning("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'success':
+                                            toastr.success("{{ Session::get('message') }}");
+                                            break;
+
+                                        case 'error':
+                                            toastr.error("{{ Session::get('message') }}");
+                                            break;
+                                    }
+                                    @endif
+                                </script>
                                 <div class="form-row">
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive" >
                                         <table class="table table-sm w-auto" id="tabla">
@@ -99,7 +99,6 @@
                                                     <td class="text-center"> {{date('d-m-Y', strtotime($jo->validity))}} </td>
                                                     <td class="td-actions text-right">
                                                         <a href="{{url('/home/form/jobEdit/'.$jo->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Editar"><i class="material-icons">edit</i></a>
-                                                        <a href="{{url('/home/form/requirements/'.$jo->id.'')}}" class="btn btn-success btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Requisitos"><i class="material-icons">done</i></a>
                                                         <a href="" class="btn btn-danger btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Eliminar"><i class="material-icons">delete_outline</i></a>
                                                     </td>
                                                 </tr>
