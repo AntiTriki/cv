@@ -86,7 +86,7 @@
                                     @endif
                                 </script>
                                 <div class="form-row">
-                                    <div class="table-wrapper-scroll-y my-custom-scrollbar" >
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive" >
                                         <table class="table table-sm" id="tabla">
                                             <thead>
                                             <tr>

@@ -29,49 +29,23 @@ class RequirementsController extends Controller
         return back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function edit($id)
     {
-        //
+        $re = Requirements::findOrFail($id);
+
+        return view('form.requirementsEdit',compact('re'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Requirements  $requirements
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Requirements $requirements)
+    public function update(Request $request,$id )
     {
-        //
-    }
+        $re = Requirements::findOrFail($id);
+        $idre = $request->input('re_id');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Requirements  $requirements
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Requirements $requirements)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Requirements  $requirements
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Requirements $requirements)
-    {
-        //
+        DB::table('requirements')->where('id',$idre)->update([
+           'name' => $request->input('name')
+        ]);
+        return redirect('home/form/requirements/'.$re->job_id);
+//        return back();
     }
 
     /**

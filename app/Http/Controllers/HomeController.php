@@ -25,12 +25,12 @@ class HomeController extends Controller
     }
     public function admin( )
     {
-//        $id_user=Auth::user()->id;
-//        $cv = Form::where('user_id', '=', $id_user)->first();
         $pos = DB::table('postulations')->get();
         $jo = DB::table('jobs')->get();
         $cat = DB::table('categories')->get();
-        return view('homeAdm', ['jo'=>$jo,'pos'=>$pos,'cat'=>$cat]);
+        $for = DB::table('forms')->get();
+        $use = DB::table('users')->get();
+        return view('homeAdm', ['jo'=>$jo,'pos'=>$pos,'cat'=>$cat,'for'=>$for,'use'=>$use]);
     }
 
     public function redirect (Request $request){

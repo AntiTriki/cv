@@ -145,41 +145,42 @@
                                             <table class="table table-sm w-auto" id="tabla">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-left">Cargo</th>
-                                                    <th class="text-center">Categoria</th>
-                                                    <th class="text-center">Ciudad</th>
-                                                    <th class="text-center">Tipo Contrato</th>
-                                                    <th class="text-center">Valido</th>
-                                                    <th class="text-center" style="width: 20%"></th>
+                                                    <th class="text-left" style="width: 30%">Nombre</th>
+                                                    <th class="text-left" style="width: 30%">Titulo CV</th>
+                                                    <th class="text-center">Cargo a postular</th>
+                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                {{--@forelse ($jo as $job)--}}
-                                                    {{--<tr>--}}
-                                                        {{--<td class="text-left" style="width: 20%"> {{$job->occupation}}</td>--}}
-                                                        {{--@foreach($cat as $ca)--}}
-                                                            {{--@if($job->category_id == $ca->id)--}}
-                                                                {{--<td class="text-center"> {{$ca->name}}</td>--}}
+                                                @forelse ($pos as $po)
+                                                    <tr>
+                                                        @foreach($for as $cvs)
+                                                            {{--@if($cvs->id == $po->form_id )--}}
+                                                                {{--$use->id == $cvs->user_id--}}
+                                                                {{--<td class="text-left" style="width: 30%"> </td>--}}
+                                                                {{--<td class="text-left" style="width: 30%">{{$cvs->general}}</td> --}}
+                                                                {{--@elseif($cvs->user_id == $use->id)--}}
+                                                                {{----}}
                                                             {{--@endif--}}
-                                                        {{--@endforeach--}}
-                                                        {{--<td class="text-center" style="width: 20%">{{$job->city}}</td>--}}
-                                                        {{--<td class="text-center"> {{$job->time_job}} </td>--}}
-                                                        {{--<td class="text-center"> {{date('d-m-Y', strtotime($job->validity))}} </td>--}}
-                                                        {{--<td class="td-actions text-right">--}}
-                                                            {{--<a href="{{url('/home/form/jobEdit/'.$job->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Editar"><i class="material-icons">edit</i></a>--}}
-                                                            {{--<a href="" class="btn btn-danger btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Eliminar"><i class="material-icons">delete_outline</i></a>--}}
-                                                        {{--</td>--}}
-                                                    {{--</tr>--}}
-                                                {{--@empty--}}
-                                                    {{--<div class="alert alert-danger">--}}
-                                                        {{--<div class="container">--}}
-                                                            {{--<div class="alert-icon">--}}
-                                                                {{--<i class="material-icons">error_outline</i>--}}
-                                                            {{--</div>--}}
-                                                            {{--<b>No tiene datos agregados</b>--}}
-                                                        {{--</div>--}}
-                                                    {{--</div>--}}
-                                                {{--@endforelse--}}
+                                                        @endforeach
+                                                        @foreach($jo as $job)
+                                                            @if($job->id == $po->jobs_id)
+                                                                <td class="text-center" style="width: 40%">{{$job->occupation}}</td>                                                            @endif
+                                                        @endforeach
+                                                        <td class="td-actions text-right">
+                                                            <a href=" " class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Ver CV"><i class="material-icons">description</i></a>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <div class="alert alert-danger">
+                                                        <div class="container">
+                                                            <div class="alert-icon">
+                                                                <i class="material-icons">error_outline</i>
+                                                            </div>
+                                                            <b>No hay postulantes vigentes</b>
+                                                        </div>
+                                                    </div>
+                                                @endforelse
                                                 </tbody>
                                             </table>
                                         </div>

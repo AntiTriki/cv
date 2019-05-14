@@ -76,6 +76,8 @@ Route::post('/home/form/jobEdit/{id}', 'JobsController@updates');
 //Agregar requisitos a trabajos
 Route::get('/home/form/requirements/{id}', 'RequirementsController@index');
 Route::post('/home/form/requirements/{id}', 'RequirementsController@create');
+Route::get('/home/form/requirementsEdit/{id}', 'RequirementsController@edit');
+Route::post('/home/form/requirementsEdit/{id}', 'RequirementsController@update');
 
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado

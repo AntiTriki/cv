@@ -22,6 +22,14 @@
         .card .card-header-info{
             background: linear-gradient(60deg, #166b91, #0097a7);
         }
+        .my-custom-scrollbar {
+            position: relative;
+            height: 300px;
+            overflow: auto;
+        }
+        .table-wrapper-scroll-y {
+            display: block;
+        }
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
@@ -63,7 +71,7 @@
                                     @endif
                                 </script>
                                 <div class="form-row">
-                                    <div class="table-wrapper-scroll-y my-custom-scrollbar" >
+                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                         <table class="table table-sm" id="tabla">
                                             <thead>
                                             <tr>
@@ -75,9 +83,10 @@
                                             @forelse ($reqi as $res)
                                                 <tr>
                                                     <td>{{$res->name}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
+                                                    <td class="td-actions text-right">
+                                                        <a href="{{url('/home/form/requirementsEdit/'.$res->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Editar"><i class="material-icons">edit</i></a>
+                                                        <a href="" class="btn btn-danger btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Eliminar"><i class="material-icons">delete_outline</i></a>
+                                                    </td>
                                                 </tr>
                                             @empty
                                                 <div class="alert alert-danger" role="alert">No agrego requisitos</div>
@@ -90,6 +99,9 @@
                                     <div class="col-md-12 text-center ">
                                         <a href="{{url('/home/form/jobEdit/'.$job->id.'')}}"  class="btn btn-info">
                                             {{ __('Atras') }}
+                                        </a>
+                                        <a href="{{url('/homeAdm')}}"  class="btn btn-info">
+                                            {{ __('Guardar') }}
                                         </a>
                                     </div>
                                 </div>
