@@ -131,7 +131,7 @@
             </div>
         </div>
     </div>
-    <!-- Skills new -->
+    <!-- job new -->
     <div class="modal fade" id="newjob">
         <div class="modal-dialog modal-lg" >
             <div class="modal-content">

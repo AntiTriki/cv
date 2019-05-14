@@ -4,27 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Requirements;
 use Illuminate\Http\Request;
+use App\Jobs;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class RequirementsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index($id)
     {
-        //
+        $job = Jobs::findOrFail($id);
+        $reqi = Requirements::where('job_id',$id)->get();
+        return view('form.requirements',compact('job','reqi'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request,$id)
     {
-        //
+        $job = Jobs::findOrFail($id);
+        DB::table('requirements')->insert([
+           'name' => $request->input('name'),
+            'job_id' => $job->id
+        ]);
+        return back();
     }
 
     /**

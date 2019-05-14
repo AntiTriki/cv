@@ -27,8 +27,7 @@ class JobsController extends Controller
     public function list(){
         $job = DB::table('jobs')->get();
         $cat = DB::table('categories')->get();
-        $re = DB::table('requirements')->get();
-        return view('form.listJob',compact('job','cat','re'));
+        return view('form.listJob',compact('job','cat'));
     }
 
     public function create(Request $request)
@@ -74,12 +73,6 @@ class JobsController extends Controller
         ]);
 
         return redirect('home/form/requirements/'.$idjob);
-    }
-
-    public function requirement($id){
-        $job = Jobs::findOrFail($id);
-        $reqi = Requirements::where('job_id',$id)->get();
-        return view('form.requirements',compact('job','reqi'));
     }
 
     public function edit($id)
