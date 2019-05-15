@@ -103,36 +103,6 @@
             </div>
         </div>
     </div>
-    {{--<script type="text/javascript">--}}
-        {{--$('.modal-footer').on('click', '.add', function() {--}}
-            {{--$.ajax({--}}
-                {{--type: 'POST',--}}
-                {{--data: {--}}
-                    {{--'idjob': $('#idjob').val(),--}}
-                    {{--'idus': $('#idus').val()--}}
-                {{--},--}}
-                {{--success: function(data) {--}}
-                    {{--$('.errorTitle').addClass('hidden');--}}
-
-                    {{--if ((data.errors)) {--}}
-                        {{--setTimeout(function () {--}}
-                            {{--$('#newskill').modal('show');--}}
-                            {{--toastr.error('Validation error!', 'Error Alert', {timeOut: 5000});--}}
-                        {{--}, 500);--}}
-
-                        {{--if (data.errors.name) {--}}
-                            {{--$('.errorTitle').removeClass('hidden');--}}
-                            {{--$('.errorTitle').text(data.errors.name);--}}
-
-                        {{--}--}}
-                    {{--}else {--}}
-                        {{--toastr.success('Successfully added Post!', 'Success Alert', {timeOut: 5000});--}}
-                        {{--$('#tabla').append("<tr><td>" + data.name + "</td><td>" + data.nivel + "</td></tr>");--}}
-                    {{--}--}}
-                {{--}--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
 
     <footer class="footer footer-default">
         <div class="container">

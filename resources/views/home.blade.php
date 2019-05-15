@@ -119,7 +119,7 @@
                             <td style="color: #000000">{{ $cv->travel ? 'Si dispone' : 'No dispone'}}</td>
                         </tr>
                         <tr>
-                            <td>Salario</td>
+                            <td>Pretension salarial</td>
                             <td style="color: #000000">{{$cv->salary }}</td>
                         </tr>
                                 @else

@@ -79,6 +79,9 @@ Route::post('/home/form/requirements/{id}', 'RequirementsController@create');
 Route::get('/home/form/requirementsEdit/{id}', 'RequirementsController@edit');
 Route::post('/home/form/requirementsEdit/{id}', 'RequirementsController@update');
 
+//mostrar CV por usuario
+Route::get('/home/form/postulant/{id}', 'PostulationController@index');
+
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado
 Route::post('profile', 'PerfilController@store'); //registrar

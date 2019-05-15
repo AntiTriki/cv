@@ -4,57 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Postulation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostulationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index($id)
     {
-        //
+        $pos = Postulation::findOrFail($id);
+        $jo = DB::table('jobs')->get();
+        $cat = DB::table('categories')->get();
+        $for = DB::table('forms')->get();
+        $use = DB::table('users')->get();
+        return view('form.postulant', ['jo'=>$jo,'pos'=>$pos,'cat'=>$cat,'for'=>$for,'use'=>$use]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Postulation  $postulation
-     * @return \Illuminate\Http\Response
-     */
     public function show(Postulation $postulation)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Postulation  $postulation
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Postulation $postulation)
     {
         //

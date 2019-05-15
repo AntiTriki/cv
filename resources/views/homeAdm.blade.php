@@ -155,20 +155,25 @@
                                                 @forelse ($pos as $po)
                                                     <tr>
                                                         @foreach($for as $cvs)
-                                                            {{--@if($cvs->id == $po->form_id )--}}
-                                                                {{--$use->id == $cvs->user_id--}}
+                                                            @if($cvs->id == $po->form_id )
+
+                                                                @foreach($use as $user)
+                                                                    @if($cvs->user_id == $user->id )
+                                                                        <td class="text-left" style="width: 30%">{{$user->name}} {{$user->apellido_p}} {{$user->apellido_m}}</td>
+                                                                    @endif
+                                                                @endforeach
                                                                 {{--<td class="text-left" style="width: 30%"> </td>--}}
-                                                                {{--<td class="text-left" style="width: 30%">{{$cvs->general}}</td> --}}
-                                                                {{--@elseif($cvs->user_id == $use->id)--}}
-                                                                {{----}}
-                                                            {{--@endif--}}
+
+                                                                <td class="text-left" style="width: 30%">{{$cvs->general}}</td>
+
+                                                            @endif
                                                         @endforeach
                                                         @foreach($jo as $job)
                                                             @if($job->id == $po->jobs_id)
                                                                 <td class="text-center" style="width: 40%">{{$job->occupation}}</td>                                                            @endif
                                                         @endforeach
                                                         <td class="td-actions text-right">
-                                                            <a href=" " class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Ver CV"><i class="material-icons">description</i></a>
+                                                            <a href="{{url('/home/form/postulant/'.$po->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Ver CV"><i class="material-icons">description</i></a>
                                                         </td>
                                                     </tr>
                                                 @empty
