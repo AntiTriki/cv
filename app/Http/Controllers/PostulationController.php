@@ -13,10 +13,13 @@ class PostulationController extends Controller
     {
         $pos = Postulation::findOrFail($id);
         $jo = DB::table('jobs')->get();
-        $cat = DB::table('categories')->get();
         $for = DB::table('forms')->get();
         $use = DB::table('users')->get();
-        return view('form.postulant', ['jo'=>$jo,'pos'=>$pos,'cat'=>$cat,'for'=>$for,'use'=>$use]);
+        $ti = DB::table('titles')->get();
+        $gra = DB::table('grades')->get();
+        $rol = DB::table('roles')->get();
+        $ente = DB::table('enterprises')->get();
+        return view('form.postulant', ['jo'=>$jo,'pos'=>$pos,'for'=>$for,'use'=>$use,'ti'=>$ti,'gra'=>$gra,'rol'=>$rol,'ente'=>$ente]);
     }
 
     public function create()

@@ -1,12 +1,6 @@
 @extends('layouts.app')
 @section('body-class','profile-page')
 @section('content')
-    <script>
-        setTimeout(function() {
-            $("#alert1").fadeOut();
-        },3000);
-    </script>
-
     <style>
         .btn.btn-success{
             background-color: #3caf78;
@@ -18,80 +12,110 @@
             background-color: #166b91;
         }
     </style>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-    <div class="page-header header-filter" data-parallax="true" style="background-image: url({{url('img/HP_background.jpg')}});"></div>
-    <div class="main main-raised">
+    <div class="  header-filter" ></div>
+    <div class=" ">
         <div class="profile-content">
 
             <div class="container-fluid">
                 <div class="row content">
                     <div class="col-sm-12">
                         <div class="profile">
+                            <br> <br> <br>
                             <div class="col-md-12 text-left ">
                                 <a href="{{url('/homeAdm')}}"  class="btn btn-success">
                                     <i class="material-icons">keyboard_backspace</i> Atras
                                 </a>
                             </div>
                             <br>
-
-                            {{-----------------------alerta---------------------}}
-                            @if ($message = Session::get('success'))
-                                <div id="alert1" class="alert alert-success alert-block" style="margin-right: 20%; margin-left: 20%;">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @endif
-                            @if ($message = Session::get('error'))
-                                <div id="alert1" class="alert alert-danger alert-block" style="margin-right: 20%; margin-left: 20%;">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                            @endif
-                            {{-----------------------alerta---------------------}}
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/home/form/postulant/'.$pos->id.'') }}">
                                 {{ csrf_field() }}
                                 {{--<input type="hidden" name="idjob" id="idjob" value="{{$job->id}}">--}}
                                 <div class="col-sm-12 text-center">
                                     <div class="container">
-                                        <table id="tablat" class="table table-responsive">
+                                        <table id="tablat" class="table table-responsive table-sm">
+                                            @foreach($jo as $job)
+                                                @if($pos->jobs_id == $job->id)
                                             <thead>
+                                            <h3 class="card-title">Postulacion para {{$job->occupation}} </h3>
+                                            </thead>
+                                                @endif
+                                            @endforeach
+                                            <tbody>
+                                            @foreach($for as $form)
+                                                @if($form->id == $pos->form_id)
+                                                    @foreach($use as $user)
+                                                        @if($form->user_id == $user->id)
+                                                    <tr>
+                                                        <td class="text-left" style="color: #000000; width: 60%;"><h5> Nombre del postulante: {{$user->name}} {{$user->apellido_p}} {{$user->apellido_m}}<br>Correo Electronico: {{$user->email}}
+                                                                <br>Nacionalidad: {{$user->nacionalidad}}<br>Residencia: {{$user->residencia}}<br>Estado civil: {{$user->civil}}</h5></td>
+                                                        <td class="text-left" style="color: #000000; width: 60%;"><h5> Carnet de identidad: {{$user->ci}}<br>Fecha de nacimiento: {{$user->birthday}}<br>Celular: {{$user->celular}}
+                                                                <br>Telefono: {{$user->telefono}}<br>Hijos: {{$user->children}}<br>Licencia de conducir: {{$user->drivecard ? 'Tiene' : 'No tiene'}}</h5></td>
+                                                    </tr>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                            @foreach($for as $form)
+                                                @if($form->id == $pos->form_id)
+                                                    <tr>
+                                                        <td class="text-left" style="color: #000000;width: 60%;"><h5> Titulo CV: {{$form->general}}<br>Disponible en: {{$form->available_job}}<br>Pretension salarial: {{$form->salary}}</h5></td>
+                                                        <td class="text-left" style="color: #000000; width: 60%;"><h5>Descripcion de CV: {{$form->description}}<br>Disponibilidad de viaje: {{$form->travel ? 'Si' : 'No'}}</h5></td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
+                                            {{--@foreach($for as $form)--}}
+                                                {{--@if($form->id == $pos->form_id)--}}
+                                                    {{--@foreach($ti as $tit)--}}
+                                                        {{--@if($form->id == $tit->form_id)--}}
+                                                    {{--<tr>--}}
+                                                        {{--<td class="text-left" style="color: #000000;width: 60%;"><h5>Institucion: {{$tit->institucion}}<br>Titulo: {{$tit->titulo}}</h5></td>--}}
+                                                        {{--<td class="text-left" style="color: #000000; width: 60%;"><h5>Año de titulacion: {{$tit->year}}<br>--}}
+                                                            {{--@foreach($gra as $gr)--}}
+                                                                {{--@if($gr->id == $tit->grade_id)--}}
+                                                                   {{--Grado: {{$gr->grado}}</h5>--}}
+                                                            {{--@endif--}}
+                                                            {{--@endforeach--}}
+                                                        {{--</td>--}}
+                                                    {{--</tr>--}}
+                                                        {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                {{--@endif--}}
+                                            {{--@endforeach--}}
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table table-sm w-auto" id="tabla">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 30%;" class="text-left">Institucion/Universidad</th>
+                                                <th style="width: 30%;" class="text-left">Titulo</th>
+                                                <th style="width: 30%;" class="text-center">Año de Titulacion</th>
+                                                <th  class="text-center">Grado</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($for as $form)
-                                                    @if($form->id == $pos->form_id)
-                                                        @foreach($use as $user)
-                                                            @if($form->user_id == $user->id)
-                                                    <tr>
-                                                        <td class="text-left" style="color: #000000; width: 40%;"><h4 class="card-title"> Nombre del postulante: {{$user->name}} {{$user->apellido_p}} {{$user->apellido_m}}<br>Correo Electronico: {{$user->email}}</h4></td>
-                                                        <td class="text-left" style="color: #000000;width: 40%;"><h4 class="card-title"> Titulo CV: {{$form->general}}<br>Descripcion de CV: {{$form->description}}</h4></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left" style="color: #000000; width: 40%;"><h4>Carnet de identidad: {{$user->ci}}</h4></td>
-                                                        <td class="text-left" style="color: #000000;width: 40%;"><h4>Disponible en: {{$form->available_job}}</h4></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left" style="color: #000000; width: 40%;"><h4>Telefono: {{$user->telefono}}</h4></td>
-                                                        <td class="text-left" style="color: #000000;width: 40%;"><h4>Disponibilidad de viaje: {{$form->travel ? 'Si' : 'No'}}</h4></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left" style="color: #000000; width: 40%;"><h4>Celular: {{$user->celular}}</h4></td>
-                                                        <td class="text-left" style="color: #000000;width: 40%;"><h4>Pretension salarial: {{$form->salary}}</h4></td>
-                                                    </tr>
-                                                            @endif
-                                                        @endforeach
-                                                    @endif
+                                            @foreach($for as $form)
+                                                @if($form->id == $pos->form_id)
+                                                    @foreach($ti as $titles)
+                                                    @if($form->id == $titles->form_id)
+                                                <tr>
+                                                    <td class="text-left">{{$titles->institucion}}</td>
+                                                    <td class="text-left">{{$titles->titulo}}</td>
+                                                    <td class="text-center">{{$titles->year}}</td>
+                                                    @foreach($gra as $gr)
+                                                        @if($titles->grade_id == $gr->id)
+                                                            <td class="text-center">{{$gr->grado}}</td>
+                                                        @endif
+                                                    @endforeach
+                                                </tr>
+                                                @endif
+                                                @endforeach
+
+
+                                            @endif
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="col-md-12 text-center">
-                                            <button type="submit" class="btn btn-info">postularse</button>
-                                            {{--<a type="button" class="btn btn-info">--}}
-                                            {{--{{ __('Postularse') }}--}}
-                                            {{--</a>--}}
-                                        </div>
                                     </div>
                                 </div>
                             </form>
