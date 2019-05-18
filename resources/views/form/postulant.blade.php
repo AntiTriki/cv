@@ -36,7 +36,7 @@
                                             @foreach($jo as $job)
                                                 @if($pos->jobs_id == $job->id)
                                             <thead>
-                                            <h3 class="card-title">Postulacion para {{$job->occupation}} </h3>
+                                            <h4 class="card-title text-center">Postulacion para {{$job->occupation}} </h4>
                                             </thead>
                                                 @endif
                                             @endforeach
@@ -46,10 +46,10 @@
                                                     @foreach($use as $user)
                                                         @if($form->user_id == $user->id)
                                                     <tr>
-                                                        <td class="text-left" style="color: #000000; width: 60%;"><h5> Nombre del postulante: {{$user->name}} {{$user->apellido_p}} {{$user->apellido_m}}<br>Correo Electronico: {{$user->email}}
-                                                                <br>Nacionalidad: {{$user->nacionalidad}}<br>Residencia: {{$user->residencia}}<br>Estado civil: {{$user->civil}}</h5></td>
-                                                        <td class="text-left" style="color: #000000; width: 60%;"><h5> Carnet de identidad: {{$user->ci}}<br>Fecha de nacimiento: {{$user->birthday}}<br>Celular: {{$user->celular}}
-                                                                <br>Telefono: {{$user->telefono}}<br>Hijos: {{$user->children}}<br>Licencia de conducir: {{$user->drivecard ? 'Tiene' : 'No tiene'}}</h5></td>
+                                                        <td class="text-left" style="color: #000000; width: 60%;"><h6> Nombre del postulante: {{$user->name}} {{$user->apellido_p}} {{$user->apellido_m}}<br>Correo Electronico: {{$user->email}}
+                                                                <br>Nacionalidad: {{$user->nacionalidad}}<br>Residencia: {{$user->residencia}}<br>Estado civil: {{$user->civil}}</h6></td>
+                                                        <td class="text-left" style="color: #000000; width: 60%;"><h6> Carnet de identidad: {{$user->ci}}<br>Fecha de nacimiento: {{$user->birthday}}<br>Celular: {{$user->celular}}
+                                                                <br>Telefono: {{$user->telefono}}<br>Hijos: {{$user->children}}<br>Licencia de conducir: {{$user->drivecard ? 'Tiene' : 'No tiene'}}</h6></td>
                                                     </tr>
                                                         @endif
                                                     @endforeach
@@ -58,29 +58,11 @@
                                             @foreach($for as $form)
                                                 @if($form->id == $pos->form_id)
                                                     <tr>
-                                                        <td class="text-left" style="color: #000000;width: 60%;"><h5> Titulo CV: {{$form->general}}<br>Disponible en: {{$form->available_job}}<br>Pretension salarial: {{$form->salary}}</h5></td>
-                                                        <td class="text-left" style="color: #000000; width: 60%;"><h5>Descripcion de CV: {{$form->description}}<br>Disponibilidad de viaje: {{$form->travel ? 'Si' : 'No'}}</h5></td>
+                                                        <td class="text-left" style="color: #000000;width: 60%;"><h6> Titulo CV: {{$form->general}}<br>Disponible en: {{$form->available_job}}<br>Pretension salarial: {{$form->salary}}</h6></td>
+                                                        <td class="text-left" style="color: #000000; width: 60%;"><h6>Descripcion de CV: {{$form->description}}<br>Disponibilidad de viaje: {{$form->travel ? 'Si' : 'No'}}</h6></td>
                                                     </tr>
                                                 @endif
                                             @endforeach
-                                            {{--@foreach($for as $form)--}}
-                                                {{--@if($form->id == $pos->form_id)--}}
-                                                    {{--@foreach($ti as $tit)--}}
-                                                        {{--@if($form->id == $tit->form_id)--}}
-                                                    {{--<tr>--}}
-                                                        {{--<td class="text-left" style="color: #000000;width: 60%;"><h5>Institucion: {{$tit->institucion}}<br>Titulo: {{$tit->titulo}}</h5></td>--}}
-                                                        {{--<td class="text-left" style="color: #000000; width: 60%;"><h5>Año de titulacion: {{$tit->year}}<br>--}}
-                                                            {{--@foreach($gra as $gr)--}}
-                                                                {{--@if($gr->id == $tit->grade_id)--}}
-                                                                   {{--Grado: {{$gr->grado}}</h5>--}}
-                                                            {{--@endif--}}
-                                                            {{--@endforeach--}}
-                                                        {{--</td>--}}
-                                                    {{--</tr>--}}
-                                                        {{--@endif--}}
-                                                    {{--@endforeach--}}
-                                                {{--@endif--}}
-                                            {{--@endforeach--}}
                                             </tbody>
                                         </table>
 
@@ -110,10 +92,40 @@
                                                 </tr>
                                                 @endif
                                                 @endforeach
-
-
                                             @endif
                                                 @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table table-sm w-auto" id="tabla">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-left">Empresa</th>
+                                                <th class="text-center">Cargo que desempeñaba</th>
+                                                <th class="text-center">Descripcion</th>
+                                                <th class="text-center">Fecha de ingreso</th>
+                                                <th class="text-center">Fecha de salida</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($for as $form)
+                                                @if($form->id == $pos->form_id)
+                                                    @foreach($ti as $titles)
+                                                        @if($form->id == $titles->form_id)
+                                                            <tr>
+                                                                <td class="text-left">{{$titles->institucion}}</td>
+                                                                <td class="text-left">{{$titles->titulo}}</td>
+                                                                <td class="text-center">{{$titles->year}}</td>
+                                                                @foreach($gra as $gr)
+                                                                    @if($titles->grade_id == $gr->id)
+                                                                        <td class="text-center">{{$gr->grado}}</td>
+                                                                    @endif
+                                                                @endforeach
+                                                            </tr>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
