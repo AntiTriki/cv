@@ -19,7 +19,7 @@
         }
         .my-custom-scrollbar {
             position: relative;
-            height: 300px;
+            height: 450px;
             overflow: auto;
         }
         .table-wrapper-scroll-y {
@@ -173,7 +173,7 @@
                                                                 <td class="text-center" style="width: 40%">{{$job->occupation}}</td>                                                            @endif
                                                         @endforeach
                                                         <td class="td-actions text-right">
-                                                            <a href="{{url('/home/form/postulant/'.$po->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Ver CV"><i class="material-icons">description</i></a>
+                                                            <a href="{{url('/home/form/postulant/'.$po->id.'')}}" target="_blank" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Ver CV"><i class="material-icons">description</i></a>
                                                         </td>
                                                     </tr>
                                                 @empty

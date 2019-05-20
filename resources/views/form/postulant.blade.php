@@ -14,7 +14,7 @@
     </style>
     <div class="  header-filter" ></div>
     <div class=" ">
-        <div class="profile-content">
+        <div class="profile-content" style="background: darkgray;">
 
             <div class="container-fluid">
                 <div class="row content">
@@ -36,7 +36,7 @@
                                             @foreach($jo as $job)
                                                 @if($pos->jobs_id == $job->id)
                                             <thead>
-                                            <h4 class="card-title text-center">Postulacion para {{$job->occupation}} </h4>
+                                            <h4 class="card-title text-center" style="color: #000000;">Postulacion para {{$job->occupation}} </h4>
                                             </thead>
                                                 @endif
                                             @endforeach
@@ -69,10 +69,10 @@
                                         <table class="table table-sm w-auto" id="tabla">
                                             <thead>
                                             <tr>
-                                                <th style="width: 30%;" class="text-left">Institucion/Universidad</th>
-                                                <th style="width: 30%;" class="text-left">Titulo</th>
-                                                <th style="width: 30%;" class="text-center">Año de Titulacion</th>
-                                                <th  class="text-center">Grado</th>
+                                                <th style="width: 30%;color: #000000;" class="text-left">Institucion/Universidad</th>
+                                                <th style="width: 30%;color: #000000;" class="text-left">Titulo</th>
+                                                <th style="width: 30%;color: #000000;" class="text-center">Año de Titulacion</th>
+                                                <th style="color: #000000;" class="text-center">Grado</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -81,12 +81,12 @@
                                                     @foreach($ti as $titles)
                                                     @if($form->id == $titles->form_id)
                                                 <tr>
-                                                    <td class="text-left">{{$titles->institucion}}</td>
-                                                    <td class="text-left">{{$titles->titulo}}</td>
-                                                    <td class="text-center">{{$titles->year}}</td>
+                                                    <td style="color: #000000;" class="text-left">{{$titles->institucion}}</td>
+                                                    <td style="color: #000000;" class="text-left">{{$titles->titulo}}</td>
+                                                    <td style="color: #000000;" class="text-center">{{$titles->year}}</td>
                                                     @foreach($gra as $gr)
                                                         @if($titles->grade_id == $gr->id)
-                                                            <td class="text-center">{{$gr->grado}}</td>
+                                                            <td style="color: #000000;" class="text-center">{{$gr->grado}}</td>
                                                         @endif
                                                     @endforeach
                                                 </tr>
@@ -100,25 +100,65 @@
                                         <table class="table table-sm w-auto" id="tabla">
                                             <thead>
                                             <tr>
-                                                <th class="text-left">Empresa</th>
-                                                <th class="text-center">Cargo que desempeñaba</th>
-                                                <th class="text-center">Descripcion</th>
-                                                <th class="text-center">Fecha de ingreso</th>
-                                                <th class="text-center">Fecha de salida</th>
+                                                <th style="color: #000000;" class="text-left">Empresa</th>
+                                                <th style="color: #000000;" class="text-center">Cargo que desempeñaba</th>
+                                                <th style="color: #000000;" class="text-center">Descripcion</th>
+                                                <th style="color: #000000;" class="text-center">Fecha de ingreso</th>
+                                                <th style="color: #000000;" class="text-center">Fecha de salida</th>
+                                                <th style="color: #000000;width: 20%;" class="text-center">Nombre Jefe</th>
+                                                <th style="color: #000000;" class="text-center">Cargo jefe</th>
+                                                <th style="color: #000000;" class="text-center">Telefono</th>
+                                                <th style="color: #000000;" class="text-center">Email</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($for as $form)
                                                 @if($form->id == $pos->form_id)
-                                                    @foreach($ti as $titles)
-                                                        @if($form->id == $titles->form_id)
+                                                    @foreach($rol as $roles)
+                                                        @if($form->id == $roles->form_id)
                                                             <tr>
-                                                                <td class="text-left">{{$titles->institucion}}</td>
-                                                                <td class="text-left">{{$titles->titulo}}</td>
-                                                                <td class="text-center">{{$titles->year}}</td>
-                                                                @foreach($gra as $gr)
-                                                                    @if($titles->grade_id == $gr->id)
-                                                                        <td class="text-center">{{$gr->grado}}</td>
+                                                                @foreach($ente as $ent)
+                                                                    @if($roles->enterprise_id == $ent->id)
+                                                                <td style="color: #000000;" class="text-left">{{$ent->nombre_empresa}}</td>
+                                                                <td style="color: #000000;" class="text-left">{{$ent->cargo}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{$roles->descripcion}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{$ent->fecha_inicio}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{$ent->fecha_fin}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{$ent->nombre_jefe}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{$ent->role}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{$ent->cel_jefe}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{$ent->mail_jefe}}</td>
+                                                                    @endif
+                                                                @endforeach
+                                                            </tr>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table table-sm w-auto" id="tabla">
+                                            <thead>
+                                            <tr>
+                                                <th style="color: #000000;width: 30%;" class="text-center">Conocimientos y Habilidades</th>
+                                                <th style="color: #000000;" class="text-center">Nivel</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($for as $form)
+                                                @if($form->id == $pos->form_id)
+                                                    @foreach($level as $levels)
+                                                        @if($form->id == $levels->form_id)
+                                                            <tr>
+                                                                @foreach($sk as $sks)
+                                                                    @if($levels->skill_id == $sks->id)
+                                                                        <td style="color: #000000;" class="text-center">{{$sks->name}}</td>
+                                                                    @endif
+                                                                @endforeach
+                                                                @foreach($nivel as $niv)
+                                                                    @if($levels->nombre_id == $niv->id)
+                                                                        <td style="color: #000000;" class="text-center">{{$niv->nombre}}</td>
                                                                     @endif
                                                                 @endforeach
                                                             </tr>

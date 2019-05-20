@@ -19,7 +19,10 @@ class PostulationController extends Controller
         $gra = DB::table('grades')->get();
         $rol = DB::table('roles')->get();
         $ente = DB::table('enterprises')->get();
-        return view('form.postulant', ['jo'=>$jo,'pos'=>$pos,'for'=>$for,'use'=>$use,'ti'=>$ti,'gra'=>$gra,'rol'=>$rol,'ente'=>$ente]);
+        $level = DB::table('levels')->get();
+        $sk = DB::table('skills')->get();
+        $nivel = DB::table('names')->get();
+        return view('form.postulant', ['jo'=>$jo,'pos'=>$pos,'for'=>$for,'use'=>$use,'ti'=>$ti,'gra'=>$gra,'rol'=>$rol,'ente'=>$ente,'level'=>$level,'sk'=>$sk,'nivel'=>$nivel]);
     }
 
     public function create()
