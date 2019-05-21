@@ -43,10 +43,7 @@
             margin-top: -6px;
         }
     </style>
-
-
-
-    <!-- Fonts -->
+ <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
@@ -79,16 +76,34 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ">
                     @if (Route::has('register'))
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                     @endif
                 </li>
                 @else
-                    <li class="nav-item">
-                        <a id="navba" class="nav-link " href="{{ url('/home') }}" role="button">
-                            {{ Auth::user()->name }}
-                        </a>
+                    <li class="nav-item dropdown">
+                        @if (Auth::check())
+                            @if(Auth::user()->permiso == 1)
+
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ url('/homeAdm') }}">Pagina principal</a>
+                                    <a class="dropdown-item" href="#">Ver perfil</a>
+                                </div>
+
+
+                                {{--<a id="navba" class="nav-link " href="{{ url('/homeAdm') }}" role="button">--}}
+                                    {{--{{ Auth::user()->name }}--}}
+                                {{--</a>--}}
+                            @else
+                                <a id="navba" class="nav-link " href="{{ url('/home') }}" role="button">
+                                    {{ Auth::user()->name }}
+                                </a>
+                            @endif
+                        @endif
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();

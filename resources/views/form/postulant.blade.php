@@ -21,12 +21,6 @@
                     <div class="col-sm-12">
                         <div class="profile">
                             <br> <br> <br>
-                            <div class="col-md-12 text-left ">
-                                <a href="{{url('/homeAdm')}}"  class="btn btn-success">
-                                    <i class="material-icons">keyboard_backspace</i> Atras
-                                </a>
-                            </div>
-                            <br>
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/home/form/postulant/'.$pos->id.'') }}">
                                 {{ csrf_field() }}
                                 {{--<input type="hidden" name="idjob" id="idjob" value="{{$job->id}}">--}}
@@ -36,7 +30,7 @@
                                             @foreach($jo as $job)
                                                 @if($pos->jobs_id == $job->id)
                                             <thead>
-                                            <h4 class="card-title text-center" style="color: #000000;">Postulacion para {{$job->occupation}} </h4>
+                                            <h4 class="card-title text-center" style="color: #000000;margin-top: 0px;margin-bottom: 0px;">Postulacion para {{$job->occupation}} </h4>
                                             </thead>
                                                 @endif
                                             @endforeach
@@ -47,8 +41,12 @@
                                                         @if($form->user_id == $user->id)
                                                     <tr>
                                                         <td class="text-left" style="color: #000000; width: 60%;"><h6> Nombre del postulante: {{$user->name}} {{$user->apellido_p}} {{$user->apellido_m}}<br>Correo Electronico: {{$user->email}}
-                                                                <br>Nacionalidad: {{$user->nacionalidad}}<br>Residencia: {{$user->residencia}}<br>Estado civil: {{$user->civil}}</h6></td>
-                                                        <td class="text-left" style="color: #000000; width: 60%;"><h6> Carnet de identidad: {{$user->ci}}<br>Fecha de nacimiento: {{$user->birthday}}<br>Celular: {{$user->celular}}
+                                                                <br>Nacionalidad: {{$user->nacionalidad}}<br>Residencia: {{$user->residencia}}<br>Estado civil:
+                                                                @foreach($nivel as $ni)
+                                                                    @if($user->civil == $ni->id){{$ni->nombre}}@endif
+                                                                @endforeach
+                                                            </h6></td>
+                                                        <td class="text-left" style="color: #000000; width: 60%;"><h6> Carnet de identidad: {{$user->ci}}<br>Fecha de nacimiento: {{date('d-m-Y',strtotime($user->birthday))}}<br>Celular: {{$user->celular}}
                                                                 <br>Telefono: {{$user->telefono}}<br>Hijos: {{$user->children}}<br>Licencia de conducir: {{$user->drivecard ? 'Tiene' : 'No tiene'}}</h6></td>
                                                     </tr>
                                                         @endif
@@ -63,13 +61,27 @@
                                                     </tr>
                                                 @endif
                                             @endforeach
+
+                                            @foreach($for as $form)
+                                                @if($form->id == $pos->form_id)
+                                                    @foreach($use as $us)
+                                                        @if($form->user_id == $us->id)
+
+                                                            <div class="avatar">
+                                                                <img src="{{asset($us->image ? 'img/faces/'.$us->image : 'img/faces/default_user.png')}}" style="margin-left: 80%;width: 10%;transform: initial;" alt="Circle Image" class="img-raised  img-fluid">
+                                                            </div>
+
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
                                             </tbody>
                                         </table>
 
                                         <table class="table table-sm w-auto" id="tabla">
                                             <thead>
                                             <tr>
-                                                <th style="width: 30%;color: #000000;" class="text-left">Institucion/Universidad</th>
+                                                <th style="width: 30%;color: #000000;" class="text-left"> Institucion/Universidad</th>
                                                 <th style="width: 30%;color: #000000;" class="text-left">Titulo</th>
                                                 <th style="width: 30%;color: #000000;" class="text-center">Año de Titulacion</th>
                                                 <th style="color: #000000;" class="text-center">Grado</th>
@@ -122,8 +134,8 @@
                                                                 <td style="color: #000000;" class="text-left">{{$ent->nombre_empresa}}</td>
                                                                 <td style="color: #000000;" class="text-left">{{$ent->cargo}}</td>
                                                                 <td style="color: #000000;" class="text-center">{{$roles->descripcion}}</td>
-                                                                <td style="color: #000000;" class="text-center">{{$ent->fecha_inicio}}</td>
-                                                                <td style="color: #000000;" class="text-center">{{$ent->fecha_fin}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{date('d-m-Y',strtotime($ent->fecha_inicio))}}</td>
+                                                                <td style="color: #000000;" class="text-center">{{date('d-m-Y',strtotime($ent->fecha_fin))}}</td>
                                                                 <td style="color: #000000;" class="text-center">{{$ent->nombre_jefe}}</td>
                                                                 <td style="color: #000000;" class="text-center">{{$ent->role}}</td>
                                                                 <td style="color: #000000;" class="text-center">{{$ent->cel_jefe}}</td>

@@ -17,7 +17,6 @@
                         <div class="profile">
 
                             <div class="avatar">
-
                                 <img src="img/faces/{{Auth::user()->image ? Auth::user()->image : ('/default_user.png')}}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
