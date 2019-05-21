@@ -82,7 +82,7 @@
                                         <label for="nombre_jefe" class="control-label">Nombre completo</label>
                                         @foreach($ent as $en)
                                             @if($rol->enterprise_id == $en->id)
-                                                <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" maxlength="80" value="{{$en->nombre_jefe}}" required>
+                                                <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" maxlength="80" value="{{$en->nombre_jefe}}">
                                             @endif
                                         @endforeach
                                     </div>
@@ -90,7 +90,7 @@
                                         <label for="role" class="control-label">Cargo</label>
                                         @foreach($ent as $en)
                                             @if($rol->enterprise_id == $en->id)
-                                                <input type="text" class="form-control" id="role" name="role" maxlength="100" value="{{$en->role}}" required>
+                                                <input type="text" class="form-control" id="role" name="role" maxlength="100" value="{{$en->role}}">
                                             @endif
                                         @endforeach
                                     </div>
@@ -98,7 +98,7 @@
                                         <label for="cel_jefe" class="control-label">Telefono</label>
                                         @foreach($ent as $en)
                                             @if($rol->enterprise_id == $en->id)
-                                                <input type="number" class="form-control" id="cel_jefe" name="cel_jefe" value="{{$en->cel_jefe}}" required>
+                                                <input type="number" class="form-control" id="cel_jefe" name="cel_jefe" value="{{$en->cel_jefe}}">
                                             @endif
                                         @endforeach
                                     </div>
@@ -106,7 +106,7 @@
                                         <label for="mail_jefe" class="control-label">Correo electronico</label>
                                         @foreach($ent as $en)
                                             @if($rol->enterprise_id == $en->id)
-                                                <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="{{$en->mail_jefe}}" required>
+                                                <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="{{$en->mail_jefe}}">
                                             @endif
                                         @endforeach
                                     </div>

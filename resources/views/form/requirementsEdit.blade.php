@@ -38,7 +38,7 @@
                                     <input type="hidden" name="re_id" id="re_id" value="{{$re->id}}">
                                     <div class="form-group col-md-12">
                                         <label for="name" class="control-label">Nombre</label>
-                                        <input type="text" class="form-control" id="name" name="name" maxlength="50" value="{{$re->name}}" required>
+                                        <input type="text" class="form-control" id="name" name="name" maxlength="180" value="{{$re->name}}" required>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0 py-2">

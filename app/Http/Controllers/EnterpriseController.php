@@ -47,7 +47,12 @@ class EnterpriseController extends Controller
             'descripcion' => $request->input('descripcion')
         ]);
 
-        return back();
+        $notification = array(
+            'message' => 'Agregado Correctamente',
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 
     public function edit($id)
@@ -59,7 +64,7 @@ class EnterpriseController extends Controller
 
     public function update(Request $request)
     {
-//        $idform = $request->input('idform');
+        $idform = $request->input('idform');
         $idrol = $request->input('idrol');
         $iden = $request->input('ident');
 
@@ -77,7 +82,11 @@ class EnterpriseController extends Controller
             'fecha_fin' => $request->input('fecha_fin')
         ]);
 
-        return back();
+        $notification = array(
+            'message' => 'Modificado Correctamente',
+            'alert-type' => 'success'
+        );
+        return redirect('home/form/enterprise/'.$idform)->with($notification);
     }
 
 }

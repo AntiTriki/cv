@@ -33,11 +33,34 @@
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+                @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        switch(type){
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
 
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+        @endif
+    </script>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div class="card">
                         <div class="card-header"><h5>{{ __('Experiencia Laboral') }}</h5></div>
                         <div class="card-body">
@@ -54,9 +77,9 @@
                                             <tr>
                                                 <th class="text-left">Empresa</th>
                                                 <th class="text-center">Cargo que desempeñaba</th>
-                                                <th class="text-center">Descripcion</th>
-                                                <th class="text-center">Fecha de ingreso</th>
-                                                <th class="text-center">Fecha de salida</th>
+                                                <th class="text-center" style="width: 30%">Descripcion</th>
+                                                <th class="text-center" style="width: 30%">Fecha de ingreso</th>
+                                                <th class="text-center" style="width: 30%">Fecha de salida</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -127,19 +150,19 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="cargo" class="control-label">Cargo que desempeñaba</label>
-                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="" required>
+                                <input type="text" class="form-control" id="cargo" name="cargo" maxlength="100" value="">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="fecha_inicio" class="control-label">Fecha de Inicio</label>
-                                <input type="date" class="form-control datetimepicker" id="fecha_inicio" name="fecha_inicio" required>
+                                <input type="date" class="form-control datetimepicker" id="fecha_inicio" name="fecha_inicio">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="fecha_fin" class="control-label">Fecha de Salida</label>
-                                <input type="date" class="form-control datetimepicker" id="fecha_fin" name="fecha_fin" required>
+                                <input type="date" class="form-control datetimepicker" id="fecha_fin" name="fecha_fin">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="descripcion" class="control-label">Descripcion</label>
-                                <textarea type="text" class="form-control" id="descripcion" name="descripcion" maxlength="190" value="" required></textarea>
+                                <textarea type="text" class="form-control" id="descripcion" name="descripcion" maxlength="190" value=""></textarea>
                             </div>
                         </div>
                         <hr style="border-color: #867f7f;">
@@ -147,19 +170,19 @@
                         <div class="panel-body form-row py-2">
                             <div class="form-group col-md-4">
                                 <label for="nombre_jefe" class="control-label">Nombre completo</label>
-                                <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" maxlength="100" value="" required>
+                                <input type="text" class="form-control" id="nombre_jefe" name="nombre_jefe" maxlength="100" value="">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="role" class="control-label">Cargo</label>
-                                <input type="text" class="form-control" id="role" name="role" maxlength="100" value="" required>
+                                <input type="text" class="form-control" id="role" name="role" maxlength="100" value="">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="cel_jefe" class="control-label">Telefono</label>
-                                <input type="number" class="form-control" id="cel_jefe" name="cel_jefe" value="" required>
+                                <input type="number" class="form-control" id="cel_jefe" name="cel_jefe" value="">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="mail_jefe" class="control-label">Correo electronico</label>
-                                <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="" required>
+                                <input type="email" class="form-control" id="mail_jefe" name="mail_jefe" maxlength="100" value="" >
                             </div>
                         </div>
                         {{--</form>--}}

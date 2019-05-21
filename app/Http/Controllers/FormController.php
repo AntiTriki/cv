@@ -82,10 +82,10 @@ class FormController extends Controller
 //        dd($level);
 //        return back();
         $notification = array(
-            'message' => 'I am a successful message!',
+            'message' => 'Modificado Exitosamente!',
             'alert-type' => 'success'
         );
-//        return redirect('home/skills/'.$valorform)->with('success','Actualizacion Correcta');
+
         return redirect('home/skills/'.$valorform)->with($notification);
     }
 
@@ -195,7 +195,12 @@ class FormController extends Controller
             $post->nombre_id = $request->input('nivel');
             $post->save();
 
-            return back();
+        $notification = array(
+            'message' => 'Agregado Exitosamente!',
+            'alert-type' => 'success'
+        );
+
+            return back()->with($notification);
     }
 
 }

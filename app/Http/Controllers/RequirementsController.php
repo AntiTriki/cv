@@ -26,7 +26,11 @@ class RequirementsController extends Controller
            'name' => $request->input('name'),
             'job_id' => $job->id
         ]);
-        return back();
+        $notification = array(
+            'message' => 'Agregado Correctamente',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
     }
 
     public function edit($id)
@@ -44,18 +48,20 @@ class RequirementsController extends Controller
         DB::table('requirements')->where('id',$idre)->update([
            'name' => $request->input('name')
         ]);
-        return redirect('home/form/requirements/'.$re->job_id);
-//        return back();
+        $notification = array(
+            'message' => 'Modificado Correctamente',
+            'alert-type' => 'success'
+        );
+        return redirect('home/form/requirements/'.$re->job_id)->with($notification);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Requirements  $requirements
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Requirements $requirements)
+    public function delete($id)
     {
-        //
+        DB::table('requirements')->where('id', '=', $id)->delete();
+        $notification = array(
+            'message' => 'Se elimino correctamente',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
     }
 }

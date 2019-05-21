@@ -31,9 +31,9 @@
             display: block;
         }
     </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
         <div class="container" >
             <div class="row justify-content-center">
@@ -85,7 +85,8 @@
                                                     <td>{{$res->name}}</td>
                                                     <td class="td-actions text-right">
                                                         <a href="{{url('/home/form/requirementsEdit/'.$res->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Editar"><i class="material-icons">edit</i></a>
-                                                        <a href="" class="btn btn-danger btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Eliminar"><i class="material-icons">delete_outline</i></a>
+                                                        <a href="{{url('/home/form/requirements/'.$res->id.'/delete')}}" class="btn btn-danger btn-fab btn-fab-mini" style="color:rgb(255,255,255)" data-confirm="¿Esta seguro que quiere borrar?" title="Eliminar"><i class="material-icons">delete_outline</i></a>
+                                                        {{--<a class="btn btn-danger fa fa-trash-o" href="periodo/{{$periodo->pk_periodo}}/delete" data-confirm="¿Esta seguro que quiere borrar periodo {{$periodo->Nombre}}?"></a>--}}
                                                     </td>
                                                 </tr>
                                             @empty
@@ -112,7 +113,25 @@
             </div>
         </div>
     </div>
-
+    <!--******************Modal elimina******************************-->
+    <script>
+        $(document).ready(function() {
+            $('a[data-confirm]').click(function(ev) {
+                var href = $(this).attr('href');
+                if (!$('#dataConfirmModal').length) {
+                    $('body').append('<div class="modal fade in" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block;">' +
+                        '<div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title" id="myModalLabel" style="margin-right: 150px;">Advertencia</h4></div><div class="modal-body"></div><div class="modal-footer">' +
+                        '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><a class="btn btn-primary" id="dataConfirmOK">Borrar</a></div>' +
+                        '</div></div></div>');
+                }
+                $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+                $('#dataConfirmOK').attr('href', href);
+                $('#dataConfirmModal').modal({show:true});
+                return false;
+            });
+        });
+    </script>
+    <!--******************Fin Modal elimina-->
     <!-- job new -->
     <div class="modal fade" id="newre">
         <div class="modal-dialog" >
@@ -129,7 +148,7 @@
 
                             <div class="form-group col-md-12">
                                 <label for="name" class="control-label">Nombre</label>
-                                <input type="text" class="form-control" id="name" name="name" maxlength="100" value="" required>
+                                <input type="text" class="form-control" id="name" name="name" maxlength="180" value="" required>
                             </div>
                         </div>
                         <div class="modal-footer" style="padding-bottom: 0px;padding-top: 0px;">

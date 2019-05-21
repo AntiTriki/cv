@@ -78,6 +78,8 @@ Route::get('/home/form/requirements/{id}', 'RequirementsController@index');
 Route::post('/home/form/requirements/{id}', 'RequirementsController@create');
 Route::get('/home/form/requirementsEdit/{id}', 'RequirementsController@edit');
 Route::post('/home/form/requirementsEdit/{id}', 'RequirementsController@update');
+//eliminar requisitos
+Route::get('/home/form/requirements/{id}/delete','RequirementsController@delete');
 
 //mostrar CV por usuario
 Route::get('/home/form/postulant/{id}', 'PostulationController@index');
