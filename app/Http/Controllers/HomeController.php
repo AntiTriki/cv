@@ -19,9 +19,12 @@ class HomeController extends Controller
     {
         $id_user=Auth::user()->id;
         $cv = Form::where('user_id', '=', $id_user)->first();
-        $pos = DB::table('postulations')->where('form_id',$cv->id)->get();
+//        $pos = DB::table('postulations')->where('form_id',$cv->id)->get();
+        $for = DB::table('forms')->get();
+        $pos = DB::table('postulations')->get();
         $jo = DB::table('jobs')->get();
-        return view('home', ['cv'=>$cv,'jo'=>$jo,'pos'=>$pos]);
+        $use = DB::table('users')->get();
+        return view('home', ['cv'=>$cv,'jo'=>$jo,'pos'=>$pos,'for'=>$for,'use'=>$use]);
     }
     public function admin( )
     {

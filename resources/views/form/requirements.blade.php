@@ -86,7 +86,6 @@
                                                     <td class="td-actions text-right">
                                                         <a href="{{url('/home/form/requirementsEdit/'.$res->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Editar"><i class="material-icons">edit</i></a>
                                                         <a href="{{url('/home/form/requirements/'.$res->id.'/delete')}}" class="btn btn-danger btn-fab btn-fab-mini" style="color:rgb(255,255,255)" data-confirm="¿Esta seguro que quiere borrar?" title="Eliminar"><i class="material-icons">delete_outline</i></a>
-                                                        {{--<a class="btn btn-danger fa fa-trash-o" href="periodo/{{$periodo->pk_periodo}}/delete" data-confirm="¿Esta seguro que quiere borrar periodo {{$periodo->Nombre}}?"></a>--}}
                                                     </td>
                                                 </tr>
                                             @empty

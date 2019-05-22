@@ -102,22 +102,14 @@ class JobsController extends Controller
             ]);
             return back()->with('success','Postulación Correcta!');
         }
-
-
-//        $validator = Validator::make($request->all(), [
-//            'jobs_id' => 'required|unique:postulations'
-//        ]);
-//        if ($validator->fails()) {
-//            return back()->with('error','Ya postuló a este empleo')
-//                ->withErrors($validator)
-//                ->withInput();
-//        }else{
-//            DB::table('postulations')->insert([
-//                'form_id' => $form,
-//                'jobs_id' => $job->id
-//            ]);
-//            return back()->with('success','Postulación Correcta!');
-//        }
     }
-
+    public function delete($id)
+    {
+        DB::table('jobs')->where('id', '=', $id)->delete();
+        $notification = array(
+            'message' => 'Se elimino correctamente',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
+    }
 }
