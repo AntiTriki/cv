@@ -63,10 +63,6 @@
                                 <td style="color: #000000">{{ date('d-m-Y', strtotime(Auth::user()->birthday ? Auth::user()->birthday  : 'No definido')) }}</td>
                             </tr>
                             <tr>
-                                <td>Estado Civil</td>
-                                <td style="color: #000000">{{ Auth::user()->civil }}</td>
-                            </tr>
-                            <tr>
                                 <td>Nacionalidad</td>
                                 <td style="color: #000000">{{ Auth::user()->nacionalidad ? Auth::user()->nacionalidad : 'No definido' }}</td>
                             </tr>
@@ -135,39 +131,23 @@
                     <table class="table table-light">
                         <tbody style="text-align: left;">
                         @forelse($pos as $post)
-                        {{--@foreach($pos as $post)--}}
-                            {{--@foreach($for as $form)--}}
-                                {{--@if($form->id == $post->form_id)--}}
-                                    {{--@foreach($use as $user)--}}
-                                        {{--@if($form->user_id == $user->id)--}}
                                 <tr>
                                     @foreach($for as $cvs)
                                         @if($cvs->id == $post->form_id)
+                                            @foreach($use as $user)
+                                                @if($cvs->user_id == $user->id)
                                                     @foreach($jo as $job)
                                                         @if($post->jobs_id == $job->id)
                                                             <td style="color: #000000">Cargo: {{ $job->occupation }}</td>
-                                                        @endif
-                                                    @endforeach
-                                                    @foreach($jo as $job)
-                                                        @if($post->jobs_id == $job->id)
                                                             <td style="color: #000000">Tipo de contrato: {{ $job->time_job }}</td>
-                                                        @endif
-                                                    @endforeach
-                                                    @foreach($jo as $job)
-                                                        @if($post->jobs_id == $job->id)
                                                             <td style="color: #000000">Ciudad: {{ $job->city }}</td>
                                                         @endif
                                                     @endforeach
-                                                {{--@endif--}}
-                                            {{--@endforeach--}}
+                                                @endif
+                                            @endforeach
                                     @endif
                                     @endforeach
                                 </tr>
-                                        {{--@endif--}}
-                                    {{--@endforeach--}}
-                                {{--@endif--}}
-                            {{--@endforeach--}}
-                        {{--@endforeach--}}
                             @empty
                             <h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulacion</h4>
                         @endforelse
