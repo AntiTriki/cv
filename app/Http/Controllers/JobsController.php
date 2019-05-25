@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class JobsController extends Controller
 {
@@ -94,14 +95,17 @@ class JobsController extends Controller
         $form = Form::where('user_id','=',Auth::user()->id)->value('id');
         $post = DB::table('postulations')->where('form_id',$form)->value('jobs_id');
 //        return "ass $post";
+        $today = Carbon::now();
         if ($post > 0){
             return back()->with('error','El usuario ya tiene postulación');
         }else{
             DB::table('postulations')->insert([
                 'form_id' => $form,
-                'jobs_id' => $job->id
+                'jobs_id' => $job->id,
+                'fecha_insert' => $today,
+                'activo' => 1
             ]);
-            return back()->with('success','Postulación Correcta!');
+            return back()->with('success','Postulación Correcta, valida por 30dias!');
         }
     }
     public function delete($id)

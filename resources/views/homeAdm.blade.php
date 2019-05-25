@@ -100,7 +100,6 @@
                                                 <tbody>
                                                 @forelse ($jo as $job)
                                                     <tr>
-                                                        <input type="hidden" name="idjob" id="idjob" value="{{$job->id}}">
                                                         <td class="text-left" style="width: 20%"> {{$job->occupation}}</td>
                                                         @foreach($cat as $ca)
                                                             @if($job->category_id == $ca->id)

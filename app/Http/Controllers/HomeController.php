@@ -27,9 +27,14 @@ class HomeController extends Controller
         $pos = DB::table('postulations')->get();
         $jo = DB::table('jobs')->get();
         $use = DB::table('users')->get();
+
+//        a partir de la fecha de insercion  se cuenta 30 dias para cambiar activo a 0
+//        activo a 1 por defecto
+//        hace un update para cambiar activo = 0;
+
         return view('home', ['cv'=>$cv,'jo'=>$jo,'pos'=>$pos,'for'=>$for,'use'=>$use]);
     }
-    public function admin(Request $request)
+    public function admin()
     {
         $pos = DB::table('postulations')->get();
 //        $today = Carbon::now();

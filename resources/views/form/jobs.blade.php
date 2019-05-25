@@ -24,6 +24,7 @@
                             </div>
                             <br>
                             @foreach($job as $jo)
+                                @if($jo->activo == 1)
                                 <form class="form-horizontal" method="POST" action="{{ url('/home/form/jobs/jobDetail/'.$jo->id)}}">
                                     {{ csrf_field() }}
                             <div class="row justify-content-center">
@@ -43,6 +44,7 @@
                                 </div>
                             </div>
                                 </form>
+                                @endif
                             @endforeach
                         </div>
                     </div>

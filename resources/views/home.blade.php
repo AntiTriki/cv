@@ -131,6 +131,7 @@
                     <table class="table table-light">
                         <tbody style="text-align: left;">
                         @forelse($pos as $post)
+                            @if($post->activo == 1)
                                 <tr>
                                     @foreach($for as $cvs)
                                         @if($cvs->id == $post->form_id)
@@ -147,6 +148,7 @@
                                             @endforeach
                                     @endif
                                     @endforeach
+                                        @endif
                                 </tr>
                             @empty
                             <h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulacion</h4>
