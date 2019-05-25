@@ -36,6 +36,8 @@
                                 {{ csrf_field() }}
                                 <div class="form-row py-2">
                                     <input type="hidden" name="idjob" id="idjob" value="{{$job->id}}">
+                                    <input type="hidden" name="idinicio" id="idinicio" value="{{$job->published}}">
+                                    <input type="hidden" name="idfin" id="idfin" value="{{$job->validity}}">
                                     <div class="form-group col-md-4">
                                         <label for="occupation" class="control-label">Cargo</label>
                                         <input type="text" class="form-control" id="occupation" name="occupation" maxlength="100" value="{{$job->occupation}}" required>

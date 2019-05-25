@@ -26,6 +26,7 @@ class CreateJobsTable extends Migration
             $table->date('validity')->nullable();
             $table->string('description')->nullable();
             $table->string('roles')->nullable();
+            $table->string('activo')->nullable();
         });
     }
 

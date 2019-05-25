@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('body-class','profile-page')
 @section('content')
+
     <style>
         ::-webkit-input-placeholder {
             text-align: center;
@@ -91,13 +92,15 @@
                                                     <th class="text-center">Categoria</th>
                                                     <th class="text-center">Ciudad</th>
                                                     <th class="text-center">Tipo Contrato</th>
-                                                    <th class="text-center">Valido</th>
+                                                    <th class="text-center">Vencimiento</th>
+                                                    <th class="text-center">Vigente</th>
                                                     <th class="text-center" style="width: 20%"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @forelse ($jo as $job)
                                                     <tr>
+                                                        <input type="hidden" name="idjob" id="idjob" value="{{$job->id}}">
                                                         <td class="text-left" style="width: 20%"> {{$job->occupation}}</td>
                                                         @foreach($cat as $ca)
                                                             @if($job->category_id == $ca->id)
@@ -107,6 +110,14 @@
                                                         <td class="text-center" style="width: 20%">{{$job->city}}</td>
                                                         <td class="text-center"> {{$job->time_job}} </td>
                                                         <td class="text-center"> {{date('d-m-Y', strtotime($job->validity))}} </td>
+                                                        <td class="text-center">
+                                                            @if($job->activo == 1)
+                                                                <span class="badge badge-success">Vigente</span>
+                                                            @else
+                                                                <span class="badge badge-danger">No vigente</span>
+                                                            @endif
+                                                            {{--<span class="badge badge-info">{{$job->activo ? 'Vigente' : 'No vigente'}}</span>--}}
+                                                        </td>
                                                         <td class="td-actions text-right">
                                                             <a href="{{url('/home/form/jobEdit/'.$job->id.'')}}" class="btn btn-info btn-fab btn-fab-mini" id="edit-item" rel="tooltip" style="color:rgb(255,255,255)" title="Editar"><i class="material-icons">edit</i></a>
                                                             <a href="{{url('/home/form/jobEdit/'.$job->id.'/delete')}}" class="btn btn-danger btn-fab btn-fab-mini" style="color:rgb(255,255,255)" title="Eliminar" data-confirm="¿Esta seguro que quiere borrar?"><i class="material-icons">delete_outline</i></a>

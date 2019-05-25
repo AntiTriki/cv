@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+use App\Jobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -26,13 +29,21 @@ class HomeController extends Controller
         $use = DB::table('users')->get();
         return view('home', ['cv'=>$cv,'jo'=>$jo,'pos'=>$pos,'for'=>$for,'use'=>$use]);
     }
-    public function admin( )
+    public function admin(Request $request)
     {
         $pos = DB::table('postulations')->get();
-        $jo = DB::table('jobs')->get();
+//        $today = Carbon::now();
+//        $jo = DB::table('jobs')->where('validity','>',$today)->get();
+        $jo = DB::table('jobs')->orderBy('activo', 'desc')->get();
         $cat = DB::table('categories')->get();
         $for = DB::table('forms')->get();
         $use = DB::table('users')->get();
+
+        $today = Carbon::now();
+
+            DB::table('jobs')->where('validity','<=',$today)->update([
+                'activo' => 0
+            ]);
         return view('homeAdm', ['jo'=>$jo,'pos'=>$pos,'cat'=>$cat,'for'=>$for,'use'=>$use]);
     }
 

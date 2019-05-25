@@ -40,7 +40,8 @@ class JobsController extends Controller
             'validity' => $request->input('validity'),
             'description' => $request->input('description'),
             'roles' => $request->input('roles'),
-            'category_id' => $request->input('category_id')
+            'category_id' => $request->input('category_id'),
+            'activo' => 1
         ]);
         $notification = array(
             'message' => 'Agregado Correctamente',

@@ -21,6 +21,7 @@ class CreatePostulationsTable extends Migration
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
             $table->integer('jobs_id')->unsigned();
             $table->foreign('jobs_id')->references('id')->on('jobs')->onDelete('cascade');
+            $table->string('activo')->nullable();
         });
     }
 
