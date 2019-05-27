@@ -22,12 +22,12 @@ class HomeController extends Controller
     {
         $id_user=Auth::user()->id;
         $cv = Form::where('user_id', '=', $id_user)->first();
-//        $pos = Postulation::where('form_id',$cv->id)->firstOrFail();
+        $cvv = Form::where('user_id','=',$id_user)->value('id');
+        $pos = Postulation::where('form_id',$cvv)->first();
         $for = DB::table('forms')->get();
-        $pos = DB::table('postulations')->get();
+//        $pos = DB::table('postulations')->get();
         $jo = DB::table('jobs')->get();
         $use = DB::table('users')->get();
-//        dd(carbon::now()->addDays(30));
 
 //        DB::table('postulations')->where( 'fecha_insert', '<', Carbon::now())->update([
 //            'activo' => 0

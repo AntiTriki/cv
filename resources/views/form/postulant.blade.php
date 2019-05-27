@@ -114,7 +114,7 @@
                                             <tr>
                                                 <th style="color: #000000;" class="text-left">Empresa</th>
                                                 <th style="color: #000000;" class="text-center">Cargo que desempeñaba</th>
-                                                <th style="color: #000000;" class="text-center">Descripcion</th>
+                                                <th style="color: #000000;" class="text-left">Descripcion</th>
                                                 <th style="color: #000000;" class="text-center">Fecha de ingreso</th>
                                                 <th style="color: #000000;" class="text-center">Fecha de salida</th>
                                                 <th style="color: #000000;width: 20%;" class="text-center">Nombre Jefe</th>
@@ -133,7 +133,7 @@
                                                                     @if($roles->enterprise_id == $ent->id)
                                                                 <td style="color: #000000;" class="text-left">{{$ent->nombre_empresa}}</td>
                                                                 <td style="color: #000000;" class="text-left">{{$ent->cargo}}</td>
-                                                                <td style="color: #000000;" class="text-center">{{$roles->descripcion}}</td>
+                                                                <td style="color: #000000;" class="text-left">{{$roles->descripcion}}</td>
                                                                 <td style="color: #000000;" class="text-center">{{date('d-m-Y',strtotime($ent->fecha_inicio))}}</td>
                                                                 <td style="color: #000000;" class="text-center">{{date('d-m-Y',strtotime($ent->fecha_fin))}}</td>
                                                                 <td style="color: #000000;" class="text-center">{{$ent->nombre_jefe}}</td>

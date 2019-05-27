@@ -130,29 +130,48 @@
                     </div>
                     <table class="table table-light">
                         <tbody style="text-align: left;">
-                        @forelse($pos as $post)
-                            @if($post->activo == 1)
-                                @foreach($for as $cvs)
-                                    @if($cvs->id == $post->form_id)
+                        @if (isset($pos))
+                            @if($pos->activo == 1)
                                 <tr>
-                                            @foreach($use as $user)
-                                                @if($cvs->user_id == $user->id)
-                                                    @foreach($jo as $job)
-                                                        @if($post->jobs_id == $job->id)
-                                                            <td style="color: #000000">Cargo: {{ $job->occupation }}</td>
-                                                            <td style="color: #000000">Tipo de contrato: {{ $job->time_job }}</td>
-                                                            <td style="color: #000000">Ciudad: {{ $job->city }}</td>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                    @endif
-                                    @endforeach
+                                    @foreach($jo as $job)
+                                        @if($pos->jobs_id == $job->id)
+                                            <td style="color: #000000">Cargo: {{ $job->occupation }}</td>
+                                            <td style="color: #000000">Tipo de contrato: {{ $job->time_job }}</td>
+                                            <td style="color: #000000">Ciudad: {{ $job->city }}</td>
                                         @endif
+                                    @endforeach
                                 </tr>
-                            @empty
-                            <h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulacion</h4>
-                        @endforelse
+
+                            @endif
+                        @else
+                            <h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulaciones</h4>
+
+                        @endif
+
+
+                        {{--@forelse($pos as $post)--}}
+                            {{--@if($post->activo == 1)--}}
+                                {{--@foreach($for as $cvs)--}}
+                                    {{--@if($cvs->id == $post->form_id)--}}
+                                {{--<tr>--}}
+                                            {{--@foreach($use as $user)--}}
+                                                {{--@if($cvs->user_id == $user->id)--}}
+                                                    {{--@foreach($jo as $job)--}}
+                                                        {{--@if($post->jobs_id == $job->id)--}}
+                                                            {{--<td style="color: #000000">Cargo: {{ $job->occupation }}</td>--}}
+                                                            {{--<td style="color: #000000">Tipo de contrato: {{ $job->time_job }}</td>--}}
+                                                            {{--<td style="color: #000000">Ciudad: {{ $job->city }}</td>--}}
+                                                        {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                {{--@endif--}}
+                                            {{--@endforeach--}}
+                                    {{--@endif--}}
+                                    {{--@endforeach--}}
+                                                {{--@endif--}}
+                                {{--</tr>--}}
+                            {{--@empty--}}
+                            {{--<h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulacion</h4>--}}
+                        {{--@endforelse--}}
                         </tbody>
                     </table>
                 </div>
