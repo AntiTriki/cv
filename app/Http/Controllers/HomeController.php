@@ -7,7 +7,6 @@ use App\Jobs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-//use Illuminate\Support\Carbon;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -27,10 +26,11 @@ class HomeController extends Controller
         $pos = DB::table('postulations')->get();
         $jo = DB::table('jobs')->get();
         $use = DB::table('users')->get();
+//        dd(carbon::now()->addDays(30));
 
-//        a partir de la fecha de insercion  se cuenta 30 dias para cambiar activo a 0
-//        activo a 1 por defecto
-//        hace un update para cambiar activo = 0;
+//        DB::table('postulations')->where( 'fecha_insert', '<', Carbon::now())->update([
+//            'activo' => 0
+//        ]);
 
         return view('home', ['cv'=>$cv,'jo'=>$jo,'pos'=>$pos,'for'=>$for,'use'=>$use]);
     }
@@ -44,11 +44,11 @@ class HomeController extends Controller
         $for = DB::table('forms')->get();
         $use = DB::table('users')->get();
 
-        $today = Carbon::now();
+//        $today = Carbon::now();
+//            DB::table('jobs')->where('validity','<=',$today)->update([
+//                'activo' => 0
+//            ]);
 
-            DB::table('jobs')->where('validity','<=',$today)->update([
-                'activo' => 0
-            ]);
         return view('homeAdm', ['jo'=>$jo,'pos'=>$pos,'cat'=>$cat,'for'=>$for,'use'=>$use]);
     }
 

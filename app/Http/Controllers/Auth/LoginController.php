@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -21,14 +23,18 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-
 //    protected $redirectTo = '/home';
     public function redirectTo(){
+
+
+        $today = Carbon::now();
+
+        DB::table('jobs')->where('validity','<=',$today)->update([
+            'activo' => 0
+        ]);
+        DB::table('postulations')->where( 'fecha_insert', '<', Carbon::now())->update([
+            'activo' => 0
+        ]);
 
         // User role
         $role = Auth::user()->permiso;
@@ -45,6 +51,7 @@ class LoginController extends Controller
                 return '/login';
                 break;
         }
+
     }
     /**
      * Create a new controller instance.
