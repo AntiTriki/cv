@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Form;
 use App\Jobs;
+use App\Postulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class HomeController extends Controller
     {
         $id_user=Auth::user()->id;
         $cv = Form::where('user_id', '=', $id_user)->first();
-//        $pos = DB::table('postulations')->where('form_id',$cv->id)->get();
+//        $pos = Postulation::where('form_id',$cv->id)->firstOrFail();
         $for = DB::table('forms')->get();
         $pos = DB::table('postulations')->get();
         $jo = DB::table('jobs')->get();

@@ -132,9 +132,9 @@
                         <tbody style="text-align: left;">
                         @forelse($pos as $post)
                             @if($post->activo == 1)
+                                @foreach($for as $cvs)
+                                    @if($cvs->id == $post->form_id)
                                 <tr>
-                                    @foreach($for as $cvs)
-                                        @if($cvs->id == $post->form_id)
                                             @foreach($use as $user)
                                                 @if($cvs->user_id == $user->id)
                                                     @foreach($jo as $job)
