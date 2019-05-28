@@ -1,19 +1,27 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-    Route::get('/', 'FormController@index');
-    Route::match(['get', 'post'], 'create', 'FormController@create');
-    Route::match(['get', 'put'], 'update/{id}', 'FormController@update');
-    Route::delete('delete/{id}', 'FormController@delete');
-*/
+
+Route::group(['middleware' => ['auth','admin']], function () {
+    //listas para ADMIN y creacion
+//Route::get('/home/form/listJob', 'JobsController@list');
+    Route::post('/homeAdm', 'JobsController@create');
+//Editar trabajos Admin
+    Route::get('/home/form/jobEdit/{id}', 'JobsController@show');
+    Route::post('/home/form/jobEdit/{id}', 'JobsController@updates');
+//eliminar trabajos ADMIN
+    Route::get('/home/form/jobEdit/{id}/delete','JobsController@delete');
+//Agregar requisitos a trabajos
+    Route::get('/home/form/requirements/{id}', 'RequirementsController@index');
+    Route::post('/home/form/requirements/{id}', 'RequirementsController@create');
+    Route::get('/home/form/requirementsEdit/{id}', 'RequirementsController@edit');
+    Route::post('/home/form/requirementsEdit/{id}', 'RequirementsController@update');
+//eliminar requisitos
+    Route::get('/home/form/requirements/{id}/delete','RequirementsController@delete');
+//mostrar CV por usuario
+    Route::get('/home/form/postulant/{id}', 'PostulationController@index');
+});
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -67,24 +75,7 @@ Route::get('/home/form/jobs', 'JobsController@index');
 Route::get('/home/form/jobDetail/{id}', 'JobsController@edit');
 Route::post('/home/form/jobDetail/{id}', 'JobsController@update');
 
-//listas para ADMIN y creacion
-//Route::get('/home/form/listJob', 'JobsController@list');
-Route::post('/homeAdm', 'JobsController@create');
-//Editar trabajos Admin
-Route::get('/home/form/jobEdit/{id}', 'JobsController@show');
-Route::post('/home/form/jobEdit/{id}', 'JobsController@updates');
-//eliminar trabajos ADMIN
-Route::get('/home/form/jobEdit/{id}/delete','JobsController@delete');
-//Agregar requisitos a trabajos
-Route::get('/home/form/requirements/{id}', 'RequirementsController@index');
-Route::post('/home/form/requirements/{id}', 'RequirementsController@create');
-Route::get('/home/form/requirementsEdit/{id}', 'RequirementsController@edit');
-Route::post('/home/form/requirementsEdit/{id}', 'RequirementsController@update');
-//eliminar requisitos
-Route::get('/home/form/requirements/{id}/delete','RequirementsController@delete');
 
-//mostrar CV por usuario
-Route::get('/home/form/postulant/{id}', 'PostulationController@index');
 
 //imagen de perfil
 Route::get('profile', 'PerfilController@index'); //listado
