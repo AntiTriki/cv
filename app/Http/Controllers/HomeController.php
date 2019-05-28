@@ -23,7 +23,7 @@ class HomeController extends Controller
         $id_user=Auth::user()->id;
         $cv = Form::where('user_id', '=', $id_user)->first();
         $cvv = Form::where('user_id','=',$id_user)->value('id');
-        $pos = Postulation::where('form_id',$cvv)->first();
+        $pos = Postulation::where('form_id',$cvv)->get();
         $for = DB::table('forms')->get();
 //        $pos = DB::table('postulations')->get();
         $jo = DB::table('jobs')->get();

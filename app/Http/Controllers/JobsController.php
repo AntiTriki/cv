@@ -93,10 +93,12 @@ class JobsController extends Controller
     {
         $job = Jobs::findOrFail($id);
         $form = Form::where('user_id','=',Auth::user()->id)->value('id');
-        $post = DB::table('postulations')->where('form_id',$form)->value('jobs_id');
-//        revisar -------------------------------------------
+        $post = DB::table('postulations')->where('form_id',$form)
+            ->Where('activo','=',1)
+            ->value('activo');
+//        agregar where para que vea si esta activo en 0 -------------------------------------------
         $today = Carbon::now()->addDays(30);
-        if ($post > 0){
+        if ($post >= 1){
             return back()->with('error','El usuario ya tiene postulación');
         }else{
             DB::table('postulations')->insert([

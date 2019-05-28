@@ -130,19 +130,20 @@
                     </div>
                     <table class="table table-light">
                         <tbody style="text-align: left;">
-                        @if (isset($pos))
-                            @if($pos->activo == 1)
+                        @if (isset ($pos))
+                            @foreach($pos as $post)
+                            @if($post->activo == 1)
                                 <tr>
                                     @foreach($jo as $job)
-                                        @if($pos->jobs_id == $job->id)
+                                        @if($post->jobs_id == $job->id)
                                             <td style="color: #000000">Cargo: {{ $job->occupation }}</td>
                                             <td style="color: #000000">Tipo de contrato: {{ $job->time_job }}</td>
                                             <td style="color: #000000">Ciudad: {{ $job->city }}</td>
                                         @endif
                                     @endforeach
                                 </tr>
-
                             @endif
+                            @endforeach
                         @else
                             <h4 style="color: red"><i class="fa fa-exclamation-triangle" role="alert"></i>No tiene postulaciones</h4>
 
