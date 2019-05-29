@@ -19,6 +19,7 @@ class JobsController extends Controller
 
     public function index()
     {
+
         $job = DB::table('jobs')->get();
 //        return "redi $job";
         $re = DB::table('requirements')->get();

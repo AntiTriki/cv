@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AdminMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if(
-            auth()->check() && $request->user()->permiso==1
+            auth()->check() && $request->user()->permiso==0
         ) {
             return $next($request);
         }else {
