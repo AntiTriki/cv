@@ -41,6 +41,16 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+        'admin' => [
+            \App\Http\Middleware\AdminMiddleware::class,
+        ],
+        'user' => [
+            \App\Http\Middleware\UserMiddleware::class,
+        ],
+        'check' => [
+            \App\Http\Middleware\RedirectIfAuthenticated::class,
+        ],
+
     ];
 
     /**
