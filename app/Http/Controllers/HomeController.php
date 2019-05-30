@@ -8,6 +8,7 @@ use App\Postulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\User;
 use Carbon\Carbon;
 
 class HomeController extends Controller

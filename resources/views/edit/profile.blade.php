@@ -27,19 +27,24 @@
                             <input type="hidden" id="inpr" name="inpr" value="{{Auth::user()->id}}">
 
                             <div class="col-md-3">
+                                <label>Nombre</label>
                                 <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Nombre" required autofocus>
                             </div>
 
                             <div class="col-md-3">
+                                <label>Apellido Paterno</label>
                                 <input id="apellido_p" type="text" class="form-control" name="apellido_p" value="{{ $user->apellido_p }}" placeholder="Apellido Paterno" required autofocus>
                             </div>
                             <div class="col-md-2">
+                                <label>Apellido Materno</label>
                                 <input id="apellido_m" type="text" class="form-control" name="apellido_m" value="{{ $user->apellido_m }}" placeholder="Apellido Materno" required autofocus>
                             </div>
                             <div class="col-md-2">
+                                <label>Carnet de identidad</label>
                                 <input id="ci" type="text" class="form-control" name="ci" value="{{ $user->ci }}" placeholder="Carnet de identidad" required autofocus>
                             </div>
                             <div class="col-md-2">
+                                <label>Fecha de nacimiento</label>
                                 <input id="fnacimiento" type="date" class="form-control datetimepicker" name="fnacimiento" value="{{$user->birthday }}" required autofocus>
                             </div>
                         </div>
@@ -47,19 +52,24 @@
 
                         <div class="form-row py-3">
                             <div class="col-md-3">
+                                <label>Nacionalidad</label>
                                 <input id="nacionalidad" type="text" class="form-control" name="nacionalidad" value="{{ $user->nacionalidad }}" placeholder="Nacionalidad" required autofocus>
                             </div>
                             <div class="col-md-3">
+                                <label>Residencia</label>
                                 <input id="residencia" type="text" class="form-control" name="residencia" value="{{ $user->residencia }}" placeholder="Ciudad de Residencia" required autofocus>
                             </div>
 
                             <div class="col-md-2">
+                                <label>Celular</label>
                                 <input id="celular" type="number" class="form-control" name="celular" value="{{ $user->celular }}" placeholder="Celular" required autofocus>
                             </div>
                             <div class="col-md-2">
+                                <label>Telefono</label>
                                 <input id="telefono" type="number" class="form-control" name="telefono" value="{{ $user->telefono }}" placeholder="Telefono fijo" required autofocus>
                             </div>
                             <div class="col-md-2">
+                                <label>Correo electronico</label>
                                 <input id="mail" type="text" class="form-control" name="mail" value="{{ $user->email }}" placeholder="mail" required autofocus>
                             </div>
                         </div>
@@ -92,9 +102,13 @@
                             {{--</div>--}}
 
                             <div class="col-md-3">
-                                <input id="hijos" type="text" class="form-control" name="hijos" value="{{$user->children }}" placeholder="Tiene hijos y cuantos" required autofocus>
+                                <label>Cantidad de hijos</label>
+                                <br>
+                                <input id="hijos" type="text" class="form-control" name="hijos" value="{{$user->children }}" placeholder="Tiene hijos y cuantos" autofocus>
                             </div>
                             <div class="col-md-3">
+                                <label>Estado civil</label>
+                                <br>
                                 <select name="civil" class="form-control" id="civil">
                                     <option value=" ">-- Estado Civil --</option>
                                     @foreach($civil as $civils)

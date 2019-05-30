@@ -24,7 +24,7 @@
                                     {{ Auth::user()->name }} {{ Auth::user()->apellido_p }} {{ Auth::user()->apellido_m }}
                                     <br>
                                     <a href="{{url('/home/edit/profile/'.Auth::user()->id.'')}}" rel="tooltip" title="Agregar CV" class="btn btn-info  btn-round">
-                                        <i class="material-icons">add</i> Agregar
+                                        <i class="material-icons">add</i> Datos
                                     </a>
                                     <a href="{{url('profile')}}" rel="tooltip" title="Agregar Foto" class="btn btn-info btn-fab btn-fab-mini btn-round">
                                         <i class="material-icons">camera_alt</i>
@@ -46,10 +46,10 @@
                                 <td>Correo</td>
                                 <td style="color: #000000">{{ Auth::user()->email }}</td>
                             </tr>
-                            <tr>
-                                <td>Sexo</td>
-                                <td style="color: #000000">{{ Auth::user()->sexo ? 'Hombre' : 'Mujer' }}</td>
-                            </tr>
+                            {{--<tr>--}}
+                                {{--<td>Sexo</td>--}}
+                                {{--<td style="color: #000000">{{ Auth::user()->sexo ? 'Hombre' : 'Mujer' }}</td>--}}
+                            {{--</tr>--}}
                             <tr>
                                 <td>Telefono</td>
                                 <td style="color: #000000">{{ Auth::user()->telefono ? Auth::user()->telefono : 'No definido' }}</td>
@@ -70,10 +70,10 @@
                                 <td>Ciudad de residencia</td>
                                 <td style="color: #000000">{{ Auth::user()->residencia ? Auth::user()->residencia : 'No definido' }}</td>
                             </tr>
-                            <tr>
-                                <td>Hijos</td>
-                                <td style="color: #000000">{{ Auth::user()->children ? Auth::user()->children : 'No tiene' }}</td>
-                            </tr>
+                            {{--<tr>--}}
+                                {{--<td>Hijos</td>--}}
+                                {{--<td style="color: #000000">{{ Auth::user()->children ? Auth::user()->children : 'No tiene' }}</td>--}}
+                            {{--</tr>--}}
                             <tr>
                                 <td>Licencia de conducir</td>
                                 <td style="color: #000000">{{ Auth::user()->drivecard ? 'Tiene' : 'No Tiene' }}</td>

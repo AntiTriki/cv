@@ -11,11 +11,10 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
-
-Route::get('home', 'HomeController@index')->name('home');
-Route::get('homeAdm', 'HomeController@admin')->name('home');
+Route::get('home', 'HomeController@index');
 
 Route::group([ 'middleware' => 'admin'], function () {
+    Route::get('homeAdm', 'HomeController@admin');
         //listas para ADMIN y creacion
             Route::post('/homeAdm', 'JobsController@create');
         //Editar trabajos Admin
@@ -34,7 +33,7 @@ Route::group([ 'middleware' => 'admin'], function () {
             Route::get('/home/form/postulant/{id}', 'PostulationController@index');
 });
 
-Route::group([ 'middleware' => 'user'], function (){
+//Route::group([ 'middleware' => 'user'], function (){});
 
         //perfil de usuario
         Route::get('/home/edit/profile/{id}', 'UsuarioController@edit');
@@ -80,5 +79,5 @@ Route::group([ 'middleware' => 'user'], function (){
         Route::get('profile', 'PerfilController@index'); //listado
         Route::post('profile', 'PerfilController@store'); //registrar
         Route::delete('/home/{id}/image', 'PerfilController@destroy'); //eliminar
-});
+
 
