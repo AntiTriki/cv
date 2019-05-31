@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
     <style>
         ::-webkit-input-placeholder {
             text-align: center;
@@ -24,34 +24,37 @@
             background: linear-gradient(60deg, #166b91, #0097a7);
         }
     </style>
-    <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
+    <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;">
         <div class="container" >
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header"><h5>{{ __('Curriculum') }}</h5></div>
-
                         <div class="card-body">
                             <form class="form-horizontal py-4" method="POST" action="{{ url('/home/form/index/'.$form->id.'') }}">
                                     {{ csrf_field() }}
                                 <div class="form-row py-2">
                                     <div class="col-md-12">
-                                        <input id="general" type="text" value="{{ $form->general }}" class="form-control" name="general" placeholder="Titulo Ej: Ejecutivo de ventas Scz" required autofocus>
+                                        <label>Titulo</label>
+                                        <input id="general" type="text" value="{{ $form->general }}" class="form-control" name="general" placeholder="Ej: Ejecutivo de ventas Scz" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-row py-4">
                                     <div class="col-md-12">
+                                        <label>Descripción/Presentacion de ti</label>
                                     <textarea class="form-control" placeholder="Descripción/Presentacion de ti" name="description" id="description" rows=2>{{ $form->description }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="col-md-4 py-2">
-                                        <input id="available_job" type="text" class="form-control" name="available_job" value="{{ $form->available_job }}" placeholder="Disponibilidad inmediata Ej: 1 semana" required autofocus>
+                                        <label>Disponibilidad</label><br>
+                                        <input id="available_job" type="text" class="form-control" name="available_job" value="{{ $form->available_job }}" placeholder="Ej:inmediata , 1 semana" required autofocus>
                                     </div>
                                     <div class="col-md-4 py-2">
-                                        <input id="salary" type="number" class="form-control" name="salary" value="{{ $form->salary }}" placeholder="Pretensión Salarial *" required autofocus>
+                                        <label>Pretensión Salarial</label><br>
+                                        <input id="salary" type="number" class="form-control" name="salary" value="{{ $form->salary }}" placeholder="Pretensión Salarial" required autofocus>
                                     </div>
                                     <div class="col-md-4 py-1">
                                         <label>Disponibilidad de viaje</label><br>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Name;
+use Carbon\Carbon;
 
 class UsuarioController extends Controller
 {
@@ -45,6 +46,10 @@ class UsuarioController extends Controller
 
     public function update(Request $request,$id)
     {
+        $edad = $request->input('fnacimiento');
+        $years = Carbon::parse($edad)->age;
+
+        if ($years >= 18){
             $user = User::find($id);
             $user->name = $request->input('name');
             $user->apellido_p = $request->input('apellido_p');
@@ -62,15 +67,24 @@ class UsuarioController extends Controller
             $user->drivecard = $request->input('licencia');
             $user->save();
 
-        $form = Form::where('user_id', '=', $id)->first();
+            $form = Form::where('user_id', '=', $id)->first();
 
-        if($form == null){
-            return redirect('/home/form/curriculum');
-        }
-        else {
-            return redirect('/home/form/index/'.$form->id);
 
+            if($form == null){
+                return redirect('/home/form/curriculum');
+            }
+            else {
+                return redirect('/home/form/index/'.$form->id);
+
+            }
+        }else{
+            $notification = array(
+                'message' => 'Debes ser mayor de 18',
+                'alert-type' => 'error'
+            );
+            return back()->with($notification);
         }
+
 
     }
 

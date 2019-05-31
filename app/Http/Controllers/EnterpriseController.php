@@ -27,32 +27,44 @@ class EnterpriseController extends Controller
     {
         $idform = $request->input('form_id');
 
-        DB::table('enterprises')->insert([
-           'nombre_empresa' => $request-> input('nombre_empresa'),
-            'nombre_jefe' => $request->input('nombre_jefe'),
-            'role' => $request->input('role'),
-            'mail_jefe' => $request->input('mail_jefe'),
-            'cargo' => $request->input('cargo'),
-            'cel_jefe' => $request->input('cel_jefe'),
-            'fecha_inicio' => $request->input('fecha_inicio'),
-            'fecha_fin' => $request->input('fecha_fin')
-        ]);
-        $valor = $request -> input('nombre_empresa');
-        $idEnt = DB::table('enterprises')->where('nombre_empresa','=',$valor)->value('enterprises.id');
-//        return "id habrr $idEnt";
+        $finicio = $request->input('fecha_inicio');
+        $ffin = $request->input('fecha_fin');
 
-        DB::table('roles')->insert([
-            'enterprise_id' => $idEnt,
-            'form_id' => $idform,
-            'descripcion' => $request->input('descripcion')
-        ]);
+        if ($finicio < $ffin){
+            DB::table('enterprises')->insert([
+                'nombre_empresa' => $request-> input('nombre_empresa'),
+                'nombre_jefe' => $request->input('nombre_jefe'),
+                'role' => $request->input('role'),
+                'mail_jefe' => $request->input('mail_jefe'),
+                'cargo' => $request->input('cargo'),
+                'cel_jefe' => $request->input('cel_jefe'),
+                'fecha_inicio' => $request->input('fecha_inicio'),
+                'fecha_fin' => $request->input('fecha_fin')
+            ]);
+            $valor = $request -> input('nombre_empresa');
+            $idEnt = DB::table('enterprises')->where('nombre_empresa','=',$valor)->value('enterprises.id');
 
-        $notification = array(
-            'message' => 'Agregado Correctamente',
-            'alert-type' => 'success'
-        );
+            DB::table('roles')->insert([
+                'enterprise_id' => $idEnt,
+                'form_id' => $idform,
+                'descripcion' => $request->input('descripcion')
+            ]);
 
-        return back()->with($notification);
+            $notification = array(
+                'message' => 'Agregado Correctamente',
+                'alert-type' => 'success'
+            );
+
+            return back()->with($notification);
+        }else{
+            $notification = array(
+                'message' => 'Error en las fechas',
+                'alert-type' => 'error'
+            );
+
+            return back()->with($notification);
+        }
+
     }
 
     public function edit($id)
@@ -68,25 +80,37 @@ class EnterpriseController extends Controller
         $idrol = $request->input('idrol');
         $iden = $request->input('ident');
 
-        DB::table('roles')->where('id',$idrol)->update([
-            'descripcion' => $request->input('descripcion')
-        ]);
-        DB::table('enterprises')->where('id',$iden)->update([
-            'nombre_empresa' => $request-> input('nombre_empresa'),
-            'nombre_jefe' => $request->input('nombre_jefe'),
-            'role' => $request->input('role'),
-            'mail_jefe' => $request->input('mail_jefe'),
-            'cargo' => $request->input('cargo'),
-            'cel_jefe' => $request->input('cel_jefe'),
-            'fecha_inicio' => $request->input('fecha_inicio'),
-            'fecha_fin' => $request->input('fecha_fin')
-        ]);
+        $finicio = $request->input('fecha_inicio');
+        $ffin = $request->input('fecha_fin');
 
-        $notification = array(
-            'message' => 'Modificado Correctamente',
-            'alert-type' => 'success'
-        );
-        return redirect('home/form/enterprise/'.$idform)->with($notification);
+        if ($finicio < $ffin) {
+
+            DB::table('roles')->where('id', $idrol)->update([
+                'descripcion' => $request->input('descripcion')
+            ]);
+            DB::table('enterprises')->where('id', $iden)->update([
+                'nombre_empresa' => $request->input('nombre_empresa'),
+                'nombre_jefe' => $request->input('nombre_jefe'),
+                'role' => $request->input('role'),
+                'mail_jefe' => $request->input('mail_jefe'),
+                'cargo' => $request->input('cargo'),
+                'cel_jefe' => $request->input('cel_jefe'),
+                'fecha_inicio' => $request->input('fecha_inicio'),
+                'fecha_fin' => $request->input('fecha_fin')
+            ]);
+
+            $notification = array(
+                'message' => 'Modificado Correctamente',
+                'alert-type' => 'success'
+            );
+            return redirect('home/form/enterprise/' . $idform)->with($notification);
+        }else{
+            $notification = array(
+                'message' => 'Error en las fechas',
+                'alert-type' => 'error'
+            );
+            return redirect('home/form/enterprise/' . $idform)->with($notification);
+        }
     }
 
 }
