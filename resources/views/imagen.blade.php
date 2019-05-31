@@ -33,6 +33,31 @@
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    {{-----------------------alerta---------------------}}
+    <script>
+                @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        switch(type){
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
+
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+        @endif
+    </script>
     <div class="page-header header-filter" style="background-image: url({{asset('img/city1.jpg')}}); background-size: cover; background-position: top center;"> >
         <div class="container" >
             <div class="row justify-content-center">
