@@ -75,7 +75,7 @@
                                         {!! csrf_field() !!}
                                         <div class="panel-body">
                                             <span class="btn btn-raised btn-round btn-default btn-file">
-                                            <input type="file" name="image">
+                                            <input type="file" name="image" accept="image/*">
                                             </span>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="submit" value="Guardar" class="btn btn-info btn-round">
