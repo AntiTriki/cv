@@ -38,10 +38,10 @@ class HomeController extends Controller
     }
     public function admin()
     {
-        $pos = DB::table('postulations')->get();
+        $pos = DB::table('postulations')->paginate(8);
 //        $today = Carbon::now();
 //        $jo = DB::table('jobs')->where('validity','>',$today)->get();
-        $jo = DB::table('jobs')->orderBy('activo', 'desc')->get();
+        $jo = DB::table('jobs')->orderBy('activo', 'desc')->paginate(6);
         $cat = DB::table('categories')->get();
         $for = DB::table('forms')->get();
         $use = DB::table('users')->get();

@@ -47,7 +47,7 @@
 
             <div class="container-fluid">
                 <div class="row content">
-                    <div class="col-sm-6 sidenav">
+                    <div style="padding-left: 10%" class="col-sm-10 sidenav">
                         <br>
                         <div class="card">
                             <div class="card-header card-header-text card-header-info">
@@ -134,13 +134,14 @@
                                                 @endforelse
                                                 </tbody>
                                             </table>
+                                            {{ $jo->links() }}
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 text-center">
+                    <div style="padding-left: 10%" class="col-sm-10 text-center">
                         <br>
                         <div class="card">
                             <div class="card-header card-header-text card-header-info">
@@ -198,6 +199,7 @@
                                                 @endforelse
                                                 </tbody>
                                             </table>
+                                            {{ $pos->links() }}
                                         </div>
                                     </div>
                                 </form>
