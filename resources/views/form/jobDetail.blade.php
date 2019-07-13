@@ -54,42 +54,49 @@
                                 <input type="hidden" name="idus" id="idus" value="{{ Auth::user()->id }}">
                             <div class="col-sm-12 text-center">
                                 <div class="container ">
-                            <table id="tablat" class="table table-responsive ">
-                                <thead>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="text-left" style="color: #000000; width: 30%;"><h4 class="card-title"> Cargo: {{ $job->occupation }} <br>Ciudad: {{ $job->city }} </h4></td>
-                                    <td class="text-left" style="color: #000000;width: 40%;"><h4 class="card-title"> Tipo de contrato: {{ $job->time_job }}<br> Valido hasta: {{date('d-m-Y', strtotime($job->validity))}}</h4></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left" style="color: #000000; width: 30%;"><h4> Descripción del puesto</h4></td>
-                                    <td class="text-left" style="color: #000000;width: 40%;"><h4>{{ $job->description }}</h4></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left" style="color: #000000; width: 30%;"><h4> Roles</h4></td>
-                                    <td class="text-left" style="color: #000000;width: 40%;"><h4>{{ $job->roles }}</h4></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                                    <hr>
-                                <div class="col-sm-12 text-center">
-                                    <h4 class="text-left" style="color: #000000; width: 30%;"> Requisitos</h4>
+                                    <h2 class=""> Cargo: {{ $job->occupation }}<br> <h3>Ciudad: {{ $job->city }}
+                                        <br>
+                                     Tipo de contrato: {{ $job->time_job }}<br> Válido hasta: {{date('d-m-Y', strtotime($job->validity))}}</h3></h2>
+                                    <table id="tablat" class="table table-responsive ">
 
-                                    @foreach($re as $req)
-                                        @if($job->id == $req->job_id)
-                                            <ul class="text-left" style="color: #000000;width: 80%;">
-                                                <h5 style="padding-left: 55%">
-                                                    <li> {{ $req->name }}</li>
-                                                </h5>
-                                            </ul>
-                                        @endif
-                                    @endforeach
-                                    </div>
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="text-left" style="color: #000000; width: 50%;"></td>
+                                                <td class="text-left" style="color: #000000;width: 50%;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left" style="color: #000000; width: 50%;"><h4> Descripción del puesto</h4></td>
+                                                <td class="text-left" style="color: #000000;width: 40%;"><h4>{{ $job->description }}</h4></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left" style="color: #000000; width: 50%;"><h4> Roles</h4></td>
+                                                <td class="text-left" style="color: #000000;width: 40%;"><h4>{{ $job->roles }}</h4></td>
+                                            </tr><tr>
+                                                <td class="text-left" style="color: #000000; width: 50%;"><h4> Requisitos</h4></td>
+                                                <td class="text-left" style="color: #000000;width: 40%;"><h4> @foreach($re as $req)
+                                                            @if($job->id == $req->job_id)
+                                                                <ul class="text-left" style="color: #000000;width: 80%;">
+                                                                    <h4 style="padding-left: ">
+                                                                        <li> {{ $req->name }}</li>
+                                                                    </h4>
+                                                                </ul>
+                                                            @endif
+                                                        @endforeach</h4></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    <hr>
+                                {{--<div class="col-sm-12 text-center">--}}
+                                    {{--<h4 class="text-left" style="color: #000000; width: 30%;"> Requisitos</h4>--}}
+
+                                   {{----}}
+                                    {{--</div>--}}
                                 </div>
                                 <div class="modal-footer">
                                     <div class="col-md-12 text-center">
-                                        <button type="submit" class="btn btn-info">postularse</button>
+                                        <button type="submit" class="btn btn-info">postular</button>
                                         {{--<a type="button" class="btn btn-info">--}}
                                             {{--{{ __('Postularse') }}--}}
                                         {{--</a>--}}
